@@ -1,0 +1,83 @@
+/* =======================INDEX PAGE RESPONSIV CSS============================= */
+
+@media screen and (max-width:1440px) {
+    .py_5{
+        padding: 0px 49px !important;
+    }
+}
+@media screen and (max-width:992px) {
+    .header-form {
+        max-width: 70%;
+        margin: 0 auto;
+    }
+    .py_5{
+        padding: 0px 30px !important;
+    }
+}
+@media screen and (max-width:567px) {
+    .py_5{
+        padding: 0px 20px !important;
+    }
+    .main-header .header-title {
+        font-size: 40px;
+    }
+    .main-header .header-text {
+        font-size: 19px;
+    }
+    .header-form {
+        max-width: 90%;
+    }
+    .nav-link{
+        padding: 0px !important;
+    }
+}
+@media screen and (max-width:420px) {
+    .main-header .header-title {
+        font-size: 32px;
+    }
+    .main-header .header-text {
+        font-size: 17px;
+    }
+}
+@media screen and (max-width:300px) {
+    .categorie-box {
+        max-width: 110px;
+        margin-right: 0;
+        padding: 20px 20px;
+    }
+}
+
+
+/* =======================CATEGORIES PAGE RESPONSIV CSS============================= */
+@media screen and (max-width:992px) {
+    .border-left-right:before {
+        content: "";
+        position: absolute;
+        background: lightgray;
+        height: 100px;
+        width: 1px;
+        left: 0;
+        display: none;
+    }
+    .border-left-right::after {
+        content: "";
+        position: absolute;
+        background: lightgray;
+        height: 100px;
+        width: 1px;
+        left: 0;
+        display: none;
+    }
+}
+/* ==================== SELLER PAGE RESPONSIV CSS =========================== */
+@media screen and (max-width:768px) {
+    .avtar-seller .border-right {
+        border-right:none;
+    }
+}
+/* ======================= SELLER VIEW PAGE RESPONSIV CSS ========================= */
+@media screen and (max-width:1200px) {
+    .p-left {
+        padding-left: 20px;
+    }
+}

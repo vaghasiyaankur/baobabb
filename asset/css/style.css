@@ -1,0 +1,256 @@
+body {
+  font-family: "Baloo 2", cursive;
+}
+/* COMAN CSS */
+.border-bottom {
+  border: 1px solid rgb(97, 97, 97);
+}
+.p-left {
+  padding-left: 60px;
+}
+input {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* ----------HEADER CSS--------------- */
+
+.navbar {
+  background-color: #364b5a;
+}
+.navbar .navbar-brand img {
+  max-width: 150px;
+  width: 100%;
+}
+.navbar .navbar-toggler i {
+  font-size: 21px;
+  color: #fff;
+}
+.navbar .nav-icon span i {
+  font-size: 21px;
+  margin: 0 10px;
+  color: #fff;
+}
+.navbar .collapse .navbar-nav {
+  font-size: 20px;
+}
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.main-header {
+  background-image: url(https://sl.baobabb.co/wp-content/uploads/2021/08/Website-Cover-1650-800.png);
+  padding: 60px 0;
+  background-position: center;
+}
+.py_5 {
+  padding: 0 150px !important;
+}
+.main-header .header-title {
+  font-size: 56px;
+  color: #fff;
+  font-weight: 400;
+}
+.main-header .header-text {
+  font-size: 22px;
+  color: #fff;
+  max-width: 780px;
+}
+.categorie-box {
+  max-width: 120px;
+  background: #0d0d0d73;
+  padding: 13px 25px;
+  margin-right: 20px;
+}
+.categorie-box i {
+  font-size: 19px;
+}
+.header-form {
+  background-color: #fff;
+  padding: 44px 25px;
+  max-width: 100%;
+}
+.header-form input {
+  border-bottom: 1px solid #c7c3c3 !important;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  border-radius: initial;
+}
+.header-form button.btn {
+  background-color: #364b5a;
+  color: #fff;
+  outline: none;
+  box-shadow: none;
+}
+.sub-category p {
+  margin-bottom: 0px;
+}
+
+/* ------------ SUB TITLE SWIPER ---------- */
+.swiper-container {
+  position: relative;
+  width: 90vw;
+}
+
+.swiper-container > .swiper-slide__content {
+  position: absolute;
+  top: 0;
+}
+
+.swiper-slide {
+  width: 190px !important;
+  display: flex;
+  font-size: 21px;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: all 200ms linear;
+  transform: scale(0.7);
+}
+
+.swiper-slide.swiper-slide-active {
+  transform: scale(0.7);
+}
+
+.swiper-slide__content {
+  height: 300px;
+}
+
+/* ----------HEADER CSS END--------------- */
+
+/* ------CATEGORY-CARD SECTION START----- */
+
+.card-box {
+  margin-top: 25px;
+  margin-bottom: 35px;
+}
+.card-inner {
+  padding: 5px 20px;
+  /* min-height: 220px; */
+}
+/* -----------FOOTER SECTION--------- */
+.footer-section {
+  background-color: #364b5a;
+  color: #fff;
+}
+.copy-right-text .nav a {
+  color: #fff;
+}
+.footer-icon {
+  font-size: 25px;
+}
+.footer-section.nav a{
+    padding: 0px !important;
+}
+/* -----------FOOTER SECTION END--------- */
+
+
+
+
+/* ================ ALL CATEGORIES PAGE ============= */
+
+/* ----------CATEGORIES SECTION-------------- */
+
+.all-categories {
+  background-color: #f9f9f9;
+}
+.categ-img {
+  max-width: 100px;
+}
+.border_bottom {
+  border-bottom: 1px solid lightgray;
+}
+.border-left {
+  border-left: 1px solid lightgray;
+}
+.border-left-right:before {
+  content: "";
+  position: absolute;
+  background: lightgray;
+  height: 100px;
+  width: 1px;
+  left: 0;
+}
+.border-left-right:after {
+  content: "";
+  position: absolute;
+  background: lightgray;
+  right: 0;
+  width: 1px;
+  height: 100px;
+  top: 0;
+}
+/* ============= ALL-CATEGORIES SECTION PAGE END ============= */
+
+/* =============== SEARCH-RESULT PAGE START ================= */
+
+.input-group button.btn {
+  box-shadow: none !important;
+  outline: none !important;
+  background-color: #fff;
+  color: black;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  border-radius: inherit;
+}
+button {
+  outline: none;
+  border-bottom: 1ox solid lightgray;
+}
+.btn-outline-secondary.dropdown-toggle.show,
+.btn:active {
+  background-color: #fff;
+  color: #000;
+  border: none;
+}
+
+/* =============== SEARCH-RESULT PAGE END ================= */
+
+/* =================SINGLE LISTING PAGE START===================== */
+.search-listing {
+  background-color: #f9f9f9;
+}
+.listing-img {
+  width: 100%;
+}
+.cfa-bg-text {
+  background-image: url(https://sl.baobabb.co/wp-content/uploads/2021/08/SLL.png);
+  padding: 20px 28px;
+}
+.avtar-tel {
+  background-color: #f95454;
+}
+.avtar img {
+  border-radius: 100px;
+  max-width: 90px;
+}
+.avtar-text span {
+  width: 9px;
+  height: 9px;
+  margin-top: 1px;
+  margin-right: 2px;
+  border-radius: 50px;
+  background: #00a591;
+}
+.width-img {
+  width: 100%;
+  max-width: 200px;
+}
+.border-left {
+  border-left: 2px solid #a3a2a2;
+}
+.secure-text .title {
+  background-color: #304958;
+}
+/* =============SINGLE LISTING PAGE END================ */
+
+/* ================SELLER PAGE START=================== */
+.seller-section {
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+.border-right {
+  border-right: 1px solid lightgray;
+}
