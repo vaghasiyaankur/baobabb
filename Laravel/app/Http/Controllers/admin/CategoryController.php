@@ -1,0 +1,133 @@
+<?php
+
+namespace App\Http\Controllers\admin;
+
+use App\Models\Category;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ImageController;
+use Illuminate\Http\Request;
+use DataTables;
+
+class CategoryController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Category::select('*');
+            return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+     
+                           $btn = '<a href="/admin/category/'.$row->id.'/edit" class="edit btn btn-primary btn-sm">Edit  </a>';
+    
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        // dd(User::all());
+        return view('admin.category.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.category.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreCategoryRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreCategoryRequest $request)
+    {
+        // dd($request);   
+
+        $img = new ImageController;
+        $image = $img->move($request->image);
+        $icon = $img->move($request->icon);
+
+        $category = new Category;
+        $category->name = $request->name;
+        $category->slug = $request->slug;
+        $category->icon = $icon;
+        $category->image = $image;
+        // dd($category);  
+        $category->save();
+        return redirect()->route('admin.category.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Category $category)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $cat = Category::find($id);
+        return view('admin.category.create',compact('cat'));
+        // return 123;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateCategoryRequest $request, $id)
+    {
+        $category = Category::find($id);
+        $img = new ImageController;
+        // dd($category);
+        if($request->image)
+        {
+            $category->image = $img->move($request->image);
+        }
+        if($request->icon)
+        {
+            $category->icon = $img->move($request->icon);
+        }
+        $category->name = $request->name;
+        $category->slug = $request->slug;
+        $category->save();
+        return redirect()->route('admin.category.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Category $category)
+    {
+        //
+    }
+}

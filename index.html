@@ -58,9 +58,161 @@
                     </li>
                 </ul>
                 <div class="nav-icon d-flex justify-content-evenly align-items-center">
-                    <span><i class="fa-solid fa-arrow-right-to-bracket"></i></span>
-                    <span><i class="fa-solid fa-notes-medical"></i></span>
-                    <span><i class="fa-solid fa-globe"></i></span>
+                    <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
+                    <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                class="fa-solid fa-notes-medical"></i></a></span>
+                    <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                class="fa-solid fa-globe"></i></a></span>
+
+                    <!-------- START MODAL --------->
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered ">
+                            <div class="modal-content p-3">
+                                <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                                <div class="modal-body login_modal p-2">
+                                    <h5 class="modal-title mb-4" id="exampleModalLabel">Login</h5>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-6">
+                                                <label for="exampleInputEmail1" class="form-label m-0">Username / Email
+                                                    *</label>
+                                                <input type="email"
+                                                    class="form-control border-0 border-bottom p-0 rounded-0"
+                                                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="col-12 col-sm-6">
+                                                <label for="exampleInputPassword1" class="form-label m-0">Password
+                                                    *</label>
+                                                <input type="password"
+                                                    class="form-control border-0 border-bottom p-0 rounded-0"
+                                                    id="exampleInputPassword1">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="my-4">
+                                        <button class="btn model_btn w-100 fw-bold" type="button">LOGIN</button>
+                                    </div>
+                                    <div class="text-center my-4">
+                                        <a href="javascript:;" class="pt-2 text-muted" id="forget_pass">Forgotten your
+                                            password ?</a>
+                                    </div>
+                                    <div class="h-line-text text-center w-75 mx-auto">
+                                        <span class="fw-bold">OR</span>
+                                    </div>
+                                    <p class="m-0 text-center mt-3">Sign In With</p>
+                                    <div
+                                        class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
+                                        <a href="javascript:;" class="f-conect d-flex flex-wrap align-items-center p-2">
+                                            <i class="fa-brands fa-facebook-f p-1"></i>
+                                            <h6 class="m-0">Connect with Facebook</h6>
+                                        </a>
+                                        <a href="javascript:;"
+                                            class="g-conect d-flex flex-wrap align-items-center p-2 mt-2 mt-sm-0">
+                                            <i class="fa-brands fa-google pe-2"></i>
+                                            <span class="m-0">Connect with Google</span>
+                                        </a>
+                                    </div>
+                                    <div class="text-center m-3">
+                                        <a href="javascript:;" class="text-muted" id="create_ac">Don't have an
+                                            account? Create one here</a>
+                                    </div>
+                                </div>
+                                <!------------FORGET PASSWORD MODAL START-------------->
+                                <div class="modal-body recover_pass_modal p-1">
+                                    <h5 class="modal-title mb-4" id="exampleModalLabel">Recover Password</h5>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="exampleInputEmail1" class="form-label m-0">Email *</label>
+                                                <input type="email"
+                                                    class="form-control border-0 border-bottom p-0 rounded-0"
+                                                    id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                    placeholder="Your registered Email">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="my-4">
+                                        <button class="btn model_btn w-100 fw-bold" type="button">RECOVER</button>
+                                    </div>
+                                    <div class="text-center m-3">
+                                        <a href="javascript:;" class="text-muted" id="login_acc">Already have an
+                                            account?
+                                            login here.</a>
+                                    </div>
+                                </div>
+                                <!---------FORGET PASSWORD MODAL END---------->
+
+                                <!----------CREATE ACCOUNT MODAL------------>
+                                <div class="modal-body createAcc_modal p-2">
+                                    <h5 class="modal-title mb-4" id="exampleModalLabel">Register</h5>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-6 mt-2 mt-sm-0">
+                                                <label for="exampleInputEmail1" class="form-label m-0">Username
+                                                    *</label>
+                                                <input type="text"
+                                                    class="form-control border-0 border-bottom p-0 rounded-0"
+                                                    id="exampleInputtext1" aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="col-12 col-sm-6 mt-2 mt-sm-0">
+                                                <label for="exampleInputEmail1" class="form-label m-0">Email *</label>
+                                                <input type="email"
+                                                    class="form-control border-0 border-bottom p-0 rounded-0"
+                                                    id="exampleInputEmail1">
+                                            </div>
+                                            <div class="col-12 col-sm-6 mt-4">
+                                                <label for="exampleInputpassword1" class="form-label m-0">Password
+                                                    *</label>
+                                                <input type="password"
+                                                    class="form-control border-0 border-bottom p-0 rounded-0"
+                                                    id="exampleInputpassword1" aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="col-12 col-sm-6 mt-4">
+                                                <label for="exampleInputPassword1" class="form-label m-0">Re-password
+                                                    *</label>
+                                                <input type="password"
+                                                    class="form-control border-0 border-bottom p-0 rounded-0"
+                                                    id="exampleInputPassword1">
+                                            </div>
+                                            <div class="form-check ms-3 pt-4">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">I agree to tearms &
+                                                    conditions</label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="my-4">
+                                        <button class="btn model_btn w-100 fw-bold" type="button">REGISTER</button>
+                                    </div>
+                                    <div class="h-line-text text-center w-75 mx-auto">
+                                        <span>OR</span>
+                                    </div>
+                                    <p class="m-0 text-center mt-3">Sign In With</p>
+                                    <div
+                                        class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
+                                        <a href="javascript:;" class="f-conect d-flex flex-wrap align-items-center p-2">
+                                            <i class="fa-brands fa-facebook-f p-1"></i>
+                                            <h6 class="m-0">Connect with Facebook</h6>
+                                        </a>
+                                        <a href="javascript:;"
+                                            class="g-conect d-flex flex-wrap align-items-center p-2 mt-2 mt-sm-0">
+                                            <i class="fa-brands fa-google pe-2"></i>
+                                            <span class="m-0">Connect with Google</span>
+                                        </a>
+                                    </div>
+                                    <div class="text-center m-3">
+                                        <a href="javascript:;" class="text-muted" id="login_ac">Already have an account?
+                                            login here.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!------ END MODAL ------->
                 </div>
             </div>
         </div>
@@ -74,28 +226,35 @@
                         cherchez,sans difficulte`.</p>
                     <div class="categorie pt-lg-5 d-flex flex-wrap justify-content-between align-items-center">
                         <div class="categorie-box mt-3">
-                            <img src="https://sl.baobabb.co/wp-content/uploads/2021/08/Apartment.png" class="img-fluid"
-                                alt="">
+                            <a href="javascript:;" class="text-decoration-none"><img
+                                    src="https://sl.baobabb.co/wp-content/uploads/2021/08/Apartment.png"
+                                    class="img-fluid w-100" alt=""></a>
                         </div>
                         <div class="categorie-box mt-3">
-                            <img src="https://sl.baobabb.co/wp-content/uploads/2021/06/Household-electronics.png"
-                                class="img-fluid" alt="">
+                            <a href="javascript:;" class="text-decoration-none"><img
+                                    src="https://sl.baobabb.co/wp-content/uploads/2021/06/Household-electronics.png"
+                                    class="img-fluid w-100" alt=""></a>
                         </div>
                         <div class="categorie-box mt-3">
-                            <img src="https://sl.baobabb.co/wp-content/uploads/2021/08/Beauty-products.png"
-                                class="img-fluid" alt="">
+                            <a href="javascript:;" class="text-decoration-none"><img
+                                    src="https://sl.baobabb.co/wp-content/uploads/2021/08/Beauty-products.png"
+                                    class="img-fluid w-100" alt=""></a>
                         </div>
                         <div class="categorie-box mt-3">
-                            <img src="https://sl.baobabb.co/wp-content/uploads/2021/08/House.png" class="img-fluid"
-                                alt="">
+                            <a href="javascript:;" class="text-decoration-none"><img
+                                    src="https://sl.baobabb.co/wp-content/uploads/2021/08/House.png"
+                                    class="img-fluid w-100" alt=""></a>
                         </div>
                         <div class="categorie-box mt-3">
-                            <img src="https://sl.baobabb.co/wp-content/uploads/2021/06/Household-electronics.png"
-                                class="img-fluid" alt="">
+                            <a href="javascript:;" class="text-decoration-none"><img
+                                    src="https://sl.baobabb.co/wp-content/uploads/2021/06/Household-electronics.png"
+                                    class="img-fluid w-100" alt=""></a>
                         </div>
                         <div class="categorie-box mt-3">
-                            <p class="text-white text-center mb-0">All other <br> Categories</p>
-                            <i class="fa-solid fa-arrow-right-long text-white ps-4"></i>
+                            <a href="javascript:;" class="text-decoration-none">
+                                <p class="text-white text-center mb-0">All other <br> Categories</p>
+                                <i class="fa-solid fa-arrow-right-long text-white ps-4"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -124,42 +283,65 @@
     </section>
 
     <!---------- SUB TITLE SWIPER --------->
-    
+
     <div class="swiper-container pt-3">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
             <div class="swiper-slide">
-                <p class="m-0">Electronics & Media</p>
+                <a href="javascript:;" class="text-decoration-none">
+                    <p class="m-0" style="color: #000;">Electronics & Media</p>
+                </a>
             </div>
             <div class="swiper-slide">
-                <p class="m-0">Home & Garden</p>
+                <a href="javascript:;" class="text-decoration-none">
+                    <p class="m-0" style="color: #000;">Home & Garden</p>
+                </a>
             </div>
             <div class="swiper-slide">
-                <p class="m-0">Electronics & Media</p>
+                <a href="javascript:;" class="text-decoration-none">
+                    <p class="m-0" style="color: #000;">Electronics & Media</p>
+                </a>
             </div>
             <div class="swiper-slide">
-                <p class="m-0">Clothing & Shoes </p>
+                <a href="javascript:;" class="text-decoration-none">
+                    <p class="m-0" style="color: #000;">Clothing & Shoes </p>
+                </a>
             </div>
             <div class="swiper-slide">
-                <p class="m-0">Baby & Kids</p>
+                <a href="javascript:;" class="text-decoration-none">
+                    <p class="m-0" style="color: #000;">Baby & Kids</p>
+                </a>
             </div>
             <div class="swiper-slide">
-                <p class="m-0">Vehicles</p>
+                <a href="javascript:;" class="text-decoration-none">
+                    <p class="m-0" style="color: #000;">Vehicles</p>
+                </a>
             </div>
             <div class="swiper-slide">
-                <p class="m-0">Toys,Games </p>
+                <a href="javascript:;" class="text-decoration-none">
+                    <p class="m-0" style="color: #000;">Toys,Games </p>
+                </a>
             </div>
             <div class="swiper-slide">
-                <p class="m-0">Collaction & Arts</p>
+                <a href="javascript:;" class="text-decoration-none">
+                    <p class="m-0" style="color: #000;">Collaction & Arts</p>
+                </a>
             </div>
             <div class="swiper-slide">
-                <p class="m-0">Pet supplies</p>
+                <a href="javascript:;" class="text-decoration-none">
+                    <p class="m-0" style="color: #000;">Pet supplies</p>
+                </a>
             </div>
             <div class="swiper-slide">
-                <p class="m-0">Health & Beauty</p>
+                <a href="javascript:;" class="text-decoration-none">
+                    <p class="m-0" style="color: #000;">Health & Beauty</p>
+                </a>
             </div>
         </div>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
 
     <!------CATEGORY CARD SECTION START----->
@@ -167,7 +349,8 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -186,7 +369,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-2.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-2.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -205,7 +389,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-3.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-3.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -224,7 +409,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -243,7 +429,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-2.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-2.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -262,7 +449,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-3.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-3.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -281,7 +469,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-3.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-3.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -300,7 +489,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-3.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -319,7 +509,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-2.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-2.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -338,7 +529,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-3.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-3.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -357,7 +549,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -376,7 +569,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-2.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-2.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -395,7 +589,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -414,7 +609,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-2.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-2.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -433,7 +629,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-3.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-3.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -452,7 +649,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -471,7 +669,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-2.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-2.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -490,7 +689,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-3.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-3.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -509,7 +709,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-3.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-3.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -528,7 +729,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-2.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-2.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -547,7 +749,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -566,7 +769,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-3.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-3.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -585,7 +789,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card-2.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card-2.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -604,7 +809,8 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                 <div class="card-box">
-                    <img src="asset/img/category-card.jpg" class="img-fluid" alt="card-img">
+                    <a href="javascript:;" class="text-decoration-none"><img src="asset/img/category-card.jpg"
+                            class="img-fluid w-100" alt="card-img"></a>
                     <div class="card-inner">
                         <div class="d-flex justify-content-between pt-1 pb-2">
                             <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
@@ -640,7 +846,8 @@
                 </nav>
             </div>
             <div class="col-md-2 col-12 ">
-                <div class="footer-icon d-flex flex-direction-row justify-content-lg-end justify-content-center pt-3 pt-sm-0">
+                <div
+                    class="footer-icon d-flex flex-direction-row justify-content-lg-end justify-content-center pt-3 pt-sm-0">
                     <i class="fa-brands fa-facebook-square px-2"></i>
                     <i class="fa-brands fa-twitter px-2"></i>
                     <i class="fa-brands fa-instagram px-2"></i>
@@ -652,7 +859,7 @@
     <!----- FOOTER SECTION END ------>
 
 
-
+    <!---------SUB TITLE SWIPER JS--------->
     <script>
         $(document).ready(function () {
             // Assign some jquery elements we'll need
@@ -666,23 +873,43 @@
             var mySwiper = new Swiper(".swiper-container", {
                 spaceBetween: 1,
                 slidesPerView: 9,
-                centeredSlides: true,
+                centeredSlides: false,
                 roundLengths: true,
-                loop: true,
-                loopAdditionalSlides: 30,
+                loop: false,
+                loopAdditionalSlides: 10,
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev"
                 }
             });
         });
-
-
     </script>
     
+    <!---------------- CREATE ACCOUNT MODAL SCRIPT ------------->
+    <script>
+        $("#create_ac").click(function () {
+            $(".login_modal").css("display", "none")
+            $(".createAcc_modal").css("display", "block")
+        });
+        $("#login_ac").click(function () {
+            $(".login_modal").css("display", "block")
+            $(".createAcc_modal").css("display", "none")
+        });
+        $("#forget_pass").click(function () {
+            $(".recover_pass_modal").css("display", "block")
+            $(".createAcc_modal").css("display", "none")
+            $(".login_modal").css("display", "none")
+        });
+        $("#login_acc").click(function () {
+            $(".login_modal").css("display", "block")
+            $(".createAcc_modal").css("display", "none")
+            $(".recover_pass_modal").css("display", "none")
+        });
+    </script>
+
     <!-- SLICK SLIDER -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.0/js/swiper.js"></script>
 
     <!-- BOOTSTARP JS -->
