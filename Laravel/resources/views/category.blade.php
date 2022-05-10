@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 
     <!-- ALL-CATEGORY SECTION START -->
@@ -164,314 +163,32 @@
                         </div>
                     </div>
                     <!-- card start -->
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3 ">
-                        <div class="card-box ">
-                            <img src="asset/img/category-card.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Camera</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">GNF 100.000</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card-2.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils driver</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">vehicule nefu a vendre</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold"><span
-                                            class="text-decoration-line-through text-muted fw-bold ">$30,000</span>
-                                        $2,850</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
+                    @foreach($products as $product)
+                        <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3 ">
+                            <div class="card-box ">
+                                <img src="asset/img/category-card.jpg" class="img-fluid w-100" alt="card-img">
+                                <div class="card-inner bg-white">
+                                    <a href="{{route('product',$product->slug)}}">
+                                        <div class="d-flex justify-content-between pt-3 pb-2">
+                                            <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
+                                            <span><i class="fa-solid fa-location-dot pe-2"></i>{{$product->city}}</span>
+                                        </div>
+                                        <p class="m-0 fw-bold pb-2">{{$product->name}}</p>
+                                        <div class="d-flex flex-wrap justify-content-between pb-2">
+                                            <p class="m-0 text-danger fw-bold">{{$product->cash}} {{$product->price}}</p>
+                                            <div class="icon">
+                                                <i class="fa-regular fa-heart"></i>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card-3.jpg" class="img-fluid w-100" alt="card-img">
-
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Maison a louer(Exemple d...</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">GNF 1.000.000 <span class="text-muted">/
-                                            jour</span></p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Maison a louer(Exemple d...</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">Appelez pour en discuter</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card-3.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Camera</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">GNF 100.000</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils driver</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">vehicule nefu a vendre</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold"><span
-                                            class="text-decoration-line-through text-muted fw-bold ">$30,000</span>
-                                        $2,850</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card-2.jpg" class="img-fluid" alt="card-img">
-
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Maison a louer(Exemple d...</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">GNF 1.000.000 <span class="text-muted">/
-                                            jour</span></p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Maison a louer(Exemple d...</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">Appelez pour en discuter</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Camera</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">GNF 100.000</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card-2.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils driver</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">vehicule nefu a vendre</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold"><span
-                                            class="text-decoration-line-through text-muted fw-bold ">$30,000</span>
-                                        $2,850</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card.jpg" class="img-fluid w-100" alt="card-img">
-
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Maison a louer(Exemple d...</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">GNF 1.000.000 <span class="text-muted">/
-                                            jour</span></p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card-3.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Maison a louer(Exemple d...</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">Appelez pour en discuter</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Camera</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">GNF 100.000</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card-2.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils driver</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">vehicule nefu a vendre</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold"><span
-                                            class="text-decoration-line-through text-muted fw-bold ">$30,000</span>
-                                        $2,850</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card.jpg" class="img-fluid w-100" alt="card-img">
-
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Maison a louer(Exemple d...</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">GNF 1.000.000 <span class="text-muted">/
-                                            jour</span></p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
-                        <div class="card-box">
-                            <img src="asset/img/category-card-3.jpg" class="img-fluid w-100" alt="card-img">
-                            <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2">
-                                    <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                    <span><i class="fa-solid fa-location-dot pe-2"></i>Mamou</span>
-                                </div>
-                                <p class="m-0 fw-bold pb-2">Maison a louer(Exemple d...</p>
-                                <div class="d-flex flex-wrap justify-content-between pb-2">
-                                    <p class="m-0 text-danger fw-bold">Appelez pour en discuter</p>
-                                    <div class="icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+                    
                 </div>
             </div>
         </div>
     </section>
     <!-- ALL-CATEGORY SECTION END -->
-
 @endsection

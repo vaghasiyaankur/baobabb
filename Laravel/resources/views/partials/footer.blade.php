@@ -25,6 +25,12 @@
 </footer>
 <!----- FOOTER SECTION END ------>
 
+<!-- JQ JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+<!-- BOOTSTARP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <script>
@@ -52,6 +58,28 @@
     });
 </script>
 
+<script>
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: false,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        infinite: false,
+        arrows: false,
+        centerMode: false,
+        focusOnSelect: true
+    });
+
+</script>
+
 <!---------------- CREATE ACCOUNT MODAL SCRIPT ------------->
 <script>
     $("#create_ac").click(function() {
@@ -74,13 +102,6 @@
     });
 </script>
 
-<!-- SLICK SLIDER -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.0/js/swiper.js"></script>
-
-<!-- BOOTSTARP JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

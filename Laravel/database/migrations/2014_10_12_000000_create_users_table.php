@@ -28,7 +28,8 @@ return new class extends Migration
             $table->string('instagram')->nullable();
             $table->string('website')->nullable();
             $table->string('description')->nullable();
-            $table->string('location')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('long')->nullable();
             $table->string('country')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();

@@ -12,6 +12,7 @@ class product extends Model
 
     protected $fillable = [
         'category_id',
+        'user_id',
         'name',
         'image',
         'gallery',
@@ -30,6 +31,11 @@ class product extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'category_id','id');
+        $this->belongsTo(Category::class,'category_id','id');
+    }
+
+    public function user()
+    {
+        $this->belongsTo(User::class,'user_id','id');
     }
 }

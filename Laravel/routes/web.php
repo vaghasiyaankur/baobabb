@@ -22,6 +22,10 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/category/{slug}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
+Route::get('/product/{slug}', [App\Http\Controllers\HomeController::class, 'product'])->name('product');
+Route::get('/category', [App\Http\Controllers\HomeController::class, 'allCategory'])->name('allcategory');
+Route::get('/seller', [App\Http\Controllers\HomeController::class, 'seller'])->name('seller');
+Route::get('/seller/{username}', [App\Http\Controllers\HomeController::class, 'singleSeller'])->name('singleSeller');
 
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () { 
