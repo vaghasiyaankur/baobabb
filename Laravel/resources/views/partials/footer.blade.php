@@ -58,28 +58,6 @@
     });
 </script>
 
-<script>
-    $('.slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: false,
-        arrows: false,
-        fade: true,
-        asNavFor: '.slider-nav'
-    });
-    $('.slider-nav').slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        asNavFor: '.slider-for',
-        dots: false,
-        infinite: false,
-        arrows: false,
-        centerMode: false,
-        focusOnSelect: true
-    });
-
-</script>
-
 <!---------------- CREATE ACCOUNT MODAL SCRIPT ------------->
 <script>
     $("#create_ac").click(function() {
@@ -101,6 +79,37 @@
         $(".recover_pass_modal").css("display", "none")
     });
 </script>
+
+{{-- FOR AUTOCOMPLATE ADDRESS --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    {{-- javascript code --}}
+        <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&key=AIzaSyBZhREk9TESs69r99eYGKkIQ725IqOP8Zc&ver=5.9.3'></script>
+    <script>
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+        function initialize() {
+            var input = document.getElementById('autocomplete');
+            var options = {
+		        types: ['(cities)'],
+		        componentRestrictions: {country: "in"}
+		    };
+            var autocomplete = new google.maps.places.Autocomplete(input,options);
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                console.log(place)
+                $('#latitude').val(place.geometry['location'].lat());
+                $('#longitude').val(place.geometry['location'].lng());
+                // // --------- show lat and long ---------------
+                // $("#lat_area").removeClass("d-none");
+                // $("#long_area").removeClass("d-none");
+            });
+        }
+    </script>
 
 </body>
 

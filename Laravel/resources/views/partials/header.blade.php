@@ -1,8 +1,8 @@
  <!----- HEADER SECTION  START----->
  <nav class="navbar navbar-expand-lg py_5 ">
      <div class="container-fluid py-4">
-         <a class="navbar-brand" href="{{route('home')}}">
-             <img src="{{asset('assets/img/Baobab-Logo.png')}}" alt="">
+         <a class="navbar-brand" href="{{ route('home') }}">
+             <img src="{{ asset('assets/img/Baobab-Logo.png') }}" alt="">
          </a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
              aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,11 +26,15 @@
                  </li>
              </ul>
              <div class="nav-icon d-flex justify-content-evenly align-items-center">
-                 <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                             class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
-                 <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                             class="fa-solid fa-notes-medical"></i></a></span>
-                 <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                 @guest
+                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
+                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-notes-medical"></i></a></span>
+                 @else
+                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
+                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-notes-medical"></i></a></span>
+                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-envelope-open"></i></a></span>
+                 @endguest
+                 <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target=""><i
                              class="fa-solid fa-globe"></i></a></span>
 
                  <!-------- START MODAL --------->
@@ -124,28 +128,29 @@
                                              <label for="name" class="form-label m-0">Username
                                                  *</label>
                                              <input type="text"
-                                                 class="form-control border-0 border-bottom p-0 rounded-0"
-                                                 id="name" name="name" aria-describedby="emailHelp">
+                                                 class="form-control border-0 border-bottom p-0 rounded-0" id="name"
+                                                 name="name" aria-describedby="emailHelp">
                                          </div>
                                          <div class="col-12 col-sm-6 mt-2 mt-sm-0">
                                              <label for="email" class="form-label m-0">Email *</label>
                                              <input type="email"
-                                                 class="form-control border-0 border-bottom p-0 rounded-0"
-                                                 id="email" name="email">
+                                                 class="form-control border-0 border-bottom p-0 rounded-0" id="email"
+                                                 name="email">
                                          </div>
                                          <div class="col-12 col-sm-6 mt-4">
                                              <label for="password" class="form-label m-0">Password
                                                  *</label>
                                              <input type="password"
-                                                 class="form-control border-0 border-bottom p-0 rounded-0"
-                                                 id="password" name="password" aria-describedby="emailHelp">
+                                                 class="form-control border-0 border-bottom p-0 rounded-0" id="password"
+                                                 name="password" aria-describedby="emailHelp">
                                          </div>
                                          <div class="col-12 col-sm-6 mt-4">
                                              <label for="password-confirm" class="form-label m-0">Re-password
                                                  *</label>
                                              <input type="password"
                                                  class="form-control border-0 border-bottom p-0 rounded-0"
-                                                 id="password-confirm" name="password_confirmation" autocomplete="new-password">
+                                                 id="password-confirm" name="password_confirmation"
+                                                 autocomplete="new-password">
                                          </div>
                                          <div class="form-check ms-3 pt-4">
                                              <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -154,7 +159,8 @@
                                          </div>
                                      </div>
                                      <div class="my-4">
-                                         <button type="submit" class="btn model_btn w-100 fw-bold" type="button">REGISTER</button>
+                                         <button type="submit" class="btn model_btn w-100 fw-bold"
+                                             type="button">REGISTER</button>
                                      </div>
                                  </form>
                                  <div class="h-line-text text-center w-75 mx-auto">

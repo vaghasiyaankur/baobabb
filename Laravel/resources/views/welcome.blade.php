@@ -44,22 +44,32 @@
             </div>
             <div class="col-lg-4 pt-4 pt-lg-0">
                 <div class="header-form">
-                    <form>
+                    <form action="{{route('search.product')}}" method="POST">
+                        @csrf   
                         <h3 class="text-black mb-4">I'm interested in...</h3>
                         <div class="mb-4">
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Search for...">
+                            <input type="name" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Search for..." required>
                         </div>
                         <div class="mb-4">
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Located in...">
+                            {{-- <input type="text" class="form-control" id="exampleInputPassword1"
+                                placeholder="Located in..."> --}}
+                                <input type="text" name="autocomplete" id="autocomplete" class="form-control" placeholder="Select Location">
+                                <input type="hidden" name="latitude" id="latitude" class="form-control">
+                                <input type="hidden" name="longitude" id="longitude" class="form-control">
+
                         </div>
                         <div class="mb-4 ">
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="In Category...">
+                            <select class="form-control " name="category_id" id="">
+                                <option>In Category...</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                            {{-- <input type="text" class="form-control" id="category"
+                                placeholder="In Category..."> --}}
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Search</button>
-                    </form>
+                    </form> 
                 </div>
             </div>
         </div>
@@ -92,7 +102,7 @@
                                 <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>
                                 <span><i class="fa-solid fa-location-dot pe-2"></i>{{$product->city}}</span>
                             </div>
-                            <p class="m-0 fw-bold pb-2">{{$product->name}}</p>
+                            <a href="{{route('product',$product->slug   )}}"><p class="m-0 fw-bold pb-2">{{$product->name}}</p></a>
                             <div class="d-flex flex-wrap justify-content-between">
                                 <p class="m-0 text-danger">{{$product->cash}} {{$product->price}}</p>
                                 <div class="icon">
@@ -106,7 +116,5 @@
             @endforeach
         </div>
     </section>
-
-    
     <!------CATEGORY CARD SECTION END----->
 @endsection

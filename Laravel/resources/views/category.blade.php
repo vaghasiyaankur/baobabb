@@ -27,41 +27,14 @@
             
                 <!-- CATEGORY CHECK LIST -->
                 <h5 class="pb-2">Categories</h5>
-                <div class="form-check pb-1">
-                    <input class="form-check-input rounded-pill fs-6" type="checkbox" value="" id="flexCheck" checked>
-                    <label class="form-check-label" for="flexCheck">
-                        Tous
-                    </label>
-                </div>
-                <div class="form-check pb-1">
-                    <input class="form-check-input rounded-pill fs-6" type="checkbox" value="" id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked">
-                        Cellulair & Tablettes
-                    </label>
-                </div>
-                <div class="form-check pb-1">
-                    <input class="form-check-input rounded-pill fs-6" type="checkbox" value="" id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked">
-                        Espace de bureu louer
-                    </label>
-                </div>
-                <div class="form-check pb-1">
-                    <input class="form-check-input rounded-pill fs-6" type="checkbox" value="" id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked">
-                        Maison a vendre
-                    </label>
-                </div>
-                <div class="form-check pb-1">
-                    <input class="form-check-input rounded-pill fs-6" type="checkbox" value="" id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked">
-                        Maison a louer
-                    </label>
-                </div>
-                <div class="mb-4 mt-3">
-                    <h5 class="text-muted fw-bold">Emplacement</h5>
-                    <input type="email" class="form-control border-0 border-bottom ps-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Commencez a taper..">
-                </div>
+                    @foreach($categories as $cat)
+                        <div class="form-check pb-1">
+                            <input class="form-check-input rounded-pill fs-6" type="checkbox" value="{{$cat->id}}" id="flexCheck" @if($cat->id == $category->id)checked @endif>
+                            <label class="form-check-label" for="flexCheck">
+                                {{$cat->name}}
+                            </label>
+                        </div>
+                    @endforeach
                 <div class="mb-4 mt-3">
                     <!-- slider -->
                     <div class="price-range-slider">
@@ -185,6 +158,7 @@
                             </div>
                         </div>
                     @endforeach
+                    {{  $products->links()  }}  
                     
                 </div>
             </div>

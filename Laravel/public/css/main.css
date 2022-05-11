@@ -116,6 +116,13 @@ button{
   border: none;
   border-radius: initial;
 }
+.header-form select {
+  border-bottom: 1px solid #c7c3c3 !important;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  border-radius: initial;
+}
 .header-form button.btn {
   background-color: #364b5a;
   color: #fff;
@@ -363,6 +370,15 @@ button {
 }
 .secure-text .title {
   background-color: #304958;
+}
+
+.price-abs{
+  text-decoration: line-through;
+  opacity: 0.9;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  margin-right: 10px;
 }
 /* =============SINGLE LISTING PAGE END================ */
 
