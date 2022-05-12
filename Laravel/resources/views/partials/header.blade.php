@@ -30,9 +30,9 @@
                      <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
                      <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-notes-medical"></i></a></span>
                  @else
-                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
+                     {{-- <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
                      <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-notes-medical"></i></a></span>
-                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-envelope-open"></i></a></span>
+                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-envelope-open"></i></a></span> --}}
                  @endguest
                  <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target=""><i
                              class="fa-solid fa-globe"></i></a></span>
@@ -47,27 +47,25 @@
                                  aria-label="Close"></button>
                              <div class="modal-body login_modal p-2">
                                  <h5 class="modal-title mb-4" id="exampleModalLabel">Login</h5>
-                                 <form>
+                                 <form name="login" action="{{route('login')}}" method="post">
+                                    @csrf
                                      <div class="row">
                                          <div class="col-12 col-sm-6">
                                              <label for="exampleInputEmail1" class="form-label m-0">Username / Email
                                                  *</label>
-                                             <input type="email"
-                                                 class="form-control border-0 border-bottom p-0 rounded-0"
-                                                 id="exampleInputEmail1" aria-describedby="emailHelp">
+                                             <input id="user_login" type="email" class="form-control border-0 border-bottom p-0 rounded-0" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                             <span class="error text-danger"></span>
                                          </div>
                                          <div class="col-12 col-sm-6">
-                                             <label for="exampleInputPassword1" class="form-label m-0">Password
-                                                 *</label>
-                                             <input type="password"
-                                                 class="form-control border-0 border-bottom p-0 rounded-0"
-                                                 id="exampleInputPassword1">
-                                         </div>
+                                             <label for="exampleInputPassword1" class="form-label m-0">Password *</label>
+                                             <input id="pass_login" type="password" class="form-control border-0 border-bottom p-0 rounded-0" id="exampleInputPassword1" required>
+                                             <span class="error text-danger"></span>
+                                        </div>
+                                     </div>
+                                     <div class="my-4">
+                                         <button onclick="loginUser()" id="login_btn" class="btn model_btn w-100 fw-bold" type="button">LOGIN</button>
                                      </div>
                                  </form>
-                                 <div class="my-4">
-                                     <button class="btn model_btn w-100 fw-bold" type="button">LOGIN</button>
-                                 </div>
                                  <div class="text-center my-4">
                                      <a href="javascript:;" class="pt-2 text-muted" id="forget_pass">Forgotten your
                                          password ?</a>
@@ -108,7 +106,7 @@
                                      </div>
                                  </form>
                                  <div class="my-4">
-                                     <button class="btn model_btn w-100 fw-bold" type="button">RECOVER</button>
+                                     <button class="btn model_btn w-100 fw-bold" type="submit">RECOVER</button>
                                  </div>
                                  <div class="text-center m-3">
                                      <a href="javascript:;" class="text-muted" id="login_acc">Already have an
@@ -121,46 +119,36 @@
                              <!----------CREATE ACCOUNT MODAL------------>
                              <div class="modal-body createAcc_modal p-2">
                                  <h5 class="modal-title mb-4" id="exampleModalLabel">Register</h5>
-                                 <form method="POST" action="{{ route('register') }}">
-                                     @csrf
+                                 <form>
                                      <div class="row">
                                          <div class="col-12 col-sm-6 mt-2 mt-sm-0">
-                                             <label for="name" class="form-label m-0">Username
-                                                 *</label>
-                                             <input type="text"
-                                                 class="form-control border-0 border-bottom p-0 rounded-0" id="name"
-                                                 name="name" aria-describedby="emailHelp">
+                                             <label for="name" class="form-label m-0">Username *</label>
+                                             <input type="text" class="form-control border-0 border-bottom p-0 rounded-0" id="reg_username" name="name" aria-describedby="emailHelp">
+                                             <span class="error text-danger"></span>
                                          </div>
                                          <div class="col-12 col-sm-6 mt-2 mt-sm-0">
                                              <label for="email" class="form-label m-0">Email *</label>
-                                             <input type="email"
-                                                 class="form-control border-0 border-bottom p-0 rounded-0" id="email"
-                                                 name="email">
+                                             <input type="email" class="form-control border-0 border-bottom p-0 rounded-0" id="reg_email" name="email" required>
+                                             <span class="error text-danger"></span>
                                          </div>
                                          <div class="col-12 col-sm-6 mt-4">
-                                             <label for="password" class="form-label m-0">Password
-                                                 *</label>
-                                             <input type="password"
-                                                 class="form-control border-0 border-bottom p-0 rounded-0" id="password"
-                                                 name="password" aria-describedby="emailHelp">
+                                             <label for="password" class="form-label m-0">Password *</label>
+                                             <input type="password" class="form-control border-0 border-bottom p-0 rounded-0" id="reg_pass" name="password" aria-describedby="emailHelp">
+                                             <span class="error text-danger"></span>
                                          </div>
                                          <div class="col-12 col-sm-6 mt-4">
-                                             <label for="password-confirm" class="form-label m-0">Re-password
-                                                 *</label>
-                                             <input type="password"
-                                                 class="form-control border-0 border-bottom p-0 rounded-0"
-                                                 id="password-confirm" name="password_confirmation"
-                                                 autocomplete="new-password">
+                                             <label for="password-confirm" class="form-label m-0">Re-password *</label>
+                                             <input type="password" class="form-control border-0 border-bottom p-0 rounded-0" id="reg_conf_pass" name="password_confirmation" autocomplete="new-password">
+                                             <span class="error text-danger"></span>
                                          </div>
                                          <div class="form-check ms-3 pt-4">
-                                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                             <label class="form-check-label" for="exampleCheck1">I agree to tearms &
-                                                 conditions</label>
+                                             <input type="checkbox" class="form-check-input" id="term_cond">
+                                             <label class="form-check-label" for="exampleCheck1">I agree to tearms & conditions</label>
                                          </div>
                                      </div>
                                      <div class="my-4">
-                                         <button type="submit" class="btn model_btn w-100 fw-bold"
-                                             type="button">REGISTER</button>
+                                         <button onclick="register()" class="btn model_btn w-100 fw-bold" id="register_btn"
+                                             type="button" disabled>REGISTER</button>
                                      </div>
                                  </form>
                                  <div class="h-line-text text-center w-75 mx-auto">

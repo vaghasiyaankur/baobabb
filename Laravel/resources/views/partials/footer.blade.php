@@ -82,34 +82,179 @@
 
 {{-- FOR AUTOCOMPLATE ADDRESS --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-    {{-- javascript code --}}
-        <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&key=AIzaSyBZhREk9TESs69r99eYGKkIQ725IqOP8Zc&ver=5.9.3'></script>
-    <script>
-        google.maps.event.addDomListener(window, 'load', initialize);
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{{-- javascript code --}}
+<script type='text/javascript'
+src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&key=AIzaSyBZhREk9TESs69r99eYGKkIQ725IqOP8Zc&ver=5.9.3'>
+</script>
+<script>
+    google.maps.event.addDomListener(window, 'load', initialize);
 
-        function initialize() {
-            var input = document.getElementById('autocomplete');
-            var options = {
-		        types: ['(cities)'],
-		        componentRestrictions: {country: "in"}
-		    };
-            var autocomplete = new google.maps.places.Autocomplete(input,options);
-            autocomplete.addListener('place_changed', function() {
-                var place = autocomplete.getPlace();
-                console.log(place)
-                $('#latitude').val(place.geometry['location'].lat());
-                $('#longitude').val(place.geometry['location'].lng());
-                // // --------- show lat and long ---------------
-                // $("#lat_area").removeClass("d-none");
-                // $("#long_area").removeClass("d-none");
+    function initialize() {
+        var input = document.getElementById('autocomplete');
+        var options = {
+            types: ['(cities)'],
+            componentRestrictions: {
+                country: "in"
+            }
+        };
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+        autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
+            console.log(place)
+            $('#latitude').val(place.geometry['location'].lat());
+            $('#longitude').val(place.geometry['location'].lng());
+            // // --------- show lat and long ---------------
+            // $("#lat_area").removeClass("d-none");
+            // $("#long_area").removeClass("d-none");
+        });
+    }
+</script>
+
+{{-- <script>
+    $('#login_btn').click(function() {
+        if ($('#user_login').val()) {
+            var user = $('#user_login').val();
+        } else {
+
+        }
+        if ($('#pass_login').val()) {
+            var pass = $('#pass_login').val();
+        } else {
+
+        }
+    })
+</script> --}}
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{{-- User Login --}}
+<script>
+    function loginUser() {
+        var pass = $('#pass_login').val()
+        var user = $('#user_login').val();
+        var isValid = true;
+        //Validate UserName
+        if (user == "") {
+            $("#user_login").siblings(".error").html("Please Enter Email")
+            isValid = false;
+        } 
+        //Validate Password
+        if (pass == "") {
+            $("#pass_login").siblings(".error").html("Please Enter password")
+            isValid = false;
+        }
+        if(isValid == true)
+        {
+            $.ajax({
+                url: "{{ url('/login') }}",
+                type: "POST",
+                data: {
+                    email: user,
+                    password: pass,
+                    _token: '{{ csrf_token() }}'
+                },
+                error: function($err) {
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'credentials not match',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                },
+                success: function(result) {
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Login Sucessfull',
+                    showConfirmButton: false,
+                    timer: 3000
+                    })
+                    location.reload(true);
+                }
             });
         }
-    </script>
+    }
+</script>
+
+{{-- Register User --}}
+<script>
+    function register() {
+        var user = $('#reg_username').val();
+        var email = $('#reg_email').val();
+        var pass = $('#reg_pass').val();
+        var conf_pass = $('#reg_conf_pass').val();
+        var isValid = true;
+        //Validate UserName
+        if (user == "") {
+            $("#reg_username").siblings(".error").html("Please Enter UserName")
+            isValid = false;
+        } 
+        //Validate Email
+        if (email == "") {
+            $("#reg_email").siblings(".error").html("Please Enter Email")
+            isValid = false;
+        } 
+        //Validate Password
+        if (pass == "") {
+            $("#reg_pass").siblings(".error").html("Please Enter password")
+            isValid = false;
+        }
+        //Validate Confirm Password
+        if (conf_pass == "") {
+            $("#reg_conf_pass").siblings(".error").html("Please Enter Confirm password")
+            isValid = false;
+        }
+        if(isValid == true)
+        {
+            $.ajax({
+                url: "{{ route('register') }}",
+                type: "POST",
+                data: {
+                    name: user,
+                    email: email,
+                    password: pass,
+                    password_confirmation: conf_pass,
+                    _token: '{{ csrf_token() }}'
+                },
+                error: function($err) {
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'failed',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                    var error = $err['responseJSON']['errors']
+                    $("#reg_email").siblings(".error").html(error['email'][0])
+                    $("#reg_pass").siblings(".error").html(error['password'][0])
+                    $("#reg_conf_pass").siblings(".error").html(error['password'][1])
+                    console.log(error)
+                },
+                success: function(result) {
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Register Sucessfull',
+                    showConfirmButton: false,
+                    timer: 3000
+                    })
+                    location.reload(true);
+                }
+            });
+        }
+    }
+</script>
+
+<script>
+    $('#term_cond').change(function(){
+        if ($(this).prop('checked')) {
+            $('#register_btn').attr('disabled', false);
+        }
+        else {
+            $('#register_btn').attr('disabled', true);
+        }
+    })
+</script>
 
 </body>
 
