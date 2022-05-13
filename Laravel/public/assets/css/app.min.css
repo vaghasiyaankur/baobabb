@@ -6692,7 +6692,109 @@ body[data-layout-mode=dark] .gallery-box .box-content {
 
 /*# sourceMappingURL=app.min.css.map */
 
-
+/* User Dashboard START */
 .bg-main{
     background-color: #364b5a;
+}
+
+.user-dashboard-box {
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.user-dashboard-box img {
+    height: 60px;
+}
+
+.user-dashboard-box h5 {
+    margin: 0px;
+    font-size: 15px;
+    color: #2d323e;
+}
+
+.user-dashboard-box h5.dash-value {
+    font-size: 25px;
+}
+
+.user-dashboard-box h5.dash-footer {
+    margin-top: 20px;
+}
+
+/* user sidebar avatar */
+.user-white-block-content {
+    padding: 30px;
+}
+
+.user-details {
+    margin-bottom: 60px;
+    padding: 20px;
+    background: #252933;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.author-sidebar .avatar {
+    width: 80px;
+}
+
+.user-details .author-details {
+    margin-right: auto;
+}
+
+.user-details h5 {
+    color: #fff;
+    margin-top: 0px;
+    font-size: 16px;
+    margin-bottom: -2px;
+}
+
+.user-details a {
+    font-size: 11px;
+    line-height: 1;
+    text-align: center;
+    padding: 0px;
+    color: #b7c0cd;
+}
+
+.user-details-list {
+    margin-top: 10px;
+}
+
+.user-details-list i, .user-details-list span {
+    color: white !important;
+}
+
+.user-details img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.user-details-list {
+    margin-top: 10px;
+}
+
+.icon-caption {
+    font-size: 10px;
+    line-height: 1;
+    margin-top: 5px;
+}
+.user-details-list a, .user-details-list a:active, .user-details-list a:focus {
+    /* width: 40px; */
+    margin: 10px;
+    line-height: 37px;
+    text-align: center;
+    border-radius: 50%;
+    color: #00a591;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.user-header{
+    height: 90px !important;
+}
+
+.user-details-list a {
+    position: relative;
 }

@@ -1,18 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\user;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Auth;
+use DataTables;
 use App\Models\Product;
 use App\Models\Category;
-use App\Http\Requests\StoreproductRequest;
-use App\Http\Requests\UpdateproductRequest;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\ImageController;
-use Illuminate\Http\Request;
-use DataTables;
 
 class ProductController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public $user_id;
+    public function __construct()
+    {
+    //    $this->user_id = Auth::user();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,20 +30,21 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $id = auth()->user()->id;
         if ($request->ajax()) {
-            $data = Product::select('*');
+            $data = Product::where('seller_id',$id);
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
      
-                           $btn = '<a href="/admin/product/'.$row->id.'/edit" class="edit btn btn-primary btn-sm">Edit  </a>';
+                           $btn = '<a href="/user/product/'.$row->id.'/edit" class="edit btn btn-primary btn-sm">Edit  </a>';
     
                             return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        return view('admin.product.index');
+        return view('user.product.index');
     }
 
     /**
@@ -44,30 +55,41 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.product.create', compact('categories'));
+        return view('user.product.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreproductRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreproductRequest $request)
+    public function store(Request $request)
     {
+        $seller_id = auth()->user()->id;
         $gallery = array();
         $img = new ImageController;
         $image = $img->move($request->image);
-        foreach($request->gallery as $i)
+        if($request->gallery)
         {
-            $g = $img->move($i);
-            array_push($gallery, $g);
+            foreach($request->gallery as $i)
+            {
+                $g = $img->move($i);
+                array_push($gallery, $g);
+            }
         }
         $product = new Product;
         $product->name = $request->name;
         $product->category_id = $request->category_id;
         $product->image = $image;
         $product->gallery = json_encode($gallery);
+        $product->seller_id = $seller_id;
+        $product->slug = $request->slug;
+        $product->type_of = $request->type_of;
+        $product->condition = $request->condition;
+        $product->cash = $request->cash;
+        $product->lat = $request->latitude;
+        $product->long = $request->longitude;
         $product->description = $request->description;
         $product->meta_title = $request->meta_title;
         $product->meta_description = $request->meta_description;
@@ -77,24 +99,19 @@ class ProductController extends Controller
         $product->city = $request->city;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
-        $product->impression = $request->impression;
-        $product->click = $request->click;
         $product->video = $request->video;  
         $product->save();
 
-        return redirect()->route('admin.product.index');
-        // dd(json_encode($gallery));
-
-        // dd($request->gallery);
+        return redirect()->route('user.product.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product)
+    public function show($id)
     {
         //
     }
@@ -102,24 +119,31 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $product = Product::find($id);
-        $categories = Category::all();
-        return view('admin.product.create', compact('categories','product'));
+        $user_id = auth()->user()->id;
+        $product = Product::where('seller_id',$user_id)->where('id',$id)->first();
+        if($product)
+        {
+            $categories = Category::all();
+            return view('user.product.create', compact('categories','product'));
+        }
+        else{
+            // return view('404');
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateproductRequest  $request
-     * @param  \App\Models\product  $product
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateproductRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $product = Product::find($id);
         $gallery = array();
@@ -133,8 +157,10 @@ class ProductController extends Controller
             foreach($request->gallery as $i)
             {
                 $g = $img->move($i);
+                // print_r($i);
                 array_push($gallery, $g);
             }
+            // dd($gallery);
             $product->gallery = json_encode($gallery);
         }
         $product->name = $request->name;
@@ -148,20 +174,18 @@ class ProductController extends Controller
         $product->city = $request->city;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
-        $product->impression = $request->impression;
-        $product->click = $request->click;
         $product->video = $request->video;  
         $product->save();
-        return redirect()->route('admin.product.index');
+        return redirect()->route('user.product.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy($id)
     {
         //
     }

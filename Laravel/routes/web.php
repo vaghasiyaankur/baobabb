@@ -30,12 +30,13 @@ Route::get('/seller/{username}', [App\Http\Controllers\HomeController::class, 's
 Route::post('/search/product', [App\Http\Controllers\HomeController::class, 'searchProduct'])->name('search.product');
 });
 
-Route::group(['prefix' => 'user', 'as' => 'user.'], function () { 
+Route::group(['middleware' => ['auth'],'prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/' , [App\Http\Controllers\UserController::class,'index'])->name('dashboard');
-    Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']);   
-    Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);   
-    Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);   
-    Route::resource('product', 'App\Http\Controllers\admin\ProductController', ['names'=> 'product']);   
+    Route::get('profile' , [App\Http\Controllers\UserController::class,'profile'])->name('profile');
+    Route::resource('product', 'App\Http\Controllers\user\ProductController', ['names'=> 'product']);
+    // Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']); 
+    // Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);
+    // Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);
 });
 
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -13,6 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
+        // $id = Auth::user()->id;
+        // dd($id); 
         return view('user.dashboard');
     }
 
@@ -80,5 +84,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function profile()
+    {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        return view('user.profile',compact('user'));
     }
 }

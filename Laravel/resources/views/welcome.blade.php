@@ -96,7 +96,7 @@
             @foreach($products as $product)
                 <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                     <div class="card-box">
-                        <img src="asset/img/category-card.jpg" class="img-fluid" alt="card-img">
+                        <img src="{{asset($product->image)}}" class="img-fluid" alt="card-img">
                         <div class="card-inner">
                             <div class="d-flex justify-content-between pt-1 pb-2">
                                 <span><i class="fa-solid fa-bullseye pe-2"></i>Jobs</span>

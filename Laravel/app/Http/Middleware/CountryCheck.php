@@ -21,8 +21,10 @@ class CountryCheck
     {
         // dd(123);
         if($position = Location::get('2405:201:200c:b83f:1495:de75:fa9b:6b92')) {
-            setcookie('country', $position->countryName);
+            setcookie('country', $position->countryName, time() + (10 * 365 * 24 * 60 * 60));
+            // dd('fdfdf');
         } else {
+            // dd(123);
             // Failed retrieving position.
         }
         return $next($request);

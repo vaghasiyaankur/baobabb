@@ -1,7 +1,7 @@
 
 
         <header id="page-topbar">
-            <div class="navbar-header bg-main">
+            <div class="navbar-header bg-main user-header">
                 <div class="d-flex">
                     <!-- LOGO -->
                     <div class="navbar-brand-box">
@@ -110,27 +110,36 @@
                             </div>
                         </div>
                     </div> --}}
+
+                    <div class="p-3">
+                        <a href="/" class="logo logo-dark">
+                            {{-- <span class="logo-sm">
+                                <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+                            </span> --}}
+                            <span class="logo-lg">
+                                <img src="{{ asset('assets/img/Baobab-Logo.png') }}" alt="" height="40">
+                            </span>
+                        </a>
+        
+                        {{-- <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
+                            <span class="logo-lg">
+                                <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="22">
+                            </span>
+                            <span class="logo-sm">
+                                <img src="{{ asset('assets/images/logo-sm-light.png') }}" alt="" height="22">
+                            </span>
+                        </a> --}}
+                    </div>
+                    
                 </div>
 
                 <div class="d-flex">
-                    {{-- <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="icon-sm" data-feather="search"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
-                            <form class="p-2">
-                                <div class="search-box">
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control rounded bg-light border-0" placeholder="Search...">
-                                        <i class="mdi mdi-magnify search-icon"></i>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div> --}}
+                    <div class="dropdown d-inline-block">
+                        <a href="{{route('user.product.create')}}"><i class="fa-solid fa-square-plus"></i></a>
+                    </div>
+                    
 
-                    <div class="dropdown d-inline-block language-switch">
+                    {{-- <div class="dropdown d-inline-block language-switch">
                         <button type="button" class="btn header-item"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img id="header-lang-img" src="{{ asset('assets/images/flags/us.jpg') }}" alt="Header Language" height="16">
@@ -161,7 +170,7 @@
                                 <img src="{{ asset('assets/images/flags/russia.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
 
                     {{-- <div class="dropdown d-none d-lg-inline-block">
                         <button type="button" class="btn header-item noti-icon"
@@ -347,10 +356,10 @@
                         </div>
                     </div> --}}
 
-                    <div class="dropdown d-inline-block">
+                    {{-- <div class="dropdown d-inline-block">
                         {{-- <button type="button" class="text-white btn header-item noti-icon right-bar-toggle" id="right-bar-toggle">
                             Logout
-                        </button> --}}
+                        </button> -- }}
                             <a class="text-white" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -360,9 +369,9 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-                    </div>
+                    </div> --}}
 
-                    <div class="dropdown d-inline-block">
+                    {{-- <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown">
                             <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/avatar-1.jpg') }}"
                             alt="Header Avatar">
@@ -385,7 +394,11 @@
                             <a class="dropdown-item d-flex align-items-center" href="user-settings.html"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
                             <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
                             <a class="dropdown-item" href="auth-signout-basic.html"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Logout</span></a>
-                        </div> --}}
+                        </div> -- `}}
+                    </div> --}}
+
+                    <div>
+                        
                     </div>
                 </div>
             </div>

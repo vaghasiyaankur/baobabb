@@ -30,9 +30,9 @@
                      <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
                      <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-notes-medical"></i></a></span>
                  @else
-                     {{-- <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
-                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-notes-medical"></i></a></span>
-                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-envelope-open"></i></a></span> --}}
+                     <span><a href="{{route('user.dashboard')}}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
+                     <span><a href="{{route('user.product.create')}}" ><i class="fa-solid fa-notes-medical"></i></a></span>
+                     <span><a href="javascript:;" ><i class="fa-solid fa-envelope-open"></i></a></span>
                  @endguest
                  <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target=""><i
                              class="fa-solid fa-globe"></i></a></span>

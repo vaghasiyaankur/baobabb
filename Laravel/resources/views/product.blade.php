@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-     <!-- LISTING SECTION START-->
+    <!-- LISTING SECTION START-->
     <section class="search-listing py_5">
         <h3 class="fw-bold pt-4 ">Je recherch un electricien (Example d`annonces) </h3>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -19,70 +19,50 @@
                 <!-- <img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-1-500x350.jpeg" class="img-fluid listing-img" alt=""> -->
                 <div class="main overflow-hidden">
                     <div class="slider slider-for">
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-2-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
+                        <div><img src="{{ asset($product->image) }}" class="img-fluid listing-img" alt="">
                         </div>
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-1-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
-                        </div>
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-2-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
-                        </div>
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-1-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
-                        </div>
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-2-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
-                        </div>
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-1-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
-                        </div>
+                        @foreach($gallery as $img)
+                            <div>
+                                <img src="{{asset($img)}}" class="img-fluid listing-img" alt="">
+                            </div>
+                        @endforeach
                     </div>
-                    <div  class="slider slider-nav">
-                            <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-2-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
+                    <div class="slider slider-nav">
+                        <div>
+                            <img src="{{ asset($product->image) }}" class="img-fluid listing-img" alt="">
                         </div>
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-1-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
-                        </div>
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-2-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
-                        </div>
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-1-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
-                        </div>
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-2-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
-                        </div>
-                        <div><img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-1-500x350.jpeg"
-                                    class="img-fluid listing-img" alt="">
-                        </div>
-                        </div>
+                        @foreach($gallery as $img)
+                            <div>
+                                <img src="{{asset($img)}}" class="img-fluid listing-img" alt="">
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 <!---------------SWIPER SLIERD END---------------->
-                
+
                 <div class="left-side-pera mt-5 bg-white py-4 px-4">
-                    <h4 class="fw-bold pb-4">{{$product->name}} (Example d`annonces) </h4>
+                    <h4 class="fw-bold pb-4">{{ $product->name }} (Example d`annonces) </h4>
                     <h5 class="fw-bold pb-3 fs-3">Ce n`est pas une vriae annonce</h5>
-                    <p>{{$product->description}}</p>
+                    <p>{{ $product->description }}</p>
                     {{-- <p class="border-left ps-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam,
                         explicabo fugiat enim impedit aut itaque doloribus incidunt tenetur deleniti recusandae
                         voluptates, quas quidem libero</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium necessitatibus suscipit
                         veritatis illo quo quos quisquam temporibus a minima, aliquam perspiciatis magni dolor quasi,
                         cupiditate ducimus dolore rerum, cum natus.</p> --}}
-                        {{-- <a href="javascript:;"class="text-decoration-none"style="color: black;"><i class="fa-solid fa-pen-to-square pe-2 mt-4 text-muted"></i>
+                    {{-- <a href="javascript:;"class="text-decoration-none"style="color: black;"><i class="fa-solid fa-pen-to-square pe-2 mt-4 text-muted"></i>
                     <span class="text-muted">Modifier cette annonce</span></a> --}}
                     <div class="d-flex flex-wrap justify-content-between mt-4 text-muted">
                         <div class="">
-                            <i class="fa-solid fa-location-dot"></i><span class="ps-1">{{$product->city}},{{$product->state}},{{$product->country}}</span>
+                            <i class="fa-solid fa-location-dot"></i><span
+                                class="ps-1">{{ $product->city }},{{ $product->state }},{{ $product->country }}</span>
                         </div>
                         <div>
-                            <span class="ps-1 pe-1"><i class="fa-solid fa-eye"></i> {{$product->impression}}</span>
-                            
+                            <span class="ps-1 pe-1"><i class="fa-solid fa-eye"></i> {{ $product->impression }}</span>
+
                             <span class="ps-1 pe-1">#2746</span></a>
                             <i class="fa-solid fa-calendar"></i>
-                            <span class="ps-1 ">{{$product->created_at->format('Y-m-d')}}</span>
+                            <span class="ps-1 ">{{ $product->created_at->format('Y-m-d') }}</span>
                         </div>
                     </div>
                 </div>
@@ -92,11 +72,11 @@
 
             <div class="col-xl-3">
                 <div class="cfa-bg-text mb-5">
-                    @if($product->sale_price != NULL)
-                        <span class="price-abs">{{$product->cash}} {{$product->price}}</span>
-                        <h4 class="text-white fw-bold m-0">{{$product->cash}} {{$product->sale_price}}</h4>
+                    @if ($product->sale_price != null)
+                        <span class="price-abs">{{ $product->cash }} {{ $product->price }}</span>
+                        <h4 class="text-white fw-bold m-0">{{ $product->cash }} {{ $product->sale_price }}</h4>
                     @else
-                        <h4 class="text-white fw-bold m-0">{{$product->cash}} {{$product->price}}</h4>
+                        <h4 class="text-white fw-bold m-0">{{ $product->cash }} {{ $product->price }}</h4>
                     @endif
                 </div>
 
@@ -105,10 +85,10 @@
                     <h4 class="pb-4">Proprietaire de l'annonce</h4>
                     <div class="d-flex align-items-center justify-content-evenly ">
                         <div class="avtar pe-lg-5">
-                            <a href="javascript:;" class="text-dection-none"><img src="{{$seller->image}}" alt=""></a>
+                            <a href="javascript:;" class="text-dection-none"><img src="{{ $seller->image }}" alt=""></a>
                         </div>
                         <div class="avtar-text">
-                            <h5>{{$seller->name}}</h5>
+                            <h5>{{ $seller->name }}</h5>
                             <i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i
                                 class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star"></i>
                             <h6 class="text-success pt-2"><i class="fa-solid fa-circle text-success fs-6"></i> EN LIGNE
@@ -134,7 +114,10 @@
                         <p><i class="fa-solid fa-check pe-2"></i>Rendeez-vous dans un lieu public inconnu</p>
                         <p><i class="fa-solid fa-check pe-2"></i>Soyez accomepage un lieu</p>
                         <p class="m-0"><i class="fa-solid fa-check pe-2 mb-4"></i>Faites preuve d`intution</p>
-                        <a href="javascript:;"class="text-decoration-none"style="color: black;"><h6 class="ps-xl-5 ms-xl-2">PLUS DE CONSEILS DE SECURITE ICI<i class="fa-solid fa-arrow-right-long ps-3"></i></h6></a>
+                        <a href="javascript:;" class="text-decoration-none" style="color: black;">
+                            <h6 class="ps-xl-5 ms-xl-2">PLUS DE CONSEILS DE SECURITE ICI<i
+                                    class="fa-solid fa-arrow-right-long ps-3"></i></h6>
+                        </a>
                     </div>
                 </div>
 
@@ -143,20 +126,28 @@
                     <h5 class="fw-bold pb-3 ps-4">Action publicitaire</h5>
                     <div class="d-flex justify-content-evenly">
                         <div class="a_icon">
-                            <a href="javascript:;"class="text-decoration-none"style="color: black;"><i class="fa-solid fa-timeline ps-3"></i>
-                            <p class="m-0">Partager</p></a>
+                            <a href="javascript:;" class="text-decoration-none" style="color: black;"><i
+                                    class="fa-solid fa-timeline ps-3"></i>
+                                <p class="m-0">Partager</p>
+                            </a>
                         </div>
                         <div class="a_icon">
-                           <a href="javascript:;"class="text-decoration-none"style="color: black;"><i class="fa-solid fa-print ps-3"></i>
-                            <p class="m-0">Partager</p></a>
+                            <a href="javascript:;" class="text-decoration-none" style="color: black;"><i
+                                    class="fa-solid fa-print ps-3"></i>
+                                <p class="m-0">Partager</p>
+                            </a>
                         </div>
                         <div class="a_icon">
-                            <a href="javascript:;"class="text-decoration-none"style="color: black;"><i class="fa-solid fa-heart ps-3"></i>
-                            <p class="m-0">Partager</p></a>
+                            <a href="javascript:;" class="text-decoration-none" style="color: black;"><i
+                                    class="fa-solid fa-heart ps-3"></i>
+                                <p class="m-0">Partager</p>
+                            </a>
                         </div>
                         <div class="a_icon">
-                            <a href="javascript:;"class="text-decoration-none"style="color: black;"><i class="fa-solid fa-flag ps-3"></i>
-                            <p class="m-0">Partager</p></a>
+                            <a href="javascript:;" class="text-decoration-none" style="color: black;"><i
+                                    class="fa-solid fa-flag ps-3"></i>
+                                <p class="m-0">Partager</p>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -165,7 +156,8 @@
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14877.469711075995!2d72.8869815!3d21.21727375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f6f08f9b693%3A0xd2f4780e70330cb0!2sMatrushree%20Ramuba%20Tejani%20and%20Matrushree%20Shantaba%20Vidiya%20Hospital!5e0!3m2!1sen!2sin!4v1651694646219!5m2!1sen!2sin"
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
-                        <iframe src="https://maps.google.com/maps?q=21.170240, 72.831062&z=15&output=embed" width="500" height="350" frameborder="0" style="border:0"></iframe>
+                    <iframe src="https://maps.google.com/maps?q=21.170240, 72.831062&z=15&output=embed" width="500"
+                        height="350" frameborder="0" style="border:0"></iframe>
                 </div>
             </div>
         </div>
@@ -176,19 +168,19 @@
                 <h4 class="fw-bold">More Ads From This User</h4>
             </div>
             <div class="row">
-                @foreach($user_products as $pr)
-                    @if($pr->id != $product->id)
+                @foreach ($user_products as $pr)
+                    @if ($pr->id != $product->id)
                         <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 ">
                             <div class="card-box">
-                                <img src="{{asset($pr->image)}}" class="img-fluid" alt="card-img">
+                                <img src="{{ asset($pr->image) }}" class="img-fluid" alt="card-img">
                                 <div class="card-inner bg-white">
                                     <div class="d-flex justify-content-between pt-3 pb-2 text-muted">
                                         <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                        <span><i class="fa-solid fa-location-dot pe-2"></i>{{$pr->city}}</span>
+                                        <span><i class="fa-solid fa-location-dot pe-2"></i>{{ $pr->city }}</span>
                                     </div>
-                                    <p class="m-0 fw-bold pb-2">{{$pr->name}}</p>
+                                    <p class="m-0 fw-bold pb-2">{{ $pr->name }}</p>
                                     <div class="d-flex flex-wrap justify-content-between pb-2">
-                                        <p class="m-0 text-danger fw-bold">{{$pr->price}}</p>
+                                        <p class="m-0 text-danger fw-bold">{{ $pr->price }}</p>
                                         <div class="icon">
                                             <i class="fa-regular fa-heart"></i>
                                         </div>
@@ -198,21 +190,21 @@
                         </div>
                     @endif
                 @endforeach
-                
+
                 <h4 class="fw-bold">Smilar Ads</h4>
-                @foreach($s_products as $pr)
-                    @if($pr->id != $product->id)
+                @foreach ($s_products as $pr)
+                    @if ($pr->id != $product->id)
                         <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 ">
                             <div class="card-box">
-                                <img src="{{asset($pr->image)}}" class="img-fluid" alt="card-img">
+                                <img src="{{ asset($pr->image) }}" class="img-fluid" alt="card-img">
                                 <div class="card-inner bg-white">
                                     <div class="d-flex justify-content-between pt-3 pb-2 text-muted">
                                         <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                        <span><i class="fa-solid fa-location-dot pe-2"></i>{{$pr->city}}</span>
+                                        <span><i class="fa-solid fa-location-dot pe-2"></i>{{ $pr->city }}</span>
                                     </div>
-                                    <p class="m-0 fw-bold pb-2">{{$pr->name}}</p>
+                                    <p class="m-0 fw-bold pb-2">{{ $pr->name }}</p>
                                     <div class="d-flex flex-wrap justify-content-between pb-2">
-                                        <p class="m-0 text-danger fw-bold">{{$pr->price}}</p>
+                                        <p class="m-0 text-danger fw-bold">{{ $pr->price }}</p>
                                         <div class="icon">
                                             <i class="fa-regular fa-heart"></i>
                                         </div>
@@ -225,34 +217,33 @@
             </div>
         </div>
     </section>
-    
+
     <!-- JQ JS -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
- 
- <!-- BOOTSTARP JS -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
- 
- 
- <script>
-     $('.slider-for').slick({
-         slidesToShow: 1,
-         slidesToScroll: 1,
-         infinite: false,
-         arrows: false,
-         fade: true,
-         asNavFor: '.slider-nav'
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <!-- BOOTSTARP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: false,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
         });
         $('.slider-nav').slick({
             slidesToShow: 5,
             slidesToScroll: 1,
-         asNavFor: '.slider-for',
-         dots: false,
-         infinite: false,
-         arrows: false,
-         centerMode: false,
-         focusOnSelect: true
+            asNavFor: '.slider-for',
+            dots: false,
+            infinite: false,
+            arrows: false,
+            centerMode: false,
+            focusOnSelect: true
         });
-        
-        </script>
+    </script>
 @endsection

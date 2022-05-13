@@ -52,11 +52,13 @@ class HomeController extends Controller
     public function product($slug)
     {
         $product = Product::where('slug',$slug)->first();
+        $gallery = json_decode($product->gallery);
+        // dd($gallery);
         $seller = User::where('id',$product->seller_id)->first();
         $user_products = Product::where('seller_id', $product->seller_id)->get();
         $s_products = Product::where('category_id', $product->category_id)->get();
         // dd($product);
-        return view('product',compact('product','seller','user_products','s_products'));
+        return view('product',compact('product','seller','user_products','s_products','gallery'));
     }
 
     public function seller()
