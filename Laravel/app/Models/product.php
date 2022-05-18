@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class product extends Model
+class Product extends Model
 {
     use HasFactory,SoftDeletes;
 
@@ -27,15 +27,18 @@ class product extends Model
         'sale_price',
         'impression',
         'click',
+        'cash',
+        'lat',
+        'long',
     ];
 
     public function category()
     {
-        $this->belongsTo(Category::class,'category_id','id');
+        return $this->belongsTo(Category::class,'category_id','id');
     }
 
     public function user()
     {
-        $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

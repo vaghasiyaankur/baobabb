@@ -256,6 +256,68 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
     })
 </script>
 
+{{-- add product in wishlist --}}
+<script>
+    $(document).ready(function() {
+        $('.wishlist-btn').on('click', function() {
+            // alert($(this).attr())
+            var id = $(this).attr("data-id");
+            console.log($(this).attr("data-id"));
+
+            $.ajax({
+                url: "{{ route('user.wishlist.store') }}",
+                type: "POST",
+                data: {
+                    id: id,
+                    _token: '{{ csrf_token() }}'
+                },
+                error: function($err) {
+                    console.log(error)
+                },
+                success: function(result) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Product Added to Wishlist',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            });
+
+        })
+    })
+</script>
+
+<script>
+    function getVals(){
+  // Get slider values
+  let parent = this.parentNode;
+  let slides = parent.getElementsByTagName("input");
+    let slide1 = parseFloat( slides[0].value );
+    let slide2 = parseFloat( slides[1].value );
+  // Neither slider will clip the other, so make sure we determine which is larger
+  if( slide1 > slide2 ){ let tmp = slide2; slide2 = slide1; slide1 = tmp; }
+  
+  let displayElement = parent.getElementsByClassName("rangeValues")[0];
+      displayElement.innerHTML = "$" + slide1 + " - $" + slide2;
+}
+
+window.onload = function(){
+  // Initialize Sliders
+  let sliderSections = document.getElementsByClassName("range-slider");
+      for( let x = 0; x < sliderSections.length; x++ ){
+        let sliders = sliderSections[x].getElementsByTagName("input");
+        for( let y = 0; y < sliders.length; y++ ){
+          if( sliders[y].type ==="range" ){
+            sliders[y].oninput = getVals;
+            // Manually trigger event first time to display values
+            sliders[y].oninput();
+          }
+        }
+      }
+}   
+</script>
+
 </body>
 
 </html>

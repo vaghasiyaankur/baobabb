@@ -31,17 +31,25 @@ Route::post('/search/product', [App\Http\Controllers\HomeController::class, 'sea
 });
 
 Route::group(['middleware' => ['auth'],'prefix' => 'user', 'as' => 'user.'], function () {
-    Route::get('/' , [App\Http\Controllers\UserController::class,'index'])->name('dashboard');
+    Route::get('/',function(){
+        return redirect()->route('user.dashboard');
+    });
+    Route::get('/dashboard' , [App\Http\Controllers\UserController::class,'index'])->name('dashboard');
     Route::get('profile' , [App\Http\Controllers\UserController::class,'profile'])->name('profile');
-    Route::resource('product', 'App\Http\Controllers\user\ProductController', ['names'=> 'product']);
+    Route::post('profile-update', [App\Http\Controllers\UserController::class, 'profile_update'])->name('profile.update');
+    Route::resource('product', 'App\Http\Controllers\ProductController', ['names'=> 'product']);
+    Route::resource('wishlist', 'App\Http\Controllers\WishlistController', ['names'=> 'wishlist']);
     // Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']); 
     // Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);
     // Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);
 });
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () { 
-    Route::get('/' , [App\Http\Controllers\admin\DashboardController::class,'index'])->name('dashboard');
+Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], function () { 
+    Route::get('/',function(){
+        return redirect()->route('admin.dashboard');
+    });
+    Route::get('/dashboard' , [App\Http\Controllers\admin\DashboardController::class,'index'])->name('dashboard');
     Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']);   
     Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);   
     Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);   

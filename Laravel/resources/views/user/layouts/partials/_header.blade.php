@@ -1,34 +1,35 @@
+<?php
+$user = App\Models\User::find(auth()->user()->id);
+?>
+<header id="page-topbar">
+    <div class="navbar-header">
+        <div class="d-flex">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <a href="{{ route('user.dashboard') }}" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="22">
+                    </span>
+                </a>
 
+                <a href="{{ route('user.dashboard') }}" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="22">
+                    </span>
+                </a>
+            </div>
 
-        <header id="page-topbar">
-            <div class="navbar-header bg-main user-header">
-                <div class="d-flex">
-                    <!-- LOGO -->
-                    <div class="navbar-brand-box">
-                        <a href="{{ route('user.dashboard') }}" class="logo logo-dark">
-                            <span class="logo-sm">
-                                <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
-                            </span>
-                            <span class="logo-lg">
-                                <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="22">
-                            </span>
-                        </a>
-
-                        <a href="{{ route('user.dashboard') }}" class="logo logo-light">
-                            <span class="logo-sm">
-                                <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
-                            </span>
-                            <span class="logo-lg">
-                                <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="22">
-                            </span>
-                        </a>
-                    </div>
-
-                    {{-- <button type="button" class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn">
+            {{-- <button type="button" class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn">
                         <i class="fa fa-fw fa-bars"></i>
                     </button> --}}
 
-                    {{-- <div class="dropdown d-none d-lg-block ms-2">
+            {{-- <div class="dropdown d-none d-lg-block ms-2">
                         <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                             <span>Components</span>
                             <i class="mdi mdi-chevron-down"></i>
@@ -57,7 +58,7 @@
                         </div>
                     </div> --}}
 
-                    {{-- <div class="dropdown dropdown-mega d-none d-lg-block">
+            {{-- <div class="dropdown dropdown-mega d-none d-lg-block">
                         <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                             <span>Categories</span>
                             <i class="mdi mdi-chevron-down"></i>
@@ -111,17 +112,17 @@
                         </div>
                     </div> --}}
 
-                    <div class="p-3">
-                        <a href="/" class="logo logo-dark">
-                            {{-- <span class="logo-sm">
+            <div class="p-3">
+                <a href="/" class="logo logo-dark">
+                    {{-- <span class="logo-sm">
                                 <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
                             </span> --}}
-                            <span class="logo-lg">
-                                <img src="{{ asset('assets/img/Baobab-Logo.png') }}" alt="" height="40">
-                            </span>
-                        </a>
-        
-                        {{-- <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
+                    <span class="logo-lg">
+                        <img src="{{ asset('assets/img/Baobab-Logo.png') }}" alt="" height="40">
+                    </span>
+                </a>
+
+                {{-- <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
                             <span class="logo-lg">
                                 <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="22">
                             </span>
@@ -129,17 +130,17 @@
                                 <img src="{{ asset('assets/images/logo-sm-light.png') }}" alt="" height="22">
                             </span>
                         </a> --}}
-                    </div>
-                    
-                </div>
+            </div>
 
-                <div class="d-flex">
-                    <div class="dropdown d-inline-block">
-                        <a href="{{route('user.product.create')}}"><i class="fa-solid fa-square-plus"></i></a>
-                    </div>
-                    
+        </div>
 
-                    {{-- <div class="dropdown d-inline-block language-switch">
+        <div class="d-flex">
+            {{-- <div class="dropdown d-inline-block">
+                <a href="{{ route('user.product.create') }}"><i class="fa-solid fa-square-plus"></i></a>
+            </div> --}}
+
+
+            {{-- <div class="dropdown d-inline-block language-switch">
                         <button type="button" class="btn header-item"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img id="header-lang-img" src="{{ asset('assets/images/flags/us.jpg') }}" alt="Header Language" height="16">
@@ -172,7 +173,7 @@
                         </div>
                     </div> --}}
 
-                    {{-- <div class="dropdown d-none d-lg-inline-block">
+            {{-- <div class="dropdown d-none d-lg-inline-block">
                         <button type="button" class="btn header-item noti-icon"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="icon-sm" data-feather="grid"></i>
@@ -259,7 +260,7 @@
                         </div>
                     </div> --}}
 
-                    {{-- <div class="dropdown d-inline-block">
+            {{-- <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="icon-sm" data-feather="bell"></i>
@@ -356,50 +357,45 @@
                         </div>
                     </div> --}}
 
-                    {{-- <div class="dropdown d-inline-block">
-                        {{-- <button type="button" class="text-white btn header-item noti-icon right-bar-toggle" id="right-bar-toggle">
-                            Logout
-                        </button> -- }}
-                            <a class="text-white" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+            {{-- <div class="dropdown d-inline-block d-flex">
+                <a class="btn noti-icon d-flex align-items-center" href="{{ route('user.product.create') }}"><i class="fa-solid fa-square-plus"></i></a>
+            </div> --}}
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                    </div> --}}
-
-                    {{-- <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown">
-                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/avatar-1.jpg') }}"
-                            alt="Header Avatar">
-                            <span class="ms-2 d-none d-sm-block user-item-desc">
-                                <span class="user-name text-white">Kate Dudley</span>
-                                <span class="user-sub-title">Administrator</span>
-                            </span>
-                        </button>
-                        {{-- <div class="dropdown-menu dropdown-menu-end pt-0">
-                            <div class="p-3 bg-primary border-bottom">
-                                <h6 class="mb-0 text-white">Kate Dudley</h6>
-                                <p class="mb-0 font-size-11 text-white-50 fw-semibold">kate.dudley@email.com</p>
-                            </div>
-                            <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-                            <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
-                            <a class="dropdown-item" href="apps-kanban-board.html"><i class="mdi mdi-calendar-check-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Taskboard</span></a>
-                            <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$6951.02</b></span></a>
-                            <a class="dropdown-item d-flex align-items-center" href="user-settings.html"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
-                            <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
-                            <a class="dropdown-item" href="auth-signout-basic.html"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Logout</span></a>
-                        </div> -- `}}
-                    </div> --}}
-
-                    <div>
-                        
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item user text-start d-flex align-items-center"
+                    id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user"
+                        src="@if ($user->avatar) {{ asset($user->avatar) }}@else{{ asset('assets/images/dummy_img.jpg') }} @endif">
+                    <span class="ms-2 d-none d-sm-block user-item-desc">
+                        <span class="user-name">{{ $user->name }}</span>
+                        <span class="user-sub-title">Administrator</span>
+                    </span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end pt-0">
+                    <div class="p-3 bg-primary border-bottom">
+                        <h6 class="mb-0 text-white">{{ $user->name }}</h6>
+                        <p class="mb-0 font-size-11 text-white-50 fw-semibold">{{ $user->email }}</p>
                     </div>
+                    <a class="dropdown-item" href="{{ route('user.profile') }}"><i
+                            class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span
+                            class="align-middle">Profile</span></a>
+                    <a class="dropdown-item" href="#"><i
+                            class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span
+                            class="align-middle">Messages</span></a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
-        </header>
+
+            <div>
+
+            </div>
+        </div>
+    </div>
+</header>

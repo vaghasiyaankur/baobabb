@@ -79,7 +79,13 @@
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Cash</label>
-                  <input class="form-control custom-file-input" name="cash" value="@if(isset($product->cash)){{$product->cash}}@endif" type="text" id="cash">
+                  <select class="form-control custom-file-input" name="cash" value="@if(isset($product->cash)){{$product->cash}}@endif" id="cash">
+                     <option>Select Currency</option>
+                        <option value="CFA (CFA)" @if(isset($product->cash)) @if('CFA (CFA)' == $product->cash) selected @endif @endif>CFA (CFA)</option>
+                        <option value="USD ($)" @if(isset($product->cash)) @if('USD ($)' == $product->cash) selected @endif @endif>USD ($)</option>
+                        <option value="USD (€)" @if(isset($product->cash)) @if('USD (€)' == $product->cash) selected @endif @endif>USD (€)</option>
+                        {{-- <option value="{{$category->id}}" @if(isset($product->cash)) @if($cash->id == $product->cash) selected @endif @endif>{{$category->name}}</option> --}}
+                  </select>
                </div>
             </div>
 
@@ -218,8 +224,8 @@
 </script>
 
 <script>
-   $("#name").keyup(function () {  
-      name = $('#name').val();
+   $("#slug").keyup(function () {  
+      name = $('#slug').val();
       $(this).val(name.toLowerCase());
       $(this).val(name.replace(/ /g, "-"));
    });  

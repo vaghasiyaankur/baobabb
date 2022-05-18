@@ -68,6 +68,13 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->image = $image;
         $product->gallery = json_encode($gallery);
+        $product->seller_id = $seller_id;
+        $product->slug = $request->slug;
+        $product->type_of = $request->type_of;
+        $product->condition = $request->condition;
+        $product->cash = $request->cash;
+        $product->lat = $request->latitude;
+        $product->long = $request->longitude;
         $product->description = $request->description;
         $product->meta_title = $request->meta_title;
         $product->meta_description = $request->meta_description;
@@ -77,8 +84,6 @@ class ProductController extends Controller
         $product->city = $request->city;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
-        $product->impression = $request->impression;
-        $product->click = $request->click;
         $product->video = $request->video;  
         $product->save();
 

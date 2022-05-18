@@ -2,14 +2,14 @@
     $user = App\Models\User::find(auth()->user()->id);
 ?>
 <!-- ========== Left Sidebar Start ========== -->
-<div class="vertical-menu " style="background-color: #2d323e">
+<div class="vertical-menu ">
 
     <!-- LOGO -->
-    {{-- <div class="navbar-brand-box bg-main">
+    <div class="navbar-brand-box bg-main">
                 <a href="/" class="logo logo-dark">
                     {{-- <span class="logo-sm">
                         <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
-                    </span> -- }}
+                    </span> --}}
                     <span class="logo-lg">
                         <img src="{{ asset('assets/img/Baobab-Logo.png') }}" alt="" height="40">
                     </span>
@@ -22,10 +22,10 @@
                     <span class="logo-sm">
                         <img src="{{ asset('assets/images/logo-sm-light.png') }}" alt="" height="22">
                     </span>
-                </a> -- }}
-            </div> --}}
+                </a> --}}
+            </div>
 
-    <div class="user-details text-center">
+    {{-- <div class="user-details text-center">
         <img alt="" src="{{asset($user->avatar)}}"
             srcset="https://secure.gravatar.com/avatar/94a02683e54bae57ea90c2308d5249fd?s=140&amp;d=mm&amp;r=g 2x"
             class="avatar avatar-70 photo" height="200" width="200">
@@ -44,7 +44,7 @@
                 </div>
                 <span class="icon-caption text-center">Messages</span>
             </a>
-            <a class="text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
+            <a  href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                              <i class="fa-solid fa-right-from-bracket"></i>
                 <span class="icon-caption text-center">Logout</span>
@@ -53,7 +53,7 @@
                 @csrf
             </form>
         </div>
-    </div>
+    </div> --}}
 
     {{-- <button type="button" class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn">
                 <i class="fa fa-fw fa-bars"></i>
@@ -65,10 +65,10 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu3">
-                <li class="menu-title text-white" data-key="t-dashboards"><b>Dashboards</b></li>
+                <li class="menu-title" data-key="t-dashboards"><b>Dashboards</b></li>
 
                 <li>
-                    <a class="text-white" href="{{ route('user.dashboard') }}">
+                    <a  href="{{ route('user.dashboard') }}">
                         <i class="icon nav-icon" data-feather="monitor"></i>
                         <span class="menu-item " data-key="t-sales">Dashboard</span>
                     </a>
@@ -76,15 +76,15 @@
 
             </ul>
             <ul class="metismenu list-unstyled" id="side-menu34">
-                <li class="menu-title text-white" data-key="t-dashboards">ADVERTISEMENT</li>
+                <li class="menu-title " data-key="t-dashboards">ADVERTISEMENT</li>
                 <li>
-                    <a class="text-white" href="{{ route('user.product.index') }}">
+                    <a  href="{{ route('user.product.index') }}">
                         <i class="icon nav-icon" data-feather="monitor"></i>
                         <span class="menu-item" data-key="t-sales">Your Ads</span>
                     </a>
                 </li>
                 <li>
-                    <a class="text-white" href="{{ route('admin.product.index') }}">
+                    <a  href="{{ route('user.wishlist.index') }}">
                         <i class="icon nav-icon" data-feather="monitor"></i>
                         <span class="menu-item" data-key="t-sales">Favorite Ads</span>
                     </a>
@@ -93,7 +93,7 @@
             <ul class="metismenu list-unstyled" id="side-menu34">
                 <li class="menu-title text-white" data-key="t-dashboards">FEEDBACK</li>
                 <li>
-                    <a class="text-white" href="{{ route('admin.user.index') }}">
+                    <a  href="#">
                         <i class="icon nav-icon" data-feather="monitor"></i>
                         <span class="menu-item" data-key="t-sales">testimonials</span>
                     </a>

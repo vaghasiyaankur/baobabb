@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedBigInteger('seller_id');
             $table->foreign('seller_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('name');
+            $table->text('name');
             $table->string('slug');
             $table->string('type_of');
             $table->string('cash');
@@ -27,12 +27,12 @@ return new class extends Migration
             $table->string('phone');
             $table->string('lat');
             $table->string('long');
-            $table->string('image');
+            $table->text('image');
             $table->string('gallery')->nullable();
             $table->string('video')->nullable();
-            $table->string('description');
-            $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
+            $table->text('description')->nullable();
+            $table->text('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
             $table->string('country');
             $table->string('state');
             $table->string('city');
@@ -40,6 +40,7 @@ return new class extends Migration
             $table->string('sale_price')->nullable();
             $table->integer('impression')->default(0);
             $table->integer('click')->default(0);
+            $table->enum('expire',[0,1])->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

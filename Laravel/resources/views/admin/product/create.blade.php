@@ -43,6 +43,41 @@
 
              <div class="col-md-6">
                <div class="mb-3">
+                  <label for="formFile" class="form-label custom-file-label font-size-17">Slug</label>
+                  <input class="form-control custom-file-input" name="slug" value="@if(isset($product->slug)){{$product->slug}}@endif" type="text" id="slug">
+               </div>
+            </div>
+
+            <div class="col-md-6">
+               <div class="mb-3">
+                  <label for="formFile" class="form-label custom-file-label font-size-17">Type of news</label>
+                  <select class="form-control custom-file-input" name="type_of" value="@if(isset($product->type_of)){{$product->type_of}}@endif" id="type_of">
+                     <option>- Select -</option>
+                     <option value="sell" @if(isset($product->type_of)) @if('sell' == $product->type_of) selected @endif @endif>Sell (expires in 30 days)</option>
+                     <option value="buy" @if(isset($product->type_of)) @if('buy' == $product->type_of) selected @endif @endif>Buy (expires in 30 days)</option>
+                     <option value="exchange" @if(isset($product->type_of)) @if('exchange' == $product->type_of) selected @endif @endif>Exchange (expires in 30 days)</option>
+                     <option value="gift" @if(isset($product->type_of)) @if('gift' == $product->type_of) selected @endif @endif>Gift (expires in 30 days)</option>
+                     <option value="rental" @if(isset($product->type_of)) @if('rental' == $product->type_of) selected @endif @endif>Rental (expires in 30 days)</option>
+                     <option value="services" @if(isset($product->type_of)) @if('services' == $product->type_of) selected @endif @endif>Services (expires in 30 days)</option>
+                  </select>
+               </div>
+            </div>
+
+            <div class="col-md-6">
+               <div class="mb-3">
+                  <label for="formFile" class="form-label custom-file-label font-size-17">Conditions (If applicable)</label>
+                  <select class="form-control custom-file-input" name="condition" value="@if(isset($product->condition)){{$product->condition}}@endif" id="condition">
+                     <option>- Select -</option>
+                     <option value="new" @if(isset($product->condition)) @if('new' == $product->condition) selected @endif @endif>New</option>
+                     <option value="refurbished" @if(isset($product->condition)) @if('refurbished' == $product->condition) selected @endif @endif>Refurbished</option>
+                     <option value="opportunity" @if(isset($product->condition)) @if('opportunity' == $product->condition) selected @endif @endif>Opportunity</option>
+                     <option value="part" @if(isset($product->condition)) @if('part' == $product->condition) selected @endif @endif>Part</option>
+                  </select>
+               </div>
+            </div>
+
+             <div class="col-md-6">
+               <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Description</label>
                   <input class="form-control custom-file-input" name="description" value="@if(isset($product->description)){{$product->description}}@endif" type="text" id="description">
                </div>
@@ -93,6 +128,19 @@
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Sale Price</label>
                   <input class="form-control custom-file-input" name="sale_price" value="@if(isset($product->sale_price)){{$product->sale_price}}@endif" type="number" id="sale_price">
+               </div>
+            </div>
+
+            <div class="col-md-6">
+               <div class="mb-3">
+                  <label for="formFile" class="form-label custom-file-label font-size-17">Cash</label>
+                  <select class="form-control custom-file-input" name="cash" value="@if(isset($product->cash)){{$product->cash}}@endif" id="cash">
+                     <option>Select Currency</option>
+                        <option value="CFA (CFA)" @if(isset($product->cash)) @if('CFA (CFA)' == $product->cash) selected @endif @endif>CFA (CFA)</option>
+                        <option value="USD ($)" @if(isset($product->cash)) @if('USD ($)' == $product->cash) selected @endif @endif>USD ($)</option>
+                        <option value="USD (€)" @if(isset($product->cash)) @if('USD (€)' == $product->cash) selected @endif @endif>USD (€)</option>
+                        {{-- <option value="{{$category->id}}" @if(isset($product->cash)) @if($cash->id == $product->cash) selected @endif @endif>{{$category->name}}</option> --}}
+                  </select>
                </div>
             </div>
 

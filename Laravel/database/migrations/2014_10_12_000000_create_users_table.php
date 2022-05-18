@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('phone')->nullable();
+            $table->string('type')->default('customer');
             $table->string('avatar')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
@@ -34,6 +35,7 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->string('street')->nullable();
+            $table->enum('status',[0,1])->default(0);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
