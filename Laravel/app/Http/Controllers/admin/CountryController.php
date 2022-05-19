@@ -20,14 +20,15 @@ class CountryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::select('*');
+            $data = Country::select('*');
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-     
-                           $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-    
-                            return $btn;
+                        $btn = '<div class="d-flex">';
+                        $btn .= '<a href="/admin/country/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
+                        $btn .= '<form method="POST" action="/admin/country/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
+                        $btn .= '</div>';
+                        return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
@@ -38,7 +39,7 @@ class CountryController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     *e
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -54,7 +55,11 @@ class CountryController extends Controller
      */
     public function store(StoreCountryRequest $request)
     {
-        return 123;
+        $country = new Country;
+        $country->name = $request->name;
+        $country->code = $request->code;
+        $country->save();
+        return redirect()->route('admin.country.index');
     }
 
     /**
@@ -74,9 +79,10 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit($id)
     {
-        //
+        $country = Country::find($id);
+        return view('admin.country.create',compact('country'));
     }
 
     /**
@@ -86,9 +92,13 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCountryRequest $request, Country $country)
+    public function update(UpdateCountryRequest $request, $id)
     {
-        //
+        $country = Country::find($id);
+        $country->name = $request->name;
+        $country->code = $request->code;
+        $country->save();
+        return redirect()->route('admin.country.index');
     }
 
     /**
@@ -97,8 +107,9 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy($id)
     {
-        //
+        Country::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

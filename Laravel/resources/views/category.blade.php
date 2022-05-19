@@ -6,7 +6,8 @@
             Consulter les announces </h3>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb ps-lg-5">
-                <li class="breadcrumb-item"><a href="{{route('home')}}" class="text-decoration-none text-muted">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-decoration-none text-muted">Accueil</a>
+                </li>
                 <li class="breadcrumb-item">Consulter les annonces</li>
             </ol>
         </nav>
@@ -15,7 +16,7 @@
                 <div class="bg-white px-4 py-5 mb-5">
                     <div class="d-flex justify-content-between align-items-center pb-4">
                         <h4 class="fw-bold">Trier les annonces</h4>
-                        <i class="fa-solid fa-arrow-rotate-left text-muted fs-5" style="cursor: pointer;"></i>
+                        <a href="javascript:;" id="refresh"><i class="fa-solid fa-arrow-rotate-left text-muted fs-5"  style="cursor: pointer;"></i></a>
                     </div>
                     <div class="mb-4">
                         <h5 class="text-muted fw-bold">Mot cle`</h5>
@@ -32,8 +33,8 @@
                     </div>
                     @foreach ($categories as $cat)
                         <div class="form-check pb-1">
-                            <input class="form-check-input rounded-pill fs-6" type="radio" name="category"
-                                value="{{ $cat->id }}" id="flexCheck" @if ($cat->id == $category->id) checked @endif>
+                            <input class="form-check-input rounded-pill fs-6 filter-data" type="radio" name="category"
+                                value="{{ $cat->slug }}" id="category" @if ($cat->id == $category->id) checked @endif>
                             <label class="form-check-label" for="flexCheck">
                                 {{ $cat->name }}
                             </label>
@@ -42,8 +43,8 @@
                     <div class="mb-4 mt-3">
                         <h5 class="pb-2">Price</h5>
                         <div class="range-slider">
-                            <input value="0" min="0" max="50000" step="50" type="range">
-                            <input value="50000" min="0" max="50000" step="50" type="range">
+                            <input id="min-price" value="{{$min_price}}" min="{{$priceMin}}" max="{{$priceMax}}" step="1" type="range">
+                            <input id="max-price" value="{{$max_price}}" min="{{$priceMin}}" max="{{$priceMax}}" step="1" type="range">
                             <span class="rangeValues p-3 d-flex justify-content-start"></span>
                         </div>
                     </div>
@@ -66,66 +67,54 @@
                     <!-- TYPE CHECK LIST -->
                     <h5 class="pb-2 pt-3">Type</h5>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="type" type="radio" value="all"
-                            id="flexCheck" checked>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="all" @if($type == null) checked @endif>
                         <label class="form-check-label" for="flexCheck">All</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="type" type="radio" value="sell"
-                            id="flexCheck">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="sell" @if($type == 'sell') checked @endif>
                         <label class="form-check-label" for="flexCheck">Sell</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="type" type="radio" value="buy"
-                            id="flexCheck">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="buy" @if($type == 'buy') checked @endif>
                         <label class="form-check-label" for="flexCheck">Buy</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="type" type="radio" value="exchange"
-                            id="flexCheckChecked">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="exchange" @if($type == 'exchange') checked @endif>
                         <label class="form-check-label" for="flexCheckChecked">Exchange</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="type" type="radio" value="gift"
-                            id="flexCheckChecked">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="gift" @if($type == 'gift') checked @endif>
                         <label class="form-check-label" for="flexCheckChecked">Gift</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="type" type="radio" value="rental"
-                            id="flexCheckChecked">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="rental" @if($type == 'rental') checked @endif>
                         <label class="form-check-label" for="flexCheckChecked">Rental </label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="type" type="radio" value="services"
-                            id="flexCheckChecked">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="services" @if($type == 'services') checked @endif>
                         <label class="form-check-label" for="flexCheckChecked">Services</label>
                     </div>
 
                     <!-- CONDITION CHECK LIST -->
                     <h5 class="pb-2 pt-3">Conditions (Si applicable)</h5>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="condition" type="radio" value="all"
-                            id="flexCheck" checked>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="condition" type="radio" value="all" id="flexCheck" @if($condition == null) checked @endif>
                         <label class="form-check-label" for="flexCheck">All</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="condition" type="radio" value="new"
-                            id="flexCheck">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="condition" type="radio" value="new" id="flexCheck" @if($condition == 'new') checked @endif>
                         <label class="form-check-label" for="flexCheck">New</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="condition" type="radio" value="refurbshed"
-                            id="flexCheckChecked">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="condition" type="radio" value="refurbshed" id="flexCheckChecked" @if($condition == 'refurbshed') checked @endif>
                         <label class="form-check-label" for="flexCheckChecked">Refurbshed</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="condition" type="radio" value="opportunity"
-                            id="flexCheckChecked">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="condition" type="radio" value="opportunity" id="flexCheckChecked" @if($condition == 'opportunity') checked @endif>
                         <label class="form-check-label" for="flexCheckChecked">Opportunity</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" name="condition" type="radio" value="part"
-                            id="flexCheckChecked">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" name="condition" type="radio" value="part" id="flexCheckChecked" @if($condition == 'part') checked @endif>
                         <label class="form-check-label" for="flexCheckChecked">Part </label>
                     </div>
                     <div class="form-check pb-4 pt-3">
@@ -163,35 +152,42 @@
                         </div>
                     </div>
                     <!-- card start -->
-                    @foreach ($products as $product)
-                        <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3 ">
-                            <div class="card-box ">
-                                <img src="{{ asset($product->image) }}" class="img-fluid w-100" alt="card-img">
-                                <div class="card-inner bg-white">
-                                    <a href="{{ route('product', $product->slug) }}">
-                                        <div class="d-flex justify-content-between pt-3 pb-2">
-                                            <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                            <span><i class="fa-solid fa-location-dot pe-2"></i>{{ $product->city }}</span>
-                                        </div>
-                                        <p class="m-0 fw-bold pb-2">{{ $product->name }}</p>
-                                        <div class="d-flex flex-wrap justify-content-between pb-2">
-                                            <?php
-                                            $match = [];
-                                            $text = $product->cash;
-                                            preg_match('#\((.*?)\)#', $text, $match);
-                                            ?>
-                                            <p class="m-0 text-danger fw-bold">{{ $match[1] }} {{ $product->price }}
-                                            </p>
-                                            <div class="icon">
-                                                <a class="wishlist-btn" href="javascript:;"
-                                                    data-id="{{ $product->id }}"><i class="fa-regular fa-heart"></i></a>
+                    <div id="product-data">
+
+                        @foreach ($products as $product)
+                            <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3 ">
+                                <div class="card-box ">
+                                    <img src="{{ asset($product->image) }}" class="img-fluid w-100" alt="card-img">
+                                    <div class="card-inner bg-white">
+                                        <a href="{{ route('product', $product->slug) }}">
+                                            <div class="d-flex justify-content-between pt-3 pb-2">
+                                                <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
+                                                <span><i
+                                                        class="fa-solid fa-location-dot pe-2"></i>{{ $product->city }}</span>
                                             </div>
-                                        </div>
-                                    </a>
+                                            <p class="m-0 fw-bold pb-2">{{ $product->name }}</p>
+                                            <div class="d-flex flex-wrap justify-content-between pb-2">
+                                                <?php
+                                                $match = [];
+                                                $text = $product->cash;
+                                                preg_match('#\((.*?)\)#', $text, $match);
+                                                ?>
+                                                <p class="m-0 text-danger fw-bold">{{ $match[1] }}
+                                                    {{ $product->price }}
+                                                </p>
+                                                <div class="icon">
+                                                    <a class="wishlist-btn" href="javascript:;"
+                                                        data-id="{{ $product->id }}"><i
+                                                            class="fa-regular fa-heart"></i></a>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
+
                     {{ $products->links() }}
 
                 </div>
@@ -199,4 +195,75 @@
         </div>
     </section>
     <!-- ALL-CATEGORY SECTION END -->
+
+
+    <script>
+        $(document).ready(function() {
+            $('#refresh').on('click',function(){
+                var category = $('input[name=category]:checked').val()
+                var url = window.location.origin+''+'/category/'+category
+                window.location.href = url
+            })
+            // alert()
+            // $('.category').on('click', function() {
+            //     var slug = $(this).val()
+            //     console.log(window.location.origin)
+            //     window.location.href = window.location.origin +'/category/'+slug;
+            //     // $.ajax({
+            //     //     url: '/category/' + slug,
+            //     //     type: "GET",
+            //     //     // data: {
+            //     //     //     _token: '{{ csrf_token() }}'
+            //     //     // },
+            //     //     error: function($err) {
+            //     //         console.log($err)
+            //     //     },
+            //     //     success: function(result) {
+            //     //         $('#product-data').replaceWith(result);
+            //     //         console.log(result);
+            //     //     }
+            //     // });
+            // })
+            $('.filter-data').on('click',function(){
+                // var slug = $(this).val()
+                var type = $('input[name=type]:checked').val()
+                var condition = $('input[name=condition]:checked').val()
+                var category = $('input[name=category]:checked').val()
+                var url = window.location.origin+''+'/category/'+category
+                if(type != 'all' && condition != 'all')
+                {
+                    var url = url+'/?type='+type+'&condition='+condition
+                }
+                else 
+                {
+                    if(condition != 'all')
+                    {
+                        url = url+'/?condition='+condition
+                    }
+                    if(type != 'all')
+                    {
+                        url = url+'/?type='+type
+                    }
+                }
+                console.log(url)
+                window.location.href = url
+                // alert()
+            })
+            $('input[type=range]').on('change',function(){
+                var minPrice = $('#min-price').val()
+                var maxPrice = $('#max-price').val()
+                // console.log(minPrice);
+                var url
+                if(window.location.search == "")
+                {
+                    url = window.location.href+'/?price='+minPrice+','+maxPrice
+                }
+                else
+                {
+                    url = window.location.href+'&price='+minPrice+','+maxPrice
+                }
+                window.location.href = url
+            })
+        })
+    </script>
 @endsection

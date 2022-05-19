@@ -141,9 +141,9 @@
                                              <input type="password" class="form-control border-0 border-bottom p-0 rounded-0" id="reg_conf_pass" name="password_confirmation" autocomplete="new-password">
                                              <span class="error text-danger"></span>
                                          </div>
-                                         <div class="form-check ms-3 pt-4">
+                                         <div class="form-check ms-3 pt-4 ">
                                              <input type="checkbox" class="form-check-input" id="term_cond">
-                                             <label class="form-check-label" for="exampleCheck1">I agree to tearms & conditions</label>
+                                             <a href="javascript:;" onclick="tearmsCheck()"><label class="form-check-label" for="exampleCheck1">I agree to tearms & conditions</label></a>
                                          </div>
                                      </div>
                                      <div class="my-4">

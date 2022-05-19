@@ -28,6 +28,7 @@ Route::get('/category', [App\Http\Controllers\HomeController::class, 'allCategor
 Route::get('/seller', [App\Http\Controllers\HomeController::class, 'seller'])->name('seller');
 Route::get('/seller/{username}', [App\Http\Controllers\HomeController::class, 'singleSeller'])->name('singleSeller');
 Route::post('/search/product', [App\Http\Controllers\HomeController::class, 'searchProduct'])->name('search.product');
+Route::get('/category/change/{slug}', [App\Http\Controllers\HomeController::class, 'changeCategory'])->name('category.change');
 });
 
 Route::group(['middleware' => ['auth'],'prefix' => 'user', 'as' => 'user.'], function () {
@@ -40,7 +41,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'user', 'as' => 'user.'], fun
     Route::resource('product', 'App\Http\Controllers\ProductController', ['names'=> 'product']);
     Route::resource('wishlist', 'App\Http\Controllers\WishlistController', ['names'=> 'wishlist']);
     // Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']); 
-    // Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);
+    Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);
     // Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);
 });
 
@@ -54,4 +55,5 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);   
     Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);   
     Route::resource('product', 'App\Http\Controllers\admin\ProductController', ['names'=> 'product']);   
+    Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
 });

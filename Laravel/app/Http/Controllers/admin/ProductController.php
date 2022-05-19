@@ -25,10 +25,11 @@ class ProductController extends Controller
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-     
-                           $btn = '<a href="/admin/product/'.$row->id.'/edit" class="edit btn btn-primary btn-sm">Edit  </a>';
-    
-                            return $btn;
+                        $btn = '<div class="d-flex">';
+                        $btn .= '<a href="/admin/product/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
+                        $btn .= '<form method="POST" action="/admin/product/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
+                        $btn .= '</div>';
+                        return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
@@ -166,8 +167,9 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy($id)
     {
-        //
+        Product::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

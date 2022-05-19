@@ -1,73 +1,87 @@
+<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
 
-        <!-- ========== Left Sidebar Start ========== -->
-        <div class="vertical-menu">
+    <!-- LOGO -->
+    <div class="navbar-brand-box">
+        <a href="{{ route('admin.dashboard') }}" class="logo logo-dark">
+            <span class="logo-sm">
+                <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+            </span>
+            <span class="logo-lg">
+                <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="22">
+            </span>
+        </a>
 
-            <!-- LOGO -->
-            <div class="navbar-brand-box">
-                <a href="{{ route('admin.dashboard') }}" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="22">
-                    </span>
-                </a>
+        <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
+            <span class="logo-lg">
+                <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="22">
+            </span>
+            <span class="logo-sm">
+                <img src="{{ asset('assets/images/logo-sm-light.png') }}" alt="" height="22">
+            </span>
+        </a>
+    </div>
 
-                <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
-                    <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="22">
-                    </span>
-                    <span class="logo-sm">
-                        <img src="{{ asset('assets/images/logo-sm-light.png') }}" alt="" height="22">
-                    </span>
-                </a>
-            </div>
+    <button type="button" class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn">
+        <i class="fa fa-fw fa-bars"></i>
+    </button>
 
-            <button type="button" class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn">
-                <i class="fa fa-fw fa-bars"></i>
-            </button>
+    <div data-simplebar class="sidebar-menu-scroll">
 
-            <div data-simplebar class="sidebar-menu-scroll">
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu3">
+                <li class="menu-title" data-key="t-dashboards">Dashboards</li>
 
-                <!--- Sidemenu -->
-                <div id="sidebar-menu">
-                    <!-- Left Menu Start -->
-                    <ul class="metismenu list-unstyled" id="side-menu3">
-                        <li class="menu-title" data-key="t-dashboards">Dashboards</li>
+                <li>
+                    <a href="{{ route('admin.dashboard') }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Dashboard</span>
+                    </a>
+                </li>
 
-                        <li>
-                            <a href="{{ route('admin.dashboard') }}">
-                                <i class="icon nav-icon" data-feather="monitor"></i>
-                                <span class="menu-item" data-key="t-sales">Dashboard</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                    <ul class="metismenu list-unstyled" id="side-menu34">
-                        <li class="menu-title" data-key="t-dashboards">CATELOG</li>
-                        <li>
-                            <a href="{{route('admin.category.index')}}">
-                                <i class="icon nav-icon" data-feather="monitor"></i>
-                                <span class="menu-item" data-key="t-sales">Category</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('admin.product.index')}}">
-                                <i class="icon nav-icon" data-feather="monitor"></i>
-                                <span class="menu-item" data-key="t-sales">Product</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="metismenu list-unstyled" id="side-menu34">
-                        <li class="menu-title" data-key="t-dashboards">USER</li>
-                        <li>
-                        <a href="{{route('admin.user.index')}}">
-                                <i class="icon nav-icon" data-feather="monitor"></i>
-                                <span class="menu-item" data-key="t-sales">User</span>
-                            </a>
-                        </li>
-                    </ul>
-                    {{-- <ul class="metismenu list-unstyled" id="side-menu22">
+            </ul>
+            <ul class="metismenu list-unstyled" id="side-menu34">
+                <li class="menu-title" data-key="t-dashboards">CATELOG</li>
+                <li>
+                    <a href="{{ route('admin.category.index') }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.product.index') }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Product</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="metismenu list-unstyled" id="side-menu34">
+                <li class="menu-title" data-key="t-dashboards">USER</li>
+                <li>
+                    <a href="{{ route('admin.user.index') }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">User</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="metismenu list-unstyled" id="side-menu34">
+                <li class="menu-title" data-key="t-dashboards">GEO</li>
+                <li>
+                    <a href="{{ route('admin.country.index') }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Country</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.currency.index') }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Currency</span>
+                    </a>
+                </li>
+            </ul>
+            {{-- <ul class="metismenu list-unstyled" id="side-menu22">
                         <li class="menu-title" data-key="t-dashboards">PRODUCTS MANAGEMENT</li>
                         <li>
                             <a href="{{route('admin.brand.list')}}">
@@ -124,7 +138,7 @@
                             </a>
                         </li>
                     </ul> --}}
-                    {{-- <ul class="metismenu list-unstyled" id="side-menu1">
+            {{-- <ul class="metismenu list-unstyled" id="side-menu1">
                         <li class="menu-title" data-key="t-dashboards">BUSINESS SECTION</li>
                         <li>
                             <a href="{{route('admin.stock.product-stock')}}">
@@ -157,7 +171,7 @@
                             </a>
                         </li>
                   </ul> --}}
-                   {{-- <ul class="metismenu list-unstyled" id="side-menu">
+            {{-- <ul class="metismenu list-unstyled" id="side-menu">
                        <li class="menu-title" data-key="t-dashboards">USER SECTION</li>
                        <li>
                             <a href="javascript: void(0);" class="has-arrow">
@@ -170,13 +184,8 @@
                             </ul>
                         </li>
                    </ul> --}}
-                </div>
-                <!-- Sidebar -->
-            </div>
         </div>
-        <!-- Left Sidebar End -->
-
-
-
-
-
+        <!-- Sidebar -->
+    </div>
+</div>
+<!-- Left Sidebar End -->

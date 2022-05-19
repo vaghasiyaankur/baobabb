@@ -86,7 +86,7 @@
             <!-- Slides -->
             @foreach ($categories as $category)
                 <div class="swiper-slide">
-                    <a href="{{ route('category', $category->slug) }}">
+                    <a href="javascript:;" class="change-category" data-id="{{ $category->slug }}">
                         <p class="m-0">{{ $category->name }}</p>
                     </a>
                 </div>
@@ -96,14 +96,14 @@
 
     <!------CATEGORY CARD SECTION START----->
     <section class="category-card py_5">
-        <div class="row">
+        <div class="row" id="category-product">
             @foreach ($products as $product)
                 <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
                     <div class="card-box text-center">
                         <img src="{{ asset($product->image) }}" class="img-fluid" alt="card-img">
                         <div class="card-inner">
                             <div class="d-flex justify-content-between pt-1 pb-2">
-                                <span><i class="fa-solid fa-bullseye pe-2"></i>{{$product->category->name}}</span>
+                                <span><i class="fa-solid fa-bullseye pe-2"></i>{{ $product->category->name }}</span>
                                 <span><i class="fa-solid fa-location-dot pe-2"></i>{{ $product->city }}</span>
                             </div>
                             <a href="{{ route('product', $product->slug) }}">
@@ -111,9 +111,9 @@
                             </a>
                             <div class="d-flex flex-wrap justify-content-between">
                                 <?php
-                                    $match = [];
-                                    $text = $product->cash;
-                                    preg_match('#\((.*?)\)#', $text, $match);
+                                $match = [];
+                                $text = $product->cash;
+                                preg_match('#\((.*?)\)#', $text, $match);
                                 ?>
                                 <p class="m-0 text-danger">{{ $match[1] }} {{ $product->price }}</p>
                                 <div class="icon">
@@ -161,4 +161,23 @@
             })
         })
     </script> --}}
+
+    <script>
+        $(document).ready(function() {
+            $('.change-category').on('click', function() {
+                slug = $(this).attr('data-id')
+                $.ajax({
+                    url: "/category/change/" + slug,
+                    type: "GET",
+                    error: function($err) {
+                        console.log($err)
+                    },
+                    success: function(result) {
+                        $('#category-product').replaceWith(result)
+                        console.log(result)
+                    }
+                });
+            })
+        })
+    </script>
 @endsection

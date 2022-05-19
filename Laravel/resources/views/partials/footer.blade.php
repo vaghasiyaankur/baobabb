@@ -185,6 +185,10 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
         var email = $('#reg_email').val();
         var pass = $('#reg_pass').val();
         var conf_pass = $('#reg_conf_pass').val();
+        $("#reg_username").siblings(".error").html("")
+        $("#reg_email").siblings(".error").html("")
+        $("#reg_pass").siblings(".error").html("")
+        $("#reg_conf_pass").siblings(".error").html("")
         var isValid = true;
         //Validate UserName
         if (user == "") {
@@ -223,12 +227,21 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                     icon: 'error',
                     title: 'failed',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1000
                     })
                     var error = $err['responseJSON']['errors']
-                    $("#reg_email").siblings(".error").html(error['email'][0])
-                    $("#reg_pass").siblings(".error").html(error['password'][0])
-                    $("#reg_conf_pass").siblings(".error").html(error['password'][1])
+                    if(error['email'])
+                    {
+                        $("#reg_email").siblings(".error").html(error['email'][0])
+                    }
+                    if(error['password'][0])
+                    {
+                        $("#reg_pass").siblings(".error").html(error['password'][0])
+                    }
+                    if(error['password'][1])
+                    {
+                        $("#reg_conf_pass").siblings(".error").html(error['password'][1])
+                    }
                     console.log(error)
                 },
                 success: function(result) {
@@ -243,9 +256,17 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
             });
         }
     }
-</script>
-
-<script>
+    function tearmsCheck(){
+        // var check = $()
+        if ($('#term_cond').prop('checked')) {
+            $('#term_cond').prop('checked',false);
+            $('#register_btn').attr('disabled', true);
+        }
+        else{
+            $('#term_cond').prop('checked',true);
+            $('#register_btn').attr('disabled', false);
+        }
+    }
     $('#term_cond').change(function(){
         if ($(this).prop('checked')) {
             $('#register_btn').attr('disabled', false);
