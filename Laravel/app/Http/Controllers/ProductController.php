@@ -9,6 +9,7 @@ use DataTables;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Currency;
 use App\Http\Controllers\ImageController;
 
 class ProductController extends Controller
@@ -59,7 +60,8 @@ class ProductController extends Controller
         if($user->status == 1)
         {
             $categories = Category::all();
-            return view('user.product.create', compact('categories'));
+            $currencies = Currency::where('country_id',$user->country)->get();
+            return view('user.product.create', compact('categories','currencies'));
         }
         else
         {
@@ -133,15 +135,15 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $user_id = auth()->user()->id;
-        $product = Product::where('seller_id',$user_id)->where('id',$id)->first();
+        $product = Product::where('seller_id',auth()->user()->id)->where('id',$id)->first();
         if($product)
         {
             $categories = Category::all();
-            return view('user.product.create', compact('categories','product'));
+            $currencies = Currency::where('country_id',auth()->user()->country)->get();
+            return view('user.product.create', compact('categories','product','currencies'));
         }
         else{
-            // return view('404');
+            return view('404');
         }
     }
 
@@ -181,6 +183,7 @@ class ProductController extends Controller
         $product->country = $request->country;
         $product->state = $request->state;
         $product->city = $request->city;
+        $product->cash = $request->cash;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
         $product->video = $request->video;  

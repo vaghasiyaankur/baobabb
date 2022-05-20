@@ -13,7 +13,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        dd(auth()->user());
     }
 
     /**

@@ -79,12 +79,11 @@
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Cash</label>
-                  <select class="form-control custom-file-input" name="cash" value="@if(isset($product->cash)){{$product->cash}}@endif" id="cash">
+                  <select class="form-control custom-file-input" name="cash" id="cash">
                      <option>Select Currency</option>
-                        <option value="CFA (CFA)" @if(isset($product->cash)) @if('CFA (CFA)' == $product->cash) selected @endif @endif>CFA (CFA)</option>
-                        <option value="USD ($)" @if(isset($product->cash)) @if('USD ($)' == $product->cash) selected @endif @endif>USD ($)</option>
-                        <option value="USD (€)" @if(isset($product->cash)) @if('USD (€)' == $product->cash) selected @endif @endif>USD (€)</option>
-                        {{-- <option value="{{$category->id}}" @if(isset($product->cash)) @if($cash->id == $product->cash) selected @endif @endif>{{$category->name}}</option> --}}
+                     @foreach($currencies as $currency)
+                        <option value="{{$currency->id}}" @if(isset($product->cash)) @if($currency->id == $product->cash) selected @endif @endif>{{$currency->name}} ({{$currency->symbol}})</option>
+                     @endforeach
                   </select>
                </div>
             </div>

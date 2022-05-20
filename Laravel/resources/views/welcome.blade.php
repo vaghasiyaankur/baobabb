@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-lg-4 pt-4 pt-lg-0">
                     <div class="header-form">
-                        <form action="{{ route('search.product') }}" method="get">
+                        <form action="{{ route('search.product') }}" method="POST">
                             @csrf
                             <h3 class="text-black mb-4">I'm interested in...</h3>
                             <div class="mb-4">
@@ -99,7 +99,7 @@
         <div class="row" id="category-product">
             @foreach ($products as $product)
                 <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
-                    <div class="card-box text-center">
+                    <div class="card-box">
                         <img src="{{ asset($product->image) }}" class="img-fluid" alt="card-img">
                         <div class="card-inner">
                             <div class="d-flex justify-content-between pt-1 pb-2">
@@ -110,12 +110,7 @@
                                 <p class="m-0 fw-bold pb-2">{{ $product->name }}</p>
                             </a>
                             <div class="d-flex flex-wrap justify-content-between">
-                                <?php
-                                $match = [];
-                                $text = $product->cash;
-                                preg_match('#\((.*?)\)#', $text, $match);
-                                ?>
-                                <p class="m-0 text-danger">{{ $match[1] }} {{ $product->price }}</p>
+                                <p class="m-0 text-danger">{{ $product->currency->symbol }} {{ $product->price }}</p>
                                 <div class="icon">
                                     <i class="fa-solid fa-arrows-rotate"></i>
                                     <a class="wishlist-btn" href="javascript:;" data-id="{{ $product->id }}"><i

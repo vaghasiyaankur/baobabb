@@ -140,14 +140,13 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
         if (user == "") {
             $("#user_login").siblings(".error").html("Please Enter Email")
             isValid = false;
-        } 
+        }
         //Validate Password
         if (pass == "") {
             $("#pass_login").siblings(".error").html("Please Enter password")
             isValid = false;
         }
-        if(isValid == true)
-        {
+        if (isValid == true) {
             $.ajax({
                 url: "{{ url('/login') }}",
                 type: "POST",
@@ -158,18 +157,18 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                 },
                 error: function($err) {
                     Swal.fire({
-                    icon: 'error',
-                    title: 'credentials not match',
-                    showConfirmButton: false,
-                    timer: 1500
+                        icon: 'error',
+                        title: 'credentials not match',
+                        showConfirmButton: false,
+                        timer: 1500
                     })
                 },
                 success: function(result) {
                     Swal.fire({
-                    icon: 'success',
-                    title: 'Login Sucessfull',
-                    showConfirmButton: false,
-                    timer: 3000
+                        icon: 'success',
+                        title: 'Login Sucessfull',
+                        showConfirmButton: false,
+                        timer: 3000
                     })
                     location.reload(true);
                 }
@@ -194,12 +193,12 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
         if (user == "") {
             $("#reg_username").siblings(".error").html("Please Enter UserName")
             isValid = false;
-        } 
+        }
         //Validate Email
         if (email == "") {
             $("#reg_email").siblings(".error").html("Please Enter Email")
             isValid = false;
-        } 
+        }
         //Validate Password
         if (pass == "") {
             $("#reg_pass").siblings(".error").html("Please Enter password")
@@ -210,8 +209,7 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
             $("#reg_conf_pass").siblings(".error").html("Please Enter Confirm password")
             isValid = false;
         }
-        if(isValid == true)
-        {
+        if (isValid == true) {
             $.ajax({
                 url: "{{ route('register') }}",
                 type: "POST",
@@ -224,56 +222,84 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                 },
                 error: function($err) {
                     Swal.fire({
-                    icon: 'error',
-                    title: 'failed',
-                    showConfirmButton: false,
-                    timer: 1000
+                        icon: 'error',
+                        title: 'failed',
+                        showConfirmButton: false,
+                        timer: 1000
                     })
                     var error = $err['responseJSON']['errors']
-                    if(error['email'])
-                    {
+                    if (error['email']) {
                         $("#reg_email").siblings(".error").html(error['email'][0])
                     }
-                    if(error['password'][0])
-                    {
+                    if (error['password'][0]) {
                         $("#reg_pass").siblings(".error").html(error['password'][0])
                     }
-                    if(error['password'][1])
-                    {
+                    if (error['password'][1]) {
                         $("#reg_conf_pass").siblings(".error").html(error['password'][1])
                     }
                     console.log(error)
                 },
                 success: function(result) {
                     Swal.fire({
-                    icon: 'success',
-                    title: 'Register Sucessfull',
-                    showConfirmButton: false,
-                    timer: 3000
+                        icon: 'success',
+                        title: 'Register Sucessfull',
+                        showConfirmButton: false,
+                        timer: 3000
                     })
                     location.reload(true);
                 }
             });
         }
     }
-    function tearmsCheck(){
-        // var check = $()
-        if ($('#term_cond').prop('checked')) {
-            $('#term_cond').prop('checked',false);
-            $('#register_btn').attr('disabled', true);
-        }
-        else{
-            $('#term_cond').prop('checked',true);
-            $('#register_btn').attr('disabled', false);
-        }
-    }
-    $('#term_cond').change(function(){
+    $('#term_cond').change(function() {
         if ($(this).prop('checked')) {
             $('#register_btn').attr('disabled', false);
-        }
-        else {
+        } else {
             $('#register_btn').attr('disabled', true);
         }
+    })
+</script>
+
+{{-- forgot password --}}
+
+<script>
+    $('#forget-email-submit').on('click', function() {
+        var mail = $('#forget_email').val();
+        var emailReg = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (mail == "") {
+            $("#forget_email").siblings(".error").html("Please Enter Email")
+        } else if (!emailReg.test(mail)) {
+            $("#forget_email").siblings(".error").html("Please Enter Valid Email")
+        } else {
+            $.ajax({
+                url: "{{ route('password.email') }}",
+                type: "POST",
+                data: {
+                    email: mail,
+                    _token: '{{ csrf_token() }}'
+                },
+                error: function($err) {
+                //     Swal.fire({
+                //         icon: 'error',
+                //     title: 'credentials not match',
+                //     showConfirmButton: false,
+                //     timer: 1500
+                // })
+                    console.log($err)
+                },
+                success: function(result) {
+                //     Swal.fire({
+                //     icon: 'success',
+                //     title: 'Login Sucessfull',
+                //     showConfirmButton: false,
+                //     timer: 3000
+                // })
+                // location.reload(true);
+                    console.log(result)
+                }
+            });
+        }
+
     })
 </script>
 
@@ -310,33 +336,37 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
 </script>
 
 <script>
-    function getVals(){
-  // Get slider values
-  let parent = this.parentNode;
-  let slides = parent.getElementsByTagName("input");
-    let slide1 = parseFloat( slides[0].value );
-    let slide2 = parseFloat( slides[1].value );
-  // Neither slider will clip the other, so make sure we determine which is larger
-  if( slide1 > slide2 ){ let tmp = slide2; slide2 = slide1; slide1 = tmp; }
-  
-  let displayElement = parent.getElementsByClassName("rangeValues")[0];
-      displayElement.innerHTML = "$" + slide1 + " - $" + slide2;
-}
-
-window.onload = function(){
-  // Initialize Sliders
-  let sliderSections = document.getElementsByClassName("range-slider");
-      for( let x = 0; x < sliderSections.length; x++ ){
-        let sliders = sliderSections[x].getElementsByTagName("input");
-        for( let y = 0; y < sliders.length; y++ ){
-          if( sliders[y].type ==="range" ){
-            sliders[y].oninput = getVals;
-            // Manually trigger event first time to display values
-            sliders[y].oninput();
-          }
+    function getVals() {
+        // Get slider values
+        let parent = this.parentNode;
+        let slides = parent.getElementsByTagName("input");
+        let slide1 = parseFloat(slides[0].value);
+        let slide2 = parseFloat(slides[1].value);
+        // Neither slider will clip the other, so make sure we determine which is larger
+        if (slide1 > slide2) {
+            let tmp = slide2;
+            slide2 = slide1;
+            slide1 = tmp;
         }
-      }
-}   
+
+        let displayElement = parent.getElementsByClassName("rangeValues")[0];
+        displayElement.innerHTML = "$" + slide1 + " - $" + slide2;
+    }
+
+    window.onload = function() {
+        // Initialize Sliders
+        let sliderSections = document.getElementsByClassName("range-slider");
+        for (let x = 0; x < sliderSections.length; x++) {
+            let sliders = sliderSections[x].getElementsByTagName("input");
+            for (let y = 0; y < sliders.length; y++) {
+                if (sliders[y].type === "range") {
+                    sliders[y].oninput = getVals;
+                    // Manually trigger event first time to display values
+                    sliders[y].oninput();
+                }
+            }
+        }
+    }
 </script>
 
 </body>

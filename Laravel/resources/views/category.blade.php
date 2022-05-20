@@ -6,7 +6,8 @@
             Consulter les announces </h3>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb ps-lg-5">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-decoration-none text-muted">Accueil</a>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}"
+                        class="text-decoration-none text-muted">Accueil</a>
                 </li>
                 <li class="breadcrumb-item">Consulter les annonces</li>
             </ol>
@@ -16,26 +17,28 @@
                 <div class="bg-white px-4 py-5 mb-5">
                     <div class="d-flex justify-content-between align-items-center pb-4">
                         <h4 class="fw-bold">Trier les annonces</h4>
-                        <a href="javascript:;" id="refresh"><i class="fa-solid fa-arrow-rotate-left text-muted fs-5"  style="cursor: pointer;"></i></a>
+                        <a href="javascript:;" id="refresh"><i class="fa-solid fa-arrow-rotate-left text-muted fs-5"
+                                style="cursor: pointer;"></i></a>
                     </div>
                     <div class="mb-4">
                         <h5 class="text-muted fw-bold">Mot cle`</h5>
-                        <input type="email" class="form-control border-0 border-bottom ps-0" id="exampleInputEmail1"
+                        <input type="email" class="form-control border-0 border-bottom ps-0" id="keyword"
                             aria-describedby="emailHelp" placeholder="Recherch de...">
                     </div>
 
                     <!-- CATEGORY CHECK LIST -->
                     <h5 class="pb-2">Categories</h5>
-                    <div class="form-check pb-1">
+                    {{-- <div class="form-check pb-1">
                         <input class="form-check-input rounded-pill fs-6" type="radio" name="category" value="all"
                             id="flexCheck">
                         <label class="form-check-label" for="flexCheck"> All </label>
-                    </div>
+                    </div> --}}
                     @foreach ($categories as $cat)
                         <div class="form-check pb-1">
                             <input class="form-check-input rounded-pill fs-6 filter-data" type="radio" name="category"
-                                value="{{ $cat->slug }}" id="category" @if ($cat->id == $category->id) checked @endif>
-                            <label class="form-check-label" for="flexCheck">
+                                value="{{ $cat->slug }}" id="category-{{ $cat->id }}"
+                                @if ($cat->id == $category->id) checked @endif>
+                            <label class="form-check-label" for="category-{{ $cat->id }}">
                                 {{ $cat->name }}
                             </label>
                         </div>
@@ -43,8 +46,10 @@
                     <div class="mb-4 mt-3">
                         <h5 class="pb-2">Price</h5>
                         <div class="range-slider">
-                            <input id="min-price" value="{{$min_price}}" min="{{$priceMin}}" max="{{$priceMax}}" step="1" type="range">
-                            <input id="max-price" value="{{$max_price}}" min="{{$priceMin}}" max="{{$priceMax}}" step="1" type="range">
+                            <input id="min-price" value="{{ $min_price }}" min="{{ $priceMin }}"
+                                max="{{ $priceMax }}" step="1" type="range">
+                            <input id="max-price" value="{{ $max_price }}" min="{{ $priceMin }}"
+                                max="{{ $priceMax }}" step="1" type="range">
                             <span class="rangeValues p-3 d-flex justify-content-start"></span>
                         </div>
                     </div>
@@ -67,59 +72,71 @@
                     <!-- TYPE CHECK LIST -->
                     <h5 class="pb-2 pt-3">Type</h5>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="all" @if($type == null) checked @endif>
-                        <label class="form-check-label" for="flexCheck">All</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="all" name="type" type="radio"
+                            value="all" @if ($type == null) checked @endif>
+                        <label class="form-check-label" for="all">All</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="sell" @if($type == 'sell') checked @endif>
-                        <label class="form-check-label" for="flexCheck">Sell</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="sell" name="type" type="radio"
+                            value="sell" @if ($type == 'sell') checked @endif>
+                        <label class="form-check-label" for="sell">Sell</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="buy" @if($type == 'buy') checked @endif>
-                        <label class="form-check-label" for="flexCheck">Buy</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="buy" name="type" type="radio"
+                            value="buy" @if ($type == 'buy') checked @endif>
+                        <label class="form-check-label" for="buy">Buy</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="exchange" @if($type == 'exchange') checked @endif>
-                        <label class="form-check-label" for="flexCheckChecked">Exchange</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="exchange" name="type" type="radio"
+                            value="exchange" @if ($type == 'exchange') checked @endif>
+                        <label class="form-check-label" for="exchange">Exchange</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="gift" @if($type == 'gift') checked @endif>
-                        <label class="form-check-label" for="flexCheckChecked">Gift</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="gift" name="type" type="radio"
+                            value="gift" @if ($type == 'gift') checked @endif>
+                        <label class="form-check-label" for="gift">Gift</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="rental" @if($type == 'rental') checked @endif>
-                        <label class="form-check-label" for="flexCheckChecked">Rental </label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="rental" name="type" type="radio"
+                            value="rental" @if ($type == 'rental') checked @endif>
+                        <label class="form-check-label" for="rental">Rental </label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="type" type="radio" value="services" @if($type == 'services') checked @endif>
-                        <label class="form-check-label" for="flexCheckChecked">Services</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="services" name="type" type="radio"
+                            value="services" @if ($type == 'services') checked @endif>
+                        <label class="form-check-label" for="services">Services</label>
                     </div>
 
                     <!-- CONDITION CHECK LIST -->
                     <h5 class="pb-2 pt-3">Conditions (Si applicable)</h5>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="condition" type="radio" value="all" id="flexCheck" @if($condition == null) checked @endif>
-                        <label class="form-check-label" for="flexCheck">All</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="codition" name="condition"
+                            type="radio" value="all" @if ($condition == null) checked @endif>
+                        <label class="form-check-label" for="codition">All</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="condition" type="radio" value="new" id="flexCheck" @if($condition == 'new') checked @endif>
-                        <label class="form-check-label" for="flexCheck">New</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="new" name="condition" type="radio"
+                            value="new" @if ($condition == 'new') checked @endif>
+                        <label class="form-check-label" for="new">New</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="condition" type="radio" value="refurbshed" id="flexCheckChecked" @if($condition == 'refurbshed') checked @endif>
-                        <label class="form-check-label" for="flexCheckChecked">Refurbshed</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="refurbshed" name="condition"
+                            type="radio" value="refurbshed" @if ($condition == 'refurbshed') checked @endif>
+                        <label class="form-check-label" for="refurbshed">Refurbshed</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="condition" type="radio" value="opportunity" id="flexCheckChecked" @if($condition == 'opportunity') checked @endif>
-                        <label class="form-check-label" for="flexCheckChecked">Opportunity</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="opportunity" name="condition"
+                            type="radio" value="opportunity" @if ($condition == 'opportunity') checked @endif>
+                        <label class="form-check-label" for="opportunity">Opportunity</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" name="condition" type="radio" value="part" id="flexCheckChecked" @if($condition == 'part') checked @endif>
-                        <label class="form-check-label" for="flexCheckChecked">Part </label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="part" name="condition"
+                            type="radio" value="part" @if ($condition == 'part') checked @endif>
+                        <label class="form-check-label" for="part">Part </label>
                     </div>
                     <div class="form-check pb-4 pt-3">
-                        <input class="form-check-input fs-6" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-check-label" for="flexCheckChecked">Afficher uniquement les <br> pieces ou hors
+                        <input class="form-check-input fs-6" type="checkbox" value="">
+                        <label class="form-check-label" for="">Afficher uniquement les <br> pieces ou hors
                             service</label>
                     </div>
                     <button type="button" class="btn btn-secondary btn-md w-100">APPLIQ LES FILTRES</button>
@@ -167,12 +184,7 @@
                                             </div>
                                             <p class="m-0 fw-bold pb-2">{{ $product->name }}</p>
                                             <div class="d-flex flex-wrap justify-content-between pb-2">
-                                                <?php
-                                                $match = [];
-                                                $text = $product->cash;
-                                                preg_match('#\((.*?)\)#', $text, $match);
-                                                ?>
-                                                <p class="m-0 text-danger fw-bold">{{ $match[1] }}
+                                                <p class="m-0 text-danger fw-bold">{{ $product->currency->symbol }}
                                                     {{ $product->price }}
                                                 </p>
                                                 <div class="icon">
@@ -199,9 +211,39 @@
 
     <script>
         $(document).ready(function() {
-            $('#refresh').on('click',function(){
+
+            $('#keyword').on('change', function() {
+                console.log(window.location)
+                keyword = $('#keyword').val()
+                var type = $('input[name=type]:checked').val()
+                var condition = $('input[name=condition]:checked').val()
                 var category = $('input[name=category]:checked').val()
-                var url = window.location.origin+''+'/category/'+category
+                var url = window.location.origin + '' + '/category/' + category
+                var peram = 0
+                if (type != 'all' && condition != 'all') {
+                    url = url + '?type=' + type + '&condition=' + condition
+                    peram = 1
+                } else {
+                    if (condition != 'all') {
+                        peram = 1
+                        url = url + '?condition=' + condition
+                    }
+                    if (type != 'all') {
+                        peram = 1
+                        url = url + '?type=' + type
+                    }
+                }
+                if (peram == 0) {
+                    url += '?keyword=' + keyword
+                } else {
+                    url += '&keyword=' + keyword
+                }
+                window.location.href = url
+            });
+
+            $('#refresh').on('click', function() {
+                var category = $('input[name=category]:checked').val()
+                var url = window.location.origin + '' + '/category/' + category
                 window.location.href = url
             })
             // alert()
@@ -224,43 +266,54 @@
             //     //     }
             //     // });
             // })
-            $('.filter-data').on('click',function(){
+            $('.filter-data').on('click', function() {
                 // var slug = $(this).val()
                 var type = $('input[name=type]:checked').val()
                 var condition = $('input[name=condition]:checked').val()
                 var category = $('input[name=category]:checked').val()
-                var url = window.location.origin+''+'/category/'+category
-                if(type != 'all' && condition != 'all')
-                {
-                    var url = url+'/?type='+type+'&condition='+condition
-                }
-                else 
-                {
-                    if(condition != 'all')
-                    {
-                        url = url+'/?condition='+condition
+                var keyword = $('#keyword').val()
+                var url = window.location.origin + '' + '/category/' + category
+                if (type != 'all' && condition != 'all') {
+                    var url = url + '?type=' + type + '&condition=' + condition
+                } else {
+                    if (condition != 'all') {
+                        url = url + '?condition=' + condition
                     }
-                    if(type != 'all')
-                    {
-                        url = url+'/?type='+type
+                    if (type != 'all') {
+                        url = url + '?type=' + type
                     }
                 }
                 console.log(url)
                 window.location.href = url
                 // alert()
             })
-            $('input[type=range]').on('change',function(){
+            $('input[type=range]').on('change', function() {
                 var minPrice = $('#min-price').val()
                 var maxPrice = $('#max-price').val()
                 // console.log(minPrice);
-                var url
-                if(window.location.search == "")
-                {
-                    url = window.location.href+'/?price='+minPrice+','+maxPrice
+                var type = $('input[name=type]:checked').val()
+                // var keyword = $('#keyword').val()
+                var condition = $('input[name=condition]:checked').val()
+                var category = $('input[name=category]:checked').val()
+                var url = window.location.origin + '' + '/category/' + category
+                var peram = 0
+                if (type != 'all' && condition != 'all') {
+                    var url = url + '?type=' + type + '&condition=' + condition
+                    peram = 1
+                } else {
+                    if (condition != 'all') {
+                        peram = 1
+                        url = url + '?condition=' + condition
+                    }
+                    if (type != 'all') {
+                        peram =1
+                        url = url + '?type=' + type
+                    }
                 }
-                else
-                {
-                    url = window.location.href+'&price='+minPrice+','+maxPrice
+                if (peram == 0) {
+                    url += '?price=' + minPrice + ',' + maxPrice
+                } else {
+                    url += '&price=' + minPrice + ',' + maxPrice
                 }
                 window.location.href = url
             })

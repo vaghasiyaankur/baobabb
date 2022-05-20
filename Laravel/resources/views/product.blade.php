@@ -74,16 +74,11 @@
 
             <div class="col-xl-3">
                 <div class="cfa-bg-text mb-5">
-                    <?php
-                        $match = [];
-                        $text = $product->cash;
-                        preg_match('#\((.*?)\)#', $text, $match);
-                    ?>
                     @if ($product->sale_price != null)
-                        <span class="price-abs">{{ $match[1] }} {{ $product->price }}</span>
-                        <h4 class="text-white fw-bold m-0">{{ $match[1] }} {{ $product->sale_price }}</h4>
+                        <span class="price-abs">{{ $product->currency->symbol }} {{ $product->price }}</span>
+                        <h4 class="text-white fw-bold m-0">{{ $product->currency->symbol }} {{ $product->sale_price }}</h4>
                     @else
-                        <h4 class="text-white fw-bold m-0">{{ $match[1] }} {{ $product->price }}</h4>
+                        <h4 class="text-white fw-bold m-0">{{ $product->currency->symbol }} {{ $product->price }}</h4>
                     @endif
                 </div>
 
@@ -95,7 +90,7 @@
                             <a href="javascript:;" class="text-dection-none"><img src="{{ asset($seller->avatar) }}" alt=""></a>
                         </div>
                         <div class="avtar-text">
-                            <h5>{{ $seller->name }}</h5>
+                            <a href="{{route('seller',$seller->id)}}"><h5>{{ $seller->name }}</h5></a>
                             <i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i
                                 class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star"></i>
                             <h6 class="text-success pt-2"><i class="fa-solid fa-circle text-success fs-6"></i> EN LIGNE
@@ -181,11 +176,11 @@
                 @foreach ($user_products as $pr)
                     @if ($pr->id != $product->id)
                         <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 ">
-                            <div class="card-box">
+                            <div class="card-box shadow ">
                                 <img src="{{ asset($pr->image) }}" class="img-fluid" alt="card-img">
                                 <div class="card-inner bg-white">
                                     <div class="d-flex justify-content-between pt-3 pb-2 text-muted">
-                                        <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
+                                        <span><i class="fa-solid fa-bullseye pe-2"></i>{{$pr->category->name}}</span>
                                         <span><i class="fa-solid fa-location-dot pe-2"></i>{{ $pr->city }}</span>
                                     </div>
                                     <a href="{{route('product',$pr->slug)}}"><p class="m-0 fw-bold pb-2">{{ $pr->name }}</p></a>
@@ -193,7 +188,7 @@
                                         <p class="m-0 text-danger fw-bold">{{ $pr->price }}</p>
                                         <div class="icon">
                                             <a class="wishlist-btn" href="javascript:;"
-                                                    data-id="{{ $product->id }}"><i class="fa-regular fa-heart"></i></a>
+                                                    data-id="{{ $pr->id }}"><i class="fa-regular fa-heart"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +205,7 @@
                                 <img src="{{ asset($pr->image) }}" class="img-fluid" alt="card-img">
                                 <div class="card-inner bg-white">
                                     <div class="d-flex justify-content-between pt-3 pb-2 text-muted">
-                                        <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
+                                        <span><i class="fa-solid fa-bullseye pe-2"></i>{{$pr->category->name}}</span>
                                         <span><i class="fa-solid fa-location-dot pe-2"></i>{{ $pr->city }}</span>
                                     </div>
                                     <p class="m-0 fw-bold pb-2">{{ $pr->name }}</p>

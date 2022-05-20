@@ -36,7 +36,10 @@ class User extends Authenticatable
         'state',
         'city',
         'street',
-        'status'
+        'status',
+        'social_id',
+        'social_type',
+        'facebook_id'
     ];
 
     /**
@@ -57,4 +60,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function countries()
+    {
+        return $this->belongsTo(Country::class,'country','id');
+    }
 }

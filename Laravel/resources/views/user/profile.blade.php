@@ -107,10 +107,15 @@
                </div>
             </div>
 
-             <div class="col-md-6">
+            <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Country</label>
-                  <input class="form-control custom-file-input" value="@if($user->country){{$user->country}}@endif" name="country" type="text" id="country" required>
+                  <select class="form-control custom-file-input" name="country" id="country">
+                     <option>Select Country</option>
+                     @foreach($countries as $country)
+                        <option value="{{$country->id}}" @if(isset($user->country)) @if($country->id == $user->country) selected @endif @endif>{{$country->name}}</option>
+                     @endforeach
+                  </select>
                </div>
             </div>
 

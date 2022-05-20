@@ -14,6 +14,10 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        //
+        Country::insert([
+            'id' => 1,
+            'name' => 'india',
+            'code' => 'IN',
+        ]);
     }
 }

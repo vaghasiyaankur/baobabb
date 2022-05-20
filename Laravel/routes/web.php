@@ -19,8 +19,14 @@ use App\Http\Controllers;
 // });
 
 Auth::routes();
+Route::get('auth/google', [App\Http\Controllers\SocialiteController::class, 'redirectToGoogle']);
+Route::get('callback/google', [App\Http\Controllers\SocialiteController::class, 'handleCallbackGoogle']);
 
-Route::group(['middleware' => ['countryCheck']], function () { 
+Route::get('auth/facebook', [App\Http\Controllers\SocialiteController::class, 'redirectToFacebook']);
+Route::get('callback/facebook', [App\Http\Controllers\SocialiteController::class, 'handleCallbackFacebook']);
+
+
+Route::group(['middleware' => 'web'], function () { 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/category/{slug}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
 Route::get('/product/{slug}', [App\Http\Controllers\HomeController::class, 'product'])->name('product');
@@ -51,6 +57,8 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
         return redirect()->route('admin.dashboard');
     });
     Route::get('/dashboard' , [App\Http\Controllers\admin\DashboardController::class,'index'])->name('dashboard');
+    Route::get('profile' , [App\Http\Controllers\admin\DashboardController::class,'profile'])->name('profile');
+    Route::post('profile-update', [App\Http\Controllers\admin\DashboardController::class, 'profile_update'])->name('profile.update');
     Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']);   
     Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);   
     Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);   

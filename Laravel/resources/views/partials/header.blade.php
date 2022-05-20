@@ -76,11 +76,11 @@
                                  <p class="m-0 text-center mt-3">Sign In With</p>
                                  <div
                                      class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
-                                     <a href="javascript:;" class="f-conect d-flex flex-wrap align-items-center p-2">
+                                     <a href="{{ url('auth/facebook') }}" class="f-conect d-flex flex-wrap align-items-center p-2">
                                          <i class="fa-brands fa-facebook-f p-1"></i>
                                          <h6 class="m-0">Connect with Facebook</h6>
                                      </a>
-                                     <a href="javascript:;"
+                                     <a href="{{ url('auth/google') }}"
                                          class="g-conect d-flex flex-wrap align-items-center p-2 mt-2 mt-sm-0">
                                          <i class="fa-brands fa-google pe-2"></i>
                                          <span class="m-0">Connect with Google</span>
@@ -100,13 +100,14 @@
                                              <label for="exampleInputEmail1" class="form-label m-0">Email *</label>
                                              <input type="email"
                                                  class="form-control border-0 border-bottom p-0 rounded-0"
-                                                 id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                 id="forget_email" aria-describedby="emailHelp"
                                                  placeholder="Your registered Email">
+                                                 <span class="error text-danger"></span>
                                          </div>
                                      </div>
                                  </form>
                                  <div class="my-4">
-                                     <button class="btn model_btn w-100 fw-bold" type="submit">RECOVER</button>
+                                     <button class="btn model_btn w-100 fw-bold" id="forget-email-submit">RECOVER</button>
                                  </div>
                                  <div class="text-center m-3">
                                      <a href="javascript:;" class="text-muted" id="login_acc">Already have an
@@ -143,7 +144,7 @@
                                          </div>
                                          <div class="form-check ms-3 pt-4 ">
                                              <input type="checkbox" class="form-check-input" id="term_cond">
-                                             <a href="javascript:;" onclick="tearmsCheck()"><label class="form-check-label" for="exampleCheck1">I agree to tearms & conditions</label></a>
+                                             <label class="form-check-label" for="term_cond">I agree to tearms & conditions</label>
                                          </div>
                                      </div>
                                      <div class="my-4">

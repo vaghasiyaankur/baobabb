@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Country;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -82,4 +84,43 @@ class DashboardController extends Controller
     {
         //
     }
+
+    public function profile()
+    {
+        $user = auth()->user();
+        $countries = Country::all();
+        return view('admin.profile',compact('user','countries'));
+    }
+
+    public function profile_update(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        // store avatar image
+        if($request->avatar)
+        {
+            $img = new ImageController;
+            $user->avatar = $img->move($request->avatar);
+        }
+    
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->facebook = $request->facebook;
+        $user->twitter = $request->twitter;
+        $user->youtube = $request->youtube;
+        $user->linkedin = $request->linkedin;
+        $user->instagram = $request->instagram;
+        $user->website = $request->website;
+        $user->description = $request->description;
+        $user->country = $request->country;
+        $user->state = $request->state;
+        $user->city = $request->city;
+        // $user->location = $request->location;
+        $user->street = $request->street;
+        $user->status = '1';
+        $user->save();
+        // dd($user);
+        return redirect()->back();
+    }
+
 }
