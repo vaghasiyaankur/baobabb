@@ -1,21 +1,10 @@
 @extends('user.layouts.app')
-
-@section('title')
-    Wishlist
-@endsection
-
-@push('styles_after_assets')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/custom-table.css') }}">
-@endpush
-
 @section('content')
     <div class="p-3">
         <section class="category-card py_5">
             <div class="row">
                 @foreach ($products as $product)
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 card m-2">
+                    <div class="col-sm-6 col-md-4 col-lg-3 card m-2">
                         <div class="card-box">
                             <img src="{{ asset($product->image) }}"  alt="card-img" height="175" >
                             <div class="card-inner">

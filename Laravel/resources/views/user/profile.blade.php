@@ -1,13 +1,4 @@
 @extends('user.layouts.app')
-
-@section('title') @if(isset($user)) User Edit @else User Add @endif @endsection
-
-@push('styles_after_assets')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/custom-table.css') }}">
-@endpush
-
 @section('content')
 
 <div class="card card-h-100">

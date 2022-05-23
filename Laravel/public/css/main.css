@@ -409,7 +409,7 @@ button {
 input[type=range] {
   -webkit-appearance: none;
   border: 1px solid white;
-  width: 300px;
+  width: 190px;
   position: absolute;
   left: 0;
 }
@@ -510,3 +510,85 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 /* ========price range slider END======== */
+
+/* ========== alert error =========== */
+.lrr .alert-error, .lrr .alert-success {
+  /* margin-bottom: 20px; */
+}
+.modal .alert-error, .modal .alert-success, .modal .alert-info {
+  margin: 0px;
+  padding: 0px 20px;
+  line-height: 37px;
+  font-size: 11px;
+}
+.alert-error {
+  background: #ee5253;
+}
+.alert-success
+
+ {
+  background: #1c9722;
+}
+.alert-error, .alert-success, .alert-info {
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 30px;
+}
+/* ==========alert error end========= */
+
+/* ============== USER PANEL PAGE CSS START ============= */
+.panel-header {
+  background-color: #364b5a;
+  padding: 22px 65px;
+}
+.panel-header .n-logo img {
+  width: 100%;
+  max-width: 200px;
+}
+.panel-header .panel-r-img {
+  width: 100%;
+  max-width: 60px;
+  border-radius: 50%;
+  min-height: 60px;
+}
+.panel-header .right_logo_text {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 500;
+}
+.user-panel-content{
+  padding: 30px 43px;
+}
+.user-panel-content .left-side-content {
+  padding: 39px 26px;
+  background-color: #f5f5f5;
+  border-radius: 7px;
+  border: 1px solid #e3e3e3;
+}
+.user-panel-content .left-side-content .panel-link-title{
+  font-size: 25px;
+    font-weight: bolder;
+    margin: 17px 0;
+}
+.user-panel-content .nav .nav-item .panel-links{
+  color: #000;
+  font-size: 19px;
+  border-radius: 5px;
+  padding: 13px;
+  display: block;
+  margin: 8px 0;
+  background-color: #fff;
+}
+.user-panel-content .nav-item:hover .panel-links{
+  background-color: #2d323e;
+  color: #fff;
+}
+.user-panel-content .details-box{
+  background-color: whitesmoke;
+    padding: 20px;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+}
+/* ============== USER PANEL PAGE CSS END ============= */

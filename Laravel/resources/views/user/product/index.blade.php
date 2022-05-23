@@ -1,18 +1,4 @@
 @extends('user.layouts.app')
-
-@section('title') Product List @endsection
-
-@push('styles_after_assets')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/custom-table.css') }}">
-    <style>
-        .dataTables_length{
-            display: none;
-        }
-    </style>
-@endpush
-
 @section('content')
 
 <div class="container-fluid">
@@ -29,7 +15,7 @@
       <div class="col-lg-12">
          <div class="card">
             <div class="card-header justify-content-between d-flex align-items-right">
-               <a href="{{route('user.product.create')}}" class="btn btn-success"> New Ad <i class="mdi mdi-arrow-right align-middle"></i></a>
+               <a href="{{route('user.product.create')}}" class="btn btn-success">Create New Ad <i class="mdi mdi-arrow-right align-middle"></i></a>
             </div>
             <!-- end card header -->
             <div class="card-body">

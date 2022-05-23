@@ -1,6 +1,12 @@
 @extends('layouts.app')
-
 @section('content')
+    @if (Session::has('message'))
+        <div class="alert alert-info">{{ Session::get('message') }}</div>
+    @endif
+    <!---------- SUB TITLE SWIPER --------->
+
+
+
     <section class="main-header">
         <div class="container-fluid py_5 ">
             <div class="row align-items-center">
@@ -78,21 +84,7 @@
         </div>
     </section>
 
-    <!---------- SUB TITLE SWIPER --------->
 
-    <div class="swiper-container pt-3">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper" style="height: auto">
-            <!-- Slides -->
-            @foreach ($categories as $category)
-                <div class="swiper-slide">
-                    <a href="javascript:;" class="change-category" data-id="{{ $category->slug }}">
-                        <p class="m-0">{{ $category->name }}</p>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-    </div>
 
     <!------CATEGORY CARD SECTION START----->
     <section class="category-card py_5">
