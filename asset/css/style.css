@@ -8,7 +8,7 @@ body {
 .p-left {
   padding-left: 60px;
 }
-a{
+a {
   color: #000;
   text-decoration: none;
 }
@@ -19,12 +19,10 @@ input {
   box-shadow: none !important;
   outline: none !important;
 }
-button{
+button {
   box-shadow: none !important;
   outline: none !important;
 }
-
-
 
 /* -------horizontal line between text------ */
 .h-line-text span::before,
@@ -124,36 +122,35 @@ button{
 }
 
 /* ----MODEL POPUP FORM CSS----- */
-button.btn.model_btn{
+button.btn.model_btn {
   background: #3d627a;
   color: #fff;
 }
-button.model_btn:hover{
+button.model_btn:hover {
   background-color: #304c5c;
 }
-.createAcc_modal{
+.createAcc_modal {
   display: none;
 }
-.f-conect{
+.f-conect {
   border: 1px solid #3b5998;
   color: #3b5998;
 }
-.f-conect:hover{
- background-color: #3b5998;
- color: #fff;
+.f-conect:hover {
+  background-color: #3b5998;
+  color: #fff;
 }
-.g-conect{
+.g-conect {
   border: 1px solid #e33e2b;
   color: #e33e2b;
 }
-.g-conect:hover{
+.g-conect:hover {
   background-color: #e33e2b;
   color: #fff;
 }
-.recover_pass_modal{
+.recover_pass_modal {
   display: none;
 }
-
 
 /* ------------ SUB TITLE SWIPER ---------- */
 .sub-category p {
@@ -258,7 +255,6 @@ button.model_btn:hover{
 }
 /* ============= ALL-CATEGORIES SECTION PAGE END ============= */
 
-
 /* =============== SEARCH-RESULT PAGE START ================= */
 
 .input-group button.btn {
@@ -324,7 +320,6 @@ button {
 }
 /* =============== SEARCH-RESULT PAGE END ================= */
 
-
 /* =================SINGLE LISTING PAGE START===================== */
 .search-listing {
   background-color: #f9f9f9;
@@ -366,7 +361,6 @@ button {
 }
 /* =============SINGLE LISTING PAGE END================ */
 
-
 /* ================SELLER PAGE START=================== */
 .seller-section {
   background-color: #f9f9f9;
@@ -376,3 +370,58 @@ button {
   border-right: 1px solid lightgray;
 }
 /* ================SELLER PAGE END====================== */
+
+/* ============== USER PANEL PAGE CSS START ============= */
+.panel-header {
+  background-color: #364b5a;
+  padding: 22px 65px;
+}
+.panel-header .n-logo img {
+  width: 100%;
+  max-width: 200px;
+}
+.panel-r-img {
+  width: 100%;
+  max-width: 60px;
+  border-radius: 50%;
+  min-height: 60px;
+}
+.right_logo_text {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 500;
+}
+.user-panel-content{
+  padding: 30px 43px;
+}
+.left-side-content {
+  padding: 39px 26px;
+  background-color: #f5f5f5;
+  border-radius: 7px;
+  border: 1px solid #e3e3e3;
+}
+.left-side-content .panel-link-title{
+  font-size: 25px;
+    font-weight: bolder;
+    margin: 17px 0;
+}
+.nav .nav-item .panel-links{
+  color: #000;
+  font-size: 19px;
+  border-radius: 5px;
+  padding: 13px;
+  display: block;
+  margin: 8px 0;
+  background-color: #fff;
+}
+.nav-item:hover .panel-links{
+  background-color: #2d323e;
+  color: #fff;
+}
+.details-box{
+  background-color: whitesmoke;
+    padding: 20px;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+}
+/* ============== USER PANEL PAGE CSS END ============= */
