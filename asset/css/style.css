@@ -380,13 +380,13 @@ button {
   width: 100%;
   max-width: 200px;
 }
-.panel-r-img {
+.panel-header .panel-r-img {
   width: 100%;
   max-width: 60px;
   border-radius: 50%;
   min-height: 60px;
 }
-.right_logo_text {
+.panel-header .right_logo_text {
   color: #fff;
   font-size: 25px;
   font-weight: 500;
@@ -394,18 +394,18 @@ button {
 .user-panel-content{
   padding: 30px 43px;
 }
-.left-side-content {
+.user-panel-content .left-side-content {
   padding: 39px 26px;
   background-color: #f5f5f5;
   border-radius: 7px;
   border: 1px solid #e3e3e3;
 }
-.left-side-content .panel-link-title{
+.user-panel-content .left-side-content .panel-link-title{
   font-size: 25px;
     font-weight: bolder;
     margin: 17px 0;
 }
-.nav .nav-item .panel-links{
+.user-panel-content .nav .nav-item .panel-links{
   color: #000;
   font-size: 19px;
   border-radius: 5px;
@@ -414,11 +414,11 @@ button {
   margin: 8px 0;
   background-color: #fff;
 }
-.nav-item:hover .panel-links{
+.user-panel-content .nav-item:hover .panel-links{
   background-color: #2d323e;
   color: #fff;
 }
-.details-box{
+.user-panel-content .details-box{
   background-color: whitesmoke;
     padding: 20px;
     border: 1px solid #e3e3e3;
