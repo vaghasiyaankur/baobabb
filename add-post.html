@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baobabb</title>
+
+    <!------ BOOTSTRAP CSS LINK ------>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FONT-AWESOME CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+    <!------ FONT-FAMILEY ------>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+
+    <!------ CUSTOM CSS ----->
+    <link rel="stylesheet" href="asset/css/style.css">
+
+    <!-- RESPONSIV CSS -->
+    <link rel="stylesheet" href="asset/css/responsiv.css">
+
+</head>
+
+<body>
+    <!----- HEADER SECTION  START----->
+    <nav class="navbar navbar-expand-lg px-5 ">
+        <div class="container-fluid py-4">
+            <a class="navbar-brand" href="#">
+                <img src="asset/img/Baobab-Logo.png" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="nav-icon d-flex justify-content-evenly align-items-center">
+                    <span><a href="javascript:;"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
+                    <span><a href="javascript:;"><i class="fa-solid fa-notes-medical"></i></a></span>
+                    <span><a href="javascript:;"><i class="fa-solid fa-globe"></i></a></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!----- HEADER SECTION  END----->
+
+    <div class="add-post-section ">
+        <ul class="nav nav-pills flex-wrap mb-3 px-3" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-ads-tab" data-bs-toggle="pill" data-bs-target="#pills-ads"
+                    type="button" role="tab" aria-controls="pills-ads" aria-selected="true">Post your Ad</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-type-tab" data-bs-toggle="pill" data-bs-target="#pills-type"
+                    type="button" role="tab" aria-controls="pills-type" aria-selected="false">Post Type</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-category-tab" data-bs-toggle="pill" data-bs-target="#pills-category"
+                    type="button" role="tab" aria-controls="pills-category" aria-selected="false">Category</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-media-tab" data-bs-toggle="pill" data-bs-target="#pills-media"
+                    type="button" role="tab" aria-controls="pills-media" aria-selected="false">Media</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-description-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-description" type="button" role="tab" aria-controls="pills-description"
+                    aria-selected="false">Description</button>
+            </li>
+        </ul>
+        <!-- post type ads start -->
+        <div class="post-ad-details mb-5">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="l-ad-content">
+                        <h5 class="fw-bold mb-4 ms-4">Post Your Ad</h5>
+                        <div class="add-types border-top d-flex flex-wrap justify-content-center align-items-center ">
+                            <p class="mb-0 me-4 fw-bold">Ad type</p>
+                            <select class="form-select w-75 " aria-label="Default select example">
+                                <option selected>Please select your ad type</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="ad-n-btn d-flex flex-wrap justify-content-center align-items-center">
+                            <div class="next_btn">
+                                <a href="javascript:;" class="nextbtn_ text-white">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="r-ad-content">
+                        <div class="r-ad-title-text text-center">
+                            <h5 class="mb-0">Tips & Tricks</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- post type of post start -->
+        <div class="post-ad-details mb-5">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="l-ad-content">
+                        <h5 class="fw-bold mb-4 ms-4">Type Of Post</h5>
+                        <div class="type-checklist border-top mx-auto">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Sell (This ad type to sell and items)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Wanted (This ad type to sell and items)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Wanted (This ad type to sell and items)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Wanted (This ad type to sell and items)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="ad-n-btn d-flex justify-content-center align-items-center">
+                            <div class="previous_btn me-4">
+                                <a href="javascript:;" class="nextbtn_ ">Previous</a>
+                            </div>
+                            <div class="next_btn">
+                                <a href="javascript:;" class="nextbtn_ text-white">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="r-ad-content">
+                        <div class="r-ad-title-text text-center">
+                            <h5 class="mb-0">Tips & Tricks</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- post Category of post start -->
+        <div class="post-ad-details mb-5 ">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="l-ad-content">
+                        <h5 class="fw-bold mb-4 ms-4">Category</h5>
+                        <div class="category-check_ border-top">
+                            <div id="list1" class="dropdown-check-list" tabindex="100">
+                                <span class="anchor w-100 ">Electronics & Media</span>
+                                <ul id="items" class="items">
+                                    <li class="ms-4"><input type="checkbox" class="me-3">Apple </li>
+                                    <li class="ms-4"><input type="checkbox" class="me-3">Orange</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="ad-n-btn d-flex flex-wrap justify-content-center align-items-center">
+                            <div class="previous_btn me-4">
+                                <a href="javascript:;" class="nextbtn_ ">Previous</a>
+                            </div>
+                            <div class="next_btn">
+                                <a href="javascript:;" class="nextbtn_ text-white">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="r-ad-content">
+                        <div class="r-ad-title-text text-center">
+                            <h5 class="mb-0">Tips & Tricks</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- post User-media start -->
+        <div class="post-ad-details mb-5 ">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="l-ad-content">
+                        <h5 class="fw-bold mb-4 ms-4">Uoload Your Media</h5>
+                        <!--  -->
+                        <div class="upload-file_input border-top">
+                            <form id="file-upload-form">
+                                <input id="file-upload" type="file" name="fileUpload" />
+                                <label for="file-upload" id="file-drag">
+                                    <i class="fa-solid fa-cloud-arrow-up upload-file-icon"></i>
+                                    <br> Select a file to upload
+                                    <br />OR
+                                    <br />Drag a file into this box
+
+                                    <br /><br /><span id="file-upload-btn" class="button">Brouse a file</span>
+                                </label>
+
+                                <progress id="file-progress" value="0">
+                                    <span>0</span>%
+                                </progress>
+                                <output for="file-upload" id="messages"></output>
+                            </form>
+                            <div class="v-input d-flex flex-wrap justify-content-center align-items-center">
+                                <div class="me-2">
+                                    <label for="inputPassword6" class="col-form-label">Videos (1 max)</label>
+                                </div>
+                                <div class="w-50">
+                                    <input type="text" id="inputtext6" class="form-control "
+                                        aria-describedby="textHelpInline">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ad-n-btn p-0 d-flex flex-wrap justify-content-center align-items-center">
+                            <div class="previous_btn me-4">
+                                <a href="javascript:;" class="nextbtn_ ">Previous</a>
+                            </div>
+                            <div class="next_btn">
+                                <a href="javascript:;" class="nextbtn_ text-white">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="r-ad-content">
+                        <div class="r-ad-title-text text-center">
+                            <h5 class="mb-0">Tips & Tricks</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- post Description start -->
+        <div class="post-ad-details mb-5 ">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="l-ad-content">
+                        <h5 class="fw-bold mb-4 ms-4">Provide The Description</h5>
+                        <div class="descript-section border-top">
+                            <div class="mb-3 d-flex flex-wrap ">
+                                <label for="exampleFormControlTextarea1" class="form-label fw-bold me-2">Description</label>
+                                <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="3" style="height:290px;"></textarea>
+                            </div>
+                            <div class="price-div d-flex flex-wrap justify-content-between align-items-center ">
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <label class="me-2" for="specificSizeSelect">Curency</label>
+                                    <select class="form-select" style="width:200px;" id="specificSizeSelect">
+                                        <option selected="">Le (LE)...</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                                <div class="d-flex flex-wrap align-items-center ">
+                                    <label class="me-2" for="specificSizeInputName">Price</label>
+                                    <input type="text" class="form-control w-50" id="specificSizeInputName" placeholder="Jane Doe">
+                                    <div class="">
+                                        <div class="price_div_check-box">
+                                            <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+                                            <label class="form-check-label" for="autoSizingCheck2">
+                                                Negotiable
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex  align-items-center mt-4 mb-3">
+                                <label class="me-3" for="specificSizeSelect">City</label>
+                                <select class="form-select " id="specificSizeSelect">
+                                    <option selected=""></option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="d-flex flex-wrap align-items-center ">
+                                <label class="me-2" for="specificSizeInputName">Tags</label>
+                                <input type="text" class="form-control"style="width:96%;"  id="specificSizeInputName">
+                                <span class="ms-5 fs-6">Enter the tags seprect by commans or process the Enter button on your keybord
+                                    after each tags. <br> The number of tags cannot exect 15. </span>
+                            </div>
+                            <div class="d-flex align-items-center  mt-3 ms-1">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+                                    <lable for="autoSizingCheck2">I have read and agree to the <b>Terms &amp; Conditions</b></lable>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="ad-n-btn d-flex flex-wrap justify-content-center align-items-center p-0">
+                            <div class="previous_btn me-4">
+                                <a href="javascript:;" class="nextbtn_ ">Previous</a>
+                            </div>
+                            <div class="next_btn">
+                                <a href="javascript:;" class="nextbtn_ text-white">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="r-ad-content">
+                        <div class="r-ad-title-text text-center">
+                            <h5 class="mb-0">Tips & Tricks</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!----- FOOTER SECTION START ------>
+    <footer class="footer-section px-5">
+        <div class="row  align-items-center py-3 text-center text-lg-start ">
+            <div class="col-md-4 col-12 pb-2 pb-sm-0">
+                <h6 class="m-0 pe-lg-5">Copyright © 2022 Baobabb | Hello Media Group </h6>
+            </div>
+            <div class="col-md-6 col-12">
+                <nav class="nav justify-content-center justify-content-lg-start flex-column flex-sm-row">
+                    <a class="nav-link text-white" aria-current="page" href="#">Privacy policy</a>
+                    <a class="nav-link text-white" href="#">Tearm of Service</a>
+                    <a class="nav-link text-white" href="#">Help Desk</a>
+                    <a class="nav-link text-white" href="#">Service Status</a>
+                </nav>
+            </div>
+            <div class="col-md-2 col-12 ">
+                <div
+                    class="footer-icon d-flex flex-direction-row justify-content-lg-end justify-content-center pt-3 pt-sm-0">
+                    <i class="fa-brands fa-facebook-square px-2"></i>
+                    <i class="fa-brands fa-twitter px-2"></i>
+                    <i class="fa-brands fa-instagram px-2"></i>
+                    <i class="fa-brands fa-linkedin-in px-2"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!----- FOOTER SECTION END ------>
+
+    <!-- JQ JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- BOOTSTARP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-------category select-checkboc js--------->
+    <script>
+        var checkList = document.getElementById('list1');
+        var items = document.getElementById('items');
+        checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
+            if (items.classList.contains('visible')) {
+                items.classList.remove('visible');
+                items.style.display = "none";
+            } else {
+                items.classList.add('visible');
+                items.style.display = "block";
+            }
+
+        }
+
+        items.onblur = function (evt) {
+            items.classList.remove('visible');
+        }
+    </script>
+
+    <!-------UPLOAD FILE INPUT JS--------->
+    <script>
+            (function () {
+                function Init() {
+                    var fileSelect = document.getElementById('file-upload'),
+                        fileDrag = document.getElementById('file-drag'),
+                        submitButton = document.getElementById('submit-button');
+
+                    fileSelect.addEventListener('change', fileSelectHandler, false);
+
+                    // Is XHR2 available?
+                    var xhr = new XMLHttpRequest();
+                    if (xhr.upload) {
+                        // File Drop
+                        fileDrag.addEventListener('dragover', fileDragHover, false);
+                        fileDrag.addEventListener('dragleave', fileDragHover, false);
+                        fileDrag.addEventListener('drop', fileSelectHandler, false);
+                    }
+                }
+
+                function fileDragHover(e) {
+                    var fileDrag = document.getElementById('file-drag');
+
+                    e.stopPropagation();
+                    e.preventDefault();
+
+                    fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+                }
+
+                function fileSelectHandler(e) {
+                    // Fetch FileList object
+                    var files = e.target.files || e.dataTransfer.files;
+
+                    // Cancel event and hover styling
+                    fileDragHover(e);
+
+                    // Process all File objects
+                    for (var i = 0, f; f = files[i]; i++) {
+                        parseFile(f);
+                        uploadFile(f);
+                    }
+                }
+
+                function output(msg) {
+                    var m = document.getElementById('messages');
+                    m.innerHTML = msg;
+                }
+
+                function parseFile(file) {
+                    output(
+                        '<ul>'
+                        + '<li>Name: <strong>' + encodeURI(file.name) + '</strong></li>'
+                        + '<li>Type: <strong>' + file.type + '</strong></li>'
+                        + '<li>Size: <strong>' + (file.size / (1024 * 1024)).toFixed(2) + ' MB</strong></li>'
+                        + '</ul>'
+                    );
+                }
+
+                function setProgressMaxValue(e) {
+                    var pBar = document.getElementById('file-progress');
+
+                    if (e.lengthComputable) {
+                        pBar.max = e.total;
+                    }
+                }
+
+                function updateFileProgress(e) {
+                    var pBar = document.getElementById('file-progress');
+
+                    if (e.lengthComputable) {
+                        pBar.value = e.loaded;
+                    }
+                }
+
+                function uploadFile(file) {
+
+                    var xhr = new XMLHttpRequest(),
+                        fileInput = document.getElementById('class-roster-file'),
+                        pBar = document.getElementById('file-progress'),
+                        fileSizeLimit = 1024;	// In MB
+                    if (xhr.upload) {
+                        // Check if file is less than x MB
+                        if (file.size <= fileSizeLimit * 1024 * 1024) {
+                            // Progress bar
+                            pBar.style.display = 'inline';
+                            xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
+                            xhr.upload.addEventListener('progress', updateFileProgress, false);
+
+                            // File received / failed
+                            xhr.onreadystatechange = function (e) {
+                                if (xhr.readyState == 4) {
+                                    // Everything is good!
+
+                                    // progress.className = (xhr.status == 200 ? "success" : "failure");
+                                    // document.location.reload(true);
+                                }
+                            };
+
+                            // Start upload
+                            xhr.open('POST', document.getElementById('file-upload-form').action, true);
+                            xhr.setRequestHeader('X-File-Name', file.name);
+                            xhr.setRequestHeader('X-File-Size', file.size);
+                            xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+                            xhr.send(file);
+                        } else {
+                            output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
+                        }
+                    }
+                }
+
+                // Check for the various File API support.
+                if (window.File && window.FileList && window.FileReader) {
+                    Init();
+                } else {
+                    document.getElementById('file-drag').style.display = 'none';
+                }
+            })();
+    </script>
+</body>
+
+</html>

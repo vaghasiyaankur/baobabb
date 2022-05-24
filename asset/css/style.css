@@ -391,7 +391,7 @@ button {
   font-size: 25px;
   font-weight: 500;
 }
-.user-panel-content{
+.user-panel-content {
   padding: 30px 43px;
 }
 .user-panel-content .left-side-content {
@@ -400,12 +400,12 @@ button {
   border-radius: 7px;
   border: 1px solid #e3e3e3;
 }
-.user-panel-content .left-side-content .panel-link-title{
+.user-panel-content .left-side-content .panel-link-title {
   font-size: 25px;
-    font-weight: bolder;
-    margin: 17px 0;
+  font-weight: bolder;
+  margin: 17px 0;
 }
-.user-panel-content .nav .nav-item .panel-links{
+.user-panel-content .nav .nav-item .panel-links {
   color: #000;
   font-size: 19px;
   border-radius: 5px;
@@ -414,14 +414,259 @@ button {
   margin: 8px 0;
   background-color: #fff;
 }
-.user-panel-content .nav-item:hover .panel-links{
+.user-panel-content .nav-item:hover .panel-links {
   background-color: #2d323e;
   color: #fff;
 }
-.user-panel-content .details-box{
+.user-panel-content .details-box {
   background-color: whitesmoke;
-    padding: 20px;
-    border: 1px solid #e3e3e3;
-    border-radius: 6px;
+  padding: 20px;
+  border: 1px solid #e3e3e3;
+  border-radius: 6px;
 }
 /* ============== USER PANEL PAGE CSS END ============= */
+
+/* ============ ADD POST PAGE CSS START ============== */
+.add-post-section {
+  padding: 32px 100px;
+}
+.add-post-section ul {
+  background-color: whitesmoke;
+  border: 1px solid #e3e3e3;
+  font-size: 19px;
+}
+.add-post-section .nav-pills .nav-link.active {
+  color: #000;
+  background-color: transparent;
+}
+.add-post-section .nav-pills .nav-link {
+  color: grey;
+  margin-right: 20px;
+}
+
+/* ============ ADD POST PAGE CSS START ============== */
+
+.post-ad-details .l-ad-content {
+  background-color: whitesmoke;
+  border: 1px solid #e3e3e3;
+  padding: 30px 0px;
+  min-height: 440px;
+}
+.post-ad-details .r-ad-content {
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  min-height: 440px;
+}
+.post-ad-details .r-ad-content .r-ad-title-text {
+  background-color: #364b5a;
+  color: #fff;
+  padding: 15px;
+}
+.post-ad-details .border-top {
+  border-top: 1px solid #e3e3e3;
+}
+.l-ad-content .add-types {
+  padding: 39px 0px;
+}
+.l-ad-content .add-types .form-select:focus {
+  box-shadow: none;
+  border: #c7c3c3;
+}
+.ad-n-btn .previous_btn {
+  padding: 7px 28px;
+  max-width: 123px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 19px;
+}
+.ad-n-btn .next_btn {
+  padding: 7px 28px;
+  max-width: 123px;
+  background-color: #364b5a;
+  color: #fff;
+  font-size: 19px;
+  border-radius: 4px;
+}
+.post-ad-details .l-ad-content .ad-n-btn {
+  padding-top: 190px;
+}
+.post-ad-details .l-ad-content .type-checklist {
+  padding: 39px 100px;
+  font-size: 18px;
+}
+.post-ad-details .l-ad-content .type-checklist .form-check-input:checked {
+  background-color: #364b5a;
+  border-color: #364b5a;
+}
+
+/* ---------------CATEGORY CHECK BOX CSS START--------------- */
+.category-check_ .dropdown-check-list {
+  display: block;
+}
+.category-check_ .dropdown-check-list .anchor {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 50px 5px 10px;
+  border-bottom: 1px solid #ccc;
+}
+.category-check_ .dropdown-check-list .anchor:after {
+  position: absolute;
+  content: "";
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  padding: 5px;
+  right: 10px;
+  top: 20%;
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+.category-check_ .dropdown-check-list .anchor:active:after {
+  right: 8px;
+  top: 21%;
+}
+.category-check_ .dropdown-check-list ul.items {
+  padding: 4px;
+  display: none;
+  margin: 0;
+  border-bottom: 1px solid #ccc !important;
+  border: none;
+}
+.category-check_ .dropdown-check-list ul.items li {
+  list-style: none;
+}
+.category-check_ {
+  padding: 20px;
+  font-size: 19px;
+}
+/* -------UPLOAD MEDIA INPUT---------- */
+.upload-file_input .button {
+  background: #364b5a;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  display: inline-block;
+  font-size: 19px;
+  font-weight: bolder;
+  letter-spacing: 0.02em;
+  padding: 10px 20px;
+  text-align: center;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.upload-file_input .btn:active {
+  background: #49ade5;
+}
+
+.upload-file_input input[type="file"] {
+  display: none;
+}
+
+.upload-file_input #file-drag {
+  border: 2px dashed #555;
+  border-radius: 7px;
+  background-color: #fff;
+  color: #555;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  margin: 1em 0;
+  padding: 3em;
+  text-align: center;
+}
+.upload-file_input #file-progress {
+  display: none;
+  margin: 1em auto;
+  width: 100%;
+}
+
+.upload-file_input #file-upload-btn {
+  margin: auto;
+}
+
+.upload-file_input #file-upload-form {
+  margin: auto;
+  width: 60%;
+}
+
+.upload-file_input progress {
+  appearance: none;
+  background: #eee;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  height: 30px;
+}
+
+.upload-file_input progress[value]::-webkit-progress-value {
+  background: -webkit-linear-gradient(
+      -45deg,
+      transparent 33%,
+      rgba(0, 0, 0, 0.2) 33%,
+      rgba(0, 0, 0, 0.2) 66%,
+      transparent 66%
+    ),
+    -webkit-linear-gradient(right, #005f95, #07294d);
+  background: linear-gradient(
+      -45deg,
+      transparent 33%,
+      rgba(0, 0, 0, 0.2) 33%,
+      rgba(0, 0, 0, 0.2) 66%,
+      transparent 66%
+    ),
+    linear-gradient(right, #005f95, #07294d);
+  background-size: 60px 30px, 100% 100%, 100% 100%;
+  border-radius: 3px;
+}
+
+.upload-file_input progress[value]::-moz-progress-bar {
+  background: -moz-linear-gradient(
+      -45deg,
+      transparent 33%,
+      rgba(0, 0, 0, 0.2) 33%,
+      rgba(0, 0, 0, 0.2) 66%,
+      transparent 66%
+    ),
+    -moz-linear-gradient(right, #005f95, #07294d);
+  background: linear-gradient(
+      -45deg,
+      transparent 33%,
+      rgba(0, 0, 0, 0.2) 33%,
+      rgba(0, 0, 0, 0.2) 66%,
+      transparent 66%
+    ),
+    linear-gradient(right, #005f95, #07294d);
+  background-size: 60px 30px, 100% 100%, 100% 100%;
+  border-radius: 3px;
+}
+/* ------------UPLOAD FILE INPUT CSS END------------ */
+.post-ad-details .upload-file_input {
+  padding: 20px;
+}
+.post-ad-details .upload-file_input .upload-file-icon {
+  font-size: 67px;
+}
+.v-input input:active {
+  box-shadow: none;
+  border: none;
+}
+/* -------------DESCRIPTION CSS--------------- */
+.post-ad-details .l-ad-content .descript-section {
+  padding: 39px 0px;
+    padding-left: 120px;
+    padding-right: 80px;
+}
+.post-ad-details .price-div .price_div_check-box {
+  background-color: #eaecef;
+  padding: 6px 12px;
+}
+.post-ad-details .form-select:focus{
+  box-shadow: none;
+}
+
