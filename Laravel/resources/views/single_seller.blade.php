@@ -72,6 +72,16 @@
                 {{-- <input type="email" class="form-control border-0 border-bottom" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search for..."> --}}
             </div>
         </div>
+        {{---------------------------------Testimonials--------------------------}}
+        <div class="seller-add d-flex justify-content-between align-items-center py-4 px-4 bg-white mt-5">
+            <div class="">
+                <h4 class="fw-bold m-0">Testimonials</h4>
+            </div>
+            <div class="">
+                {{-- <input type="email" class="form-control border-0 border-bottom" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search for..."> --}}
+            </div>
+        </div>
+        
         <div class="row mt-4 ">
             @foreach ($products as $pr)
                 <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 ">

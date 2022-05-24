@@ -38,10 +38,11 @@ class ProductController extends Controller
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-     
-                           $btn = '<a href="/user/product/'.$row->id.'/edit" class="edit btn btn-white border btn-sm">Edit  </a>';
-    
-                            return $btn;
+                        $btn = '<div class="d-flex">';
+                        $btn .= '<a href="/user/product/'.$row->id.'/edit" class="edit btn border btn-sm m-1">Edit</a>';
+                        $btn .= '<form method="POST" action="/user/product/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit border btn btn-sm m-1">Delete</button></form>';
+                        $btn .= '</div>';
+                        return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
@@ -199,6 +200,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Product::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

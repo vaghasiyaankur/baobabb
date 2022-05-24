@@ -25,6 +25,11 @@
 </footer>
 <!----- FOOTER SECTION END ------>
 
+<!-- SLICK SLIDER -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.0/js/swiper.js"></script>
+
 <!-- JQ JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
@@ -33,8 +38,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
+<!---------SUB TITLE SWIPER JS--------->
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Assign some jquery elements we'll need
         var $swiper = $(".swiper-container");
         var $bottomSlide = null; // Slide whose content gets 'extracted' and placed
@@ -46,10 +52,10 @@
         var mySwiper = new Swiper(".swiper-container", {
             spaceBetween: 1,
             slidesPerView: 9,
-            centeredSlides: true,
+            centeredSlides: false,
             roundLengths: true,
             loop: false,
-            loopAdditionalSlides: 30,
+            loopAdditionalSlides: 10,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev"
@@ -156,21 +162,21 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                     _token: '{{ csrf_token() }}'
                 },
                 error: function($err) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'credentials not match',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+                    $("#login_alert_error").html("The credentials are invalid.")
+                    console.log($err)
+                    // Swal.fire({
+                    //     icon: 'error',
+                    //     title: 'credentials not match',
+                    //     showConfirmButton: false,
+                    //     timer: 1500
+                    // })
                 },
                 success: function(result) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Login Sucessfull',
-                        showConfirmButton: false,
-                        timer: 3000
-                    })
-                    location.reload(true);
+                    $("#login_alert_error").html("")
+                    $("#login_alert_success").html("You are connected, wait a second.")
+                    setTimeout(function() {
+                        location.reload(true);
+                    }, 2000);
                 }
             });
         }
@@ -221,12 +227,13 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                     _token: '{{ csrf_token() }}'
                 },
                 error: function($err) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'failed',
-                        showConfirmButton: false,
-                        timer: 1000
-                    })
+                    $("#register_alert_error").html("Failed.")
+                    // Swal.fire({
+                    //     icon: 'error',
+                    //     title: 'failed',
+                    //     showConfirmButton: false,
+                    //     timer: 1000
+                    // })
                     var error = $err['responseJSON']['errors']
                     if (error['email']) {
                         $("#reg_email").siblings(".error").html(error['email'][0])
@@ -240,13 +247,17 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                     console.log(error)
                 },
                 success: function(result) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Register Sucessfull',
-                        showConfirmButton: false,
-                        timer: 3000
-                    })
-                    location.reload(true);
+                    $("#register_alert_error").html("")
+                    $("#register_alert_success").html("Please verify your mail.")
+                    // Swal.fire({
+                    //     icon: 'success',
+                    //     title: 'Register Sucessfull',
+                    //     showConfirmButton: false,
+                    //     timer: 3000
+                    // })
+                    setTimeout(function() {
+                        location.reload(true);
+                    }, 2000);
                 }
             });
         }
@@ -272,30 +283,22 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
             $("#forget_email").siblings(".error").html("Please Enter Valid Email")
         } else {
             $.ajax({
-                url: "{{ route('password.email') }}",
+                url: "{{ route('user.forgot.password') }}",
                 type: "POST",
                 data: {
                     email: mail,
                     _token: '{{ csrf_token() }}'
                 },
                 error: function($err) {
-                //     Swal.fire({
-                //         icon: 'error',
-                //     title: 'credentials not match',
-                //     showConfirmButton: false,
-                //     timer: 1500
-                // })
+                    var error = $err['responseJSON']['errors']
                     console.log($err)
+                    if (error['email']) {
+                        $("#forget_email").siblings(".error").html("This Email is not Exist.")
+                    }
                 },
                 success: function(result) {
-                //     Swal.fire({
-                //     icon: 'success',
-                //     title: 'Login Sucessfull',
-                //     showConfirmButton: false,
-                //     timer: 3000
-                // })
-                // location.reload(true);
-                    console.log(result)
+                    $("#forgor_sent").html("Please Check your mail.")
+                    // console.log(result)
                 }
             });
         }

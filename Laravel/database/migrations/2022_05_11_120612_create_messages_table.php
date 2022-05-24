@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_to');
-            $table->foreign('user_to')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('user_from');
-            $table->foreign('user_from')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('to_user');
+            $table->foreign('to_user')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('from_user');
+            $table->foreign('from_user')->references('id')->on('users')->onDelete('cascade');
             $table->text('message');
             $table->softDeletes();
             $table->timestamps();
