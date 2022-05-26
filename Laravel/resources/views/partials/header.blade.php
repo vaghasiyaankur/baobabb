@@ -1,8 +1,10 @@
  <?php
     $categories = App\Models\Category::all();
+    $url = \Request::getRequestUri();
  ?>
  <!----- HEADER SECTION  START----->
- <nav class="sticky-top">
+ <style></style>
+ <nav class="">
      <div class="navbar navbar-expand-lg py_5 ">
 
          <div class="container-fluid py-4">
@@ -14,6 +16,12 @@
                  <i class="fa-solid fa-bars"></i>
              </button>
              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <div class="search_h_container mx-auto">
+                    <form class="header_serch" action="{{route('category','all')}}" method="GET">
+                        <input class="h_s_input" type="text" placeholder="Search for anything..." name="search">
+                        <button type="" class="h_serch_i"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
                  <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                      <li class="nav-item">
                          <a class="nav-link active text-white" aria-current="page" href="#">Anti-Scam</a>
@@ -227,22 +235,24 @@
          </div>
      </div>
 
-     <div class="bg-light">
-         <div class="swiper-container p-3">
-             <!-- Additional required wrapper -->
-             <div class="swiper-wrapper" style="height: auto">
-                <!-- Slides -->
-                @foreach ($categories as $category)
-                <div class="swiper-slide">
-                    <a href="javascript:;" class="change-category" data-id="{{ $category->slug }}">
-                        <p class="m-0">{{ $category->name }}</p>
-                    </a>
+     @if($url != '/')
+        <div class="bg-light">
+            <div class="swiper-container p-3">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper" style="height: auto">
+                    <!-- Slides -->
+                    @foreach ($categories as $category)
+                    <div class="swiper-slide">
+                        <a href="{{route('category',$category->slug)}}" class="change-category" data-id="{{ $category->slug }}">
+                            <p class="m-0">{{ $category->name }}</p>
+                        </a>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
         </div>
-    </div>
+    @endif
  </nav>

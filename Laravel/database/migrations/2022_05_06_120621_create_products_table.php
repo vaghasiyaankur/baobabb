@@ -24,10 +24,10 @@ return new class extends Migration
             $table->string('type_of');
             $table->string('cash');
             $table->string('condition');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->string('lat');
             $table->string('long');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->string('gallery')->nullable();
             $table->string('video')->nullable();
             $table->text('description')->nullable();

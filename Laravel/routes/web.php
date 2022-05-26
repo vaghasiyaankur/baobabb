@@ -70,7 +70,16 @@ Route::group(['middleware' => ['auth','verified'],'prefix' => 'user', 'as' => 'u
     // Route::post('messages', 'App\Http\Controllers\MessageController@sendMessage');
 });
 
-
+    // admin login 
+    Route::get('admin/login', 'App\Http\Controllers\admin\Auth\LoginController@showLoginForm')->name('admin.login');
+	Route::post('admin/login', 'App\Http\Controllers\admin\Auth\LoginController@login')->name('admin.login');
+	Route::get('admin/logout', 'App\Http\Controllers\admin\Auth\LoginController@logout')->name('admin.logout');
+	
+	// Password Reset Routes...
+	Route::get('admin/password/reset', 'App\Http\Controllers\admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+	Route::post('admin/password/email', 'App\Http\Controllers\admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+	Route::get('admin/password/reset/{token}', 'App\Http\Controllers\admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset')->where('token', '.+');
+	Route::post('admin/password/reset', 'App\Http\Controllers\admin\Auth\ResetPasswordController@reset')->name('admin.password.update');
 Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], function () { 
     Route::get('/',function(){
         return redirect()->route('admin.dashboard');
@@ -81,6 +90,7 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']);   
     Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);   
     Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);   
+    Route::resource('product/type', 'App\Http\Controllers\admin\ProductTypeController', ['names'=> 'product.type']);   
     Route::resource('product', 'App\Http\Controllers\admin\ProductController', ['names'=> 'product']);   
     Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
 });

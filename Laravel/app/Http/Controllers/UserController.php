@@ -97,6 +97,7 @@ class UserController extends Controller
 
     public function profile_update(Request $request)
     {
+        // dd($request);
         $user = User::find(auth()->user()->id);
         // store avatar image
         if($request->avatar)

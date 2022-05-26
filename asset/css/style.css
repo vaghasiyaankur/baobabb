@@ -508,8 +508,6 @@ button {
   margin-right: 20px;
 }
 
-/* ============ ADD POST PAGE CSS START ============== */
-
 .post-ad-details .l-ad-content {
   background-color: whitesmoke;
   border: 1px solid #e3e3e3;
@@ -720,7 +718,7 @@ button {
   box-shadow: none;
   border: none;
 }
-/* -------------DESCRIPTION CSS--------------- */
+/* / -------------DESCRIPTION CSS--------------- / */
 .post-ad-details .l-ad-content .descript-section {
   padding: 39px 0px;
     padding-left: 120px;
@@ -732,5 +730,15 @@ button {
 }
 .post-ad-details .form-select:focus{
   box-shadow: none;
+}
+.post-ad-details .descript-section .form-select{
+  width: 92%;
+}
+.post-ad-details .descript-section label{
+  width: 85px;
+}
+.descript-section .term_and_condition{
+  width: 83%;
+  margin: 0 auto;
 }
 
