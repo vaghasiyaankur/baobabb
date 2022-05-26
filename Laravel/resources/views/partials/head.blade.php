@@ -24,6 +24,9 @@
     {{-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> --}}
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
+    {{--  flag  --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/flag-icon-css/flag-icon.min.css') }}">
+
 
     <!------ CUSTOM CSS ----->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">

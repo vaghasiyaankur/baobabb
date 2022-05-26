@@ -55,10 +55,16 @@ class CurrencyController extends Controller
      */
     public function store(StoreCurrencyRequest $request)
     {
+        // dd($request->all());
         $currency = new Currency;
-        $currency->country_id = $request->country_id;
         $currency->name = $request->name;
         $currency->symbol = $request->symbol;
+        $currency->code = $request->code;
+        $currency->entities = $request->entities;
+        $currency->symbol_left = $request->symbol_left;
+        $currency->decimal_place = $request->decimal_place;
+        $currency->decimal_seprator = $request->decimal_seprator;
+        $currency->thousand_operator = $request->thousand_operator;
         $currency->save();
         return redirect()->route('admin.currency.index');
     }
@@ -97,9 +103,14 @@ class CurrencyController extends Controller
     public function update(UpdateCurrencyRequest $request, $id)
     {
         $currency = Currency::findOrFail($id);
-        $currency->country_id = $request->country_id;
         $currency->name = $request->name;
         $currency->symbol = $request->symbol;
+        $currency->code = $request->code;
+        $currency->entities = $request->entities;
+        $currency->symbol_left = $request->symbol_left;
+        $currency->decimal_place = $request->decimal_place;
+        $currency->decimal_seprator = $request->decimal_seprator;
+        $currency->thousand_operator = $request->thousand_operator;
         $currency->save();
         return redirect()->route('admin.currency.index');
     }

@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ProductTypeSeeder::class,
             ProductSeeder::class,
+            ContinentSeeder::class,
+            LanguageSeeder::class
         ]);
     }
 }

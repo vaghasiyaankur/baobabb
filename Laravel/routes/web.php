@@ -93,4 +93,5 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('product/type', 'App\Http\Controllers\admin\ProductTypeController', ['names'=> 'product.type']);   
     Route::resource('product', 'App\Http\Controllers\admin\ProductController', ['names'=> 'product']);   
     Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
+    Route::resource('language', 'App\Http\Controllers\admin\LanguageController', ['names'=> 'language']);   
 });

@@ -1029,3 +1029,43 @@ input[type=range]:focus::-ms-fill-upper {
   top: 10px;
   font-size: 18px;
 }
+
+/* languages dropdown model */
+.dropdown11 ul {
+  list-style: none;
+  position: absolute;
+  width: 100%;
+  min-width: 150px;
+  max-height: 240px;
+  padding-left: 0;
+  right: 0;
+  top: 50px;
+  background: #fff;
+  color: #000;
+  border-radius: 5px;
+  overflow-y: scroll;
+}
+
+.dropdown11 ul li {
+  padding: 0px 16px;
+  height: 0px;
+  overflow: hidden;
+ 
+}
+
+.dropdown11 ul li:hover,
+.dropdown11 ul li.selected {
+  background: rgb(222, 221, 221);
+  color: #000;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  width: auto;
+  border-radius: 5px;
+}
+
+.dropdown11:hover ul li {
+  padding: 8px 16px;
+  height: 34px;
+}
+.nav-icon {
+  position: relative;
+}
