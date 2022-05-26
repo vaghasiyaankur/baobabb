@@ -23,21 +23,15 @@ class HomeController extends Controller
     public $countryName;
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {      
+        $this->middleware(function ($request, $next) {     
+            $position = Location::get('2405:201:200c:b83f:1495:de75:fa9b:6b92'); 
+            $this->countryName = $position->countryName;
             if(auth()->user()){
                 $country = Country::find(auth()->user()->country);
                 if($country)
                 {
                     $this->countryName = $country->name;
                 }
-                else
-                {
-                    $this->countryName = $_COOKIE['country'];
-                }
-            }
-            else
-            {
-                $this->countryName = $_COOKIE['country'];
             }
             return $next($request);
         });

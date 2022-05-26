@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\ProductType;
 
 class ProductTypeSeeder extends Seeder
 {
@@ -14,8 +15,9 @@ class ProductTypeSeeder extends Seeder
      */
     public function run()
     {
-        $entries = [
+        ProductType::insert([
 			[
+                'id'    =>  1,
 				'name'   => 'Private individual',
 				'lft'    => null,
 				'rgt'    => null,
@@ -23,17 +25,15 @@ class ProductTypeSeeder extends Seeder
 				'active' => '1',
 			],
 			[
+                'id'    =>  2,
 				'name'   =>'Professional',
 				'lft'    => null,
 				'rgt'    => null,
 				'depth'  => null,
 				'active' => '1',
 			],
-		];
+		]);
 		
-		$tableName = (new ProductType())->getTable();
-		foreach ($entries as $entry) {
-			$entryId = DB::table($tableName)->insertGetId($entry);
-		}
+
     }
 }
