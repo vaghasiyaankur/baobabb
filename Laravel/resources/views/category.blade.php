@@ -28,16 +28,16 @@
 
                     <!-- CATEGORY CHECK LIST -->
                     <h5 class="pb-2">Categories</h5>
-                    {{-- <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6" type="radio" name="category" value="all"
-                            id="flexCheck">
-                        <label class="form-check-label" for="flexCheck"> All </label>
-                    </div> --}}
+                    <div class="form-check pb-1">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" type="radio" name="category" value="all"
+                            id="all-cat" @if($category == 'all')checked @endif>
+                        <label class="form-check-label" for="all-cat"> All </label>
+                    </div>
                     @foreach ($categories as $cat)
                         <div class="form-check pb-1">
                             <input class="form-check-input rounded-pill fs-6 filter-data" type="radio" name="category"
                                 value="{{ $cat->slug }}" id="category-{{ $cat->id }}"
-                                @if ($cat->id == $category->id) checked @endif>
+                                @if ($cat == $category) checked @endif>
                             <label class="form-check-label" for="category-{{ $cat->id }}">
                                 {{ $cat->name }}
                             </label>
@@ -148,8 +148,10 @@
                     <div class="col-12 bg-white ">
                         <div class="search-title d-flex flex-wrap justify-content-between align-items-center py-4 px-3">
                             <div>
-                                <h4 class="m-0 fw-bold">Showing {{($products->currentpage()-1)*$products->perpage()+1}} to {{$products->currentpage()*$products->perpage()}}
-                                    of  {{$products->total()}} entries</h4>
+                                <h4 class="m-0 fw-bold">Showing
+                                    {{ ($products->currentpage() - 1) * $products->perpage() + 1 }} to
+                                    {{ $products->currentpage() * $products->perpage() }}
+                                    of {{ $products->total() }} entries</h4>
                             </div>
                             <div class="d-flex pt-4 pt-md-0">
                                 <div class="input-group pe-2">
@@ -170,7 +172,15 @@
                         </div>
                     </div>
                     <!-- card start -->
-                    @include('product-block')
+                    <div id="product-data">
+                        <div class="row">
+                            @foreach ($products as $product)
+                                <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                    @include('product-block')
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
 
                     {!! $products->withQueryString()->links('pagination::bootstrap-5') !!}
 

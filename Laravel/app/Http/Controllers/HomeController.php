@@ -54,27 +54,52 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $results = Product::orderBy('id')->paginate(18);
+        // dD(count($results->items()));
+        $artilces = '';
+        if ($request->ajax()) {
+                if(count($results->items()) > 0)
+                {
+                    $artilces = view('product-render',['products'=>$results])->render();
+                }
+            return $artilces;
+        }
+        
         $categories = Category::all();
-        $products = Product::where('country', $this->countryName)->with('category')->with('currency')->get();
-        // dd($products);
+        return view('welcome',compact('categories'));
+    $products = Product::where('country', $this->countryName)->with('category')->with('currency')->paginate(12);
+        // dd($products[100]);
+        // dd($products->currentPage());
         return view('welcome',compact('categories','products'));
     }
 
     public function category($slug,Request $request)
     {
-        // dd($request);
+        // dd($slug);
         $max = Product::min('price');
         
         $type = '';
         $condition = '';
         $categories = Category::all();
-        $category = Category::where('slug', $slug)->first();
-        $products = Product::where('category_id',$category->id)->where('country',$this->countryName)->with('category')->get();
+        if($slug == 'all')
+        {
+            $category = 'all';
+            $products = Product::where('country', $this->countryName)->where('expire','0')->with('category')->get();
+        }
+        else 
+        {
+            $category = Category::where('slug', $slug)->first();
+            $products = Product::where('category_id',$category->id)->where('country',$this->countryName)->with('category')->get();
+        }
         $priceMin =  $products->min('price');
         $priceMax =  $products->max('price');
         $min_price = $priceMin;
         $max_price = $priceMax;
-        // dd($min_price);
+        // dd($products);
+        if($request->has('search'))
+        {
+            $products = Product::where('country', $this->countryName)->where('expire','0')->with('category')->where('name', 'LIKE', "%{$request->search}%")->get();
+        }
         if($request->has('price'))
         {
             $price = explode(',',$request->price);
@@ -107,15 +132,15 @@ class HomeController extends Controller
     public function product($slug)
     {
         $gallery = [];
-        $product = Product::where('slug',$slug)->with('category')->with('currency')->first();
+        $product = Product::where('country', $this->countryName)->where('slug',$slug)->with('category')->with('currency')->first();
         if($product->gallery)
         {
             $gallery = json_decode($product->gallery);
         }
         // dd($gallery);
         $seller = User::where('id',$product->seller_id)->first();
-        $user_products = Product::where('seller_id', $product->seller_id)->with('category')->with('currency')->get();
-        $s_products = Product::where('category_id', $product->category_id)->with('category')->with('currency')->get();
+        $user_products = Product::where('country', $this->countryName)->where('seller_id', $product->seller_id)->with('category')->with('currency')->get();
+        $s_products = Product::where('country', $this->countryName)->where('category_id', $product->category_id)->with('category')->with('currency')->get();
         // dd($product);
         return view('product',compact('product','seller','user_products','s_products','gallery'));
     }
@@ -143,7 +168,7 @@ class HomeController extends Controller
     public function searchProduct(Request $request)
     {
         // dd($request);
-        $products = Product::where('name', 'LIKE', '%'.$request->name.'%')->where('category_id',$request->category_id)->where('lat',$request->latitude)->where('long',$request->longitude)->with('category')->with('currency')->paginate(20);
+        $products = Product::where('country', $this->countryName)->where('name', 'LIKE', '%'.$request->name.'%')->where('category_id',$request->category_id)->where('lat',$request->latitude)->where('long',$request->longitude)->with('category')->with('currency')->paginate(20);
         $category = Category::where('id', $request->category_id)->first();
 
 
@@ -162,7 +187,7 @@ class HomeController extends Controller
     public function changeCategory($slug)
     {
         $category = Category::where('slug',$slug)->first();
-        $products = Product::where('category_id',$category->id)->with('currency')->get();
+        $products = Product::where('country', $this->countryName)->where('category_id',$category->id)->with('currency')->get();
         $data = '';
         $data .= '<div class="row" id="category-product">';
         foreach ($products as $product)

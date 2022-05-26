@@ -52,7 +52,7 @@
 
 <script>
      $(function () {
-        var page = 5;
+        var page = 10;
         var table = $('#brand_list').DataTable({
             processing: true,
             serverSide: true,

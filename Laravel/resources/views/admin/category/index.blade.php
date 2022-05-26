@@ -38,7 +38,7 @@
                      <tr class="tr_bg">
                         <th>CATEGORY ID</th>
                         <th>NAME</th>
-                        {{-- <th>IMAGE</th> --}}
+                        <th>Parent Category</th>
                         <th>ACTION</th>
                      </tr>
                   </thead>
@@ -75,7 +75,7 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'id'},
                 {data: 'name', name: 'name'},
-                // {data: 'image', name: 'image'},
+                {data: 'category.name', name: 'parent_id'},
                 {data: 'action', name: 'action',orderable: true,searchable: true},
             ]
         });

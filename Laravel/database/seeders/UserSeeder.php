@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 "name" => "admin",
                 "email" => "admin@gmail.com",
                 "password" => Hash::make("Admin@123"),
-                "type" => 'admin',
+                "is_admin" => '1',
                 'country' => 1,
                 'avatar' => 'assets/image/avatar20-05-2022-04-17.png',
                 'email_verified_at' => '2022-05-01 14:45:23'
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                 "name" => "user",
                 "email" => "user@gmail.com",
                 "password" => Hash::make("123456789"),
-                "type" => 'user',
+                "is_admin" => '0',
                 'country' => 1,
                 'avatar' => 'assets/image/avatar20-05-2022-04-17.png',
                 'email_verified_at' => '2022-05-01 14:45:23'

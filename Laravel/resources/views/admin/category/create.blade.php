@@ -24,6 +24,17 @@
             <div class="row form_border">
                <div class="col-md-6">
                   <div class="mb-3">
+                     <label for="formFile" class="form-label custom-file-label font-size-17">Parent Category</label>
+                     <select class="form-control custom-file-input" name="parent_id" value="@if(isset($product->category_id)){{$product->category_id}}@endif" id="parent_id">
+                        <option>Select Parent Category</option>
+                        @foreach($categories as $category)
+                           <option value="{{$category->id}}" @if(isset($cat->parent_id)) @if($category->id == $cat->parent_id) selected @endif @endif>{{$category->name}}</option>
+                        @endforeach
+                     </select>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="mb-3">
                      <label for="formFile" class="form-label custom-file-label font-size-17">Name</label>
                      <input class="form-control custom-file-input" name="name" value="@if(isset($cat->name)){{$cat->name}}@endif" type="text" id="name" id="customFileUpload">
                   </div>
