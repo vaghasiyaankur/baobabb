@@ -1,5 +1,6 @@
 body {
-  font-family: "Baloo 2", cursive;
+  /* font-family: "Baloo 2", cursive; */
+  font-family: 'Open Sans', sans-serif;
 }
 /* COMAN CSS */
 .border-bottom {
@@ -205,7 +206,7 @@ button.model_btn:hover {
   /* min-height: 220px; */
 }
 /* -----------FOOTER SECTION--------- */
-.footer-section {
+/* .footer-section {
   background-color: #364b5a;
   color: #fff;
 }
@@ -217,7 +218,70 @@ button.model_btn:hover {
 }
 .footer-section.nav a {
   padding: 0px !important;
+} */
+
+.footer-section{
+  background-color: #2c323f;
+  color: #fff;
+  padding: 0px 65px;
+  padding-top: 30px;
 }
+.footer-section .f-text{
+  font-size: 17px;
+  width: 100%;
+  max-width: 370px;
+}
+.footer-section .f_app_links .a-store{
+  background-color: #000;
+  border: 1px solid #b3b3b399;
+  width: 100%;
+  max-width: 107px;
+  height: 100%;
+  min-height: 40px;
+  border-radius: 8px;
+}
+.footer-section .f_app_links .a-store .a_btn_text .small_p{
+  font-size: 9px;
+}
+.footer-section .f_app_links .a-store .a_btn_text p{
+  font-size: 15px;
+}
+.footer-section .f_app_links .g-store{
+  background-color: #000;
+  border: 1px solid #b3b3b399;
+  width: 100%;
+  max-width: 118px;
+  height: 100%;
+  min-height: 40px;
+  border-radius: 8px;
+}
+.footer-section .f_app_links .g-store .g_btn_img img{
+  width: 100%;
+  max-width: 20px;
+}
+.footer-section .f_app_links .g-store .g_btn_text .small_p{
+  font-size: 9px;
+}
+.footer-section .f_app_links .g-store .g_btn_text p{
+  font-size: 15px;
+}
+.footer-section .b-bottom{
+  border-bottom: 1px solid lightgray;
+}
+.footer-section .f_online_icon a i{
+  font-size: 24px;
+  color: #fff;
+  margin-right: 5px;
+}
+.footer-section .f_c_links_{
+  font-size: 15px;
+  font-weight: 300;
+}
+.footer-section .f-s-logo{
+  width: 100%;
+  max-width: 40px;
+}
+
 /* -----------FOOTER SECTION END--------- */
 
 /* ================ ALL CATEGORIES PAGE ============= */
