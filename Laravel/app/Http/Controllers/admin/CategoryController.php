@@ -27,8 +27,12 @@ class CategoryController extends Controller
                         $btn = '<div class="d-flex">';
                         $btn .= '<a href="/admin/category/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
                         $btn .= '<form method="POST" action="/admin/category/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
+                        // $btn .= '<a href="/admin/category/'.$row->id.'/edit" class="edit btn btn-danger btn-sm m-1">Custom Fields</a>';
                         $btn .= '</div>';
                         return $btn;
+                    })
+                    ->addColumn('category', function($row){
+                        return $row->parent_id? $row->category->name : '-';
                     })
                     ->rawColumns(['action'])
                     ->make(true);

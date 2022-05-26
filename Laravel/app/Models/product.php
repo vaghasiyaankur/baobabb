@@ -11,11 +11,10 @@ class Product extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
-        'category_id',
-        'seller_id',
+        'belongs_to',
         'name',
-        'image',
-        'gallery',
+        'type',
+        'max',
         'video',
         'description',
         'meta_title',

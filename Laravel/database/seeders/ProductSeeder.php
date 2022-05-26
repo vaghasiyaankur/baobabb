@@ -20,6 +20,8 @@ class ProductSeeder extends Seeder
             [
                 "category_id" => 1,
                 "seller_id" => 1,
+                "type_id" => 1,
+                "type_id" => 1,
                 "name" => "camera",
                 "slug" => "camera",
                 "image" => "assets/image/camera18-05-2022-08-18.jpg",
@@ -40,6 +42,7 @@ class ProductSeeder extends Seeder
             [
                 "category_id" => 6,
                 "seller_id" => 1,
+                "type_id" => 1,
                 "name" => "Samsung S21 For Sale",
                 "slug" => "sam-s21",
                 "image" => "assets/image/download (2)18-05-2022-08-19.jpg",
@@ -61,6 +64,7 @@ class ProductSeeder extends Seeder
             [
                 "category_id" => 1,
                 "seller_id" => 1,
+                "type_id" => 1,
                 "name" => "camera",
                 "slug" => "camera",
                 "image" => "assets/image/camera18-05-2022-08-18.jpg",
@@ -81,6 +85,7 @@ class ProductSeeder extends Seeder
             [
                 "category_id" => 1,
                 "seller_id" => 1,
+                "type_id" => 1,
                 "name" => "camera",
                 "slug" => "camera",
                 "image" => "assets/image/camera18-05-2022-08-18.jpg",
@@ -101,6 +106,7 @@ class ProductSeeder extends Seeder
             [
                 "category_id" => 1,
                 "seller_id" => 1,
+                "type_id" => 1,
                 "name" => "camera",
                 "slug" => "camera",
                 "image" => "assets/image/camera18-05-2022-08-18.jpg",
@@ -121,6 +127,7 @@ class ProductSeeder extends Seeder
             [
                 "category_id" => 1,
                 "seller_id" => 1,
+                "type_id" => 1,
                 "name" => "camera",
                 "slug" => "camera",
                 "image" => "assets/image/camera18-05-2022-08-18.jpg",
@@ -141,6 +148,7 @@ class ProductSeeder extends Seeder
             [
                 "category_id" => 1,
                 "seller_id" => 1,
+                "type_id" => 1,
                 "name" => "camera",
                 "slug" => "camera",
                 "image" => "assets/image/camera18-05-2022-08-18.jpg",
@@ -161,6 +169,7 @@ class ProductSeeder extends Seeder
             [
                 "category_id" => 1,
                 "seller_id" => 1,
+                "type_id" => 1,
                 "name" => "camera",
                 "slug" => "camera",
                 "image" => "assets/image/camera18-05-2022-08-18.jpg",
@@ -181,6 +190,7 @@ class ProductSeeder extends Seeder
             // [
             //     "category_id" => 6,
             //     "seller_id" => 1,
+                // "type_id" => 1,
             //     "name" => "Samsung S21 For Sale",
             //     "slug" => "samsung-s21",
             //     // "image" => "assets/image/download (2)18-05-2022-08-19.jpg",
@@ -201,6 +211,7 @@ class ProductSeeder extends Seeder
             // [
             //     "category_id" => 3,
             //     "seller_id" => 1,
+                // "type_id" => 1,
             //     "name" => "luxury villa",
             //     "slug" => "luxury-villa",
             //     // "image" => "assets/image/download (1)18-05-2022-08-19.jpg",

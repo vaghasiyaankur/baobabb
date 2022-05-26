@@ -62,6 +62,12 @@
                         <span class="menu-item" data-key="t-sales">Product</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.custom.field.index') }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Custom Fields</span>
+                    </a>
+                </li>
             </ul>
             <ul class="metismenu list-unstyled" id="side-menu34">
                 <li class="menu-title" data-key="t-dashboards">USER</li>
