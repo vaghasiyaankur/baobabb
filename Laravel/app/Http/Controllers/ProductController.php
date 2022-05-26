@@ -60,7 +60,7 @@ class ProductController extends Controller
         $user = User::find(auth()->user()->id);
         if($user->status == 1)
         {
-            $categories = Category::all();
+            $categories = Category::where('parent_id',null)->get();
             $currencies = Currency::where('country_id',$user->country)->get();
             return view('user.product.create', compact('categories','currencies'));
         }
@@ -78,37 +78,42 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $seller_id = auth()->user()->id;
+        $string = str_replace(' ', '-', $request->name);
+        $slug = preg_replace('/[^A-Za-z0-9\-]/', '-', $string);
+        // dd($request);
         $gallery = array();
         $img = new ImageController;
-        $image = $img->move($request->image);
-        if($request->gallery)
+        $image = $img->move($request->image[0]);
+        if($request->image)
         {
-            foreach($request->gallery as $i)
+            for($i = 1; $i < count($request->image); $i++)
             {
-                $g = $img->move($i);
+                $g = $img->move($request->image[$i]);
                 array_push($gallery, $g);
             }
+            // foreach($request->image as $i)
+            // {
+            //     $g = $img->move($i);
+            //     array_push($gallery, $g);
+            // }
         }
         $product = new Product;
         $product->name = $request->name;
         $product->category_id = $request->category_id;
         $product->image = $image;
         $product->gallery = json_encode($gallery);
-        $product->seller_id = $seller_id;
-        $product->slug = $request->slug;
+        $product->seller_id = auth()->user()->id;
+        $product->slug = $slug;
         $product->type_of = $request->type_of;
         $product->condition = $request->condition;
-        $product->cash = $request->cash;
+        $product->cash = $request->currency;
         $product->lat = $request->latitude;
         $product->long = $request->longitude;
         $product->description = $request->description;
-        $product->meta_title = $request->meta_title;
-        $product->meta_description = $request->meta_description;
-        $product->description = $request->description;
-        $product->country = $request->country;
+        $product->country = auth()->user()->country;
         $product->state = $request->state;
         $product->city = $request->city;
+        // $product->street = $request->street;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
         $product->video = $request->video;  
@@ -139,7 +144,7 @@ class ProductController extends Controller
         $product = Product::where('seller_id',auth()->user()->id)->where('id',$id)->first();
         if($product)
         {
-            $categories = Category::all();
+            $categories = Category::where('parent_id',null)->get();
             $currencies = Currency::where('country_id',auth()->user()->country)->get();
             return view('user.product.create', compact('categories','product','currencies'));
         }

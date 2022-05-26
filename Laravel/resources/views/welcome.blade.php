@@ -86,39 +86,24 @@
 
 
 
-    <!------CATEGORY CARD SECTION START----->
-    <section class="category-card py_5">
-        <div class="row" id="category-product">
-            @foreach ($products as $product)
-                <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
-                    <div class="card-box">
-                        <img src="{{ asset($product->image) }}" class="img-fluid" alt="card-img">
-                        <div class="card-inner">
-                            <div class="d-flex justify-content-between pt-1 pb-2">
-                                <span><i class="fa-solid fa-bullseye pe-2"></i>{{ $product->category->name }}</span>
-                                <span><i class="fa-solid fa-location-dot pe-2"></i>{{ $product->city }}</span>
-                            </div>
-                            <a href="{{ route('product', $product->slug) }}">
-                                <p class="m-0 fw-bold pb-2">{{ $product->name }}</p>
-                            </a>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <p class="m-0 text-danger">{{ $product->currency->symbol }} {{ $product->price }}</p>
-                                <div class="icon">
-                                    <i class="fa-solid fa-arrows-rotate"></i>
-                                    <a class="wishlist-btn" href="javascript:;" data-id="{{ $product->id }}"><i
-                                            class="fa-regular fa-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </section>
+    <div id="data-wrapper">
+        <!-- Results -->
+    </div>
+    <!-- Data Loader -->
+    <div class="auto-load text-center">
+        <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" height="60" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+            <path fill="#000"
+                d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+                <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s"
+                    from="0 50 50" to="360 50 50" repeatCount="indefinite" />
+            </path>
+        </svg>
+    </div>
     <!------CATEGORY CARD SECTION END----->
 
 
-    {{-- <script>
+    <script>
         $(document).ready(function() {
             $('.wishlist-btn').on('click', function() {
                 // alert($(this).attr())
@@ -147,7 +132,7 @@
 
             })
         })
-    </script> --}}
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -167,4 +152,37 @@
             })
         })
     </script>
+
+<script>
+    var ENDPOINT = "{{ url('/') }}";
+    var page = 1;
+    infinteLoadMore(page);
+    $(window).scroll(function () {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+            page++;
+            infinteLoadMore(page);
+        }
+    });
+    function infinteLoadMore(page) {
+        $.ajax({
+                url: ENDPOINT + "?page=" + page,
+                datatype: "html",
+                type: "get",
+                beforeSend: function () {
+                    $('.auto-load').show();
+                }
+            })
+            .done(function (response) {
+                if (response.length == 0) {
+                    $('.auto-load').html("");
+                    return;
+                }
+                $('.auto-load').hide();
+                $("#data-wrapper").append(response);
+            })
+            .fail(function (jqXHR, ajaxOptions, thrownError) {
+                console.log('Server error occured');
+            });
+    }
+</script>
 @endsection

@@ -20,11 +20,11 @@ class AdminCheck
         if(auth()->user())
         {
             $user = User::find(auth()->user()->id);
-            if($user->type == 'admin')
+            if($user->is_admin == '1')
             {
                 return $next($request);
             }
         }
-        return redirect()->route('home');
+        return redirect()->route('admin.login');
     }
 }

@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('name')->unique();
             $table->string('slug');
-            $table->text('icon');
-            $table->text('image');
+            $table->text('icon')->nullable();
+            $table->text('image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

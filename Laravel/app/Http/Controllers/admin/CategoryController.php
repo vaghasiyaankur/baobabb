@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Category::select('*');
+            $data = Category::select('*')->with('category');
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
@@ -44,7 +44,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $categories = Category::where('parent_id', null)->get();
+        return view('admin.category.create',compact('categories'));
     }
 
     /**
@@ -62,6 +63,7 @@ class CategoryController extends Controller
         $icon = $img->move($request->icon);
 
         $category = new Category;
+        $category->parent_id = $request->parent_id;
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->icon = $icon;
@@ -90,8 +92,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::where('parent_id', null)->get();
         $cat = Category::find($id);
-        return view('admin.category.create',compact('cat'));
+        return view('admin.category.create',compact('cat','categories'));
         // return 123;
     }
 
@@ -115,6 +118,7 @@ class CategoryController extends Controller
         {
             $category->icon = $img->move($request->icon);
         }
+        $category->parent_id = $request->parent_id;
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->save();
