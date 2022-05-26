@@ -1,6 +1,8 @@
  <?php
     $categories = App\Models\Category::all();
     $url = \Request::getRequestUri();
+    $languages = App\Models\Language::all();
+
  ?>
  <!----- HEADER SECTION  START----->
  <style></style>
@@ -51,8 +53,14 @@
                                      class="fa-solid fa-notes-medical"></i></a></span>
                          <span><a href="javascript:;"><i class="fa-solid fa-envelope-open"></i></a></span>
                      @endguest
-                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target=""><i
-                                 class="fa-solid fa-globe"></i></a></span>
+                     <div class="dropdown11">
+                        <span><a href="javascript:;"><i
+                                    class="fa-solid fa-globe py-3"></i><i class="fa-solid fa-angle-down ms-0"></i></a></span>
+                        <ul>
+                            @foreach($languages as $language)
+                            <li data-value="1"><i class="flag-icon {{$language->flag}} me-4"></i>{{ $language->name}}</li>
+                            @endforeach
+                    </div>
 
                      <!-------- START MODAL --------->
 

@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Country;
+use App\Models\Continent;
+use App\Models\Currency;
 use App\Http\Requests\StoreCountryRequest;
 use App\Http\Requests\UpdateCountryRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ImageController;
+use Illuminate\Support\Facades\File;
+
+
 use Illuminate\Http\Request;
 use App\Models\User;
 use DataTables;
@@ -44,7 +50,9 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('admin.country.create');
+        $continents = Continent::all();
+        $currencies = Currency::all();
+        return view('admin.country.create',compact('continents','currencies'));
     }
 
     /**
@@ -55,10 +63,30 @@ class CountryController extends Controller
      */
     public function store(StoreCountryRequest $request)
     {
+        $avatar = '';
+        // store avatar
+        if($request->hasFile('image')){
+        $img = new ImageController;
+        $avatar = $img->move($request->image);
+        }
+
         $country = new Country;
         $country->name = $request->name;
         $country->code = $request->code;
+        $country->capital = $request->capital;
+        $country->continent = $request->continent;
+        $country->tld = $request->tld;
+        $country->calling_code = $request->calling_code;
+        $country->currency_code = $request->currency_code;
+        $country->image = $avatar;
+        $country->language = $request->language;
+        $country->preferred_time = $request->preferred_time;
+        $country->date_format = $request->date_format;
+        $country->time_format = $request->time_format;
+        $country->admin_type = $request->admin_type;
+        $country->admin_field_active = $request->admin_field_active;
         $country->save();
+
         return redirect()->route('admin.country.index');
     }
 
@@ -82,7 +110,9 @@ class CountryController extends Controller
     public function edit($id)
     {
         $country = Country::find($id);
-        return view('admin.country.create',compact('country'));
+        $continents = Continent::all();
+        $currencies = Currency::all();
+        return view('admin.country.create',compact('country','continents','currencies'));
     }
 
     /**
@@ -95,8 +125,30 @@ class CountryController extends Controller
     public function update(UpdateCountryRequest $request, $id)
     {
         $country = Country::find($id);
+
+        $avatar = $country->image;
+        // store avatar
+        if($request->hasFile('image')){
+            $img = new ImageController;
+            $avatar = $img->move($request->image);
+            File::delete($country->image);
+        }
+
+
         $country->name = $request->name;
         $country->code = $request->code;
+        $country->capital = $request->capital;
+        $country->continent = $request->continent;
+        $country->tld = $request->tld;
+        $country->calling_code = $request->calling_code;
+        $country->currency_code = $request->currency_code;
+        $country->image = $avatar;
+        $country->language = $request->language;
+        $country->preferred_time = $request->preferred_time;
+        $country->date_format = $request->date_format;
+        $country->time_format = $request->time_format;
+        $country->admin_type = $request->admin_type;
+        $country->admin_field_active = $request->admin_field_active;
         $country->save();
         return redirect()->route('admin.country.index');
     }

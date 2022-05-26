@@ -89,4 +89,5 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('custom/field', 'App\Http\Controllers\admin\FieldController', ['names'=> 'custom.field']);   
     Route::resource('custom/field/{id}/option', 'App\Http\Controllers\admin\FieldOptionController', ['names'=> 'custom.field.option']);   
     Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
+    Route::resource('language', 'App\Http\Controllers\admin\LanguageController', ['names'=> 'language']);   
 });
