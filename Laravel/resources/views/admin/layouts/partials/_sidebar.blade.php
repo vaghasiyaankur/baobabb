@@ -51,6 +51,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('admin.product.type.index') }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Product Type</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('admin.product.index') }}">
                         <i class="icon nav-icon" data-feather="monitor"></i>
                         <span class="menu-item" data-key="t-sales">Product</span>

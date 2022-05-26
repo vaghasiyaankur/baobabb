@@ -90,6 +90,7 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']);   
     Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);   
     Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);   
+    Route::resource('product/type', 'App\Http\Controllers\admin\ProductTypeController', ['names'=> 'product.type']);   
     Route::resource('product', 'App\Http\Controllers\admin\ProductController', ['names'=> 'product']);   
     Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
 });
