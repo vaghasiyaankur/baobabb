@@ -1035,7 +1035,7 @@ input[type=range]:focus::-ms-fill-upper {
   list-style: none;
   position: absolute;
   width: 100%;
-  min-width: 150px;
+  min-width: 190px;
   max-height: 240px;
   padding-left: 0;
   right: 0;
@@ -1044,6 +1044,7 @@ input[type=range]:focus::-ms-fill-upper {
   color: #000;
   border-radius: 5px;
   overflow-y: scroll;
+  z-index: 9999999999 !important;
 }
 
 .dropdown11 ul li {

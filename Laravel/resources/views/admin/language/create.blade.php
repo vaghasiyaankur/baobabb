@@ -6,7 +6,40 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('assets/css/custom-table.css') }}">
+    {{--  flag  --}}
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/flag-icon-css/flag-icon.min.css') }}">
 
+    <style>
+       .btn-input {
+   display: block;
+}
+
+.btn-input .btn.form-control {
+    text-align: left;
+}
+
+.btn-input .btn.form-control span:first-child {
+   left: 10px;
+   overflow: hidden;
+   position: absolute;
+   right: 25px;
+}
+
+.btn-input .btn.form-control .caret {
+   margin-top: -1px;
+   position: absolute;
+   right: 10px;
+   top: 50%;
+}
+.flag-list{
+   height: 200px;
+   overflow: scroll;
+}
+    </style>
 @endpush
 
 @section('content')
@@ -24,97 +57,118 @@
             @if(isset($currency)) @method('PUT') @endif
 
             <div class="row">
-
-               <div class="col-md-12">
-                  <div class="mb-3">
-                     <label for="formFile" class="form-label custom-file-label font-size-17">Code (ISO 4217)</label>
-                     <input class="form-control custom-file-input" name="code" type="text" id="code" id="customFileUpload" value="@if(isset($currency)){{$currency->code}}@endif" placeholder="Enter the currency code (ISO Code)">
-                  </div>
-               </div>
-            <div class="row">
-               {{-- <div class="col-md-6">
-                  <div class="mb-3">
-                     <label for="formFile" class="form-label custom-file-label font-size-17">Country</label>
-                     <select class="form-control custom-file-input" name="country_id" id="country_id">
-                        <option>Select country</option>
-                        @foreach($countries as $country)
-                           <option value="{{$country->id}}" @if(isset($currency->country_id)) @if($country->id == $currency->country_id) selected @endif @endif>{{$country->name}}</option>
-                        @endforeach
-                     </select>
-                  </div>
-               </div> --}}
-
                <div class="col-md-6">
-                  <div class="mb-3">
-                     <label for="formFile" class="form-label custom-file-label font-size-17">Name</label>
-                     <input class="form-control custom-file-input" name="name" type="text" id="name" id="customFileUpload" value="@if(isset($currency)){{$currency->name}}@endif" placeholder="Name">
-                  </div>
+                   <div class="mb-3">
+                       <label for="formFile" class="form-label custom-file-label font-size-17">Language</label>
+                       <select name="abbr" style="width: 100%"
+                           class="abbr form-select select2_field select2-hidden-accessible" tabindex="-1"
+                           aria-hidden="true">
+                           <option value="">-</option>
+                           @foreach(config('languages') as $short=>$language)
+                           <option value="{{$short}}" {{ $short == @$languagedata->abbr ? 'selected' : '' }}>{{ $language }}</option>
+                           @endforeach
+                       </select>
+                       <div class="form-text">The files of the languages with a check mark (✔) are included in the script by default.<br>List of languages whose files are included by default: en, fr, es, ar, pt, de, it, tr, ru, hi, bn, zh, ja, th, ro, ka</div>
+                   </div>
                </div>
-
-
                <div class="col-md-6">
+                   <div class="mb-3">
+                       <label for="formFile"
+                           class="form-label custom-file-label font-size-17">Native Name</label>
+                       <input class="form-control custom-file-input" name="native" type="text" id="native"
+                           value="@if (isset($languagedata)) {{ @$languagedata->native }} @endif" placeholder="Native Name">
+                   </div>
+               </div>
+           </div>
+
+           
+           <div class="row">
+            <div class="col-md-4">
                 <div class="mb-3">
-                   <label for="formFile" class="form-label custom-file-label font-size-17">Symbol</label>
-                   <input class="form-control custom-file-input" name="symbol" type="text" id="symbol" id="customFileUpload" value="@if(isset($currency)){{$currency->symbol}}@endif" placeholder="Enter the symbol">
+                    <label for="formFile" class="form-label custom-file-label font-size-17">Locale Code (eg. en_US)</label>
+                    <select name="locale" style="width: 100%"
+                        class="locale form-select select2_field select2-hidden-accessible" tabindex="-1"
+                        aria-hidden="true">
+                        <option value="">-</option>
+                        @foreach(config('locales') as $short=>$locale)
+                        <option value="{{$short}}" {{ $short == @$languagedata->locale ? 'selected' : '' }}>{{ $locale.'-->'.$short }}</option>
+                        @endforeach
+                    </select>
                 </div>
-             </div>
-
-               <!-- end col -->
-               {{-- <div class="col-md-6">
-                  <div class="form_right_img text-center mb-4">
-                     <img src="@if(isset($currency->image)){{asset('storage/app/public/brand')}}/{{$currency->image}}@else{{ asset('assets/images/brand_add_new1.jpg') }}@endif" style="border-radius: 10px; max-height:200px;" id="viewer" class="form_img" alt="brand image">
-                  </div>
+            </div>
+            <div class="col-md-4">
+               {{-- <div class="mb-3">
+                   <label for="formFile" class="form-label custom-file-label font-size-17">Locale Code (eg. en_US)</label>
+                   <select name="locale" style="width: 100%"
+                       class="locale form-select select2_field select2-hidden-accessible" tabindex="-1"
+                       aria-hidden="true">
+                       <option value="">-</option>
+                       @foreach(config('shortcode') as $shortcode)
+                       <option value="{{$shortcode}}" {{ 'flag-icon-'.$shortcode == @$languagedata->flag ? 'selected' : '' }}><i class="flag-icon {{'flag-icon-'.$shortcode}}"></i></option>
+                       @endforeach
+                   </select>
                </div> --}}
-               <!-- end col -->
+               <div class="panel panel-default">
+                  <div class="panel-body flags-show-panel">
+                     <div class="btn-group flgs-show">
+                       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                         <span data-bind="label">All Leagues</span>&nbsp;<span class="caret"></span>
+                       </button>
+                       <ul class="dropdown-menu flag-list" role="menu">
+                        @foreach(config('shortcode') as $shortcode)
+                         <li><a href="#"><i class="flag-icon {{'flag-icon-'.$shortcode}}"></i>{{'-'.$shortcode}}</a></li>
+                         @endforeach
+                       </ul>
+                     </div>
+                   </div>
+                </div>
+           </div>
+           <div class="col-md-4">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Locale Code (eg. en_US)</label>
+                <select name="locale" style="width: 100%"
+                    class="locale form-select select2_field select2-hidden-accessible" tabindex="-1"
+                    aria-hidden="true">
+                    <option value="">-</option>
+                    <option value="ltr" {{ 'ltr' == @$languagedata->direction ? 'selected' : '' }}>{{ 'ltr' }}</option>
+                    <option value="ltr" {{ 'rtl' == @$languagedata->direction ? 'selected' : '' }}>{{ 'rtl' }}</option>
+                </select>
             </div>
+        </div>
+        </div>
 
-
-
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="mb-3">
-                     <label for="formFile" class="form-label custom-file-label font-size-17">Symbol's HTML Entities</label>
-                     <input class="form-control custom-file-input" name="entities" type="text" id="entities" id="customFileUpload" value="@if(isset($currency)){{$currency->entities}}@endif" placeholder="Enter the Symbol's HTML Entities">
-                  </div>
-               </div>
-
-               <div class="col-md-6">
-                  <div class="mb-3">
-                          <div class="form-check form-switch" style="margin-top: 30px;">
-                             <input type="hidden" name="symbol_left" value="0">
-                             <input type="checkbox" value="1" name="symbol_left" class="form-check-input" style="cursor: pointer;" {{@$currency->symbol_left == 1 ? 'checked' : ''}}>
-                             <label class="form-check-label fw-bolder">
-                              Symbol in left
-                             </label>
-                             </div>
-                  </div>
-              </div>
+        <div class="row">
+         <div class="col-md-12">
+            <div class="mb-3">
+                    <div class="form-check form-switch" style="margin-top: 30px;">
+                       <input type="hidden" name="russian_pluralization" value="0">
+                       <input type="checkbox" value="1" name="russian_pluralization" class="form-check-input" style="cursor: pointer;" {{@$languagedata->russian_pluralization == 1 ? 'checked' : ''}}>
+                       <label class="form-check-label fw-bolder">
+                        Russian Pluralization
+                       </label>  
             </div>
+        </div>
+        </div>
 
-            <div class="row">
-               <div class="col-md-4">
-                  <div class="mb-3">
-                     <label for="formFile" class="form-label custom-file-label font-size-17">Decimal Places</label>
-                     <input class="form-control custom-file-input" name="decimal_place" type="text" id="decimal_place" id="customFileUpload" value="@if(isset($currency)){{$currency->decimal_place}}@endif" placeholder="Enter the decimal places">
-                  </div>
-               </div>
+        <div class="row">
+         <div class="col-md-6">
+             <div class="mb-3">
+                 <label for="formFile" class="form-label custom-file-label font-size-17">Date Format</label>
+                 <input class="form-control custom-file-input" name="date_format" type="text" id="date_format"
+                     id="customFileUpload"
+                     value="@if (isset($languagedata)) {{ @$languagedata->date_format }} @endif">
+             </div>
+         </div>
 
-               <div class="col-md-4">
-                  <div class="mb-3">
-                     <label for="formFile" class="form-label custom-file-label font-size-17">Decimal Separator</label>
-                     <input class="form-control custom-file-input" name="decimal_seprator" type="text" id="decimal_seprator" id="customFileUpload" value="@if(isset($currency)){{$currency->decimal_seprator}}@endif" placeholder="Enter the decimal separator">
-                  </div>
-               </div>
-
-               <div class="col-md-4">
-                  <div class="mb-3">
-                     <label for="formFile" class="form-label custom-file-label font-size-17">Thousand Separator</label>
-                     <input class="form-control custom-file-input" name="thousand_operator" type="text" id="thousand_operator" id="customFileUpload" value="@if(isset($currency)){{$currency->thousand_operator}}@endif" placeholder="Enter the thousand separator">
-                  </div>
-               </div>
-
-            </div>
-            <!-- end row -->
+         <div class="col-md-6">
+             <div class="mb-3">
+                 <label for="formFile" class="form-label custom-file-label font-size-17">Date Time Format</label>
+                 <input class="form-control custom-file-input" name="datetime_format" type="text" id="datetime_format"
+                     id="customFileUpload"
+                     value="@if (isset($languagedata)) {{ @$languagedata->datetime_format }} @endif">
+             </div>
+         </div>
+     </div>
             <div class="mt-3">
                <button type="submit" class="btn btn-primary ms-3">@if(isset($currency)) Update @else Save @endif</button>
             </div>
@@ -135,6 +189,30 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"crossorigin="anonymous"></script>
 <script src="{{asset('public/assets/back-end')}}/js/select2.min.js"></script>
 <script>
+
+$( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
+
+var $target = $( event.currentTarget );
+
+$target.closest( '.btn-group' )
+   .find( '[data-bind="label"]' ).html( '<i class="flag-icon flag-icon'+$target.text()+'">')
+      .end()
+   .children( '.dropdown-toggle' ).dropdown( 'toggle' );
+
+return false;
+
+});
+
+$(document).mouseup(function(e) 
+{
+    var container = $(".flags-show-panel");
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        $(".flgs-show").removeClass('open');
+    }
+});
     $(".js-example-theme-single").select2({
         theme: "classic"
     });

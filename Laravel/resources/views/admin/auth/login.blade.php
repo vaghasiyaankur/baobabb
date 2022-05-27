@@ -141,7 +141,7 @@
 
                     <div class="row mt-3">
 
-                        <form class="col-12" action="{{route('admin.password.email')}}" method="post">
+                        {{-- <form class="col-12" action="{{route('admin.password.email')}}" method="post">
                             @csrf
 
                             <div class="row mb-3">
@@ -170,7 +170,7 @@
                                     <button class="btn btn-lg btn-primary" type="submit" name="action">Reset</button>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
 
