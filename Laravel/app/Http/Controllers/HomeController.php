@@ -148,6 +148,7 @@ class HomeController extends Controller
     public function singleSeller($id)
     {
         $seller = User::where('id',$id)->with('countries')->first();
+        // dd($seller);
         if($seller)
         {
             $products = Product::where('seller_id',$seller->id)->with('category')->with('currency')->get();
