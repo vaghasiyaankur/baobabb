@@ -90,7 +90,7 @@
                             <a href="javascript:;" class="text-dection-none"><img src="{{ asset($seller->avatar) }}" alt=""></a>
                         </div>
                         <div class="avtar-text">
-                            <a href="{{route('seller',$seller->id)}}"><h5>{{ $seller->name }}</h5></a>
+                            <a href="{{route('singleSeller',$seller->id)}}"><h5>{{ $seller->name }}</h5></a>
                             <i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i
                                 class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star"></i>
                             <h6 class="text-success pt-2"><i class="fa-solid fa-circle text-success fs-6"></i> EN LIGNE
@@ -102,6 +102,32 @@
                             <span>+232 00 000XXX</span>
                             <p class="m-0">Click to reveal phone number</p>
                         </span>
+                    </div>
+                    <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#messageModel">
+                    <div class="avtar-tel py-3 px-3 mt-5 ">
+                        <span class="text-white">
+                            <span>Contect ad owner</span>
+                            <p class="m-0">Ask about the offer</p>
+                        </span>
+                    </div>
+                    </a>
+                    <!-- Message Modal -->
+                    <div class="modal fade " id="messageModel" tabindex="-1" aria-labelledby="messageModel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Contact ad owner</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
 

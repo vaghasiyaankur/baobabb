@@ -14,5 +14,11 @@ class Currency extends Model
         'country_id',
         'name',
         'symbol',
+        'code',
+        'entities',
+        'symbol_left',
+        'decimal_place',
+        'decimal_seprator',
+        'thousand_operator',
     ];
 }

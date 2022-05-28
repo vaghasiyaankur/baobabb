@@ -75,7 +75,7 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'id'},
                 {data: 'name', name: 'name'},
-                {data: 'category.name', name: 'parent_id'},
+                {data: 'category', name: 'category'},
                 {data: 'action', name: 'action',orderable: true,searchable: true},
             ]
         });

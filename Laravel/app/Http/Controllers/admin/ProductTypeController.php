@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\productType;
+use App\Models\ProductType;
 use App\Http\Requests\StoreproductTypeRequest;
 use App\Http\Requests\UpdateproductTypeRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use DataTables;
 
 class ProductTypeController extends Controller
 {
@@ -13,9 +16,23 @@ class ProductTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $data = ProductType::select('*');
+            return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                        $btn = '<div class="d-flex">';
+                        $btn .= '<a href="/admin/product/type/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
+                        // $btn .= '<form method="POST" action="/admin/product/type/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
+                        $btn .= '</div>';
+                        return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        return view('admin.product.type.index');
     }
 
     /**
@@ -25,7 +42,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.type.create');
     }
 
     /**
@@ -56,9 +73,10 @@ class ProductTypeController extends Controller
      * @param  \App\Models\productType  $productType
      * @return \Illuminate\Http\Response
      */
-    public function edit(productType $productType)
+    public function edit($id)
     {
-        //
+        $type = ProductType::find($id);
+        return view('admin.product.type.create',compact('type'));
     }
 
     /**
@@ -68,9 +86,12 @@ class ProductTypeController extends Controller
      * @param  \App\Models\productType  $productType
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateproductTypeRequest $request, productType $productType)
+    public function update(Request $request, $id)
     {
-        //
+        $type = ProductType::find($id);
+        $type->name = $request->name;
+        $type->save();
+        return redirect()->route('admin.product.type.index');
     }
 
     /**

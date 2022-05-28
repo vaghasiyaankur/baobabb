@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\StoreproductRequest;
 use App\Http\Requests\UpdateproductRequest;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 use DataTables;

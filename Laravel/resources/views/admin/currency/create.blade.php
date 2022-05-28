@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('assets/css/custom-table.css') }}">
+
 @endpush
 
 @section('content')
@@ -21,8 +22,17 @@
          <form action="@if(isset($currency)){{ route('admin.currency.update',[$currency->id]) }}@else{{ route('admin.currency.store') }}@endif" method="post" enctype="multipart/form-data">
             @csrf
             @if(isset($currency)) @method('PUT') @endif
-            <div class="row form_border">
-               <div class="col-md-6">
+
+            <div class="row">
+
+               <div class="col-md-12">
+                  <div class="mb-3">
+                     <label for="formFile" class="form-label custom-file-label font-size-17">Code (ISO 4217)</label>
+                     <input class="form-control custom-file-input" name="code" type="text" id="code" id="customFileUpload" value="@if(isset($currency)){{$currency->code}}@endif" placeholder="Enter the currency code (ISO Code)">
+                  </div>
+               </div>
+            <div class="row">
+               {{-- <div class="col-md-6">
                   <div class="mb-3">
                      <label for="formFile" class="form-label custom-file-label font-size-17">Country</label>
                      <select class="form-control custom-file-input" name="country_id" id="country_id">
@@ -32,12 +42,12 @@
                         @endforeach
                      </select>
                   </div>
-               </div>
+               </div> --}}
 
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="formFile" class="form-label custom-file-label font-size-17">Name</label>
-                     <input class="form-control custom-file-input" name="name" type="text" id="name" id="customFileUpload" value="@if(isset($currency)){{$currency->name}}@endif">
+                     <input class="form-control custom-file-input" name="name" type="text" id="name" id="customFileUpload" value="@if(isset($currency)){{$currency->name}}@endif" placeholder="Name">
                   </div>
                </div>
 
@@ -45,7 +55,7 @@
                <div class="col-md-6">
                 <div class="mb-3">
                    <label for="formFile" class="form-label custom-file-label font-size-17">Symbol</label>
-                   <input class="form-control custom-file-input" name="symbol" type="text" id="symbol" id="customFileUpload" value="@if(isset($currency)){{$currency->symbol}}@endif">
+                   <input class="form-control custom-file-input" name="symbol" type="text" id="symbol" id="customFileUpload" value="@if(isset($currency)){{$currency->symbol}}@endif" placeholder="Enter the symbol">
                 </div>
              </div>
 
@@ -56,6 +66,53 @@
                   </div>
                </div> --}}
                <!-- end col -->
+            </div>
+
+
+
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="mb-3">
+                     <label for="formFile" class="form-label custom-file-label font-size-17">Symbol's HTML Entities</label>
+                     <input class="form-control custom-file-input" name="entities" type="text" id="entities" id="customFileUpload" value="@if(isset($currency)){{$currency->entities}}@endif" placeholder="Enter the Symbol's HTML Entities">
+                  </div>
+               </div>
+
+               <div class="col-md-6">
+                  <div class="mb-3">
+                          <div class="form-check form-switch" style="margin-top: 30px;">
+                             <input type="hidden" name="symbol_left" value="0">
+                             <input type="checkbox" value="1" name="symbol_left" class="form-check-input" style="cursor: pointer;" {{@$currency->symbol_left == 1 ? 'checked' : ''}}>
+                             <label class="form-check-label fw-bolder">
+                              Symbol in left
+                             </label>
+                             </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="mb-3">
+                     <label for="formFile" class="form-label custom-file-label font-size-17">Decimal Places</label>
+                     <input class="form-control custom-file-input" name="decimal_place" type="text" id="decimal_place" id="customFileUpload" value="@if(isset($currency)){{$currency->decimal_place}}@endif" placeholder="Enter the decimal places">
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="mb-3">
+                     <label for="formFile" class="form-label custom-file-label font-size-17">Decimal Separator</label>
+                     <input class="form-control custom-file-input" name="decimal_seprator" type="text" id="decimal_seprator" id="customFileUpload" value="@if(isset($currency)){{$currency->decimal_seprator}}@endif" placeholder="Enter the decimal separator">
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="mb-3">
+                     <label for="formFile" class="form-label custom-file-label font-size-17">Thousand Separator</label>
+                     <input class="form-control custom-file-input" name="thousand_operator" type="text" id="thousand_operator" id="customFileUpload" value="@if(isset($currency)){{$currency->thousand_operator}}@endif" placeholder="Enter the thousand separator">
+                  </div>
+               </div>
+
             </div>
             <!-- end row -->
             <div class="mt-3">
