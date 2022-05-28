@@ -4,8 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Language;
 use App\Models\Country;
-use App\Http\Requests\StoreCurrencyRequest;
-use App\Http\Requests\UpdateCurrencyRequest;
+use App\Http\Requests\StoreLanguageRequest;
+use App\Http\Requests\UpdateLanguageRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DataTables;
@@ -26,8 +26,8 @@ class LanguageController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                         $btn = '<div class="d-flex">';
-                        $btn .= '<a href="/admin/currency/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
-                        $btn .= '<form method="POST" action="/admin/currency/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
+                        $btn .= '<a href="/admin/language/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
+                        $btn .= '<form method="POST" action="/admin/language/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
                         $btn .= '</div>';
                         return $btn;
                     })
@@ -51,32 +51,37 @@ class LanguageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCurrencyRequest  $request
+     * @param  \App\Http\Requests\StoreLanguageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCurrencyRequest $request)
+    public function store(StoreLanguageRequest $request)
     {
         // dd($request->all());
-        $currency = new Language();
-        $currency->name = $request->name;
-        $currency->symbol = $request->symbol;
-        $currency->code = $request->code;
-        $currency->entities = $request->entities;
-        $currency->symbol_left = $request->symbol_left;
-        $currency->decimal_place = $request->decimal_place;
-        $currency->decimal_seprator = $request->decimal_seprator;
-        $currency->thousand_operator = $request->thousand_operator;
-        $currency->save();
-        return redirect()->route('admin.currency.index');
+        $alllanguage = config('languages');
+        $name = $alllanguage[$request->abbr];
+        // dd(strtolower($name));
+        $language = new Language();
+        $language->abbr = $request->abbr;
+        $language->locale = $request->locale;
+        $language->name = $name;
+        $language->native = $request->native;
+        $language->flag = $request->flag;
+        $language->app_name = strtolower($name);
+        $language->russian_pluralization = $request->russian_pluralization;
+        $language->direction = $request->direction;
+        $language->date_format = $request->date_format;
+        $language->datetime_format = $request->datetime_format;
+        $language->save();
+        return redirect()->route('admin.language.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Currency  $currency
+     * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
-    public function show(Currency $currency)
+    public function show(Language $language)
     {
         //
     }
@@ -84,47 +89,53 @@ class LanguageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Currency  $currency
+     * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $currency = Currency::findOrFail($id);
+        $languagedata = Language::findOrFail($id);
         $countries = Country::all();
-        return view('admin.currency.create',compact('currency','countries'));
+        return view('admin.language.create',compact('languagedata','countries'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCurrencyRequest  $request
-     * @param  \App\Models\Currency  $currency
+     * @param  \App\Http\Requests\UpdateLanguageRequest  $request
+     * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCurrencyRequest $request, $id)
+    public function update(UpdateLanguageRequest $request, $id)
     {
-        $currency = Currency::findOrFail($id);
-        $currency->name = $request->name;
-        $currency->symbol = $request->symbol;
-        $currency->code = $request->code;
-        $currency->entities = $request->entities;
-        $currency->symbol_left = $request->symbol_left;
-        $currency->decimal_place = $request->decimal_place;
-        $currency->decimal_seprator = $request->decimal_seprator;
-        $currency->thousand_operator = $request->thousand_operator;
-        $currency->save();
-        return redirect()->route('admin.currency.index');
+        // dd($request->all());
+        $alllanguage = config('languages');
+        $name = $alllanguage[$request->abbr];
+        
+        $language = Language::findOrFail($id);
+        $language->abbr = $request->abbr;
+        $language->locale = $request->locale;
+        $language->name = $name;
+        $language->native = $request->native;
+        $language->flag = $request->flag;
+        $language->app_name = strtolower($name);
+        $language->russian_pluralization = $request->russian_pluralization;
+        $language->direction = $request->direction;
+        $language->date_format = $request->date_format;
+        $language->datetime_format = $request->datetime_format;
+        $language->save();
+        return redirect()->route('admin.language.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Currency  $currency
+     * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Currency::findOrFail($id)->delete();
+        Language::findOrFail($id)->delete();
         return redirect()->back();
     }
 }

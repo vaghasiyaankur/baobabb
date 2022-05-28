@@ -159,7 +159,7 @@ button.model_btn:hover {
 }
 .swiper-container {
   position: relative;
-  width: 90vw;
+  width: 92%;
 }
 .swiper-container > .swiper-slide__content {
   position: absolute;
@@ -175,6 +175,7 @@ button.model_btn:hover {
   transition: all 200ms linear;
   transform: scale(0.7);
 }
+
 .swiper-slide.swiper-slide-active {
   transform: scale(0.7);
 }
@@ -390,16 +391,18 @@ button {
 }
 .slider-for img {
   width: 100%;
+  height: 100%;
+  max-height: 620px;
 }
 .slider-nav .slick-track img {
   padding: 10px;
 }
-.cfa-bg-text {
-  background-image: url(https://sl.baobabb.co/wp-content/uploads/2021/08/SLL.png);
-  padding: 20px 28px;
-}
+
 .avtar-tel {
   background-color: #f95454;
+}
+.avtar_bg_blue{
+  background-color: #476576;
 }
 .avtar img {
   border-radius: 100px;
@@ -422,6 +425,24 @@ button {
 }
 .secure-text .title {
   background-color: #304958;
+}
+
+.avtar_r_btns .user_r_btn_{
+  width: 100%;
+  max-width: 150px;
+  background: #fff;
+  border: 1px solid #bfbfbf;
+  padding: 5px 20px;
+  border-radius: 3px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.Swiper-serach_result_ .swiper-slide{
+  background-color: #fff;
+  padding: 7px 20px;
+  border: 1px solid #bfbfbf;
+  border-radius: 30px;
+  width: 229px !important;
 }
 /* =============SINGLE LISTING PAGE END================ */
 

@@ -30,6 +30,48 @@
 
     <!-- RESPONSIV CSS -->
     <link rel="stylesheet" href="asset/css/responsiv.css">
+
+    <style>
+      
+        .dropdown11 ul {
+            list-style: none;
+            position: absolute;
+            width: 100%;
+            min-width: 150px;
+            max-height: 240px;
+            padding-left: 0;
+            right: 0;
+            top: 50px;
+            background: #fff;
+            color: #000;
+            border-radius: 5px;
+            overflow-y: scroll;
+        }
+
+        .dropdown11 ul li {
+            padding: 0px 16px;
+            height: 0px;
+            overflow: hidden;
+           
+        }
+
+        .dropdown11 ul li:hover,
+        .dropdown11 ul li.selected {
+            background: rgb(222, 221, 221);
+            color: #000;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .dropdown11:hover ul li {
+            padding: 8px 16px;
+            height: 34px;
+        }
+        .nav-icon {
+            position: relative;
+        }
+    </style>
 </head>
 
 <body>
@@ -65,8 +107,23 @@
                                 class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
                     <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
                                 class="fa-solid fa-notes-medical"></i></a></span>
-                    <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                class="fa-solid fa-globe"></i></a></span>
+                    <!-- <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                class="fa-solid fa-globe"></i></a></span> -->
+                    <div class="dropdown11"> 
+                        <span><a href="javascript:;"><i
+                                    class="fa-solid fa-globe py-3"></i><i class="fa-solid fa-angle-down ms-0"></i></a></span>
+                        <ul>
+                            <li data-value="1"><i class="fa-solid fa-flag me-4"></i>English</li>
+                            <li data-value="2"><i class="fa-solid fa-flag me-4"></i> english </li>
+                            <li data-value="3"><i class="fa-solid fa-flag me-4"></i> English </li>
+                            <li data-value="1"><i class="fa-solid fa-flag me-4"></i> English</li>
+                            <li data-value="2"><i class="fa-solid fa-flag me-4"></i> english </li>
+                            <li data-value="3"><i class="fa-solid fa-flag me-4"></i> English </li>
+                            <li data-value="1"><i class="fa-solid fa-flag me-4"></i> English</li>
+                            <li data-value="2"><i class="fa-solid fa-flag me-4"></i> english </li>
+                            <li data-value="3"><i class="fa-solid fa-flag me-4"></i> English </li>
+                        </ul>
+                    </div>
 
                     <!-------- START MODAL --------->
 
@@ -901,7 +958,8 @@
                     </div>
                     <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
                         <h6>Download Our App</h6>
-                        <div class="f_app_links d-flex flex-wrap justify-content-lg-end justify-content-start align-items-center mb-3">
+                        <div
+                            class="f_app_links d-flex flex-wrap justify-content-lg-end justify-content-start align-items-center mb-3">
                             <a href="" class="text-white">
                                 <div class="a-store d-flex align-items-center me-2">
                                     <div class="a_btn_img mx-1">
@@ -913,7 +971,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href=""class="text-white">
+                            <a href="" class="text-white">
                                 <div class="g-store d-flex align-items-center text-start">
                                     <div class="g_btn_img mx-1">
                                         <img src="asset/img/google-play.png" alt="">
@@ -943,7 +1001,7 @@
                     <h6 class="m-0 "> © 2022 Baobabb | Hello Media Group </h6>
                 </div>
                 <div class="right-s-content">
-                    <h6 class="m-0 ">Privacy policy | Tearm of Service  </h6>
+                    <h6 class="m-0 ">Privacy policy | Tearm of Service </h6>
                 </div>
             </div>
         </div>
