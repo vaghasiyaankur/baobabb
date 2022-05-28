@@ -39,7 +39,7 @@ Route::get('auth/facebook', [App\Http\Controllers\SocialiteController::class, 'r
 Route::get('callback/facebook', [App\Http\Controllers\SocialiteController::class, 'handleCallbackFacebook']);
 
 
-Route::group(['middleware' => 'web'], function () { 
+// Route::group(['middleware' => 'web'], function () { 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/category/{slug}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
 Route::get('/product/{slug}', [App\Http\Controllers\HomeController::class, 'product'])->name('product');
@@ -48,7 +48,8 @@ Route::get('/seller', [App\Http\Controllers\HomeController::class, 'seller'])->n
 Route::get('/seller/{username}', [App\Http\Controllers\HomeController::class, 'singleSeller'])->name('singleSeller');
 Route::post('/search/product', [App\Http\Controllers\HomeController::class, 'searchProduct'])->name('search.product');
 Route::get('/category/change/{slug}', [App\Http\Controllers\HomeController::class, 'changeCategory'])->name('category.change');
-});
+Route::get('lang/change', 'App\Http\Controllers\HomeController@changeLang')->name('changeLang');
+// });
 Route::middleware(['auth'])->group(function () {
     Route::get('/email/verify', 'App\Http\Controllers\Auth\VerificationController@show')->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', 'App\Http\Controllers\Auth\VerificationController@verify')->name('verification.verify')->middleware(['signed']);

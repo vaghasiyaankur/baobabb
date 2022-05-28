@@ -1,0 +1,38 @@
+<?php
+  
+return [
+  
+    'main_title' => "Encuentra todo lo que necesitas",
+    'main_title_2' => "Tu comunidad online donde puedes encontrar todo lo que buscar sin dificultad.",
+    'searchformheader' => "Estoy interesada en ...",
+    'searchplaceholder' => "Buscar...",
+    'selectlocation' => "Seleccionar ubicación",
+    'incategory' => "En Categoría...",
+    'search' => "Búsqueda",
+    'allOther' => "Todas las demas",
+    'categories' => "Categorías",
+    'footer_desc' => "Baobab es un mercado donde los compradores y vendedores no pueden participar, comprar y comerciar. Nuestro objetivo es facilitar que las cosas circulen libremente en la sociedad.",
+    'shope' => 'Comercio',
+    'categories' => 'Categorías',
+    'our_sellers' => 'Nuestras Vendedores',
+    'support' => 'Apoyo',
+    'contact_us' => 'Contacta con nosotras',
+    'help_center' => 'Centro de ayuda',
+    'anti_scam' => 'Anti-Estafa',
+    'service_status' => 'Estado del servicio',
+    'policy_center' => 'CENTRO DE POLÍTICAS',
+    'prohibited_items' => 'Artículos prohibidos',
+    'prohibited_conduct' => 'Conducta Prohibida',
+    'electronic_communications' => 'Comunicaciones Electrónicas',
+    'information' => 'Información',     
+    'download_our_app' => 'Download Our App',
+    'download_on_the' => 'Descargar en el',
+    'app_store' => 'App Store',
+    'get_on' => 'Subirse',
+    'google_play' => 'Google Play',
+    'follow_us_online' => 'Síguenos en línea',
+    'copyright_text' => '© 2022 Baobabb | Hello Media Group',
+    'privacy_policy' => 'Política de privacidad',
+    'term_of_sevices' => 'Términos de servicio',
+  
+];
