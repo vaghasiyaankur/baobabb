@@ -82,7 +82,7 @@ button {
   background-position: center;
 }
 .py_5 {
-  padding: 0 150px !important;
+  padding: 0 125px !important;
 }
 .main-header .header-title {
   font-size: 56px;
@@ -126,6 +126,9 @@ button {
 button.btn.model_btn {
   background: #3d627a;
   color: #fff;
+}
+.btn-outline-secondary.dropdown-toggle.show, .btn:active{
+  border: 1px solid transparent !important;
 }
 button.model_btn:hover {
   background-color: #304c5c;
@@ -201,11 +204,12 @@ button.model_btn:hover {
 .card-box {
   margin-top: 25px;
   margin-bottom: 35px;
+  white-space: nowrap;
 }
 .card-inner {
-  padding: 5px 20px;
-  /* min-height: 220px; */
+  padding: 5px 10px;
 }
+
 /* -----------FOOTER SECTION--------- */
 /* .footer-section {
   background-color: #364b5a;
