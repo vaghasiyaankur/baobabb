@@ -10,22 +10,24 @@ use App\Http\Requests\UpdatefieldRequest;
 use Illuminate\Http\Request;
 use DataTables;
 
-class FieldController extends Controller
+class CategoryFieldController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $id)
     {
+        $category = Category::find($id);
+        // dd($category);
         if ($request->ajax()) {
-            $data = Field::select('*');
+            $data = Field::where('category_id',$category->id);
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                         $btn = '<div class="d-flex">';
-                        $btn .= '<a href="/admin/custom/field/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
+                        $btn .= '<a href="custom_field/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
                         $btn .= '<form method="POST" action="/admin/custom/field/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
                         if($row->type == 'checkbox' || $row->type == 'checkbox(multiple)' || $row->type == 'selectbox' || $row->type == 'radio')
                         {
@@ -37,7 +39,7 @@ class FieldController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        return view('admin.field.index');
+        return view('admin.category.field.index',compact('category'));
     }
 
     /**
@@ -45,28 +47,28 @@ class FieldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $categories = Category::where('parent_id',null)->get();
-        return view('admin.field.create',compact('categories'));
+        $category = Category::find($id);
+        return view('admin.category.field.create',compact('category'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorefieldRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$category_id)
     {
-        // dd($request);
+        $category = Category::find($category_id);
         $field = new Field;
         $field->name = $request->name;
         $field->type = $request->type;
         $field->fieldlength = $request->fieldlength;
         $field->default = $request->default;
         $field->help = $request->help;
-        $field->category_id = $request->category_id;
+        $field->category_id = $category->id;
         if($request->required == 1)
         {
             $field->required = 1;
@@ -96,16 +98,16 @@ class FieldController extends Controller
             $field->disabled_in_subcategories = 0;
         }
         $field->save();
-        return redirect()->route('admin.custom.field.index');
+        return redirect()->route('admin.category.custom_field.index',$category->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\field  $field
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(field $field)
+    public function show($id)
     {
         //
     }
@@ -113,32 +115,33 @@ class FieldController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\field  $field
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($category_id, $id)
     {
-        $categories = Category::where('parent_id',null)->get();
+        $category = Category::find($category_id);
         $field = Field::find($id);
-        return view('admin.field.create',compact('field','categories'));
+        return view('admin.category.field.create',compact('field','category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatefieldRequest  $request
-     * @param  \App\Models\field  $field
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $category_id,$id)
     {
-        $field = Field::find($id);
+        $category = Category::find($category_id);
+        $field = Field::findOrFail($id);
         $field->name = $request->name;
         $field->type = $request->type;
         $field->fieldlength = $request->fieldlength;
         $field->default = $request->default;
         $field->help = $request->help;
-        $field->category_id = $request->category_id;
+        $field->category_id = $category->id;
         if($request->required == 1)
         {
             $field->required = 1;
@@ -168,18 +171,17 @@ class FieldController extends Controller
             $field->disabled_in_subcategories = 0;
         }
         $field->save();
-        return redirect()->route('admin.custom.field.index');
+        return redirect()->route('admin.category.custom_field.index',$category->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\field  $field
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Field::findOrFail($id)->delete();
-        return redirect()->back();
+        //
     }
 }

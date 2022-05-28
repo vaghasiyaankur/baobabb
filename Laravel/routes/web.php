@@ -93,7 +93,7 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('product', 'App\Http\Controllers\admin\ProductController', ['names'=> 'product']);   
     Route::resource('custom/field', 'App\Http\Controllers\admin\FieldController', ['names'=> 'custom.field']);   
     Route::resource('custom/field/{id}/option', 'App\Http\Controllers\admin\FieldOptionController', ['names'=> 'custom.field.option']);   
-    Route::get('category/{id}/custom_field', [App\Http\Controllers\admin\CategoryController::class, 'customField'])->name('category.custom_field');
+    Route::resource('category/{id}/custom_field', 'App\Http\Controllers\admin\CategoryFieldController', ['names'=> 'category.custom_field']);   
     Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
     Route::resource('language', 'App\Http\Controllers\admin\LanguageController', ['names'=> 'language']);   
 });

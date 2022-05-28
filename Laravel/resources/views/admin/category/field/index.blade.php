@@ -31,7 +31,7 @@
          <div class="card">
             <div class="card-header d-flex align-items-right">
                <a href="{{route('admin.category.index')}}" class="btn btn-success m-2">Go to Parent Category</a>
-               <a href="{{route('admin.custom.field.create')}}" class="btn btn-success m-2">Add New Custom Field → {{$category->name}} <i class="mdi mdi-arrow-right align-middle"></i></a>
+               <a href="{{route('admin.category.custom_field.create',$category->id)}}" class="btn btn-success m-2">Add New Custom Field → {{$category->name}} <i class="mdi mdi-arrow-right align-middle"></i></a>
             </div>
             <!-- end card header -->
             <div class="card-body">

@@ -12,13 +12,13 @@
 
 <div class="card card-h-100">
    <div class="card-header justify-content-between d-flex align-items-center">
-      <h4 class="card-title">@if(isset($field)) Filed Edit @else Add New Filed @endif</h4>
+      <h4 class="card-title">@if(isset($field))Field Edit → {{$category->name}} @else Add New Filed → {{$category->name}} @endif</h4>
       <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a> -->
    </div>
    <!-- end card header -->
    <div class="card-body">
       <div>
-         <form action="@if(isset($field)){{ route('admin.custom.field.update',[$field->id]) }}@else{{ route('admin.custom.field.store') }}@endif" method="post" enctype="multipart/form-data">
+         <form action="@if(isset($field)){{ route('admin.category.custom_field.update',[$category->id,$field->id]) }}@else{{ route('admin.category.custom_field.store',$category->id) }}@endif" method="post" enctype="multipart/form-data">
             @csrf
             @if(isset($field)) @method('PUT') @endif
             <div class="row form_border">
@@ -26,21 +26,6 @@
                   <div class="mb-3">
                      <label for="formFile" class="form-label custom-file-label font-size-17">Name</label>
                      <input class="form-control custom-file-input" name="name" value="@if(isset($field->name)){{$field->name}}@endif" type="text" id="name" id="customFileUpload" required>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="mb-3">
-                     <label for="formFile" class="form-label custom-file-label font-size-17">Category</label>
-                     <select class="form-control custom-file-input" name="category_id" value="@if(isset($field->category_id)){{$field->category_id}}@endif" id="category_id" required>
-                        <option value="">Select Category</option>
-                        @foreach($categories as $category)
-                           <option value="{{$category->id}}" @if(isset($field->category_id)) @if($category->id == $field->category_id) selected @endif @endif>{{$category->name}}</option>
-                           <?php $childs=App\Models\Category::where('parent_id',$category->id)->get();?>
-                           @foreach($childs as $child)
-                              <option value="{{$child->id}}" @if(isset($field->category_id)) @if($child->id == $field->category_id) selected @endif @endif>----| {{$child->name}}</option>
-                           @endforeach
-                        @endforeach
-                     </select>
                   </div>
                </div>
                <div class="col-md-6">
