@@ -39,6 +39,7 @@
                         <th>CATEGORY ID</th>
                         <th>NAME</th>
                         <th>Parent Category</th>
+                        <th>Custom Field</th>
                         <th>ACTION</th>
                      </tr>
                   </thead>
@@ -75,7 +76,8 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'id'},
                 {data: 'name', name: 'name'},
-                {data: 'category', name: 'category'},
+                {data: 'subCateories', name: 'category'},
+                {data: 'customField', name: 'Customo Fields'},
                 {data: 'action', name: 'action',orderable: true,searchable: true},
             ]
         });

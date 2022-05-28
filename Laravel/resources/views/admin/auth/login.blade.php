@@ -7,22 +7,23 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="SiteName">
+    <meta name="author" content="LaraClassifier">
 
-    <link rel="icon" type="image/png" sizes="16x16" href="http://127.0.0.1:8000/storage/app/default/ico/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="https://demo.laraclassifier.com/storage/app/default/ico/favicon.png?v=1">
 
-    <title>Login :: SiteName Admin</title>
+    <title>Login :: LaraClassifier Admin</title>
 
 
-    <meta name="csrf-token" content="XEZ3NE52QAppnEjwGdJEmteOIvUg98RIvbeDy319" />
+    <meta name="csrf-token" content="NUUNsNpZMcwrl2NmVpOrMKHokIs26uSkffq8ct2F" />
 
 
     <base target="_top" />
 
-    <link rel="canonical" href="http://127.0.0.1:8080/admin/login" />
+    <link rel="canonical" href="https://demo.laraclassifier.com/admin/login" />
 
 
-    <link href="http://127.0.0.1:8080/css/admin.css?id=23251a1b537c4ce15d7b" rel="stylesheet">
+    <link href="https://demo.laraclassifier.com/css/admin.css?id=23251a1b537c4ce15d7b" rel="stylesheet">
 
 
 
@@ -32,6 +33,14 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        .is-invalid .g-recaptcha iframe,
+        .has-error .g-recaptcha iframe {
+            border: 1px solid #f85359;
+        }
+
+    </style>
+    <script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//storage.googleapis.com">
@@ -53,12 +62,14 @@
 
 
 
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center">
             <div class="auth-box p-4 bg-white rounded">
 
                 <div class="logo text-center mb-5">
-                    <a href="http://127.0.0.1:8080">
-                        <img src="" alt="logo" class="img-fluid" style="width:250px; height:auto;">
+                    <a href="{{route('home')}}">
+                        {{-- <img src="{{asset('assets/img/Baobab-Logo.png')}}"
+                            alt="logo" class="img-fluid" style="width:250px; height:auto;"> --}}
+                            <h1>Baobab</h1>
                     </a>
                     <hr class="border-0 bg-secondary">
                 </div>
@@ -79,8 +90,6 @@
                             <form class="form-horizontal mt-3" id="loginform" action="{{ route('admin.login') }}"
                                 method="post">
                                 @csrf
-                                {{-- <input type="hidden" name="_token" value="XEZ3NE52QAppnEjwGdJEmteOIvUg98RIvbeDy319"> --}}
-
 
                                 <div class="row mb-3">
                                     <div class="">
@@ -109,15 +118,14 @@
 
                                 </div>
 
-                                {{-- <div class="row mb-3">
-                                    <div class="d-flex">
-                                        <div class="ms-auto">
-                                            <a href="javascript:void(0)" id="to-recover" class="text-muted float-end">
-                                                <i class="fa fa-lock me-1"></i> Forgot your password?
-                                            </a>
-                                        </div>
+
+                                <div class="form-group mb-3 required">
+                                    <div class="no-label">
+                                        <div class="g-recaptcha"
+                                            data-sitekey="6LepkyITAAAAABcNEMzv-aT6WYAIiBH5ptr4Lc1I"></div>
                                     </div>
-                                </div> --}}
+
+                                </div>
 
 
                                 <div class="row mb-3 text-center mt-4">
@@ -179,7 +187,45 @@
 
     </div>
 
-    <script src="http://127.0.0.1:8080/js/admin.js?id=837c373ae21d3891647f"></script>
+    <script>
+        var siteUrl = 'https://demo.laraclassifier.com';
+        var languageCode = 'en';
+        var isLogged = false;
+        var isLoggedAdmin = false;
+        var isAdminPanel = true;
+        var demoMode = true;
+        var demoMessage = 'This feature has been turned off in demo mode.';
+
+
+        var cookieParams = {
+            expires: 86400,
+            path: "/",
+            domain: "demo.laraclassifier.com",
+            secure: false,
+            sameSite: "lax"
+        };
+
+
+        var langLayout = {
+            'confirm': {
+                'button': {
+                    'yes': "Yes",
+                    'no': "No",
+                    'ok': "OK",
+                    'cancel': "Cancel"
+                },
+                'message': {
+                    'question': "Are you sure you want to perform this action?",
+                    'success': "The operation has been performed successfully.",
+                    'error': "An error has occurred during the action performing.",
+                    'errorAbort': "An error has occurred during the action performing. The operation has not been performed.",
+                    'cancel': "Action cancelled. The operation has not been performed."
+                }
+            }
+        };
+    </script>
+
+    <script src="https://demo.laraclassifier.com/js/admin.js?id=837c373ae21d3891647f"></script>
 
 
     <script>
@@ -214,8 +260,75 @@
         }
     </script>
 
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+
+            PNotify.defaultModules.set(PNotifyBootstrap4, {});
+            PNotify.defaultModules.set(PNotifyFontAwesome5Fix, {});
+            PNotify.defaultModules.set(PNotifyFontAwesome5, {});
 
 
+
+            // $(function() {
+            //     let alertMessage = "Unauthorized access.";
+            //     let alertType = "error";
+
+            //     pnAlertForPrologue(alertType, alertMessage);
+            // });
+
+
+            /**
+             * Show a PNotify alert (Using the Stack feature)
+             * @param  type
+             * @param  message
+             * @param  title
+             */
+            function pnAlertForPrologue(type, message, title = '') {
+                if (typeof window.stackTopRight === 'undefined') {
+                    window.stackTopRight = new PNotify.Stack({
+                        dir1: 'down',
+                        dir2: 'left',
+                        firstpos1: 25,
+                        firstpos2: 25,
+                        spacing1: 10,
+                        spacing2: 25,
+                        modal: false,
+                        maxOpen: Infinity
+                    });
+                }
+                let alertParams = {
+                    text: message,
+                    textTrusted: true,
+                    type: 'info',
+                    icon: false,
+                    stack: window.stackTopRight
+                };
+                switch (type) {
+                    case 'error':
+                        alertParams.type = 'error';
+                        break;
+                    case 'warning':
+                        alertParams.type = 'notice';
+                        break;
+                    case 'notice':
+                        alertParams.type = 'notice';
+                        break;
+                    case 'info':
+                        alertParams.type = 'info';
+                        break;
+                    case 'success':
+                        alertParams.type = 'success';
+                        break;
+                }
+                if (typeof title !== 'undefined' && title != '' && title.length !== 0) {
+                    alertParams.title = title;
+                    alertParams.icon = true;
+                }
+
+                PNotify.alert(alertParams);
+            }
+        });
+    </script>
 
 </body>
 

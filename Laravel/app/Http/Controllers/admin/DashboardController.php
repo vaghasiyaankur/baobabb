@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Models\User;
+use App\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -16,7 +17,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view ('admin.dashboard');
+        $users = User::orderBy('created_at','DESC')->with('countries')->take(10)->get();
+        // dd($users);
+        $products = Product::orderBy('created_at','DESC')->take(10)->get();
+        return view ('admin.dashboard',compact('users','products'));
     }
 
     /**
