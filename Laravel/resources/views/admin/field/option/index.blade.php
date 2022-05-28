@@ -20,7 +20,7 @@
    <div class="row">
       <div class="col-12">
          <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="mb-0">Options -> {{$field->name}}</h4>
+            <h4 class="mb-0">Options → {{$field->name}}</h4>
          </div>
       </div>
    </div>
@@ -70,13 +70,12 @@
 <script>
      $(function () {
         var field = $('#field_id').val();
-        console.log(field)
         var page = 5;
         var table = $('#brand_list').DataTable({
             processing: true,
             serverSide: true,
             pageLength : page,
-            ajax: "/admin/custom/field/"+field+"/option",
+            ajax: "  ",
             columns: [
                 {data: 'id', name: 'id'},
                 {data: 'value', name: 'value'},

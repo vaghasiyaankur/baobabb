@@ -40,7 +40,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'status',
         'social_id',
         'social_type',
-        'facebook_id'
+        'facebook_id',
+        'timezone'
     ];
 
     /**

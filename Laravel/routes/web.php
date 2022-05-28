@@ -66,7 +66,11 @@ Route::group(['middleware' => ['auth','verified'],'prefix' => 'user', 'as' => 'u
     // Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']); 
     Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);
     // Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user'])
+    Route::get('message/', 'App\Http\Controllers\MessageController@index')->name('message'); 
     // Route::get('messages', 'App\Http\Controllers\MessageController@fetchMessages');
+    Route::get('/load-latest-messages', 'App\Http\Controllers\MessageController@getLoadLatestMessages');
+    Route::post('/send', 'App\Http\Controllers\MessageController@postSendMessage');
+    Route::get('/fetch-old-messages', 'App\Http\Controllers\MessageController@getOldMessages');
     // Route::post('messages', 'App\Http\Controllers\MessageController@sendMessage');
 });
 
@@ -82,12 +86,14 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('profile' , [App\Http\Controllers\admin\DashboardController::class,'profile'])->name('profile');
     Route::post('profile-update', [App\Http\Controllers\admin\DashboardController::class, 'profile_update'])->name('profile.update');
     Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']);   
+    Route::resource('category/{id}/subcategory', 'App\Http\Controllers\admin\SubCategoryController', ['names'=> 'subcategory']);   
     Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);   
     Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);   
     Route::resource('product/type', 'App\Http\Controllers\admin\ProductTypeController', ['names'=> 'product.type']);   
     Route::resource('product', 'App\Http\Controllers\admin\ProductController', ['names'=> 'product']);   
     Route::resource('custom/field', 'App\Http\Controllers\admin\FieldController', ['names'=> 'custom.field']);   
     Route::resource('custom/field/{id}/option', 'App\Http\Controllers\admin\FieldOptionController', ['names'=> 'custom.field.option']);   
+    Route::get('category/{id}/custom_field', [App\Http\Controllers\admin\CategoryController::class, 'customField'])->name('category.custom_field');
     Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
     Route::resource('language', 'App\Http\Controllers\admin\LanguageController', ['names'=> 'language']);   
 });

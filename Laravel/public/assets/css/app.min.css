@@ -1706,8 +1706,8 @@ body[data-layout-mode=dark][data-layout-size=boxed] #layout-wrapper {
 }
 
 .avatar-sm {
-    height: 2rem;
-    width: 2rem
+    height: 3rem;
+    width: 3rem
 }
 
 .avatar {

@@ -20,6 +20,8 @@
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/flag-icon-css/flag-icon.min.css') }}">
+
     @stack('styles_after_assets')
 </head>
 <body>

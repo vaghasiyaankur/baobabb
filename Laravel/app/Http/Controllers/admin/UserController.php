@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\User;
+use App\Models\Country;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,7 @@ use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use DataTables;
+use DateTimeZone;
 
 class UserController extends Controller
 {
@@ -45,7 +47,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $timezones = DateTimeZone::listIdentifiers();
+        $countries = Country::all();
+        return view('admin.user.create',compact('countries','timezones'));
     }
 
     /**
@@ -75,8 +79,10 @@ class UserController extends Controller
         $user->country = $request->country;
         $user->state = $request->state;
         $user->city = $request->city;
-        $user->location = $request->location;
+        $user->lat = $request->latitude;
+        $user->long = $request->longitude;
         $user->street = $request->street;
+        $user->timezone = $request->timezone;
         $user->password = Hash::make($request->password);
         $user->save();
         return redirect()->route('admin.user.index');
@@ -102,7 +108,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $u = User::find($id);
-        return view('admin.user.create',compact('u'));
+        $timezones = DateTimeZone::listIdentifiers();
+        $countries = Country::all();
+        return view('admin.user.create',compact('u','countries','timezones'));
     }
 
     /**
@@ -137,6 +145,7 @@ class UserController extends Controller
         $user->state = $request->state;
         $user->city = $request->city;
         $user->location = $request->location;
+        $user->timezone = $request->timezone;
         $user->street = $request->street;
         $user->password = Hash::make($request->password);
         $user->save();

@@ -26,6 +26,9 @@
                         <a href="{{ route('user.profile') }}" class="panel-links">Settings</a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('user.message') }}" class="panel-links">Messages</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('logout') }}" class="panel-links"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{-- <i class="fa-solid fa-right-from-bracket"></i> --}}

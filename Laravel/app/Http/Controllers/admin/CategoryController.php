@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Category;
+use App\Models\Field;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Controllers\Controller;
@@ -20,7 +21,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Category::select('*')->with('category');
+            $data = Category::where('parent_id', null);
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
@@ -31,10 +32,21 @@ class CategoryController extends Controller
                         $btn .= '</div>';
                         return $btn;
                     })
-                    ->addColumn('category', function($row){
-                        return $row->parent_id? $row->category->name : '-';
+                    ->addColumn('subCateories', function($row){
+                        $count = Category::where('parent_id',$row->id)->count();
+                        $btn = '<div class="d-flex">';
+                        $btn .= '<a href="/admin/category/'.$row->id.'/subcategory" class="edit border btn-light btn-sm m-1">'.$count.' Subcategories</a>';
+                        $btn .= '</div>';
+                        return $btn;
                     })
-                    ->rawColumns(['action'])
+                    ->addColumn('customField', function($row){
+                        $count = Field::where('category_id',$row->id)->count();
+                        $btn = '<div class="d-flex">';
+                        $btn .= '<a href="/admin/category/'.$row->id.'/custom_field" class="edit border btn-light btn-sm m-1">'.$count.' Custom Field</a>';
+                        $btn .= '</div>';
+                        return $btn;
+                    })
+                    ->rawColumns(['action','subCateories','customField'])
                     ->make(true);
         }
         // dd(User::all());
@@ -139,5 +151,30 @@ class CategoryController extends Controller
     {
         Category::findOrFail($id)->delete();
         return redirect()->back();
+    }
+
+    public function customField(Request $request, $id)
+    {
+        $category = Category::find($id);
+        // dd($category);
+        if ($request->ajax()) {
+            $data = Field::where('category_id',$category->id);
+            return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                        $btn = '<div class="d-flex">';
+                        $btn .= '<a href="/admin/custom/field/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
+                        $btn .= '<form method="POST" action="/admin/custom/field/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
+                        if($row->type == 'checkbox' || $row->type == 'checkbox(multiple)' || $row->type == 'selectbox' || $row->type == 'radio')
+                        {
+                            $btn .= '<a href="/admin/custom/field/'.$row->id.'/option" class="edit btn btn-danger btn-sm m-1">Option</a>';
+                        }
+                        $btn .= '</div>';
+                        return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        return view('admin.category.field.index',compact('category'));
     }
 }

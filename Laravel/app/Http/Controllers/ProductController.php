@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Currency;
+use App\Models\Country;
 use App\Http\Controllers\ImageController;
 
 class ProductController extends Controller
@@ -61,7 +62,8 @@ class ProductController extends Controller
         if($user->status == 1)
         {
             $categories = Category::where('parent_id',null)->get();
-            $currencies = Currency::where('country_id',$user->country)->get();
+            $country = Country::find($user->country);
+            $currencies = Currency::where('name',$country->currency_code)->get();
             return view('user.product.create', compact('categories','currencies'));
         }
         else

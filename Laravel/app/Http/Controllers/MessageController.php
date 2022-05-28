@@ -19,8 +19,10 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $users = User::where('id', '!=', Auth::user()->id)->get();
-        return view('home', compact('users'));
+        $message = Message::where('to_user',auth()->user()->id)->pluck('from_user');
+        $users = User::whereIn('id',$message)->get();
+        // $users = User::where('id', '!=', Auth::user()->id)->get();
+        return view('user.chat', compact('users'));
     }
 
     /**
@@ -79,6 +81,7 @@ class MessageController extends Controller
         $message->to_user = $request->to_user;
         $message->content = $request->message;
         $message->save();
+        // return 123;
         // prepare some data to send with the response
         $message->dateTimeStr = date("Y-m-dTH:i", strtotime($message->created_at->toDateTimeString()));
         $message->dateHumanReadable = $message->created_at->diffForHumans();

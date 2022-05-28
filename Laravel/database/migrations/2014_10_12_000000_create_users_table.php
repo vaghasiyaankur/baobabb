@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->string('street')->nullable();
+            $table->string('timezone')->nullable();
             $table->enum('status',[0,1])->default(0);
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();

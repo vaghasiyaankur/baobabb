@@ -26,119 +26,192 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="formFile" class="form-label custom-file-label font-size-17">Name</label>
-                     <input class="form-control custom-file-input" value="@if(isset($u->name)){{$u->name}}@endif" name="name" type="text" id="name" id="customFileUpload" required>
+                     <input class="form-control custom-file-input @error('email') is-invalid @enderror " value="@if(isset($u->name)){{$u->name}}@endif" name="name" type="text" id="name"  >
                   </div>
+                  @error('name')
+                     <div class="invalid-feedback d-block">{{ $message }}</div>
+                  @enderror
                </div>
 
                <div class="col-md-6">
                 <div class="mb-3">
                    <label for="formFile" class="form-label custom-file-label font-size-17">email</label>
-                   <input class="form-control custom-file-input" value="@if(isset($u->email)){{$u->email}}@endif" name="email" type="email" id="email" id="customFileUpload" required>
+                   <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(old('email')){{old('email')}}@elseif(isset($u->email)){{$u->email}}@endif" name="email" type="email" id="email" >
                 </div>
+                @error('email')
+                  <div class="invalid-feedback d-block">{{ $message }}</div>
+               @enderror
              </div>
 
              <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">phone</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->phone)){{$u->phone}}@endif" name="phone" type="number" id="phone" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->phone)){{$u->phone}}@endif" name="phone" type="number" id="phone" >
                </div>
+               @error('phone')
+                  <div class="invalid-feedback d-block">{{ $message }}</div>
+               @enderror
             </div>
 
              <div class="col-md-6">
                 <div class="mb-3">
                    <label for="formFile" class="form-label custom-file-label font-size-17">password</label>
-                   <input class="form-control custom-file-input" value="" name="password" type="text" id="password" id="customFileUpload">
+                   <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->password)){{$u->password}}@endif" name="password" type="password" id="password" >
                 </div>
+                @error('password')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+             @enderror
              </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Facebook</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->facebook)){{$u->facebook}}@endif" name="facebook" type="text" id="facebook" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->facebook)){{$u->facebook}}@endif" name="facebook" type="text" id="facebook" >
                </div>
+               @error('facebook')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <div class="col-md-6">
                 <div class="mb-3">
                    <label for="formFile" class="form-label custom-file-label font-size-17">Twitter</label>
-                   <input class="form-control custom-file-input" name="twitter" value="@if(isset($u->twitter)){{$u->twitter}}@endif" type="text" id="twitter" id="customFileUpload">
+                   <input class="form-control custom-file-input @error('email') is-invalid @enderror" name="twitter" value="@if(isset($u->twitter)){{$u->twitter}}@endif" type="text" id="twitter" >
                 </div>
+                @error('twitter')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+             @enderror
              </div>
              <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Youtube</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->youtube)){{$u->youtube}}@endif" name="youtube" type="text" id="youtube" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->youtube)){{$u->youtube}}@endif" name="youtube" type="text" id="youtube" >
                </div>
+               @error('youtube')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Linkedin</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->linkedin)){{$u->linkedin}}@endif" name="linkedin" type="text" id="linkedin" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->linkedin)){{$u->linkedin}}@endif" name="linkedin" type="text" id="linkedin" >
                </div>
+               @error('linkedin')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Instagram</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->instagram)){{$u->instagram}}@endif" name="instagram" type="text" id="instagram" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->instagram)){{$u->instagram}}@endif" name="instagram" type="text" id="instagram" >
                </div>
+               @error('instagram')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Website</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->website)){{$u->website}}@endif" name="website" type="text" id="website" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->website)){{$u->website}}@endif" name="website" type="text" id="website" >
                </div>
+               @error('website')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Description</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->description)){{$u->description}}@endif" name="description" type="text" id="description" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->description)){{$u->description}}@endif" name="description" type="text" id="description" >
                </div>
+               @error('description')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Location</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->location)){{$u->location}}@endif" name="Location" type="text" id="Location" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->location)){{$u->location}}@endif" name="Location" type="text" id="autocomplete" >
+                  <input type="hidden" name="latitude" id="latitude" class="form-control">
+                  <input type="hidden" name="longitude" id="longitude" class="form-control">
                </div>
+               @error('location')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
-             <div class="col-md-6">
+            <div class="col-md-6">
                <div class="mb-3">
-                  <label for="formFile" class="form-label custom-file-label font-size-17">Country</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->country)){{$u->country}}@endif" name="country" type="text" id="country" id="customFileUpload">
+                  <label for="formFile" class="form-label custom-file-label font-size-17">country</label>
+                  <select class="form-control custom-file-input @error('email') is-invalid @enderror" name="country" value="@if(isset($u->country)){{$u->country}}@endif" id="country" >
+                     <option value="">Select country</option>
+                     @foreach($countries as $country)
+                        <option value="{{$country->id}}" @if(isset($u->country)) @if($country->id == $u->country) selected @endif @endif>{{$country->name}}</option>
+                     @endforeach
+                  </select>
                </div>
+               @error('country')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
+            </div>
+
+            <div class="col-md-6">
+               <div class="mb-3">
+                  <label for="formFile" class="form-label custom-file-label font-size-17">Preferred Time Zone</label>
+                  <select class="form-control custom-file-input @error('email') is-invalid @enderror" name="country" value="@if(isset($u->country)){{$u->country}}@endif" id="country" >
+                     <option value="">Select TimeZone</option>
+                     @foreach($timezones as $timezone)
+                        <option value="{{$timezone}}" @if(isset($u->timezone)) @if($timezone == $u->timezone) selected @endif @endif>{{$timezone}}</option>
+                     @endforeach
+                  </select>
+               </div>
+               @error('country')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">state</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->state)){{$u->state}}@endif" name="state" type="text" id="state" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->state)){{$u->state}}@endif" name="state" type="text" id="state"  >
                </div>
+               @error('state')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">City</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->city)){{$u->city}}@endif" name="city" type="text" id="city" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->city)){{$u->city}}@endif" name="city" type="text" id="city"  >
                </div>
+               @error('city')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">street</label>
-                  <input class="form-control custom-file-input" value="@if(isset($u->street)){{$u->street}}@endif" name="street" type="text" id="street" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->street)){{$u->street}}@endif" name="street" type="text" id="street" >
                </div>
+               @error('street')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Avatar</label>
-                  <input class="form-control custom-file-input"  name="avatar" type="file" id="avatar" id="customFileUpload">
+                  <input class="form-control custom-file-input @error('email') is-invalid @enderror"  name="avatar" type="file" id="avatar" >
                </div>
+               @error('avatar')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
             </div>
 
             <!-- end col -->
@@ -178,6 +251,41 @@
     $(".js-example-responsive").select2({
         width: 'resolve'
     });
+</script>
+
+{{-- FOR AUTOCOMPLATE ADDRESS --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+{{-- javascript code --}}
+<script type='text/javascript'
+src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&key=AIzaSyBZhREk9TESs69r99eYGKkIQ725IqOP8Zc&ver=5.9.3'>
+</script>
+<script>
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function initialize() {
+    var input = document.getElementById('autocomplete');
+    var options = {
+        types: ['(cities)'],
+        componentRestrictions: {
+            country: "in"
+        }
+    };
+    var autocomplete = new google.maps.places.Autocomplete(input, options);
+    autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        console.log(place)
+        $('#latitude').val(place.geometry['location'].lat());
+        $('#longitude').val(place.geometry['location'].lng());
+        // // --------- show lat and long ---------------
+        // $("#lat_area").removeClass("d-none");
+        // $("#long_area").removeClass("d-none");
+    });
+}
 </script>
 
 @endpush
