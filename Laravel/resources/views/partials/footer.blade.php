@@ -5,25 +5,23 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="f-text">
-                            <p class="f_c_links_">Baobab is a marketplace where buyers and sellers can
-                                cannot,engage,purchase,and trade.
-                                Our goal is to make it esiaer for things to circulate freely across society. </p>
+                            <p class="f_c_links_">{{ __('messages.footer_desc')}} </p>
                         </div>
                     </div>
                     <div class="col-lg-3 mx-auto">
                         <div class="f-links ">
-                            <h6 class="mb-2">Shope</h6>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> Categories</a></p>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> Our Sellers</a></p>
+                            <h6 class="mb-2">{{ __('messages.shope')}}</h6>
+                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.categories')}}</a></p>
+                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.our_sellers')}}</a></p>
                         </div>
                     </div>
                     <div class="col-lg-3 mx-auto">
                         <div class="f-links mt-3 mt-lg-0">
-                            <h6>Support</h6>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> Contact Us</a></p>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> Help Center</a></p>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> Anti-Scam</a></p>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> Sevice-status</a></p>
+                            <h6>{{ __('messages.support')}}</h6>
+                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.contact_us')}}</a></p>
+                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.help_center')}}</a></p>
+                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.anti_scam')}}</a></p>
+                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.service_status')}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -31,14 +29,14 @@
             <div class="col-sm-6 col-lg-5">
                 <div class="row ">
                     <div class="col-lg-6 mt-3 mt-lg-0">
-                        <h6>POLICY CENTER</h6>
-                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> Prohibited Items</a></p>
-                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> Prohibited Conduct </a></p>
-                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> Electronic Communications</a></p>
-                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> Information </a></p>
+                        <h6>{{ __('messages.policy_center')}}</h6>
+                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.prohibited_items')}}</a></p>
+                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.prohibited_conduct')}} </a></p>
+                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.electronic_communications')}}</a></p>
+                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.information')}} </a></p>
                     </div>
                     <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
-                        <h6>Download Our App</h6>
+                        <h6>{{ __('messages.download_our_app')}}</h6>
                         <div class="f_app_links d-flex flex-wrap justify-content-lg-end justify-content-start align-items-center mb-3">
                             <a href="" class="text-white">
                                 <div class="a-store d-flex align-items-center me-2">
@@ -46,8 +44,8 @@
                                         <i class="fa-brands fa-apple fs-5"></i>
                                     </div>
                                     <div class="a_btn_text me-1">
-                                        <p class="small_p m-0">Download on the</p>
-                                        <p class="mb-0">App Store</p>
+                                        <p class="small_p m-0">{{ __('messages.download_on_the')}}</p>
+                                        <p class="mb-0">{{ __('messages.app_store')}}</p>
                                     </div>
                                 </div>
                             </a>
@@ -57,13 +55,13 @@
                                         <img src="{{asset('assets/img/google-play.png')}}" alt="">
                                     </div>
                                     <div class="g_btn_text me-1">
-                                        <p class="small_p m-0">GET ON</p>
-                                        <p class="mb-0">Google Play</p>
+                                        <p class="small_p m-0">{{ __('messages.get_on')}}</p>
+                                        <p class="mb-0">{{ __('messages.google_play')}}</p>
                                     </div>
                                 </div>
                             </a>
                         </div>
-                        <h6 class="mb-1 mt-3 mt-lg-0">Follow Us Online</h6>
+                        <h6 class="mb-1 mt-3 mt-lg-0">{{ __('messages.follow_us_online')}}</h6>
                         <div class="f_online_icon">
                             <a href="javascript:;"><i class="fa-brands fa-twitter-square"></i></a>
                             <a href="javascript:;"><i class="fa-brands fa-facebook-square"></i></a>
@@ -78,10 +76,10 @@
             <div class="footer-s-inner d-flex flex-wrap justify-content-between align-items-center">
                 <div class="left-s-content d-flex align-items-center">
                     <img src="{{asset('assets/img/footer-logo.png')}}" class="f-s-logo" alt="">
-                    <h6 class="m-0 "> © 2022 Baobabb | Hello Media Group </h6>
+                    <h6 class="m-0 ">{{ __('messages.copyright_text')}} </h6>
                 </div>
                 <div class="right-s-content">
-                    <h6 class="m-0 ">Privacy policy | Tearm of Service  </h6>
+                    <h6 class="m-0 ">{{ __('messages.privacy_policy')}} | {{ __('messages.term_of_sevices')}}  </h6>
                 </div>
             </div>
         </div>
@@ -126,6 +124,12 @@
                 prevEl: ".swiper-button-prev"
             }
         });
+    });
+    
+    var url = "{{ route('changeLang') }}";
+    $(".languagess").click(function(){
+        var id = $(this).data('id');
+        window.location.href = url + "?lang="+ id;
     });
 </script>
 

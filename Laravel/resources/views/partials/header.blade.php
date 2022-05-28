@@ -58,8 +58,9 @@
                                     class="fa-solid fa-globe py-3"></i><i class="fa-solid fa-angle-down ms-0"></i></a></span>
                         <ul>
                             @foreach($languages as $language)
-                            <li data-value="1"><i class="flag-icon {{$language->flag}} me-4"></i>{{ $language->name}}</li>
+                            <li class="languagess" data-value="1" data-id="{{ $language->abbr}}"><a href="#"><i class="flag-icon {{$language->flag}} me-4"></i>{{ $language->name}}</a></li>
                             @endforeach
+                        </ul>    
                     </div>
 
                      <!-------- START MODAL --------->

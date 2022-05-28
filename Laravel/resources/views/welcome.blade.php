@@ -11,9 +11,8 @@
         <div class="container-fluid py_5 ">
             <div class="row align-items-center">
                 <div class="col-lg-8 ">
-                    <h2 class="header-title">Rechercher tout ce don't vous avez besoin</h2>
-                    <p class="header-text pb-lg-5">Votre communaute` en lignr ou` vous pouvez trouver tout ce que vous
-                        cherchez,sans difficulte`.</p>
+                    <h2 class="header-title">{{ __('messages.main_title')}}</h2>
+                    <p class="header-text pb-lg-5">{{ __('messages.main_title_2')}}</p>
                     <div class="categorie pt-lg-5 d-flex flex-wrap justify-content-between align-items-center">
                         <div class="categorie-box mt-3">
                             <a href="javascript:;" class="text-decoration-none"><img
@@ -42,7 +41,7 @@
                         </div>
                         <div class="categorie-box mt-3">
                             <a href="{{ route('allcategory') }}" class="text-decoration-none">
-                                <p class="text-white text-center mb-0">All other <br> Categories</p>
+                                <p class="text-white text-center mb-0">{{ __('messages.allOther')}} <br> {{ __('messages.categories')}}</p>
                                 <i class="fa-solid fa-arrow-right-long text-white ps-4"></i>
                             </a>
                         </div>
@@ -52,23 +51,23 @@
                     <div class="header-form">
                         <form action="{{ route('search.product') }}" method="POST">
                             @csrf
-                            <h3 class="text-black mb-4">I'm interested in...</h3>
+                            <h3 class="text-black mb-4">{{ __('messages.searchformheader')}}</h3>
                             <div class="mb-4">
                                 <input type="name" class="form-control" id="name" name="name" aria-describedby="emailHelp"
-                                    placeholder="Search for..." required>
+                                    placeholder="{{ __('messages.searchplaceholder')}}" required>
                             </div>
                             <div class="mb-4">
                                 {{-- <input type="text" class="form-control" id="exampleInputPassword1"
                                 placeholder="Located in..."> --}}
                                 <input type="text" name="autocomplete" id="autocomplete" class="form-control"
-                                    placeholder="Select Location">
+                                    placeholder="{{ __('messages.selectlocation')}}">
                                 <input type="hidden" name="latitude" id="latitude" class="form-control">
                                 <input type="hidden" name="longitude" id="longitude" class="form-control">
 
                             </div>
                             <div class="mb-4 ">
                                 <select class="form-control " name="category_id" id="">
-                                    <option>In Category...</option>
+                                    <option>{{ __('messages.incategory')}}</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -76,7 +75,7 @@
                                 {{-- <input type="text" class="form-control" id="category"
                                 placeholder="In Category..."> --}}
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Search</button>
+                            <button type="submit" class="btn btn-primary w-100">{{ __('messages.search')}}</button>
                         </form>
                     </div>
                 </div>

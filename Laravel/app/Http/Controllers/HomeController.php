@@ -11,6 +11,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Cookie;
 use Auth;
+use App;
+use Session;
 use App\Models\Country;
 
 class HomeController extends Controller
@@ -48,6 +50,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        // dd(session()->get('locale'));
         $results = Product::orderBy('id')->paginate(18);
         // dD(count($results->items()));
         $artilces = '';
@@ -206,6 +209,14 @@ class HomeController extends Controller
         $data .='</div>';
 
         return $data;
+    }
+
+    public function changeLang(Request $request)
+    {
+        App::setLocale($request->lang);
+        session()->put('locale', $request->lang);
+
+        return redirect()->back();
     }
     
 }
