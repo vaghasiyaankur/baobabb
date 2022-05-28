@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title') @if(isset($currency)) currency Edit @else currency Add @endif @endsection
+@section('title') @if(isset($languagedata)) currency Edit @else currency Add @endif @endsection
 
 @push('styles_after_assets')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom-table.css') }}">
     {{--  flag  --}}
     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"/>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('assets/css/flag-icon-css/flag-icon.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/flag-icon-css/flag-icon.min.css') }}">
 
     <style>
        .btn-input {
@@ -39,6 +39,17 @@
    height: 200px;
    overflow: scroll;
 }
+.panel.panel-default{
+    width: 10px;
+    border: none;
+    box-shadow: none;
+}
+.panel-body{
+    padding: 0px !important;
+}
+.form-select{
+    font-size: 1.5rem;
+}
     </style>
 @endpush
 
@@ -46,15 +57,15 @@
 
 <div class="card card-h-100">
    <div class="card-header justify-content-between d-flex align-items-center">
-      <h4 class="card-title">@if(isset($currency)) Edit currency @else Add New currency @endif</h4>
+      <h4 class="card-title">@if(isset($languagedata)) Edit Language @else Add New Language @endif</h4>
       <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a> -->
    </div>
    <!-- end card header -->
    <div class="card-body">
       <div>
-         <form action="@if(isset($currency)){{ route('admin.currency.update',[$currency->id]) }}@else{{ route('admin.currency.store') }}@endif" method="post" enctype="multipart/form-data">
+         <form action="@if(isset($languagedata)){{ route('admin.language.update',[$languagedata->id]) }}@else{{ route('admin.language.store') }}@endif" method="post" enctype="multipart/form-data">
             @csrf
-            @if(isset($currency)) @method('PUT') @endif
+            @if(isset($languagedata)) @method('PUT') @endif
 
             <div class="row">
                <div class="col-md-6">
@@ -108,16 +119,20 @@
                        @endforeach
                    </select>
                </div> --}}
+
+               <label for="formFile" class="form-label custom-file-label font-size-17">Flag</label>
                <div class="panel panel-default">
                   <div class="panel-body flags-show-panel">
                      <div class="btn-group flgs-show">
                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                          <span data-bind="label">All Leagues</span>&nbsp;<span class="caret"></span>
+                         <input type="hidden" name="flag" value="">
                        </button>
                        <ul class="dropdown-menu flag-list" role="menu">
                         @foreach(config('shortcode') as $shortcode)
                          <li><a href="#"><i class="flag-icon {{'flag-icon-'.$shortcode}}"></i>{{'-'.$shortcode}}</a></li>
                          @endforeach
+                         <input type="hidden" name="selectFlag" id="selectFlag" value="{{@$languagedata->flag}}">
                        </ul>
                      </div>
                    </div>
@@ -125,9 +140,9 @@
            </div>
            <div class="col-md-4">
             <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Locale Code (eg. en_US)</label>
-                <select name="locale" style="width: 100%"
-                    class="locale form-select select2_field select2-hidden-accessible" tabindex="-1"
+                <label for="formFile" class="form-label custom-file-label font-size-17">Direction (eg. en_US)</label>
+                <select name="direction" style="width: 100%"
+                    class="direction form-select select2_field select2-hidden-accessible" tabindex="-1"
                     aria-hidden="true">
                     <option value="">-</option>
                     <option value="ltr" {{ 'ltr' == @$languagedata->direction ? 'selected' : '' }}>{{ 'ltr' }}</option>
@@ -170,7 +185,7 @@
          </div>
      </div>
             <div class="mt-3">
-               <button type="submit" class="btn btn-primary ms-3">@if(isset($currency)) Update @else Save @endif</button>
+               <button type="submit" class="btn btn-primary ms-3">@if(isset($languagedata)) Update @else Save @endif</button>
             </div>
          </form>
          <!-- end form -->
@@ -190,6 +205,10 @@
 <script src="{{asset('public/assets/back-end')}}/js/select2.min.js"></script>
 <script>
 
+$(document).ready(function(){
+    var val = $("#selectFlag").val();
+    $("."+val).trigger('click');
+});
 $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
 
 var $target = $( event.currentTarget );
@@ -197,22 +216,16 @@ var $target = $( event.currentTarget );
 $target.closest( '.btn-group' )
    .find( '[data-bind="label"]' ).html( '<i class="flag-icon flag-icon'+$target.text()+'">')
       .end()
-   .children( '.dropdown-toggle' ).dropdown( 'toggle' );
 
+   $("input[name=flag]").val('flag-icon'+$target.text());
+
+   $(".flgs-show").removeClass('open');
+//    $(".flag-list").removeClass('show');
 return false;
 
 });
 
-$(document).mouseup(function(e) 
-{
-    var container = $(".flags-show-panel");
 
-    // if the target of the click isn't the container nor a descendant of the container
-    if (!container.is(e.target) && container.has(e.target).length === 0) 
-    {
-        $(".flgs-show").removeClass('open');
-    }
-});
     $(".js-example-theme-single").select2({
         theme: "classic"
     });
