@@ -3,8 +3,8 @@
     <section class="seller-section py_5">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb pt-4 pb-4 m-0">
-                <li class="breadcrumb-item fs-5"><a href="{{route('home')}}" class="text-decoration-none text-muted">Home</a></li>
-                <li class="breadcrumb-item fs-5"><a href="{{route('seller')}}" class="text-decoration-none text-muted">Seller</a></li>
+                <li class="breadcrumb-item fs-5"><a href="{{route('home')}}" class="text-decoration-none text-muted">{{ __('messages.home')}}</a></li>
+                <li class="breadcrumb-item fs-5"><a href="{{route('seller')}}" class="text-decoration-none text-muted">{{ __('messages.seller')}}</a></li>
                 <li class="breadcrumb-item fs-5">{{$seller->name}}</li>
             </ol>
         </nav>
@@ -34,7 +34,7 @@
                     <div class="avtar-tel py-3 px-3 ">
                         <span class="text-white">
                             <span>{{ $seller->phone }}</span>
-                            <p class="m-0">Click to reveal phone number</p>
+                            <p class="m-0">{{ __('messages.click_reveal_phone_number')}}</p>
                         </span>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
         <div class="seller-about bg-white py-4 px-4 mt-5">
             <div class="seller-title d-flex justify-content-between  ">
                 <div class="">
-                    <h4 class="fw-bold">About Seller</h4>
+                    <h4 class="fw-bold">{{ __('messages.about_seller')}}</h4>
                 </div>
                 <div class="fs-5 justify-content-evenly align-items-center">
                     <span><i class="fa-brands fa-twitter"></i></span>
@@ -66,7 +66,7 @@
         </div>
         <div class="seller-add d-flex justify-content-between align-items-center py-4 px-4 bg-white mt-5">
             <div class="">
-                <h4 class="fw-bold m-0">Seller's Ads</h4>
+                <h4 class="fw-bold m-0">{{ __('messages.seller_ads')}}</h4>
             </div>
             <div class="">
                 {{-- <input type="email" class="form-control border-0 border-bottom" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search for..."> --}}
@@ -75,7 +75,7 @@
         {{---------------------------------Testimonials--------------------------}}
         <div class="seller-add d-flex justify-content-between align-items-center py-4 px-4 bg-white mt-5">
             <div class="">
-                <h4 class="fw-bold m-0">Testimonials</h4>
+                <h4 class="fw-bold m-0">{{ __('messages.testimonial')}}</h4>
             </div>
             <div class="">
                 {{-- <input type="email" class="form-control border-0 border-bottom" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search for..."> --}}

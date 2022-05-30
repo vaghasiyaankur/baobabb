@@ -16,7 +16,7 @@
             <div class=" col-lg-2 col-md-6">
                 <div class="bg-white px-4 py-5 mb-5">
                     <div class="d-flex justify-content-between align-items-center pb-4">
-                        <h4 class="fw-bold">Trier les annonces</h4>
+                        <h4 class="fw-bold">{{ __('messages.tries_les_announce')}}</h4>
                         <a href="javascript:;" id="refresh"><i class="fa-solid fa-arrow-rotate-left text-muted fs-5"
                                 style="cursor: pointer;"></i></a>
                     </div>
@@ -27,7 +27,7 @@
                     </div> --}}
 
                     <!-- CATEGORY CHECK LIST -->
-                    <h5 class="pb-2">Categories</h5>
+                    <h5 class="pb-2">{{ __('messages.categories')}}</h5>
                     <div class="form-check pb-1">
                         <input class="form-check-input rounded-pill fs-6 filter-data" type="radio" name="category" value="all"
                             id="all-cat" @if($category == 'all')checked @endif>
@@ -44,7 +44,7 @@
                         </div>
                     @endforeach
                     <div class="mb-4 mt-3">
-                        <h5 class="pb-2">Price</h5>
+                        <h5 class="pb-2">{{ __('messages.price')}}</h5>
                         <div class="range-slider">
                             <input id="min-price" value="{{ $min_price }}" min="{{ $priceMin }}"
                                 max="{{ $priceMax }}" step="1" type="range">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="input-group pe-2 pb-3">
-                        <h5 class="pb-2">Cash</h5>
+                        <h5 class="pb-2">{{ __('messages.cash')}}</h5>
                         <select class="w-100 border-0" name="" id="">
                             <option value="">CFA (CFA)</option>
                             <option value="">USD ($)</option>
@@ -70,7 +70,7 @@
                     </div>
 
                     <!-- TYPE CHECK LIST -->
-                    <h5 class="pb-2 pt-3">Type</h5>
+                    <h5 class="pb-2 pt-3">{{ __('messages.type')}}</h5>
                     <div class="form-check pb-1">
                         <input class="form-check-input rounded-pill fs-6 filter-data" id="all" name="type" type="radio"
                             value="all" @if ($type == null) checked @endif>
@@ -108,7 +108,7 @@
                     </div>
 
                     <!-- CONDITION CHECK LIST -->
-                    <h5 class="pb-2 pt-3">Conditions (Si applicable)</h5>
+                    <h5 class="pb-2 pt-3">{{ __('messages.condition_applicable')}}</h5>
                     <div class="form-check pb-1">
                         <input class="form-check-input rounded-pill fs-6 filter-data" id="codition" name="condition"
                             type="radio" value="all" @if ($condition == null) checked @endif>
@@ -139,7 +139,7 @@
                         <label class="form-check-label" for="">Afficher uniquement les <br> pieces ou hors
                             service</label>
                     </div>
-                    <button type="button" class="btn btn-secondary btn-md w-100">APPLIQ LES FILTRES</button>
+                    <button type="button" class="btn btn-secondary btn-md w-100">{{ __('messages.app_les_filter')}}</button>
                 </div>
             </div>
             <!------ RIGHT SIDE SECTION -------------->
@@ -148,13 +148,13 @@
                     <div class="col-12 bg-white ">
                         <div class="search-title d-flex flex-wrap justify-content-between align-items-center py-4 px-3">
                             <div>
-                                <h4 class="m-0 fw-bold">Showing
-                                    {{ ($products->currentpage() - 1) * $products->perpage() + 1 }} to
+                                <h4 class="m-0 fw-bold">{{ __('messages.showing')}}
+                                    {{ ($products->currentpage() - 1) * $products->perpage() + 1 }} {{ __('messages.to')}}
                                     {{ $products->currentpage() * $products->perpage() }}
-                                    of {{ $products->total() }} entries</h4>
+                                    {{ __('messages.of')}} {{ $products->total() }} {{ __('messages.entries')}}</h4>
                             </div>
                             <div class="d-flex pt-4 pt-md-0">
-                                <div class="input-group pe-2">
+                                {{-- <div class="input-group pe-2">
                                     <button class="btn btn-outline-secondary dropdown-toggle" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">Trier par date</button>
                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -162,12 +162,12 @@
                                         <li><a class="dropdown-item" href="#">Another action</a></li>
                                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                                     </ul>
-                                </div>
-                                <div class="-title-icon d-flex justify-content-between pt-1">
+                                </div> --}}
+                                {{-- <div class="-title-icon d-flex justify-content-between pt-1">
                                     <i class="fa-solid fa-grip fs-4 pe-2"></i>
                                     <i class="fa-solid fa-bars fs-4 pe-2 text-muted"></i>
                                     <i class="fa-solid fa-border-all fs-4 text-muted"></i>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

@@ -4,8 +4,8 @@
     <!-- ALL-CATEGORY SECTION START -->
     <section class="all-categories py_5">
         <h3 class="fw-bold pt-4 ">
-            All Categories</h3>
-        <h6 class="pb-4 ">Home > All Categories</h6>
+            {{ __('messages.all_categories')}}</h3>
+        <h6 class="pb-4 ">{{ __('messages.home')}} > {{ __('messages.all_categories')}}</h6>
         <div class="row bg-white pt-5">
             @foreach ($categories as $category)
                 <div class="col-12  col-lg-4">
@@ -29,7 +29,7 @@
                                         $countryName = $_COOKIE['country'];
                                     }
                                     $count = App\Models\Product::where('country',$countryName)->where('category_id', $category->id)->count(); ?>
-                                    <p>{{ $count }} annonce publee</p>
+                                    <p>{{ $count }} {{ __('messages.announce_publee')}}</p>
                                 </div>
                             </a>
                         </div>

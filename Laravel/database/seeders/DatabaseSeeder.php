@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             ContinentSeeder::class,
             LanguageSeeder::class,
+            PageSeeder::class,
             SettingSeeder::class
         ]);
     }

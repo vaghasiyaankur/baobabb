@@ -5,7 +5,7 @@
 
  ?>
  <!----- HEADER SECTION  START----->
- <style></style>
+ 
  <nav class="">
      <div class="navbar navbar-expand-lg py_5 ">
 
@@ -26,7 +26,7 @@
                 </div>
                  <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                      <li class="nav-item">
-                         <a class="nav-link active text-white" aria-current="page" href="#">Anti-Scam</a>
+                         <a class="nav-link active text-white" aria-current="page" href="{{ URL::to('page/anti-scam')}}">Anti-Scam</a>
                      </li>
                      <li class="nav-item dropdown ">
                          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink"
