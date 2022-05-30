@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
                 "password" => Hash::make("Admin@123"),
                 "is_admin" => '1',
                 'country' => 1,
+                'status' => '1',
                 'avatar' => 'assets/image/avatar20-05-2022-04-17.png',
                 'email_verified_at' => '2022-05-01 14:45:23'
             ],
@@ -34,6 +35,7 @@ class UserSeeder extends Seeder
                 "password" => Hash::make("123456789"),
                 "is_admin" => '0',
                 'country' => 1,
+                'status' => '1',
                 'avatar' => 'assets/image/avatar20-05-2022-04-17.png',
                 'email_verified_at' => '2022-05-01 14:45:23'
             ],

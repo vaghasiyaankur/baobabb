@@ -39,6 +39,8 @@
         </div>
         <input type="hidden" id="to_user_id" value="" />
     </div>
+    <div id="chat-overlay" class="postion-relative"></div>
+
     <input type="hidden" id="current_user" value="{{ \Auth::user()->id }}" />
     <input type="hidden" id="pusher_app_key" value="{{ env('PUSHER_APP_KEY') }}" />
     <input type="hidden" id="pusher_cluster" value="{{ env('PUSHER_APP_CLUSTER') }}" />

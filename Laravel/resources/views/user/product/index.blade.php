@@ -40,10 +40,6 @@
    </div>
    <!-- end row -->
 </div>
-@endsection
-
-
-@push('script')
 <!-- fontawesome icons init -->
 <script src="{{ asset('assets/js/pages/fontawesome.init.js') }}"></script>
 <script src="{{ asset('assets/js/app.js') }}"></script>
@@ -68,4 +64,6 @@
         });
     });
 </script>
-@endpush
+@endsection
+
+

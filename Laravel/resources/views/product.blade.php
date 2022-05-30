@@ -290,11 +290,11 @@
         <div class="row">
             @foreach ($user_products as $pr)
                 @if ($pr->id != $product->id)
-                    <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 ">
+                    <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 card_w_4 ">
                         <div class="card-box">
                             <img src="{{ asset($pr->image) }}" class="img-fluid" alt="card-img">
                             <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2 text-muted">
+                                <div class="flex-wrap d-flex justify-content-between pt-3 pb-2 text-muted">
                                     <span><i class="fa-solid fa-bullseye pe-2"></i>{{$pr->category->name}}</span>
                                     <span><i class="fa-solid fa-location-dot pe-2"></i>{{ $pr->city }}</span>
                                 </div>
@@ -319,7 +319,7 @@
                         <div class="card-box">
                             <img src="{{ asset($pr->image) }}" class="img-fluid" alt="card-img">
                             <div class="card-inner bg-white">
-                                <div class="d-flex justify-content-between pt-3 pb-2 text-muted">
+                                <div class="flex-wrap d-flex justify-content-between pt-3 pb-2 text-muted">
                                     <span><i class="fa-solid fa-bullseye pe-2"></i>{{$pr->category->name}}</span>
                                     <span><i class="fa-solid fa-location-dot pe-2"></i>{{ $pr->city }}</span>
                                 </div>
@@ -369,6 +369,32 @@
             arrows: false,
             centerMode: false,
             focusOnSelect: true
+        });
+    </script>
+
+    <!---------SUB TITLE SWIPER JS--------->
+    <script>
+        $(document).ready(function () {
+            // Assign some jquery elements we'll need
+            var $swiper = $(".swiper-container");
+            var $bottomSlide = null; // Slide whose content gets 'extracted' and placed
+            // into a fixed position for animation purposes
+            var $bottomSlideContent = null; // Slide content that gets passed between the
+            // panning slide stack and the position 'behind'
+            // the stack, needed for correct animation style
+
+            var mySwiper = new Swiper(".swiper-container", {
+                // spaceBetween:0,
+                slidesPerView: 7,
+                centeredSlides: false,
+                roundLengths: true,
+                loop: false,
+                loopAdditionalSlides: 9,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                }
+            });
         });
     </script>
 @endsection

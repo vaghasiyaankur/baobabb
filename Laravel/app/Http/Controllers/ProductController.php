@@ -11,7 +11,9 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Currency;
 use App\Models\Country;
+use App\Models\Setting;
 use App\Http\Controllers\ImageController;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -34,6 +36,8 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $id = auth()->user()->id;
+        // $data = Product::where('seller_id',$id)->get();
+        // dd($data);
         if ($request->ajax()) {
             $data = Product::where('seller_id',$id);
             return DataTables::of($data)
@@ -63,7 +67,7 @@ class ProductController extends Controller
         {
             $categories = Category::where('parent_id',null)->get();
             $country = Country::find($user->country);
-            $currencies = Currency::where('name',$country->currency_code)->get();
+            $currencies = Currency::where('code',$country->currency_code)->get();
             return view('user.product.create', compact('categories','currencies'));
         }
         else
@@ -80,6 +84,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $days = Setting::where('name','ad_expire_length')->pluck('value')->first();
+        $expireDate=Date('Y-m-d H:i:s', strtotime('+'.$days.' days'));
+        // dd($request);
         $string = str_replace(' ', '-', $request->name);
         $slug = preg_replace('/[^A-Za-z0-9\-]/', '-', $string);
         // dd($request);
@@ -118,7 +125,8 @@ class ProductController extends Controller
         // $product->street = $request->street;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
-        $product->video = $request->video;  
+        $product->video = $request->video; 
+        $product->expire = $expireDate;
         $product->save();
 
         return redirect()->route('user.product.index');
@@ -147,7 +155,8 @@ class ProductController extends Controller
         if($product)
         {
             $categories = Category::where('parent_id',null)->get();
-            $currencies = Currency::where('country_id',auth()->user()->country)->get();
+            $country = Country::find(auth()->user()->country);
+            $currencies = Currency::where('code',$country->currency_code)->get();
             return view('user.product.create', compact('categories','product','currencies'));
         }
         else{

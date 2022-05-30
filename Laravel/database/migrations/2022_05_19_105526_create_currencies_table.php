@@ -19,6 +19,12 @@ return new class extends Migration
             // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->nullable();
             $table->string('name');
             $table->string('symbol');
+            $table->string('code')->nullable();
+            $table->string('entities')->nullable();
+            $table->string('symbol_left')->nullable();
+            $table->string('decimal_place')->nullable();
+            $table->string('decimal_seprator')->nullable();
+            $table->string('thousand_operator')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -20,6 +20,7 @@ $(function () {
        cloneChatBox(user_id, username, function () {
 
            let chatBox = $("#chat_box_" + user_id);
+           console.log(chatBox)
 
            if(!chatBox.hasClass("chat-opened")) {
 

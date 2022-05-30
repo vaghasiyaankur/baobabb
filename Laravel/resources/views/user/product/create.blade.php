@@ -25,7 +25,8 @@
             </li>
         </ul>
         <div class="post-ad-details mb-5">
-            <form action="{{ route('user.product.store') }}" id="product" method="POST" enctype="multipart/form-data">
+            <form action="@if(isset($product)){{ route('user.product.update',$product->id) }}@else{{route('user.product.store')}}@endif" id="product" method="POST" enctype="multipart/form-data">
+                @if(isset($product)) @method('PUT') @endif
                 @csrf
                 <div class="row">
                     <!-- post type ads start -->
@@ -121,14 +122,14 @@
                                                 @foreach ($childs as $child)
                                                     <li class="ms-4"><input type="radio" id="{{ $child->id }}"
                                                             value="{{ $child->id }}" name="category_id"
-                                                            class="me-3"><label
+                                                            class="me-3" @if (isset($product->category_id)) @if($child->id == $product->category_id) checked @endif @endif><label
                                                             for="{{ $child->id }}">{{ $child->name }}</label></li>
                                                 @endforeach
                                             </ul>
                                         @else
                                             <span class="one-anchor w-100"><input type="radio" id="{{ $category->id }}"
                                                     value="{{ $category->id }}" name="category_id"
-                                                    class="me-3 item"><label
+                                                    class="me-3 item" @if(isset($product->category_id)) @if($category->id == $product->category_id) checked @endif @endif><label
                                                     for="{{ $category->id }}">{{ $category->name }}</label></span>
                                         @endif
                                     @endforeach
@@ -161,7 +162,7 @@
                                         <label class="button" for="imgUpload">Browse File</label>
                                     </form>
                                     <div id="gallery">
-
+                                        
                                     </div>
                                 </div>
                                 {{-- <form id="file-upload-form"> --}}
@@ -224,7 +225,7 @@
                                     </select>
                                     <label class="text-end p-2" for="specificSizeSelect">Curency*</label>
                                     <select class="form-select" style="width:233px;" id="currency" name="currency">
-                                        <option>Select Currency</option>
+                                        <option value="">Select Currency</option>
                                         @foreach ($currencies as $currency)
                                             <option value="{{ $currency->id }}"
                                                 @if (isset($product->cash)) @if ($currency->id == $product->cash) selected @endif

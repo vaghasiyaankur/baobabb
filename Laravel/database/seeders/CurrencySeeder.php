@@ -17,8 +17,9 @@ class CurrencySeeder extends Seeder
     {
         Currency::insert([
             'id' => 1,
-            'name' => 'inr',
-            'symbol' => '₹'
+            'name' => 'indian rupees',
+            'symbol' => '₹',
+            'code' => 'inr'
         ]);
     }
 }

@@ -72,7 +72,7 @@
             ajax: "{{ route('admin.setting.index') }}",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'value', name: 'value'},
+                {data: 'name', name: 'name'},
                 {data: 'value', name: 'value'},
                 {data: 'action', name: 'action',orderable: true,searchable: true},
             ]
