@@ -6,7 +6,7 @@
                 <h3>Pick a user to chat with</h3>
                 <ul id="users">
                     @foreach($users as $user)
-                        <li class="card p-3"><a href="javascript:void(0);" class="chat-toggle" data-id="{{ $user->id }}" data-user="{{ $user->name }}"><span><img src="{{asset($user->avatar)}}" alt="" width="40"></span><span class="">{{ $user->name }}</span></a></li>
+                        <li class="card rounded-3 p-3 py-4"><a href="javascript:void(0);" class="chat-toggle" data-id="{{ $user->id }}" data-user="{{ $user->name }}"><span><img src="{{asset($user->avatar)}}" alt="" width="40"></span><span class="ms-4 chat_a_text">{{ $user->name }}</span></a></li>
                     @endforeach
                 </ul>
             @else
@@ -28,7 +28,7 @@
                         <div class="panel-footer">
                             <div class="input-group form-controls">
                                 <textarea class="form-control input-sm chat_input" placeholder="Write your message here..."></textarea>
-                                <span class="input-group-btn">
+                                <span class="input-group-btn ps-3">
                                         <button class="btn btn-primary btn-sm btn-chat" type="button" data-to-user="" disabled>
                                             <i class="glyphicon glyphicon-send"></i>
                                             Send</button>

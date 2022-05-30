@@ -34,14 +34,18 @@ time {
 }
 
 .chat_box {
-    margin-right: 25px;
-    width: 310px;
+    margin-right: 68px;
+  width: 1000px;
 }
 
 .chat-area {
-    height: 400px;
+    height: 409px;
     overflow-y: scroll;
 }
+.chat_a_text{
+    font-size: 19px;
+    text-transform: capitalize;
+  }
 
 #users li {
     margin-bottom: 5px;
@@ -50,7 +54,7 @@ time {
 #chat-overlay {
     position: fixed;
     right: 0%;
-    bottom: 0%;
+    bottom: 6%;
 }
 
 .glyphicon-ok {
