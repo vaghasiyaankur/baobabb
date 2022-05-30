@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Page;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
@@ -35,6 +36,9 @@ class HomeController extends Controller
                 {
                     $this->countryName = $country->name;
                 }
+            }
+            if($position = Location::get('2405:201:200c:b83f:1495:de75:fa9b:6b92')) {
+                setcookie('country', $position->countryName, time() + (10 * 365 * 24 * 60 * 60));
             }
             return $next($request);
         });
@@ -223,6 +227,12 @@ class HomeController extends Controller
         session()->put('locale', $request->lang);
 
         return redirect()->back();
+    }
+
+    public function page(Request $request)
+    {
+        $page = Page::where('slug',$request->page)->first();
+        return view('page',compact('page'));
     }
     
 }

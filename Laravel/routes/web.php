@@ -50,6 +50,7 @@ Route::get('/seller/{username}', [App\Http\Controllers\HomeController::class, 's
 Route::post('/search/product', [App\Http\Controllers\HomeController::class, 'searchProduct'])->name('search.product');
 Route::get('/category/change/{slug}', [App\Http\Controllers\HomeController::class, 'changeCategory'])->name('category.change');
 Route::get('lang/change', 'App\Http\Controllers\HomeController@changeLang')->name('changeLang');
+Route::get('/page/{page}', [App\Http\Controllers\HomeController::class, 'page']);
 // });
 Route::middleware(['auth'])->group(function () {
     Route::get('/email/verify', 'App\Http\Controllers\Auth\VerificationController@show')->name('verification.notice');
@@ -97,6 +98,7 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('custom/field/{id}/option', 'App\Http\Controllers\admin\FieldOptionController', ['names'=> 'custom.field.option']);   
     Route::resource('category/{id}/custom_field', 'App\Http\Controllers\admin\CategoryFieldController', ['names'=> 'category.custom_field']);   
     Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
-    Route::resource('language', 'App\Http\Controllers\admin\LanguageController', ['names'=> 'language']);   
+    Route::resource('language', 'App\Http\Controllers\admin\LanguageController', ['names'=> 'language']);    
+    Route::resource('pages', 'App\Http\Controllers\admin\PagesController', ['names'=> 'pages']); 
     Route::resource('setting', 'App\Http\Controllers\admin\SettingController', ['only' => ['index','edit','update']], ['names'=> 'setting']);   
 });

@@ -80,7 +80,7 @@
                 <div class="avtar-tel py-3 px-3 mt-2">
                     <span class="text-white">
                         <span>+232 00 000XXX</span>
-                        <p class="m-0">Click to reveal phone number</p>
+                        <p class="m-0">{{ __('messages.click_reveal_phone_number')}}</p>
                     </span>
                 </div>
                 @auth 
@@ -169,40 +169,40 @@
             <!-- SECURE CHECK LIST -->
             <div class="secure-text mb-5">
                 <div class="title py-3 px-3">
-                    <h5 class="text-white ps-3 m-0">Conseils de securrite</h5>
+                    <h5 class="text-white ps-3 m-0">{{ __('messages.safety_tips')}}</h5>
                 </div>
                 <div class="secure-list bg-white py-3 px-3">
-                    <p><i class="fa-solid fa-check pe-2"></i>Rendeez-vous dans un lieu public</p>
-                    <p><i class="fa-solid fa-check pe-2"></i>Verifer I`object de la transaction</p>
-                    <p><i class="fa-solid fa-check pe-2"></i>Rendeez-vous dans un lieu public inconnu</p>
-                    <p><i class="fa-solid fa-check pe-2"></i>Soyez accomepage un lieu</p>
-                    <p class="m-0"><i class="fa-solid fa-check pe-2 mb-4"></i>Faites preuve d`intution</p>
+                    <p><i class="fa-solid fa-check pe-2"></i>{{ __('messages.meet_oublic_place')}}</p>
+                    <p><i class="fa-solid fa-check pe-2"></i>{{ __('messages.verifier_object')}}</p>
+                    <p><i class="fa-solid fa-check pe-2"></i>{{ __('messages.meet_unknown_public_place')}}</p>
+                    <p><i class="fa-solid fa-check pe-2"></i>{{ __('messages.be_accomepage')}}</p>
+                    <p class="m-0"><i class="fa-solid fa-check pe-2 mb-4"></i>{{ __('messages.show_intuitin')}}</p>
                     <a href="javascript:;" class="text-decoration-none" style="color: black;">
-                        <h6>PLUS DE CONSEILS DE SECURITE ICI<i class="fa-solid fa-arrow-right-long ps-3"></i></h6>
+                        <h6>{{ __('messages.more_tips')}}<i class="fa-solid fa-arrow-right-long ps-3"></i></h6>
                     </a>
                 </div>
             </div>
 
             <!-- ACTION ICON -->
             <div class="action-icon bg-white px-sm-3 py-3 ">
-                <h5 class="fw-bold pb-3 ps-4">Action publicitaire</h5>
+                <h5 class="fw-bold pb-3 ps-4">{{ __('messages.advertise_action')}}</h5>
                 <div class="d-flex justify-content-evenly">
                     <div class="a_icon">
                         <a href="javascript:;" class="text-decoration-none text-muted"><i
                                 class="fa-solid fa-timeline ps-3"></i>
-                            <p class="m-0">Partager</p>
+                            <p class="m-0">{{ __('messages.to_share')}}</p>
                         </a>
                     </div>
                     <div class="a_icon">
                         <a href="javascript:;" class="text-decoration-none text-muted"><i
                                 class="fa-solid fa-print ps-3"></i>
-                            <p class="m-0">Partager</p>
+                            <p class="m-0">{{ __('messages.to_share')}}</p>
                         </a>
                     </div>
                     <div class="a_icon">
                         <a href="javascript:;" class="text-decoration-none text-muted"><i
                                 class="fa-solid fa-heart ps-3"></i>
-                            <p class="m-0">Partager</p>
+                            <p class="m-0">{{ __('messages.to_share')}}</p>
                         </a>
                     </div>
                 </div>
@@ -219,7 +219,7 @@
     <!---------- SUB SEARCH TITLE SWIPER --------->
     <div class="Swiper-serach_result_">
         <div class="add-title ms-3">
-            <h4 class="fw-bold">Related Searches</h4>
+            <h4 class="fw-bold">{{ __('messages.realted_search')}}</h4>
         </div>
         <div class="swiper-container pt-3 w-100">
             <!-- Additional required wrapper -->
@@ -285,7 +285,7 @@
     <!----------- MORE ADD SECTION START ----------->
     <div class="more-add py-3 px-3">
         <div class="add-title">
-            <h4 class="fw-bold">More Ads From This User</h4>
+            <h4 class="fw-bold">{{ __('messages.more_ads')}}</h4>
         </div>
         <div class="row">
             @foreach ($user_products as $pr)
@@ -312,7 +312,7 @@
                 @endif
             @endforeach
 
-            <h4 class="fw-bold">Smilar Ads</h4>
+            <h4 class="fw-bold">{{ __('messages.similar_ads')}}</h4>
             @foreach ($s_products as $pr)
                 @if ($pr->id != $product->id)
                     <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 ">

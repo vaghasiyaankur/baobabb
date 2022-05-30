@@ -1,8 +1,8 @@
 body {
   /* font-family: "opensons", cursive; */
   font-family: 'Open Sans', sans-serif;
+  /* direction: rtl; */
 }
-
 /* COMAN CSS */
 .border-bottom {
   border: 1px solid rgb(97, 97, 97);
