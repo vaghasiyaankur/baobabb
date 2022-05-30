@@ -5,11 +5,21 @@ p {
 }
 
 .base_receive p {
-    background: #4bdbe6;
+    background: #2ecc71;
+    color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+    max-width: 477px;
+    word-break: break-all;
 }
 
 .base_sent p {
-    background: #e674a8;
+    background: #fff;
+    color: #000;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+    max-width: 477px;
+    word-break: break-all;
 }
 
 time {
@@ -21,26 +31,23 @@ time {
     margin-top: 20px
 }
 
-#chat_box {
-    position: fixed;
-    top: 10%;
-    right: 5%;
-    width: 27%;
-}
-
 .close-chat {
     margin-top: -17px;
     cursor: pointer;
 }
 
 .chat_box {
-    margin-right: 68px;
-  width: 1000px;
+  position: absolute;
+  top: 55px;
+  right: 1%;
+  width: 100%;
+  max-width: 1020px;
 }
 
 .chat-area {
-    height: 409px;
+    min-height: 580px;
     overflow-y: scroll;
+    background-color: whitesmoke;
 }
 .chat_a_text{
     font-size: 19px;
@@ -51,14 +58,27 @@ time {
     margin-bottom: 5px;
 }
 
-#chat-overlay {
-    position: fixed;
-    right: 0%;
-    bottom: 6%;
-}
-
 .glyphicon-ok {
     color: #42b7dd;
+}
+.panel-footer .input-group-btn .btn-chat{
+    background-color: #2d2d2d;
+    color: #fff;
+    padding: 11px 9px;
+    font-size: 13px;
+}
+.msg_container .admin_chat_logo{
+    font-size: 20px;
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 50%;
+}
+.user_icon{
+    flex-basis: 50px;
+}
+.messages{
+    flex: 0 0 50%;
+    max-width: calc(100% - 50px);
 }
 
 .loader {

@@ -13,13 +13,12 @@
                 <p>No users found! try to add a new user using another browser by going to <a href="{{ url('register') }}">Register page</a></p>
             @endif
         </div>
-    </div>
-    <div id="chat_box" class="chat_box pull-right" style="display: none">
-        <div class="row">
-            <div class="col-xs-12 col-md-12">
+        <div class="col-md-9">
+        <div id="chat-overlay" class="" style="position:relative;"></div>
+             <div id="chat_box" class="chat_box pull-right" style="display: none">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat with <i class="chat-user"></i> </h3>
+                        <div class="panel-heading p-4">
+                            <h3 class="panel-title"><span class="glyphicon glyphicon-comment me-2"></span> Chat with <i class="chat-user"></i> </h3>
                             <span class="glyphicon glyphicon-remove pull-right close-chat"></span>
                         </div>
                         <div class="panel-body chat-area">
@@ -32,7 +31,7 @@
                                         <button class="btn btn-primary btn-sm btn-chat" type="button" data-to-user="" disabled>
                                             <i class="glyphicon glyphicon-send"></i>
                                             Send</button>
-                                    </span>
+                                </span>
                             </div>
                         </div>
                     </div>
