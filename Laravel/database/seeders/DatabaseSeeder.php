@@ -17,14 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-            // CountrySeeder::class,
-            // CurrencySeeder::class,
-            // UserSeeder::class,
-            // CategorySeeder::class,
-            // ProductTypeSeeder::class,
-            // ProductSeeder::class,
-            // ContinentSeeder::class,
-            // LanguageSeeder::class,
+            CountrySeeder::class,
+            CurrencySeeder::class,
+            UserSeeder::class,
+            CategorySeeder::class,
+            ProductTypeSeeder::class,
+            ProductSeeder::class,
+            ContinentSeeder::class,
+            LanguageSeeder::class,
             SettingSeeder::class
         ]);
     }
