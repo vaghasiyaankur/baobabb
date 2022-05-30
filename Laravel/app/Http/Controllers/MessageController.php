@@ -143,7 +143,7 @@ class MessageController extends Controller
         $message->to_user = $request->to_user;
         $message->content = $request->content;
         $message->save();
-
+        // dd(date("Y-m-dTH:i", strtotime($message->created_at->toDateTimeString())));
         $message->dateTimeStr = date("Y-m-dTH:i", strtotime($message->created_at->toDateTimeString()));
         $message->dateHumanReadable = $message->created_at->diffForHumans();
         $message->fromUserName = $message->fromUser->name;

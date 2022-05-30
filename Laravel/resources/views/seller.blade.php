@@ -3,17 +3,17 @@
 <section class="seller-section py_5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb pt-4 pb-2 m-0">
-            <li class="breadcrumb-item fs-5"><a href="{{route('home')}}" class="text-decoration-none text-muted">Home</a></li>
-            <li class="breadcrumb-item fs-5">Our seller</li>
+            <li class="breadcrumb-item fs-5"><a href="{{route('home')}}" class="text-decoration-none text-muted">{{ __('messages.home')}}</a></li>
+            <li class="breadcrumb-item fs-5">{{ __('messages.our_seller')}}</li>
         </ol>
     </nav>
     <div class="seller-add d-flex flex-wrap justify-content-between align-items-center py-4 px-4 bg-white mt-4">
         <div>
-            <h4 class="fw-bold m-0 ps-lg-4">Showing 1 - 1 of 1 users</h4>
+            <h4 class="fw-bold m-0 ps-lg-4">{{ __('messages.showing')}} 1 - 1 of 1 {{ __('messages.user')}}</h4>
         </div>
         <div>
             <input type="email" class="form-control border-0 border-bottom text-muted pt-4 pt-md-0"
-                id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Filter users...">
+                id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{ __('messages.filter_user')}}">
         </div>
     </div>
     <div class="row py-3">

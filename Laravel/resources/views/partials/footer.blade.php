@@ -18,10 +18,10 @@
                     <div class="col-lg-3 mx-auto">
                         <div class="f-links mt-3 mt-lg-0">
                             <h6>{{ __('messages.support')}}</h6>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.contact_us')}}</a></p>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.help_center')}}</a></p>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.anti_scam')}}</a></p>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.service_status')}}</a></p>
+                            <p class="mb-1 f_c_links_"><a href="#" class="text-white"> {{ __('messages.contact_us')}}</a></p>
+                            <p class="mb-1 f_c_links_"><a href="#" class="text-white"> {{ __('messages.help_center')}}</a></p>
+                            <p class="mb-1 f_c_links_"><a href="{{ URL::to('page/anti-scam')}}" class="text-white"> {{ __('messages.anti_scam')}}</a></p>
+                            <p class="mb-1 f_c_links_"><a href="#" class="text-white"> {{ __('messages.service_status')}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                     <h6 class="m-0 ">{{ __('messages.copyright_text')}} </h6>
                 </div>
                 <div class="right-s-content">
-                    <h6 class="m-0 ">{{ __('messages.privacy_policy')}} | {{ __('messages.term_of_sevices')}}  </h6>
+                    <h6 class="m-0"><a href="{{ URL::to('page/privacy')}}" class="text-white">{{ __('messages.privacy_policy')}}</a> | <a href="{{ URL::to('page/terms')}}" class="text-white">{{ __('messages.term_of_sevices')}}</a>  </h6>
                 </div>
             </div>
         </div>

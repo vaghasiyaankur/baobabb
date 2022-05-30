@@ -98,6 +98,12 @@
                         <span class="menu-item" data-key="t-sales">Languages</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.pages.index') }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Pages</span>
+                    </a>
+                </li>
             </ul>
             <ul class="metismenu list-unstyled" id="side-menu34">
                 <li class="menu-title" data-key="t-dashboards">SETTINGs</li>
