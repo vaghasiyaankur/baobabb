@@ -42,9 +42,9 @@
                  </ul>
                  <div class="nav-icon d-flex justify-content-evenly align-items-center">
                      @guest
-                         <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                         <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#loginModel"><i
                                      class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
-                         <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                         <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#loginModel"><i
                                      class="fa-solid fa-notes-medical"></i></a></span>
                      @else
                          <span><a href="{{ route('user.dashboard') }}"><i
@@ -65,7 +65,7 @@
 
                      <!-------- START MODAL --------->
 
-                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     <div class="modal fade" id="loginModel" tabindex="-1" aria-labelledby="exampleModalLabel"
                          aria-hidden="true">
                          <div class="modal-dialog modal-dialog-centered ">
                              <div class="modal-content p-3">

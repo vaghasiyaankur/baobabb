@@ -19,8 +19,10 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $message = Message::where('to_user',auth()->user()->id)->pluck('from_user');
-        $users = User::whereIn('id',$message)->get();
+        $to_user = Message::where('to_user',auth()->user()->id)->pluck('from_user');
+        $from_user = Message::where('from_user',auth()->user()->id)->pluck('to_user');
+        $users = User::whereIn('id',$to_user)->orWhereIn('id',$from_user)->get();
+        // dd($from_user);
         // $users = User::where('id', '!=', Auth::user()->id)->get();
         return view('user.chat', compact('users'));
     }
@@ -131,6 +133,25 @@ class MessageController extends Controller
         }
 
         return response()->json(['state' => 1, 'data' => $return]);
+    }
+
+    public function sendMessageFromInquiry(Request $request)
+    {
+        // dd($request);
+        $message = new Message();
+        $message->from_user = Auth::user()->id;
+        $message->to_user = $request->to_user;
+        $message->content = $request->content;
+        $message->save();
+
+        $message->dateTimeStr = date("Y-m-dTH:i", strtotime($message->created_at->toDateTimeString()));
+        $message->dateHumanReadable = $message->created_at->diffForHumans();
+        $message->fromUserName = $message->fromUser->name;
+        $message->from_user_id = Auth::user()->id;
+        $message->toUserName = $message->toUser->name;
+        $message->to_user_id = $request->to_user;
+        PusherFactory::make()->trigger('chat', 'send', ['data' => $message]);
+        return redirect()->route('user.message');
     }
 
 
