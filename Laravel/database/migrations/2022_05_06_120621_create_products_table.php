@@ -42,7 +42,7 @@ return new class extends Migration
             $table->string('sale_price')->nullable();
             $table->integer('impression')->default(0);
             $table->integer('click')->default(0);
-            $table->enum('expire',[0,1])->default(0);
+            $table->dateTime('expire');
             $table->softDeletes();
             $table->timestamps();
         });

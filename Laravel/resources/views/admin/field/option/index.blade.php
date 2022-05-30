@@ -75,7 +75,7 @@
             processing: true,
             serverSide: true,
             pageLength : page,
-            ajax: "  ",
+            ajax: "/admin/custom/field/"+field+"/option",
             columns: [
                 {data: 'id', name: 'id'},
                 {data: 'value', name: 'value'},

@@ -26,6 +26,7 @@ Route::get('chat/', 'App\Http\Controllers\MessageController@index');
 Route::get('/load-latest-messages', 'App\Http\Controllers\MessageController@getLoadLatestMessages');
 Route::post('/send', 'App\Http\Controllers\MessageController@postSendMessage');
 Route::get('/fetch-old-messages', 'App\Http\Controllers\MessageController@getOldMessages');
+Route::post('/sendMessage', 'App\Http\Controllers\MessageController@sendMessageFromInquiry')->name('sendMessageInquiry');
 
 Auth::routes();
 Route::post('/forgot-password',[App\Http\Controllers\Auth\ForgotPasswordController::class,'submitForgetPassword'])->name('user.forgot.password');
@@ -97,4 +98,5 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('category/{id}/custom_field', 'App\Http\Controllers\admin\CategoryFieldController', ['names'=> 'category.custom_field']);   
     Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
     Route::resource('language', 'App\Http\Controllers\admin\LanguageController', ['names'=> 'language']);   
+    Route::resource('setting', 'App\Http\Controllers\admin\SettingController', ['only' => ['index','edit','update']], ['names'=> 'setting']);   
 });

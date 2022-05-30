@@ -83,12 +83,64 @@
                         <p class="m-0">Click to reveal phone number</p>
                     </span>
                 </div>
-                <div class="avtar_bg_blue py-3 px-3 mt-3">
-                    <span class="text-white">
-                        <span>Contact Ad Owner</span>
-                        <p class="m-0">Ask Questions about offer</p>
-                    </span>
-                </div>
+                @auth 
+                    @if($message <= 0)
+                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#messageModel"><div class="avtar_bg_blue py-3 px-3 mt-3">
+                            <span class="text-white">
+                                <span>Contact Ad Owner</span>
+                                <p class="m-0">Ask Questions about offer</p>
+                            </span>
+                        </div></a>
+                    @else 
+                    <a href="{{route('user.message')}}"><div class="avtar_bg_blue py-3 px-3 mt-3">
+                        <input type="hidden" name="user_id" id="user_id" value="@auth 1 @else null @endif">
+                        <span class="text-white">
+                            <span>Contact Ad Owner</span>
+                            <p class="m-0">Ask Questions about offer</p>
+                        </span>
+                    </div></a>
+                    @endif
+                @else
+                    <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#loginModel"><div class="avtar_bg_blue py-3 px-3 mt-3">
+                        <span class="text-white">
+                            <span>Contact Ad Owner</span>
+                            <p class="m-0">Ask Questions about offer</p>
+                        </span>
+                    </div></a>
+                @endif
+                {{-- Send Message Model --}}
+                <div class="modal fade" id="messageModel" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-centered ">
+                             <div class="modal-content p-3">
+                                 <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
+                                     aria-label="Close"></button>
+                                 <div class="modal-body login_modal p-2">
+                                     <h5 class="modal-title mb-4" id="exampleModalLabel">Send Message</h5>
+                                     <div class="ajax-form-result pb-3">
+                                         <div class="alert-error" id="login_alert_error"></div>
+                                     </div>
+                                     <div class="ajax-form-result pb-3">
+                                         <div class="alert-success" id="login_alert_success"></div>
+                                     </div>
+                                     <form name="login" action="{{ route('sendMessageInquiry') }}" method="post">
+                                         @csrf
+                                         <div class="row">
+                                             <div class="col-12 col-sm-12">
+                                                 <input type="hidden" name="to_user" value="{{$seller->id}}">
+                                                 <input id="user_login" type="text" name="content" class="form-control border-0 border-bottom p-0 rounded-0" required>
+                                                 <span class="error text-danger"></span>
+                                             </div>
+                                         </div>
+                                         <div class="my-4">
+                                            <button type="submit" id="login_btn"
+                                                class="btn model_btn w-100 fw-bold" type="button">SEND</button>
+                                        </div>
+                                     </form>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
                 <div class="d-flex align-items-center mt-4">
                     <div class="avtar pe-3">
                         <a href="javascript:;" class="text-dection-none"><img
@@ -96,7 +148,7 @@
                                 alt=""></a>
                     </div>
                     <div class="avtar-text">
-                        <h5>{{$seller->name}}</h5>
+                        <a href="{{route('singleSeller',$seller->id)}}"><h5>{{$seller->name}}</h5></a>
                         <i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i
                             class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star"></i>
                     </div>

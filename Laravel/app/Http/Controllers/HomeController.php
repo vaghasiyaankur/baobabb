@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Pagination\Paginator;
@@ -129,6 +130,7 @@ class HomeController extends Controller
     public function product($slug)
     {
         $gallery = [];
+        $message = 0;
         $product = Product::where('country', $this->countryName)->where('slug',$slug)->with('category')->with('currency')->first();
         if($product->gallery)
         {
@@ -139,7 +141,11 @@ class HomeController extends Controller
         $user_products = Product::where('country', $this->countryName)->where('seller_id', $product->seller_id)->with('category')->with('currency')->get();
         $s_products = Product::where('country', $this->countryName)->where('category_id', $product->category_id)->with('category')->with('currency')->get();
         // dd($product);
-        return view('product',compact('product','seller','user_products','s_products','gallery'));
+        if(auth()->user())
+        {
+            $message = Message::where('from_user',auth()->user()->id)->where('to_user',$seller->id)->count();
+        }
+        return view('product',compact('product','seller','user_products','s_products','gallery','message'));
     }
 
     public function seller()
