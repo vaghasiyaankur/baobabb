@@ -94,15 +94,14 @@ function loaderHtml() {
 function getMessageSenderHtml(message)
 {
     return `
-           <div class="row msg_container base_sent" data-message-id="${message.id}">
-        <div class="col-md-10 col-xs-10">
-            <div class="messages msg_sent text-right">
-                <p>${message.content}</p>
-                <time datetime="${message.dateTimeStr}"> ${message.fromUserName} • ${message.dateHumanReadable} </time>
+           <div class="row msg_container base_receive" data-message-id="${message.id}">
+        <div class="col-md-12 mb-2  d-flex flex-wrap align-items-start justify-content-end mb-3">
+
+            <div class="messages msg_receive">
+                <p class="p-2 mb-0">${message.content}</p>
+                <time  class="d-flex justify-content-end" datetime="${message.dateTimeStr}"> ${message.fromUserName} • ${message.dateHumanReadable} </time>
             </div>
         </div>
-        <div class="col-md-2 col-xs-2 avatar">
-            <img src="` + base_url +  '/images/user-avatar.png' + `" width="50" height="50" class="img-responsive">
         </div>
     </div>
     `;
@@ -119,16 +118,14 @@ function getMessageSenderHtml(message)
 function getMessageReceiverHtml(message)
 {
     return `
-           <div class="row msg_container base_receive" data-message-id="${message.id}">
-           <div class="col-md-2 col-xs-2 avatar">
-             <img src="` + base_url +  '/images/user-avatar.png' + `" width="50" height="50" class="img-responsive">
-           </div>
-        <div class="col-md-10 col-xs-10">
-            <div class="messages msg_receive text-left">
-                <p>${message.content}</p>
-                <time datetime="${message.dateTimeStr}"> ${message.fromUserName}  • ${message.dateHumanReadable} </time>
+        <div class="row msg_container base_sent" data-message-id="${message.id}">
+           <div class="col-md-12 d-flex flex-wrap align-items-start justify-content-start mb-2">
+           
+                <div class="messages msg_sent ">
+                    <p class="p-3 mb-0">${message.content}</p>
+                    <time datetime="${message.dateTimeStr}"> ${message.fromUserName}  • ${message.dateHumanReadable} </time>
+                </div>
             </div>
-        </div>
     </div>
     `;
 }

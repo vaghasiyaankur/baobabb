@@ -8,9 +8,6 @@
                         <a href="{{route('user.dashboard')}}" class="panel-links">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a href="javascript:;" class="panel-links">Messages</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{{route('user.product.index')}}" class="panel-links">My ads</a>
                     </li>
                     <li class="nav-item">

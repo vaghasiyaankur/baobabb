@@ -51,7 +51,7 @@
                                      class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
                          <span><a href="{{ route('user.product.create') }}"><i
                                      class="fa-solid fa-notes-medical"></i></a></span>
-                         <span><a href="javascript:;"><i class="fa-solid fa-envelope-open"></i></a></span>
+                         <span><a href="{{ route('user.message') }}"><i class="fa-solid fa-envelope-open"></i></a></span>
                      @endguest
                      <div class="dropdown11">
                         <span><a href="javascript:;"><i
