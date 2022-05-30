@@ -19,6 +19,7 @@ class CountrySeeder extends Seeder
             'id' => 1,
             'name' => 'india',
             'code' => 'IN',
+            'currency_code' => 'inr'
         ]);
     }
 }

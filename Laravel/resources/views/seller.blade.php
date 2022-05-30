@@ -18,7 +18,7 @@
     </div>
     <div class="row py-3">
         @foreach($sellers as $seller)
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 card_w_4">
                 <div
                     class="d-flex flex-wrap justify-content-evenly justify-content-lg-start align-items-center bg-white mt-4 mb-4 py-4">
                     <div class="avtar p-left">

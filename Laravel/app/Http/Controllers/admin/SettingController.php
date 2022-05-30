@@ -24,7 +24,7 @@ class SettingController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                         $btn = '<div class="d-flex">';
-                        $btn .= '<a href="/admin/user/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
+                        $btn .= '<a href="/admin/setting/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
                         $btn .= '</div>';
                         return $btn;
                     })
@@ -72,9 +72,10 @@ class SettingController extends Controller
      * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function edit(Setting $setting)
+    public function edit($id)
     {
-        //
+        $setting = Setting::find($id);
+        return view('admin.setting.create',compact('setting'));
     }
 
     /**
@@ -84,9 +85,12 @@ class SettingController extends Controller
      * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSettingRequest $request, Setting $setting)
+    public function update(Request $request, $id)
     {
-        //
+        $setting = Setting::find($id);
+        $setting->value = $request->value;
+        $setting->save();
+        return redirect()->route('admin.setting.index');
     }
 
     /**

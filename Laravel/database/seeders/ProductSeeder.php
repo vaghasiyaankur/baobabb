@@ -37,7 +37,8 @@ class ProductSeeder extends Seeder
                 "type_of" => "sell",
                 "cash" => "1",
                 "condition" => "Second hand",
-                "created_at" => "2022-05-01 14:34:20"
+                "created_at" => "2022-05-01 14:34:20",
+                "expire" => '2022-07-21 17:30:02'
             ],
             [
                 "category_id" => 6,
@@ -59,7 +60,8 @@ class ProductSeeder extends Seeder
                 "type_of" => "sell",
                 "cash" => "1",
                 "condition" => "Second hand",
-                "created_at" => "2022-05-01 14:34:20"
+                "created_at" => "2022-05-01 14:34:20",
+                "expire" => '2022-07-21 17:30:02'
             ],
             [
                 "category_id" => 1,
@@ -80,7 +82,8 @@ class ProductSeeder extends Seeder
                 "type_of" => "sell",
                 "cash" => "1",
                 "condition" => "Second hand",
-                "created_at" => "2022-05-01 14:34:20"
+                "created_at" => "2022-05-01 14:34:20",
+                "expire" => '2022-07-21 17:30:02'
             ],
             [
                 "category_id" => 1,
@@ -101,7 +104,8 @@ class ProductSeeder extends Seeder
                 "type_of" => "sell",
                 "cash" => "1",
                 "condition" => "Second hand",
-                "created_at" => "2022-05-01 14:34:20"
+                "created_at" => "2022-05-01 14:34:20",
+                "expire" => '2022-07-21 17:30:02'
             ],
             [
                 "category_id" => 1,
@@ -122,7 +126,8 @@ class ProductSeeder extends Seeder
                 "type_of" => "sell",
                 "cash" => "1",
                 "condition" => "Second hand",
-                "created_at" => "2022-05-01 14:34:20"
+                "created_at" => "2022-05-01 14:34:20",
+                "expire" => '2022-07-21 17:30:02'
             ],
             [
                 "category_id" => 1,
@@ -143,7 +148,8 @@ class ProductSeeder extends Seeder
                 "type_of" => "sell",
                 "cash" => "1",
                 "condition" => "Second hand",
-                "created_at" => "2022-05-01 14:34:20"
+                "created_at" => "2022-05-01 14:34:20",
+                "expire" => '2022-07-21 17:30:02'
             ],
             [
                 "category_id" => 1,
@@ -164,7 +170,8 @@ class ProductSeeder extends Seeder
                 "type_of" => "sell",
                 "cash" => "1",
                 "condition" => "Second hand",
-                "created_at" => "2022-05-01 14:34:20"
+                "created_at" => "2022-05-01 14:34:20",
+                "expire" => '2022-07-21 17:30:02'
             ],
             [
                 "category_id" => 1,
@@ -185,7 +192,8 @@ class ProductSeeder extends Seeder
                 "type_of" => "sell",
                 "cash" => "1",
                 "condition" => "Second hand",
-                "created_at" => "2022-05-01 14:34:20"
+                "created_at" => "2022-05-01 14:34:20",
+                "expire" => '2022-07-21 17:30:02'
             ],
             // [
             //     "category_id" => 6,
