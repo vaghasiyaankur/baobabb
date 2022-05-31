@@ -11,17 +11,17 @@
                     <div class="col-lg-3 mx-auto">
                         <div class="f-links ">
                             <h6 class="mb-2">{{ __('messages.shope')}}</h6>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.categories')}}</a></p>
-                            <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.our_sellers')}}</a></p>
+                            <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.categories')}}</a></p>
+                            <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.our_sellers')}}</a></p>
                         </div>
                     </div>
                     <div class="col-lg-3 mx-auto">
                         <div class="f-links mt-3 mt-lg-0">
                             <h6>{{ __('messages.support')}}</h6>
-                            <p class="mb-1 f_c_links_"><a href="#" class="text-white"> {{ __('messages.contact_us')}}</a></p>
-                            <p class="mb-1 f_c_links_"><a href="#" class="text-white"> {{ __('messages.help_center')}}</a></p>
-                            <p class="mb-1 f_c_links_"><a href="{{ URL::to('page/anti-scam')}}" class="text-white"> {{ __('messages.anti_scam')}}</a></p>
-                            <p class="mb-1 f_c_links_"><a href="#" class="text-white"> {{ __('messages.service_status')}}</a></p>
+                            <p class="mb-1 "><a href="#" class="f_c_links_"> {{ __('messages.contact_us')}}</a></p>
+                            <p class="mb-1 "><a href="#" class="f_c_links_"> {{ __('messages.help_center')}}</a></p>
+                            <p class="mb-1 "><a href="{{ URL::to('page/anti-scam')}}" class="f_c_links_"> {{ __('messages.anti_scam')}}</a></p>
+                            <p class="mb-1 "><a href="#" class="f_c_links_"> {{ __('messages.service_status')}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -30,10 +30,10 @@
                 <div class="row ">
                     <div class="col-lg-6 mt-3 mt-lg-0">
                         <h6>{{ __('messages.policy_center')}}</h6>
-                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.prohibited_items')}}</a></p>
-                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.prohibited_conduct')}} </a></p>
-                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.electronic_communications')}}</a></p>
-                        <p class="mb-1 f_c_links_"><a href="" class="text-white"> {{ __('messages.information')}} </a></p>
+                        <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.prohibited_items')}}</a></p>
+                        <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.prohibited_conduct')}} </a></p>
+                        <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.electronic_communications')}}</a></p>
+                        <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.information')}} </a></p>
                     </div>
                     <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
                         <h6>{{ __('messages.download_our_app')}}</h6>
@@ -63,10 +63,10 @@
                         </div>
                         <h6 class="mb-1 mt-3 mt-lg-0">{{ __('messages.follow_us_online')}}</h6>
                         <div class="f_online_icon">
-                            <a href="javascript:;"><i class="fa-brands fa-twitter-square"></i></a>
-                            <a href="javascript:;"><i class="fa-brands fa-facebook-square"></i></a>
-                            <a href="javascript:;"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="javascript:;"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="javascript:;"><i class="fa-brands fa-twitter-square hover_1"></i></a>
+                            <a href="javascript:;"><i class="fa-brands fa-facebook-square hover_2"></i></a>
+                            <a href="javascript:;"><i class="fa-brands fa-instagram hover_3"></i></a>
+                            <a href="javascript:;"><i class="fa-brands fa-linkedin hover_4"></i></a>
                         </div>
                     </div>
                 </div>
