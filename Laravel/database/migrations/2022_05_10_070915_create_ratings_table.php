@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('ratings')->onDelete('cascade');
             $table->unsignedBigInteger('user_to');
             $table->foreign('user_to')->references('id')->on('users')->onDelete('cascade');

@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth','verified'],'prefix' => 'user', 'as' => 'u
     Route::get('/',function(){
         return redirect()->route('user.dashboard');
     });
+    Route::post('rating',[App\Http\Controllers\RatingController::class, 'store'])->name('rating.post');
+    Route::get('check/rating',[App\Http\Controllers\RatingController::class, 'check'])->name('check.rating');
     Route::get('/dashboard' , [App\Http\Controllers\UserController::class,'index'])->name('dashboard');
     Route::get('profile' , [App\Http\Controllers\UserController::class,'profile'])->name('profile');
     Route::post('profile-update', [App\Http\Controllers\UserController::class, 'profile_update'])->name('profile.update');

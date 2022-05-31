@@ -143,8 +143,18 @@ function getMessageReceiverHtml(message)
  */
 function cloneChatBox(user_id, username, callback)
 {
+    // $.ajax({
+    //     url: "/user/check/rating",
+    //     type: "get",
+    //     data: {
+    //         id: user_id,
+    //     },
+    //     success: function(result) {
+    //         return result;
+    //     }
+    // });
+    
     if($("#chat_box_" + user_id).length == 0) {
-
         let cloned = $("#chat_box").clone(true);
 
         // change cloned box id
@@ -155,9 +165,14 @@ function cloneChatBox(user_id, username, callback)
         cloned.find(".btn-chat").attr("data-to-user", user_id);
 
         cloned.find("#to_user_id").val(user_id);
+        cloned.find('#user_id').val(user_id);
 
         $("#chat-overlay").append(cloned);
     }
+    // if(rating == null || rating == undefined || rating == '')
+    // {
+    //     $('#review_section').remove();
+    // }
 
     callback();
 }
