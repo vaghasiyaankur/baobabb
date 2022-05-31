@@ -19,6 +19,7 @@ class MessageController extends Controller
      */
     public function index()
     {
+        $rating = false;
         $to_user = Message::where('to_user',auth()->user()->id)->pluck('from_user');
         $from_user = Message::where('from_user',auth()->user()->id)->pluck('to_user');
         $users = User::whereIn('id',$to_user)->orWhereIn('id',$from_user)->get();
