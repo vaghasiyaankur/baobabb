@@ -11,17 +11,17 @@
                     <div class="col-lg-3 mx-auto">
                         <div class="f-links ">
                             <h6 class="mb-2">{{ __('messages.shope')}}</h6>
-                            <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.categories')}}</a></p>
-                            <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.our_sellers')}}</a></p>
+                            <p class="mb-1 "><a href="" class="f_c_links_ "> {{ __('messages.categories')}}</a></p>
+                            <p class="mb-1 "><a href="" class="f_c_links_ "> {{ __('messages.our_sellers')}}</a></p>
                         </div>
                     </div>
                     <div class="col-lg-3 mx-auto">
                         <div class="f-links mt-3 mt-lg-0">
                             <h6>{{ __('messages.support')}}</h6>
-                            <p class="mb-1 "><a href="#" class="f_c_links_"> {{ __('messages.contact_us')}}</a></p>
-                            <p class="mb-1 "><a href="#" class="f_c_links_"> {{ __('messages.help_center')}}</a></p>
-                            <p class="mb-1 "><a href="{{ URL::to('page/anti-scam')}}" class="f_c_links_"> {{ __('messages.anti_scam')}}</a></p>
-                            <p class="mb-1 "><a href="#" class="f_c_links_"> {{ __('messages.service_status')}}</a></p>
+                            <p class="mb-1 "><a href="#" class="f_c_links_ "> {{ __('messages.contact_us')}}</a></p>
+                            <p class="mb-1 "><a href="#" class="f_c_links_ "> {{ __('messages.help_center')}}</a></p>
+                            <p class="mb-1 "><a href="{{ URL::to('page/anti-scam')}}" class="f_c_links_ "> {{ __('messages.anti_scam')}}</a></p>
+                            <p class="mb-1 "><a href="#" class="f_c_links_ "> {{ __('messages.service_status')}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -30,10 +30,10 @@
                 <div class="row ">
                     <div class="col-lg-6 mt-3 mt-lg-0">
                         <h6>{{ __('messages.policy_center')}}</h6>
-                        <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.prohibited_items')}}</a></p>
-                        <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.prohibited_conduct')}} </a></p>
-                        <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.electronic_communications')}}</a></p>
-                        <p class="mb-1 "><a href="" class="f_c_links_"> {{ __('messages.information')}} </a></p>
+                        <p class="mb-1 "><a href="" class="f_c_links_ "> {{ __('messages.prohibited_items')}}</a></p>
+                        <p class="mb-1 "><a href="" class="f_c_links_ "> {{ __('messages.prohibited_conduct')}} </a></p>
+                        <p class="mb-1 "><a href="" class="f_c_links_ "> {{ __('messages.electronic_communications')}}</a></p>
+                        <p class="mb-1 "><a href="" class="f_c_links_ "> {{ __('messages.information')}} </a></p>
                     </div>
                     <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
                         <h6>{{ __('messages.download_our_app')}}</h6>
@@ -439,6 +439,21 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
             }
         }
     }
+</script>
+
+<!------SECOUND HEADER SWIPER STICKY JS ------->
+<script>
+    $(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 100) {
+        $(".nav-second-header .nav-bottom").addClass("sticky-header");
+        $(".all-categoriess_").addClass("categories-padding");
+    } else {
+        $(".nav-second-header .nav-bottom").removeClass("sticky-header");
+        $(".all-categoriess_").removeClass("categories-padding");
+    }
+});
 </script>
 
 </body>

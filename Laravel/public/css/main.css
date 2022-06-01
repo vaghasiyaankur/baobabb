@@ -245,6 +245,20 @@ button.model_btn:hover {
   right: auto;
 }
 
+/* SWIPER STICKY CSS */
+
+.nav-second-header .nav-bottom.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.all-categoriess_.categories-padding {
+  padding-top: 63px !important;
+}
+
+
+
 /* ----------HEADER CSS END--------------- */
 
 /* ------CATEGORY-CARD SECTION START----- */
@@ -356,6 +370,7 @@ button.model_btn:hover {
 .f_online_icon a i.hover_4:hover{
   color: deepskyblue;
 }
+
 /* -----------FOOTER SECTION END--------- */
 
 /* ================ ALL CATEGORIES PAGE ============= */
