@@ -113,7 +113,7 @@
             </div>
         </div>
 
-        <div class="d-flex">
+        {{-- <div class="d-flex">
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
@@ -130,9 +130,9 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="dropdown d-inline-block language-switch">
+            {{-- <div class="dropdown d-inline-block language-switch">
                 <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <img id="header-lang-img" src="{{ asset('assets/images/flags/us.jpg') }}" alt="Header Language"
@@ -169,9 +169,9 @@
                             class="me-1" height="12"> <span class="align-middle">Russian</span>
                     </a>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="dropdown d-none d-lg-inline-block">
+            {{-- <div class="dropdown d-none d-lg-inline-block">
                 <button type="button" class="btn header-item noti-icon" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <i class="icon-sm" data-feather="grid"></i>
@@ -262,9 +262,9 @@
                         </a><!-- end dropdown item -->
                     </div><!-- end simplebar -->
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="dropdown d-inline-block">
+            {{-- <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="icon-sm" data-feather="bell"></i>
@@ -367,13 +367,13 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="dropdown d-inline-block">
+            {{-- <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon right-bar-toggle" id="right-bar-toggle">
                     <i class="icon-sm" data-feather="settings"></i>
                 </button>
-            </div>
+            </div> --}}
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center"

@@ -1210,3 +1210,7 @@ input[type=range]:focus::-ms-fill-upper {
   right: 0;
   position: absolute;
 }
+
+.checked{
+  font-weight: 600 !important;
+}

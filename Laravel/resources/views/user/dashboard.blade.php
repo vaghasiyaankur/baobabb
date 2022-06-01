@@ -29,7 +29,7 @@
                         <div class="details-panel">
                             <div class="details-box d-flex justify-content-between align-items-center">
                                 <div class="details-text fw-bold">
-                                    <h2 class="fw-bold mb-0">18</h2>
+                                    <h2 class="fw-bold mb-0">{{$products}}</h2>
                                     <span>{{ __('messages.add_on_platform')}}</span>
                                 </div>
                                 <div class="details-img">
@@ -42,7 +42,7 @@
                         <div class="details-panel">
                             <div class="details-box d-flex justify-content-between align-items-center">
                                 <div class="details-text fw-bold">
-                                    <h2 class="fw-bold mb-0">3.5 / 5</h2>
+                                    <h2 class="fw-bold mb-0">{{$rating}} / 5</h2>
                                     <span>{{ __('messages.your_rating')}}</span>
                                 </div>
                                 <div class="details-img">
@@ -55,7 +55,7 @@
                         <div class="details-panel">
                             <div class="details-box d-flex justify-content-between align-items-center">
                                 <div class="details-text fw-bold">
-                                    <h2 class="fw-bold mb-0">6</h2>
+                                    <h2 class="fw-bold mb-0">{{$wishlist}}</h2>
                                     <span>{{ __('messages.favourite_ads')}}</span>
                                 </div>
                                 <div class="details-img">

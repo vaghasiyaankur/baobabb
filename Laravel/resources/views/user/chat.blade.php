@@ -1,8 +1,8 @@
 @extends('user.layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-md-3">
-            @if ($users->count() > 0)
+        @if ($users->count() > 0)
+            <div class="col-md-3">
                 <h3>Pick a user to chat with</h3>
                 <ul id="users">
                     @foreach ($users as $user)
@@ -12,11 +12,13 @@
                                     class="ms-4 chat_a_text">{{ $user->name }}</span></a></li>
                     @endforeach
                 </ul>
-            @else
-                <p>No users found! try to add a new user using another browser by going to <a
-                        href="{{ url('register') }}">Register page</a></p>
-            @endif
-        </div>
+            </div>
+        @else
+            <div class="col-md-12 details-box text-center">
+                <a href="{{route('home')}}" style="color:#364b5a;"><i class="fa-solid fa-circle-plus" style="font-size: 55px;"></i></a>
+                <h3>Currently you don't have any Chat's, please add some.</h3>
+            </div>
+        @endif
         <div class="col-md-9">
             <div id="chat-overlay" class="" style="position:relative;"></div>
             <div id="chat_box" class="chat_box pull-right" style="display: none">
@@ -45,42 +47,26 @@
                                                 @csrf
                                                 <h5 class="modal-title mb-4" id="exampleModalLabel">Your Rating*</h5>
                                                 <input type="hidden" name="user_id" id="user_id">
-                                                <div class="rating">
-                                                    <label>
-                                                        <input type="radio" name="stars" value="1" />
-                                                        <span class="icon">✰</span>
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" name="stars" value="2" />
-                                                        <span class="icon">✰</span>
-                                                        <span class="icon">✰</span>
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" name="stars" value="3" />
-                                                        <span class="icon">✰</span>
-                                                        <span class="icon">✰</span>
-                                                        <span class="icon">✰</span>
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" name="stars" value="4" />
-                                                        <span class="icon">✰</span>
-                                                        <span class="icon">✰</span>
-                                                        <span class="icon">✰</span>
-                                                        <span class="icon">✰</span>
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" name="stars" value="5" required/>
-                                                        <span class="icon">✰</span>
-                                                        <span class="icon">✰</span>
-                                                        <span class="icon">✰</span>
-                                                        <span class="icon">✰</span>
-                                                        <span class="icon">✰</span>
-                                                    </label>
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 d-flex justify-content-start">
+                                                        <div class="rate ">
+                                                            <input type="radio" id="star5" name="rate" value="5" />
+                                                            <label for="star5" title="text">5 stars</label>
+                                                            <input type="radio" id="star4" name="rate" value="4" />
+                                                            <label for="star4" title="text">4 stars</label>
+                                                            <input type="radio" id="star3" name="rate" value="3" />
+                                                            <label for="star3" title="text">3 stars</label>
+                                                            <input type="radio" id="star2" name="rate" value="2" />
+                                                            <label for="star2" title="text">2 stars</label>
+                                                            <input type="radio" id="star1" name="rate" value="1" />
+                                                            <label for="star1" title="text">1 star</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-12 col-sm-12">
                                                 <h5 class="modal-title mb-4" id="exampleModalLabel">Write Review*</h5>
-                                                <textarea name="review" id="review" cols="30" rows="5" class="form-control border-0 border-bottom p-0 rounded-0" required></textarea>
+                                            <textarea name="review" id="review" cols="30" rows="5" class="form-control border-0 border-bottom rounded-0fe" required></textarea>
                                                         <span class="error text-danger"></span>
                                                     </div>
                                                 </div>

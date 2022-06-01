@@ -42,7 +42,7 @@ class RatingController extends Controller
         $rating = new Rating;
         $rating->user_from = auth()->user()->id;
         $rating->user_to = $request->user_id;
-        $rating->rate = $request->stars;
+        $rating->rate = $request->rate;
         $rating->review = $request->review;
         $rating->save();
         return redirect()->back();
@@ -56,7 +56,19 @@ class RatingController extends Controller
      */
     public function show()
     {
-        return view('user.feedback');
+        $ratings = Rating::where('user_to',auth()->user()->id)->where('parent_id',null)->with('to_user')->with('from_user')->get();
+        // dd($ratings->user_from->name);
+        return view('user.feedback',compact('ratings'));
+    }
+
+    public function responseStore(Request $request)
+    {
+        // dd($request);
+        $rating = new Rating;
+        $rating->parent_id = $request->parent_id;
+        $rating->review = $request->response;
+        $rating->save();
+        return redirect()->back();
     }
 
     /**

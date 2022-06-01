@@ -1,6 +1,6 @@
  <?php
     $categories = App\Models\Category::all();
-    $url = \Request::getRequestUri();
+    $url = \Request::route()->getName();
     $languages = App\Models\Language::all();
 
  ?>
@@ -28,7 +28,7 @@
                      <li class="nav-item">
                          <a class="nav-link active text-white" aria-current="page" href="{{ URL::to('page/anti-scam')}}">Anti-Scam</a>
                      </li>
-                     <li class="nav-item dropdown ">
+                     {{-- <li class="nav-item dropdown ">
                          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink"
                              role="button" data-bs-toggle="dropdown" aria-expanded="false">
                              About
@@ -38,7 +38,7 @@
                              <li><a class="dropdown-item" href="#">Another action</a></li>
                              <li><a class="dropdown-item" href="#">Something else here</a></li>
                          </ul>
-                     </li>
+                     </li> --}}
                  </ul>
                  <div class="nav-icon d-flex justify-content-evenly align-items-center">
                      @guest
@@ -48,7 +48,7 @@
                                      class="fa-solid fa-notes-medical"></i></a></span>
                      @else
                          <span><a href="{{ route('user.dashboard') }}"><i
-                                     class="fa-solid fa-arrow-right-to-bracket"></i></a></span>
+                                     class="fa-solid fa-user"></i></a></span>
                          <span><a href="{{ route('user.product.create') }}"><i
                                      class="fa-solid fa-notes-medical"></i></a></span>
                          <span><a href="{{ route('user.message') }}"><i class="fa-solid fa-envelope-open"></i></a></span>
@@ -244,7 +244,7 @@
          </div>
      </div>
 
-     @if($url != '/')
+     @if($url != 'home')
         <div class="bg-light nav-bottom">
             <div class="swiper-container p-3">
                 <!-- Additional required wrapper -->

@@ -17,6 +17,7 @@ use App;
 use Session;
 use App\Models\Country;
 use App\Models\Setting;
+use App\Models\Rating;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -170,7 +171,8 @@ class HomeController extends Controller
         if($seller)
         {
             $products = Product::where('seller_id',$seller->id)->whereDate('expire','>=', Carbon::today())->with('category')->with('currency')->get();
-            return view('single_seller',compact('seller','products'));
+            $ratings = Rating::where('user_to',auth()->user()->id)->where('parent_id',null)->with('to_user')->with('from_user')->get();
+            return view('single_seller',compact('seller','products','ratings'));
         }
         else
         {

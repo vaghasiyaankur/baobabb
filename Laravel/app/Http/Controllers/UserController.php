@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
 use App\Models\Country;
+use App\Models\Product;
+use App\Models\Wishlist;
+use App\Models\Rating;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -18,7 +22,10 @@ class UserController extends Controller
     {
         // $id = Auth::user()->id;
         // dd($id); 
-        return view('user.dashboard');
+        $products = Product::where('seller_id',auth()->user()->id)->whereDate('expire','>=', Carbon::today())->count();
+        $wishlist = Wishlist::where('user_id',auth()->user()->id)->count();
+        $rating = round(Rating::where('parent_id',null)->avg('rate'),2);
+        return view('user.dashboard',compact('products','wishlist','rating'));
     }
 
     /**

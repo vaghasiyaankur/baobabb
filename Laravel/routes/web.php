@@ -77,6 +77,7 @@ Route::group(['middleware' => ['auth','verified'],'prefix' => 'user', 'as' => 'u
     Route::post('/send', 'App\Http\Controllers\MessageController@postSendMessage');
     Route::get('/fetch-old-messages', 'App\Http\Controllers\MessageController@getOldMessages');
     Route::get('/feedback', [App\Http\Controllers\RatingController::class,'show'])->name('feedback.show');
+    Route::post('/feedback_response', [App\Http\Controllers\RatingController::class,'responseStore'])->name('response.store');
     // Route::post('messages', 'App\Http\Controllers\MessageController@sendMessage');
 });
 
