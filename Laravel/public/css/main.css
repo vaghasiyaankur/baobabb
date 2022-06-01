@@ -64,6 +64,7 @@ button {
 
 .navbar {
   background-color: #364b5a;
+  white-space: nowrap;
 }
 
 .navbar .navbar-brand img {
@@ -244,6 +245,20 @@ button.model_btn:hover {
   right: auto;
 }
 
+/* SWIPER STICKY CSS */
+
+.nav-second-header .nav-bottom.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.all-categoriess_.categories-padding {
+  padding-top: 63px !important;
+}
+
+
+
 /* ----------HEADER CSS END--------------- */
 
 /* ------CATEGORY-CARD SECTION START----- */
@@ -337,10 +352,23 @@ button.model_btn:hover {
 .footer-section .f_c_links_{
   font-size: 15px;
   font-weight: 300;
+  color: #fff;
 }
 .footer-section .f-s-logo{
   width: 100%;
   max-width: 40px;
+}
+.f_online_icon a i.hover_1:hover{
+  color: deepskyblue;
+}
+.f_online_icon a i.hover_2:hover{
+  color: #337cff;
+}
+.f_online_icon a i.hover_3:hover{
+  color: rgb(252 87 252);
+}
+.f_online_icon a i.hover_4:hover{
+  color: deepskyblue;
 }
 
 /* -----------FOOTER SECTION END--------- */

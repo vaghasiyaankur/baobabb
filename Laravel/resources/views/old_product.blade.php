@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- LISTING SECTION START-->
-    <section class="search-listing py_5">
+    <section class="search-listing py_5 all-categories">
         <h3 class="fw-bold pt-4 ">Je recherch un electricien (Example d`annonces) </h3>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb  mb-4 ">

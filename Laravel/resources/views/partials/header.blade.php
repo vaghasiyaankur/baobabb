@@ -6,7 +6,7 @@
  ?>
  <!----- HEADER SECTION  START----->
  
- <nav class="">
+ <nav class="nav-second-header">
      <div class="navbar navbar-expand-lg py_5 ">
 
          <div class="container-fluid py-4">
@@ -245,7 +245,7 @@
      </div>
 
      @if($url != '/')
-        <div class="bg-light">
+        <div class="bg-light nav-bottom">
             <div class="swiper-container p-3">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper" style="height: auto">
