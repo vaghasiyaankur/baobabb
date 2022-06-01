@@ -292,7 +292,7 @@
                 @if ($pr->id != $product->id)
                     <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 card_w_4 ">
                         <div class="card-box">
-                            <img src="{{ asset($pr->image) }}" class="img-fluid" alt="card-img">
+                            <img src="{{ asset($pr->image) }}" class="img-fluid card-img_height" alt="card-img">
                             <div class="card-inner bg-white">
                                 <div class="flex-wrap d-flex justify-content-between pt-3 pb-2 text-muted">
                                     <span><i class="fa-solid fa-bullseye pe-2"></i>{{$pr->category->name}}</span>
