@@ -3,7 +3,7 @@
         @foreach ($products as $product)
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 card_w_4">
                 <div class="card-box ">
-                    <img src="{{ asset($product->image) }}" class="img-fluid w-100" alt="card-img"
+                    <img src="{{ asset($product->image) }}" class="img-fluid w-100 card-img_height" alt="card-img"
                         style="height: 220px;">
                     <div class="card-inner bg-white">
                         <a href="{{ route('product', $product->slug) }}">

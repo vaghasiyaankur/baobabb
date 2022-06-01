@@ -2,8 +2,16 @@
     $categories = App\Models\Category::all();
     $url = \Request::route()->getName();
     $languages = App\Models\Language::all();
+    $rtl = App\Models\Setting::where('name','RTL')->first();
 
  ?>
+ @if($rtl->value == 'yes')
+ <style>
+     body{
+        direction: rtl;
+     }
+ </style>
+ @endif
  <!----- HEADER SECTION  START----->
  
  <nav class="nav-second-header">

@@ -25,7 +25,7 @@
                     @method('PUT')
                     <div class="row form_border">
                         <div class="col-md-12">
-                            <div class="mb-3">
+                            <div class="m-3">
                                 <label for="formFile" class="form-label custom-file-label font-size-17">name</label>
                                 <input class="form-control custom-file-input" name="name"
                                     value="@if(isset($setting->name)){{ $setting->name }}@endif" type="text"
@@ -35,11 +35,14 @@
                     </div>
                     <div class="row form_border">
                         <div class="col-md-12">
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label custom-file-label font-size-17">Value</label>
-                                <input class="form-control custom-file-input" name="value"
-                                    value="@if(isset($setting->value)){{ $setting->value }}@endif" type="text"
-                                    id="value">
+                            <div class="m-3">
+                                @if($setting->name == 'RTL')
+                                    <label for="formFile" class="form-label custom-file-label font-size-17">Yes / No</label>
+                                    <input class="m-3" name="value" value="yes" type="checkbox" id="value" @if($setting->value == 'yes') checked @endif>
+                                @elseif($setting->name == 'ad_expire_length')
+                                    <label for="formFile" class="form-label custom-file-label font-size-17">Input Days</label>
+                                    <input class="form-control custom-file-input" name="value" value="@if(isset($setting->value)){{ $setting->value }}@endif" type="number" id='value' required>
+                                @endif
                             </div>
                         </div>
                     </div>

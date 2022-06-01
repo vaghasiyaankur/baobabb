@@ -19,7 +19,6 @@
                                     <div class="d-flex flex-wrap justify-content-between">
                                         <p class="m-0 text-danger">{{ $product->cash }} {{ $product->price }}</p>
                                         <div class="icon">
-                                            <i class="fa-solid fa-arrows-rotate"></i>
 
                                             <a href="{{ route('user.wishlist.destroy', $product->id) }}" onclick="event.preventDefault();
                                                     document.getElementById('delete-wishlist').submit();">

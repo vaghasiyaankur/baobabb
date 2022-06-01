@@ -89,4 +89,6 @@ return [
     'category_id' => "ID DE CATÉGORIE",
     'name' => "NOM",
     'action' => "ACTION",
+    'app_les_filter' => 'Aplicar filtro'
+
 ];

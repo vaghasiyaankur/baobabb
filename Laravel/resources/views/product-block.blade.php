@@ -1,5 +1,5 @@
 <div class="card-box ">
-    <img src="{{ asset($product->image) }}" class="img-fluid w-100" alt="card-img" style="height: 220px;">
+    <img src="{{ asset($product->image) }}" class="img-fluid w-100 card-img_height" alt="card-img" style="height: 220px;">
     <div class="card-inner bg-white">
         <a href="{{ route('product', $product->slug) }}">
             <div class="flex-wrap d-flex justify-content-between pt-3 pb-2">

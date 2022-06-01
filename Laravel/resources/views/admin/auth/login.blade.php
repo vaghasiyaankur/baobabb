@@ -118,16 +118,6 @@
 
                                 </div>
 
-
-                                <div class="form-group mb-3 required">
-                                    <div class="no-label">
-                                        <div class="g-recaptcha"
-                                            data-sitekey="6LepkyITAAAAABcNEMzv-aT6WYAIiBH5ptr4Lc1I"></div>
-                                    </div>
-
-                                </div>
-
-
                                 <div class="row mb-3 text-center mt-4">
                                     <div class="col-12 d-grid">
                                         <button class="btn btn-primary btn-lg waves-effect waves-light"

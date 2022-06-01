@@ -20,6 +20,11 @@ class SettingSeeder extends Seeder
                 'id' => 1,
                 'name' => 'ad_expire_length',
                 'value' => '30'
+            ],
+            [
+                'id' => 2,
+                'name' => 'RTL',
+                'value' => 'yes'
             ]
         ]);
     }

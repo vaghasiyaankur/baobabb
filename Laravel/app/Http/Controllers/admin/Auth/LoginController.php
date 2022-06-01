@@ -11,6 +11,21 @@ use Auth;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) { 
+            if(auth()->user())
+            {
+                if(auth()->user()->is_admin == 1)
+                {
+                    return redirect()->route('admin.dashboard')->withSuccess('You have Successfully loggedin');
+                }
+            }
+            return $next($request);
+        });
+
+    }
+
 	public function showLoginForm()
 	{
 		return view('admin.auth.login', ['title' => trans('admin.login')]);
