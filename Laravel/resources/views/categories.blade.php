@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- ALL-CATEGORY SECTION START -->
-    <section class="all-categories py_5">
+    <section class="all-categories py_5 all-categoriess_">
         <h3 class="fw-bold pt-4 ">
             {{ __('messages.all_categories')}}</h3>
         <h6 class="pb-4 ">{{ __('messages.home')}} > {{ __('messages.all_categories')}}</h6>

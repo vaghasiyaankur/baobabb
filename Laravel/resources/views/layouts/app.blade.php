@@ -1,6 +1,6 @@
 @include('partials.head')
 @include('partials.header')
-<div class="all-categoriess_">
+<div class="all-body">
     @yield('content')
 </div>
 @include('partials.footer')

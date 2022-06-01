@@ -9,7 +9,7 @@
 
 @endsection
 @section('content')
-    <section>
+    <section class="all-categoriess_">
         <div class="container">
             <div class="section-content card my-5">
                 <div class="row m-4">

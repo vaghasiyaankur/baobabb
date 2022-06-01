@@ -2,7 +2,7 @@
 @section('content')
     <!-- LISTING SECTION START-->
    <!-- LISTING SECTION START-->
-   <section class="search-listing py_5 ">
+   <section class="search-listing py_5 all-categoriess_">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb  mb-4 pt-4">
             <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-muted">Accueil</a></li>

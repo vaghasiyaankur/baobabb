@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- ALL-CATEGORY SECTION START -->
-    <section class="all-categories py_5">
+    <section class="all-categories py_5 all-categoriess_">
         <h3 class="fw-bold pt-4 ps-lg-5">
             Consulter les announces </h3>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">

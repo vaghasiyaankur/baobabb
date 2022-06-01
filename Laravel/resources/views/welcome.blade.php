@@ -4,9 +4,6 @@
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
     <!---------- SUB TITLE SWIPER --------->
-
-
-
     <section class="main-header">
         <div class="container-fluid py_5 ">
             <div class="row align-items-center">
@@ -83,9 +80,27 @@
         </div>
     </section>
 
-
-
-    <div id="data-wrapper">
+     <div class="wlcm-heder-swiper">                               
+         <div class="bg-light ">
+                <div class="swiper-container p-3">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper" style="height: auto">
+                        <!-- Slides -->
+                        @foreach ($categories as $category)
+                        <div class="swiper-slide">
+                            <a href="{{route('category',$category->slug)}}" class="change-category" data-id="{{ $category->slug }}">
+                                <p class="m-0">{{ $category->name }}</p>
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+       </div>                            
+    <div id="data-wrapper" class="swiper__padding">
         <!-- Results -->
     </div>
     <!-- Data Loader -->

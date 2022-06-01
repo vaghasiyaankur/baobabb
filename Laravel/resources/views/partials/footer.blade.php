@@ -447,11 +447,25 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
     var scroll = $(window).scrollTop();
 
     if (scroll >= 100) {
-        $(".nav-second-header .nav-bottom").addClass("sticky-header");
+        $(".nav-bottom").addClass("sticky-header");
         $(".all-categoriess_").addClass("categories-padding");
     } else {
-        $(".nav-second-header .nav-bottom").removeClass("sticky-header");
+        $(".nav-bottom").removeClass("sticky-header");
         $(".all-categoriess_").removeClass("categories-padding");
+    }
+});
+</script>
+<!-- wlcome subswiper -->
+<script>
+    $(window).scroll(function() {    
+    var scroll1 = $(window).scrollTop();
+
+    if (scroll1 >= 600) {
+        $(".wlcm-heder-swiper").addClass("sticky-wl-header");
+        $(".swiper__padding").addClass("wl-categories-padding");
+    } else {
+        $(".wlcm-heder-swiper").removeClass("sticky-wl-header");
+        $(".swiper__padding").removeClass("wl-categories-padding");
     }
 });
 </script>

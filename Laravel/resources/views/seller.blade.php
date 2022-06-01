@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<section class="seller-section py_5">
+<section class="seller-section py_5 all-categoriess_">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb pt-4 pb-2 m-0">
             <li class="breadcrumb-item fs-5"><a href="{{route('home')}}" class="text-decoration-none text-muted">{{ __('messages.home')}}</a></li>

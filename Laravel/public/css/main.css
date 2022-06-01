@@ -247,7 +247,7 @@ button.model_btn:hover {
 
 /* SWIPER STICKY CSS */
 
-.nav-second-header .nav-bottom.sticky-header {
+.nav-bottom.sticky-header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -256,7 +256,21 @@ button.model_btn:hover {
 .all-categoriess_.categories-padding {
   padding-top: 63px !important;
 }
+.all-body{
+  min-height:calc(100vh - 426px);
+  background-color: #f9f9f9;
+}
 
+/* WELCOME swiper header */
+.sticky-wl-header{
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index: 999;
+}
+.wl-categories-padding{
+  padding-top: 70px !important;
+}
 
 
 /* ----------HEADER CSS END--------------- */
