@@ -1162,3 +1162,9 @@ input[type=range]:focus::-ms-fill-upper {
   position: relative;
 }
 
+/* feedback user */
+.feedback-user{
+  top: 0;
+  right: 0;
+  position: absolute;
+}

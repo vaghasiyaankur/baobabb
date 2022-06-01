@@ -14,7 +14,7 @@
                         <a href="{{route('user.wishlist.index')}}" class="panel-links">Favorite ads</a>
                     </li>
                     <li class="nav-item">
-                        <a href="javascript:;" class="panel-links">Feedback</a>
+                        <a href="{{route('user.feedback.show')}}" class="panel-links">Feedback</a>
                     </li>
                 </ul>
                 <h5 class="panel-link-title">MY ACCOUNT</h5>

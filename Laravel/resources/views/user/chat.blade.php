@@ -24,7 +24,7 @@
                     <div class="panel-heading p-4 position-relative">
                         <h3 class="panel-title"><span class="glyphicon glyphicon-comment me-2"></span> Chat with <i
                                 class="chat-user"></i> </h3>
-                        <div class="conversation-review" id="review_section">
+                        <div class="conversation-review" id="review_section" style="display: none">
                             <div id="reviewBtn" class="show-modal"><a href="javascript:;" class="launch-review">
                                     <i class="fa-solid fa-star"></i>
                                     <span>Rate Your Experience</span>
