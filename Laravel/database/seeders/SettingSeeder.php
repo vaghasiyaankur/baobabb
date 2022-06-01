@@ -24,7 +24,7 @@ class SettingSeeder extends Seeder
             [
                 'id' => 2,
                 'name' => 'RTL',
-                'value' => 'yes'
+                'value' => 'no'
             ]
         ]);
     }
