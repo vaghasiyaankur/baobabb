@@ -54,9 +54,9 @@ class RatingController extends Controller
      * @param  \App\Models\Rating  $rating
      * @return \Illuminate\Http\Response
      */
-    public function show(Rating $rating)
+    public function show()
     {
-        //
+        return view('user.feedback');
     }
 
     /**
@@ -95,86 +95,10 @@ class RatingController extends Controller
 
     public function check(Request $request)
     {
-
-        $str = `<div id="reviewBtn" class="show-modal"><a href="javascript:;" class="launch-review">
-        <i class="fa-solid fa-star"></i>
-        <span>Rate Your Experience</span>
-    </a>
-</div>
-{{-- Send Message Model --}}
-<div id="testmodal" class="modal fade">
-    <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content p-3">
-            <div class="modal-header">
-                <h4 class="modal-title">Rate Your Experience</h4>
-                <button type="button" class="close" data-dismiss="modal"
-                    aria-hidden="true">&times;</button>
-            </div>
-
-            <div class="modal-body login_modal p-2">
-                <form action="{{route('user.rating.post')}}" method="post">
-                    @csrf
-                    <h5 class="modal-title mb-4" id="exampleModalLabel">Your Rating*</h5>
-                    <input type="hidden" name="user_id" id="user_id">
-                    <div class="rating">
-                        <label>
-                            <input type="radio" name="stars" value="1" />
-                            <span class="icon">✰</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="2" />
-                            <span class="icon">✰</span>
-                            <span class="icon">✰</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="3" />
-                            <span class="icon">✰</span>
-                            <span class="icon">✰</span>
-                            <span class="icon">✰</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="4" />
-                            <span class="icon">✰</span>
-                            <span class="icon">✰</span>
-                            <span class="icon">✰</span>
-                            <span class="icon">✰</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="5" required/>
-                            <span class="icon">✰</span>
-                            <span class="icon">✰</span>
-                            <span class="icon">✰</span>
-                            <span class="icon">✰</span>
-                            <span class="icon">✰</span>
-                        </label>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-12">
-                    <h5 class="modal-title mb-4" id="exampleModalLabel">Write Review*</h5>
-                    <textarea name="review" id="review" cols="30" rows="5" class="form-control border-0 border-bottom p-0 rounded-0" required></textarea>
-                            <span class="error text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="ajax-form-result pb-3">
-                        <div class="alert-error" id="login_alert_error"></div>
-                    </div>
-                    <div class="ajax-form-result pb-3">
-                        <div class="alert-success" id="login_alert_success"></div>
-                    </div>
-                    <div class="my-4">
-                        <button type="submit" id="login_btn" class="btn model_btn w-100 fw-bold"
-                            type="button">SEND</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>`;
-
         $rating = Rating::where('user_from',auth()->user()->id)->where('user_to',$request->id)->first();
         if($rating)
         {
-            return $str;
+            return false;
         }
         else
         {
@@ -182,11 +106,11 @@ class RatingController extends Controller
             $message_from = Message::where('to_user',$request->id)->where('from_user',auth()->user()->id)->first();
             if($message_to && $message_from)
             {
-                return $str;
+                return true;
             }
             else
             {
-                return $str;
+                return false;
             }
         }
         

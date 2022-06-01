@@ -14,7 +14,7 @@
                         <a href="{{route('user.wishlist.index')}}" class="panel-links">{{ __('messages.favourite_ads')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="javascript:;" class="panel-links">{{ __('messages.feedback')}}</a>
+                        <a href="{{route('user.feedback.show')}}" class="panel-links">{{ __('messages.feedback')}}</a>
                     </li>
                 </ul>
                 <h5 class="panel-link-title">{{ __('messages.my_account')}}</h5>

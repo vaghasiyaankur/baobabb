@@ -30,6 +30,23 @@ $(function () {
 
                chatBox.find(".chat-area").animate({scrollTop: chatBox.find(".chat-area").offset().top + chatBox.find(".chat-area").outerHeight(true)}, 800, 'swing');
            }
+            $.ajax({
+                url: "/user/check/rating",
+                type: "get",
+                data: {
+                    id: user_id,
+                },
+                success: function(result) {
+                    if(result == 1)
+                    {
+                        $('#review_section').show();
+                    }
+                    else
+                    {
+                        $('#review_section').hide();
+                    }
+                }
+            });
        });
    });
 
