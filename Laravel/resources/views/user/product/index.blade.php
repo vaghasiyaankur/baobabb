@@ -15,17 +15,17 @@
       <div class="col-lg-12">
          <div class="card">
             <div class="card-header justify-content-between d-flex align-items-right">
-               <a href="{{route('user.product.create')}}" class="btn btn-success">Create New Ad <i class="mdi mdi-arrow-right align-middle"></i></a>
+               <a href="{{route('user.product.create')}}" class="btn btn-success">{{ __('messages.create_new_ad')}} <i class="mdi mdi-arrow-right align-middle"></i></a>
             </div>
             <!-- end card header -->
             <div class="card-body">
                <table id="brand_list" class="table table-hover responsive nowrap table-responsive " style="width:100%">
                   <thead>
                      <tr class="tr_bg">
-                        <th>CATEGORY ID</th>
-                        <th>NAME</th>
+                        <th>{{ __('messages.category_id')}}</th>
+                        <th>{{ __('messages.name')}}</th>
                         {{-- <th>IMAGE</th> --}}
-                        <th>ACTION</th>
+                        <th>{{ __('messages.action')}}</th>
                      </tr>
                   </thead>
                   <tbody>
