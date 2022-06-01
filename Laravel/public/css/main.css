@@ -286,6 +286,9 @@ button.model_btn:hover {
 .card-inner {
   padding: 5px 10px;
 }
+.card-box .card-img_height{
+  min-height: 220px;
+}
 
 /* -----------FOOTER SECTION--------- */
 

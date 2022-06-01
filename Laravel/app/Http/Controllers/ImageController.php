@@ -84,6 +84,7 @@ class ImageController extends Controller
 
     public function move($img)
     {
+        // dd($img);
         if($img){
             $ext = '.'.$img->getClientOriginalExtension();
             $filename = str_replace($ext, date('d-m-Y-H-i') . $ext, $img->getClientOriginalName());

@@ -173,12 +173,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
         $product = Product::find($id);
         $gallery = array();
         $img = new ImageController;
+        if($request->image[0])
+        {
+            $product->image = $img->move($request->image[0]);
+        }
         if($request->image)
         {
-            $product->image = $img->move($request->image);
+            for($i = 1; $i < count($request->image); $i++)
+            {
+                $g = $img->move($request->image[$i]);
+                array_push($gallery, $g);
+            }
         }
         if($request->gallery)
         {
@@ -197,10 +206,10 @@ class ProductController extends Controller
         $product->meta_title = $request->meta_title;
         $product->meta_description = $request->meta_description;
         $product->description = $request->description;
-        $product->country = $request->country;
+        $product->country = auth()->user()->country;;
         $product->state = $request->state;
         $product->city = $request->city;
-        $product->cash = $request->cash;
+        $product->cash = $request->currency;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
         $product->video = $request->video;  
