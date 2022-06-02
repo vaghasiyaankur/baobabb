@@ -94,19 +94,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label custom-file-label font-size-17">Continent</label>
-                                <select name="continent" style="width: 100%"
-                                    class="continent form-select select2_field select2-hidden-accessible" tabindex="-1"
-                                    aria-hidden="true">
-                                    <option value="">-</option>
-                                    @foreach($continents as $continent)
-                                    <option value="{{$continent->code}}" {{ $continent->code == @$country->continent ? 'selected' : '' }}>{{ $continent->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                        ~
                     </div>
 
                     <div class="row">
