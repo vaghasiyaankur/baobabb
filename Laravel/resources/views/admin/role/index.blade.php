@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title') Product List @endsection
+@section('title') User List @endsection
 
 @push('styles_after_assets')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -20,7 +20,7 @@
    <div class="row">
       <div class="col-12">
          <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="mb-0">Products</h4>
+            <h4 class="mb-0">User Roles</h4>
          </div>
       </div>
    </div>
@@ -28,19 +28,16 @@
    <div class="row">
       <div class="col-lg-12">
          <div class="card">
-            @can('product-create')
             <div class="card-header justify-content-between d-flex align-items-right">
-               <a href="{{route('admin.product.create')}}" class="btn btn-success">Add New Product <i class="mdi mdi-arrow-right align-middle"></i></a>
+               <a href="{{route('admin.role.create')}}" class="btn btn-success">Add New Role <i class="mdi mdi-arrow-right align-middle"></i></a>
             </div>
-            @endcan
             <!-- end card header -->
             <div class="card-body">
                <table id="brand_list" class="table table-hover responsive nowrap table-responsive " style="width:100%">
                   <thead>
                      <tr class="tr_bg">
-                        <th>CATEGORY ID</th>
+                        <th>ID</th>
                         <th>NAME</th>
-                        {{-- <th>IMAGE</th> --}}
                         <th>ACTION</th>
                      </tr>
                   </thead>
@@ -73,11 +70,10 @@
             processing: true,
             serverSide: true,
             pageLength : page,
-            ajax: "{{ route('admin.product.index') }}",
+            ajax: "{{ route('admin.role.index') }}",
             columns: [
                 {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
-               //  {data: 'image', name: 'image'},
                 {data: 'action', name: 'action',orderable: true,searchable: true},
             ]
         });

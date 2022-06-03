@@ -85,7 +85,7 @@ Route::group(['middleware' => ['auth','verified'],'prefix' => 'user', 'as' => 'u
     Route::get('admin/login', 'App\Http\Controllers\admin\Auth\LoginController@showLoginForm')->name('admin.login');
 	Route::post('admin/login', 'App\Http\Controllers\admin\Auth\LoginController@login')->name('admin.login');
 	Route::get('admin/logout', 'App\Http\Controllers\admin\Auth\LoginController@logout')->name('admin.logout');
-Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], function () { 
+Route::group(['middleware' => ['auth'],'prefix' => 'admin', 'as' => 'admin.'], function () { 
     Route::get('/',function(){
         return redirect()->route('admin.dashboard');
     });
@@ -96,6 +96,8 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('category/{id}/subcategory', 'App\Http\Controllers\admin\SubCategoryController', ['names'=> 'subcategory']);   
     Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);   
     Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);   
+    Route::resource('role', 'App\Http\Controllers\admin\RoleController', ['names'=> 'role']);   
+    Route::resource('permission', 'App\Http\Controllers\admin\PermissionController', ['names'=> 'permission']);   
     Route::resource('product/type', 'App\Http\Controllers\admin\ProductTypeController', ['names'=> 'product.type']);   
     Route::resource('product', 'App\Http\Controllers\admin\ProductController', ['names'=> 'product']);   
     Route::resource('custom/field', 'App\Http\Controllers\admin\FieldController', ['names'=> 'custom.field']);   
@@ -106,3 +108,6 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('pages', 'App\Http\Controllers\admin\PagesController', ['names'=> 'pages']); 
     Route::resource('setting', 'App\Http\Controllers\admin\SettingController', ['only' => ['index','edit','update']], ['names'=> 'setting']);   
 });
+
+
+// Route::resource('products', TestController::class);

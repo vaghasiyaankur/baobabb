@@ -12,6 +12,13 @@ use DataTables;
 
 class SubCategoryController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:sub-category-list|sub-category-create|sub-category-update|sub-category-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:sub-category-create', ['only' => ['create','store']]);
+        $this->middleware('permission:sub-category-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:sub-category-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -31,89 +31,135 @@
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
-            <ul class="metismenu list-unstyled" id="side-menu3">
-                <li class="menu-title" data-key="t-dashboards">Dashboards</li>
+            @can('dashboard-list')
+                <ul class="metismenu list-unstyled" id="side-menu3">
+                    <li class="menu-title" data-key="t-dashboards">Dashboards</li>
 
-                <li>
-                    <a href="{{ route('admin.dashboard') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Dashboard</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="{{ route('admin.dashboard') }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Dashboard</span>
+                        </a>
+                    </li>
 
-            </ul>
-            <ul class="metismenu list-unstyled" id="side-menu34">
-                <li class="menu-title" data-key="t-dashboards">CATELOG</li>
-                <li>
-                    <a href="{{ route('admin.category.index') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Category</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.product.type.index') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Product Type</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.product.index') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Product</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.custom.field.index') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Custom Fields</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="metismenu list-unstyled" id="side-menu34">
-                <li class="menu-title" data-key="t-dashboards">USER</li>
-                <li>
-                    <a href="{{ route('admin.user.index') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">User</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="metismenu list-unstyled" id="side-menu34">
-                <li class="menu-title" data-key="t-dashboards">GEO</li>
-                <li>
-                    <a href="{{ route('admin.country.index') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Country</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.currency.index') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Currency</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.language.index') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Languages</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.pages.index') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Pages</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="metismenu list-unstyled" id="side-menu34">
-                <li class="menu-title" data-key="t-dashboards">SETTINGs</li>
-                <li>
-                    <a href="{{ route('admin.setting.index') }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Setting</span>
-                    </a>
-                </li>
-            </ul>
+                </ul>
+            @endcan
+            @canany(['category-list','product-type-list','product-list','custom-field-list'])
+                <ul class="metismenu list-unstyled" id="side-menu34">
+                    <li class="menu-title" data-key="t-dashboards">CATELOG</li>
+                    @can('category-list')
+                        <li>
+                            <a href="{{ route('admin.category.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Category</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('product-type-list')
+                        <li>
+                            <a href="{{ route('admin.product.type.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Product Type</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('product-list')
+                        <li>
+                            <a href="{{ route('admin.product.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Product</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('field-list')
+                        <li>
+                            <a href="{{ route('admin.custom.field.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Custom Fields</span>
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            @endcanany
+            @canany(['user-list','user-role-list','permission-list'])
+                <ul class="metismenu list-unstyled" id="side-menu34">
+                    <li class="menu-title" data-key="t-dashboards">USER</li>
+                    @can('user-list')
+                        <li>
+                            <a href="{{ route('admin.user.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">User</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('role-list')
+                        <li>
+                            <a href="{{ route('admin.role.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">User Role</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('permission-list')
+                        <li>
+                            <a href="{{ route('admin.permission.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Permission</span>
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            @endcanany
+            @canany(['country-list','currency-list','languages-list','pages-list'])
+                <ul class="metismenu list-unstyled" id="side-menu34">
+                    <li class="menu-title" data-key="t-dashboards">GEO</li>
+                    @can('country-list')
+                        <li>
+                            <a href="{{ route('admin.country.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Country</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('currency-list')
+                        <li>
+                            <a href="{{ route('admin.currency.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Currency</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('language-list')
+                        <li>
+                            <a href="{{ route('admin.language.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Languages</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('pages-list')
+                        <li>
+                            <a href="{{ route('admin.pages.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Pages</span>
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            @endcanany
+            @canany(['setting-list'])
+                <ul class="metismenu list-unstyled" id="side-menu34">
+                    <li class="menu-title" data-key="t-dashboards">SETTINGs</li>
+                    @can('setting-list')
+                        <li>
+                            <a href="{{ route('admin.setting.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Setting</span>
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            @endcanany
             {{-- <ul class="metismenu list-unstyled" id="side-menu22">
                         <li class="menu-title" data-key="t-dashboards">PRODUCTS MANAGEMENT</li>
                         <li>

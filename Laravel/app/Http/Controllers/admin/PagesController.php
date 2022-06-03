@@ -12,6 +12,13 @@ use DataTables;
 
 class PagesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:pages-list|pages-create|pages-update|pages-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:pages-create', ['only' => ['create','store']]);
+        $this->middleware('permission:pages-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:pages-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

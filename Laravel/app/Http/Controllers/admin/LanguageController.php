@@ -13,6 +13,13 @@ use DataTables;
 
 class LanguageController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:language-list|language-create|language-update|language-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:language-create', ['only' => ['create','store']]);
+        $this->middleware('permission:language-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:language-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

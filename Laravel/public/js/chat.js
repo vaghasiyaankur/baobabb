@@ -31,7 +31,7 @@ $(function () {
                chatBox.find(".chat-area").animate({scrollTop: chatBox.find(".chat-area").offset().top + chatBox.find(".chat-area").outerHeight(true)}, 800, 'swing');
            }
             $.ajax({
-                url: "/user/check/rating",
+                url: window.location.origin+ "/user/check/rating",
                 type: "get",
                 data: {
                     id: user_id,
