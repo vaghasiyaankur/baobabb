@@ -93,6 +93,7 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('profile' , [App\Http\Controllers\admin\DashboardController::class,'profile'])->name('profile');
     Route::post('profile-update', [App\Http\Controllers\admin\DashboardController::class, 'profile_update'])->name('profile.update');
     Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']);   
+    Route::resource('picture', 'App\Http\Controllers\admin\PictureController', ['names'=> 'picture']);   
     Route::resource('category/{id}/subcategory', 'App\Http\Controllers\admin\SubCategoryController', ['names'=> 'subcategory']);   
     Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);   
     Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);   
