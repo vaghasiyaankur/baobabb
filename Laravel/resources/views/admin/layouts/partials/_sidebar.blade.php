@@ -44,9 +44,17 @@
 
                 </ul>
             @endcan
-            @canany(['category-list','product-type-list','product-list','custom-field-list'])
+            @canany(['category-list','product-type-list','product-list','custom-field-list','picture-list'])
                 <ul class="metismenu list-unstyled" id="side-menu34">
                     <li class="menu-title" data-key="t-dashboards">CATELOG</li>
+                    @can('product-list')
+                        <li>
+                            <a href="{{ route('admin.product.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">List</span>
+                            </a>
+                        </li>
+                    @endcan
                     @can('category-list')
                         <li>
                             <a href="{{ route('admin.category.index') }}">
@@ -55,19 +63,19 @@
                             </a>
                         </li>
                     @endcan
+                    @can('picture-list')
+                        <li>
+                            <a href="{{ route('admin.picture.index') }}">
+                                <i class="icon nav-icon" data-feather="monitor"></i>
+                                <span class="menu-item" data-key="t-sales">Picture</span>
+                            </a>
+                        </li>
+                    @endcan
                     @can('product-type-list')
                         <li>
                             <a href="{{ route('admin.product.type.index') }}">
                                 <i class="icon nav-icon" data-feather="monitor"></i>
-                                <span class="menu-item" data-key="t-sales">Product Type</span>
-                            </a>
-                        </li>
-                    @endcan
-                    @can('product-list')
-                        <li>
-                            <a href="{{ route('admin.product.index') }}">
-                                <i class="icon nav-icon" data-feather="monitor"></i>
-                                <span class="menu-item" data-key="t-sales">Product</span>
+                                <span class="menu-item" data-key="t-sales">Listing Type</span>
                             </a>
                         </li>
                     @endcan
