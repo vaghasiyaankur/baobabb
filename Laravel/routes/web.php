@@ -85,7 +85,7 @@ Route::group(['middleware' => ['auth','verified'],'prefix' => 'user', 'as' => 'u
     Route::get('admin/login', 'App\Http\Controllers\admin\Auth\LoginController@showLoginForm')->name('admin.login');
 	Route::post('admin/login', 'App\Http\Controllers\admin\Auth\LoginController@login')->name('admin.login');
 	Route::get('admin/logout', 'App\Http\Controllers\admin\Auth\LoginController@logout')->name('admin.logout');
-Route::group(['middleware' => ['auth'],'prefix' => 'admin', 'as' => 'admin.'], function () { 
+Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], function () { 
     Route::get('/',function(){
         return redirect()->route('admin.dashboard');
     });

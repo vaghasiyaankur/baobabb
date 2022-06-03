@@ -160,21 +160,23 @@
                     @endcan
                 </ul>
             @endcanany
-            <ul class="metismenu list-unstyled" id="side-menu34">
-                <li class="menu-title" data-key="t-dashboards">General</li>
-                <li>
-                    <a href="{{ route('admin.setting.element.index', ['element' => 'style']) }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">Style</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.setting.element.index', ['element' => 'list']) }}">
-                        <i class="icon nav-icon" data-feather="monitor"></i>
-                        <span class="menu-item" data-key="t-sales">List & Search</span>
-                    </a>
-                </li>
-            </ul>
+            @can('setting-element-list')
+                <ul class="metismenu list-unstyled" id="side-menu34">
+                    <li class="menu-title" data-key="t-dashboards">General</li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'style']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Style</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'list']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">List & Search</span>
+                        </a>
+                    </li>
+                </ul>
+            @endcan
             {{-- <ul class="metismenu list-unstyled" id="side-menu22">
                         <li class="menu-title" data-key="t-dashboards">PRODUCTS MANAGEMENT</li>
                         <li>
