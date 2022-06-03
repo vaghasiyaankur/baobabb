@@ -5,22 +5,8 @@
     <div class="row title-setting-element">
         <div class="col-md-6">
             <h3><div class="mb-3 col-md-6">
-                <h3>Displaying</h3>
+                <h3>Publication</h3>
             </div></h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="mb-3">
-                <div class="form-check form-switch" style="margin-top: 30px;">
-                    <input type="hidden" name="display_browse_listings_link" value="0">
-                    <input type="checkbox" value="1" name="display_browse_listings_link" class="form-check-input" style="cursor: pointer;" {{@$elementdata->display_browse_listings_link  == 1 ? 'checked' : ''}}>
-                    <label class="form-check-label fw-bolder">
-                        Display the "Browse Listings" link in the menu
-                    </label>
-                </div>
-            </div>
-            <div class="form-text">Display the "Browse Listings" link in the header menu. Show all the listings (related to the selected country) in the default order and without filters by default.</div>
         </div>
     </div>
 
@@ -28,53 +14,49 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label for="formFile" class="form-label custom-file-label font-size-17">Listing Page Display Mode</label>
-                <select name="display_mode" style="width: 100%"
-                    class="display_mode form-select select2_field select2-hidden-accessible" tabindex="-1"
+                <select name="publication_form_type" style="width: 100%"
+                    class="publication_form_type form-select select2_field select2-hidden-accessible" tabindex="-1"
                     aria-hidden="true">
-                    <option value="make-grid" {{ @$elementdata->display_mode  == 'make-grid' ? 'selected' : ''}}>Grid</option>
-                    <option value="make-list" {{ @$elementdata->display_mode  == 'make-list' ? 'selected' : ''}}>List</option>
-                    <option value="make-compact" {{ @$elementdata->display_mode  == 'make-compact' ? 'selected' : ''}}>Compact</option>
+                    <option value="make-grid" {{ @$elementdata->publication_form_type  == 'make-grid' ? 'selected' : ''}}>Grid</option>
                 </select>
             </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Grid View Columns</label>
-                <select name="grid_view_cols" style="width: 100%"
-                    class="grid_view_cols form-select select2_field select2-hidden-accessible" tabindex="-1"
-                    aria-hidden="true">
-                    <option value="4" {{ @$elementdata->grid_view_cols  == '4' ? 'selected' : ''}}>4</option>
-                    <option value="3" {{ @$elementdata->grid_view_cols  == '3' ? 'selected' : ''}}>3</option>
-                    <option value="2" {{ @$elementdata->grid_view_cols  == '2' ? 'selected' : ''}}>2</option>
-                </select>
-            </div>
+            <div>By selecting the "Single Step Form", the picture field can be mandatory or not.</div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Items per page</label>
-                <input class="form-control custom-file-input" name="items_per_page" type="number" id="items_per_page"
+                <label for="formFile" class="form-label custom-file-label font-size-17">Title Min Length</label>
+                <input class="form-control custom-file-input" name="title_min_length" type="number" id="title_min_length"
                     id="customFileUpload"
-                    value="@if (isset($elementdata)){{ @$elementdata->items_per_page  }}@endif">
+                    value="@if (isset($elementdata)){{ @$elementdata->title_min_length  }}@endif">
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Fake locations results</label>
-                <select name="fake_locations_results" style="width: 100%"
-                    class="fake_locations_results form-select select2_field select2-hidden-accessible" tabindex="-1"
-                    aria-hidden="true">
-                    @php $fakelocation = config('fake_locations_results') @endphp
-                    @foreach($fakelocation as $key=>$fl)
-                    <option value="{{ $key }}"  {{ @$elementdata->fake_locations_results  == $key ? 'selected' : ''}}>{{ $fl }}</option>
-                    @endforeach
-                </select>
+                <label for="formFile" class="form-label custom-file-label font-size-17">Title Max Length</label>
+                <input class="form-control custom-file-input" name="title_max_length" type="number" id="title_max_length"
+                    id="customFileUpload"
+                    value="@if (isset($elementdata)){{ @$elementdata->title_max_length  }}@endif">
             </div>
         </div>
-
+        <div class="col-md-3">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Description Min Length</label>
+                <input class="form-control custom-file-input" name="description_min_length" type="number" id="description_min_length"
+                    id="customFileUpload"
+                    value="@if (isset($elementdata)){{ @$elementdata->description_min_length  }}@endif">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Description Max Length</label>
+                <input class="form-control custom-file-input" name="description_max_length" type="number" id="description_max_length"
+                    id="customFileUpload"
+                    value="@if (isset($elementdata)){{ @$elementdata->description_max_length  }}@endif">
+            </div>
+        </div>
     </div>
 
 
@@ -82,30 +64,81 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <div class="form-check form-switch" style="margin-top: 30px;">
-                    <input type="hidden" name="show_cats_in_top" value="0">
-                    <input type="checkbox" value="1" name="show_cats_in_top" class="form-check-input" style="cursor: pointer;" {{@$elementdata->show_cats_in_top  == 1 ? 'checked' : ''}}>
+                    <input type="hidden" name="picture_mandatory" value="0">
+                    <input type="checkbox" value="1" name="picture_mandatory" class="form-check-input" style="cursor: pointer;" {{@$elementdata->picture_mandatory  == 1 ? 'checked' : ''}}>
                     <label class="form-check-label fw-bolder">
-                        Show categories in top
+                        Make the picture field mandatory
                     </label>
                 </div>
             </div>
-            <div class="form-text">In addition to the left sidebar (if enabled), display the list of categories at the top of the search results page.</div>
+            <div class="form-text">By enabling this option, at least one picture in the pictures field will be mandatory.</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Showing the categories icons</label>
-                <select name="show_category_icon" style="width: 100%"
-                    class="show_category_icon form-select select2_field select2-hidden-accessible" tabindex="-1"
-                    aria-hidden="true">
-                    @php $showcategory = config('showing_the_categories_icons') @endphp
-                    @foreach($showcategory as $key=>$sl)
-                    <option value="{{ $key }}"  {{ @$elementdata->show_category_icon  == $key ? 'selected' : ''}}>{{ $sl }}</option>
-                    @endforeach
-                </select>
+                <label for="formFile" class="form-label custom-file-label font-size-17">Pictures Limit</label>
+                <input class="form-control custom-file-input" name="pictures_limit" type="number" id="pictures_limit"
+                    id="customFileUpload"
+                    value="@if (isset($elementdata)){{ @$elementdata->pictures_limit  }}@endif">
             </div>
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Tags Limit</label>
+                <input class="form-control custom-file-input" name="tags_limit" type="number" id="tags_limit"
+                    id="customFileUpload"
+                    value="@if (isset($elementdata)){{ @$elementdata->tags_limit  }}@endif">
+            </div>
+            <div>NOTE: The 'tags' column type in the 'posts' table is: TEXT</div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Tags Min Length</label>
+                <input class="form-control custom-file-input" name="tags_min_length" type="number" id="tags_min_length"
+                    id="customFileUpload"
+                    value="@if (isset($elementdata)){{ @$elementdata->tags_min_length  }}@endif">
+            </div>
+            <div>Minimum length for each tag.</div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Tags Max Length</label>
+                <input class="form-control custom-file-input" name="tags_max_length" type="number" id="tags_max_length"
+                    id="customFileUpload"
+                    value="@if (isset($elementdata)){{ @$elementdata->tags_max_length  }}@endif">
+            </div>
+        </div>
+        <div>Minimum length for each tag.</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="guests_can_post_listings" value="0">
+                    <input type="checkbox" value="1" name="guests_can_post_listings" class="form-check-input" style="cursor: pointer;" {{@$elementdata->guests_can_post_listings  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Allow Guests to post Listings
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Allow guests to post listings. If unchecked, only registered users can post listings.</div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="listings_review_activation" value="0">
+                    <input type="checkbox" value="1" name="listings_review_activation" class="form-check-input" style="cursor: pointer;" {{@$elementdata->listings_review_activation  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Allow listings to be reviewed by Admins
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">If enabled, all new listings will need to be approved by an admin user before going to public.</div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-6">
@@ -361,3 +394,44 @@
         </div>
     </div>
 </form>   
+
+
+<script>
+   $("#body-background-image").change(function() {
+      readURL(this);
+   });
+
+   function readURL(input) {
+      if (input.files && input.files[0]) {
+         var reader = new FileReader();
+         reader.onload = function(e) {
+         $('#body-background-view').attr('src', e.target.result);
+         $('#body-background-image-update').remove();
+         }
+         reader.readAsDataURL(input.files[0]);
+      } else {
+         alert('select a file to see preview');
+         $('#body-background-view').attr('src', '');
+      }
+   }
+
+
+   $("#login-background-image").change(function() {
+        readLoginURL(this);
+   });
+
+   function readLoginURL(input) {
+   if (input.files && input.files[0]) {
+         var reader = new FileReader();
+         reader.onload = function(e) {
+         $('#login-background-view').attr('src', e.target.result);
+         console.log('dasd');
+         $('#login-background-image-update').remove();
+         }
+         reader.readAsDataURL(input.files[0]);
+   } else {
+         alert('select a file to see preview');
+         $('#login-background-view').attr('src', '');
+   }
+   }
+</script>

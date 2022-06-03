@@ -175,6 +175,12 @@
                             <span class="menu-item" data-key="t-sales">List & Search</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'single']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Single (Page & Form)</span>
+                        </a>
+                    </li>
                 </ul>
             @endcan
             {{-- <ul class="metismenu list-unstyled" id="side-menu22">

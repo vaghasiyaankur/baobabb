@@ -45,6 +45,7 @@ class SettingElementController extends Controller
     public function store(StoreSettingElementRequest $request)
     {
         $data = $request->all();
+        // dd($data);
         $files = $request->file();
         foreach($files as $key=>$file){
             $img = new ImageController;
@@ -123,6 +124,7 @@ class SettingElementController extends Controller
         $setting = Setting::where('name', $request->name)->first();
         $elementdata  = json_decode($setting->value);
         $data = $request->all();
+        // dd($data);
         $files = $request->file();
         foreach($files as $key=>$file){
             $img = new ImageController;
