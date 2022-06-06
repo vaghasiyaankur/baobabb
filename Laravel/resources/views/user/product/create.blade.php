@@ -34,8 +34,8 @@
                         <div class="l-ad-content">
                             <h5 class="fw-bold mb-4 ms-4">Post Your Ad</h5>
                             <div class="add-types border-top d-flex flex-wrap justify-content-center align-items-center ">
-                                <p class="mb-0 me-4 fw-bold">Ad type</p>
-                                <select id="type_of" name="type_of" class="form-select w-75 "
+                                <p class="mb-0 me-4 fw-bold fs-4">Ad type</p>
+                                <select id="type_of" name="type_of" class="form-select w-75 fs-4"
                                     aria-label="Default select example">
                                     <option value="" selected>Please select your ad type</option>
                                     <option value="sell"
@@ -206,8 +206,8 @@
                                     <textarea class="form-control" id="description" name="description" rows="3" style="height:273px;width: 92%;">@if(isset($product->description)){{$product->description }}@endif  </textarea>
                                     <span class="error text-danger d-flex justify-content-start description"></span>
                                 </div>
-                                <div class="d-flex align-items-center mt-4 mb-3">
-                                    <label class="" for="specificSizeSelect">Condition*</label>
+                                <div class="d-flex align-items-center mt-4 mb-1">
+                                    <label class="me-2" for="specificSizeSelect">Condition*</label>
                                     <select class="form-select " id="condition" name="condition">
                                         <option value="" selected>Select Condition</option>
                                         <option value="new"
@@ -236,7 +236,7 @@
                                     <span class="error text-danger d-flex justify-content-start currency"></span>
                                 </div>
                                 <div class="price-div d-flex flex-wrap justify-content-between align-items-center ">
-                                    <div class="d-flex flex-wrap align-items-center ">
+                                    <div class="d-flex align-items-center mt-3">
                                         <label class="" for="specificSizeInputName">Price*</label>
                                         <input type="number" class="form-control w-50" id="price" name="price"
                                             value="@if(isset($product->price)){{ $product->price }}@endif">
@@ -244,15 +244,15 @@
                                             <div class="price_div_check-box">
                                                 <input class="form-check-input" type="checkbox" name="negotiable"
                                                     id="negotiable">
-                                                <label class="form-check-label" for="autoSizingCheck2">
+                                                <label class="form-check-label mb-0" for="autoSizingCheck2">
                                                     Negotiable
                                                 </label>
                                             </div>
                                         </div>
-                                        <span class="error text-danger d-flex justify-content-center price"></span>
+                                        <!-- <span class="error text-danger d-flex justify-content-center price"></span> -->
                                     </div>
-                                    <div class="d-flex align-items-center ">
-                                        <label class="text-end m-2" for="specificSizeSelect">Sale Price</label>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <label class="my-2 me-3" for="specificSizeSelect">Sale Price</label>
                                         <input type="number" class="form-control" id="sale_price" name="sale_price"
                                             value="@if(isset($product->sale_price)){{ $product->sale_price }}@endif"
                                             style="width: 90%;">
@@ -271,11 +271,11 @@
                                 <div class="d-flex  align-items-center mt-4 mb-3">
                                     {{-- <label class="" for="country">Country*</label>
                                     <input type="text" name="country" class="form-control" id="country" style="width: 40%;"> --}}
-                                    <label class="" for="state">State*</label>
+                                    <label class="me-3" for="state">State*</label>
                                     <input type="text" name="state" class="form-control" id="state" style="width: 40%;"
                                         value="@if (isset($product->state)) {{ $product->state }} @endif">
                                     <label class="text-center" for="city">City*</label>
-                                    <input type="text" name="city" class="form-control" id="city" style="width: 40%;"
+                                    <input type="text" name="city" class="form-control" id="city" style="width: 50%;"
                                         value="@if (isset($product->city)) {{ $product->city }} @endif">
                                 </div>
 
