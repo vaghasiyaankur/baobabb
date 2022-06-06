@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\User;
 use App\Models\Country;
+use App\Models\Role;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Controllers\Controller;
@@ -15,6 +16,13 @@ use DateTimeZone;
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:user-list|user-create|user-update|user-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:user-create', ['only' => ['create','store']]);
+        $this->middleware('permission:user-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -47,9 +55,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        $roles = Role::all();
         $timezones = DateTimeZone::listIdentifiers();
         $countries = Country::all();
-        return view('admin.user.create',compact('countries','timezones'));
+        return view('admin.user.create',compact('countries','timezones','roles'));
     }
 
     /**
@@ -65,6 +74,15 @@ class UserController extends Controller
         $avatar = $img->move($request->avatar);
 
         $user = new User;
+        if($request->role_id)
+        {
+            $user->assignRole([$request->role_id]);
+            $user->is_admin = '1';
+        }
+        else
+        {
+            $user->is_admin = 0;
+        }
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
@@ -108,9 +126,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $u = User::find($id);
+        $roles = Role::all();
         $timezones = DateTimeZone::listIdentifiers();
         $countries = Country::all();
-        return view('admin.user.create',compact('u','countries','timezones'));
+        return view('admin.user.create',compact('u','countries','timezones','roles'));
     }
 
     /**
@@ -123,12 +142,22 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
         $user = User::find($id);
-
+        
         // store avatar image
         if($request->avatar)
         {
             $img = new ImageController;
             $user->avatar = $img->move($request->avatar);
+        }
+        
+        if($request->role_id)
+        {
+            $user->assignRole([$request->role_id]);
+            $user->is_admin = '1';
+        }
+        else
+        {
+            $user->is_admin = 0;
         }
     
         $user->name = $request->name;
@@ -144,8 +173,9 @@ class UserController extends Controller
         $user->country = $request->country;
         $user->state = $request->state;
         $user->city = $request->city;
-        $user->location = $request->location;
         $user->timezone = $request->timezone;
+        $user->lat = $request->latitude;
+        $user->long = $request->longitude;
         $user->street = $request->street;
         $user->password = Hash::make($request->password);
         $user->save();

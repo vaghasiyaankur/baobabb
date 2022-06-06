@@ -18,8 +18,13 @@ class Rating extends Model
         'review',
     ];
 
-    public function rating()
+    public function to_user()
     {
-        $this->belongsTo(Rating::class,'parent_id','id');
+        return $this->belongsTo(User::class,'user_to','id');
+    }
+
+    public function from_user()
+    {
+        return $this->belongsTo(User::class,'user_from','id');
     }
 }

@@ -28,9 +28,11 @@
    <div class="row">
       <div class="col-lg-12">
          <div class="card">
+            @can('product-create')
             <div class="card-header justify-content-between d-flex align-items-right">
                <a href="{{route('admin.product.create')}}" class="btn btn-success">Add New Product <i class="mdi mdi-arrow-right align-middle"></i></a>
             </div>
+            @endcan
             <!-- end card header -->
             <div class="card-body">
                <table id="brand_list" class="table table-hover responsive nowrap table-responsive " style="width:100%">

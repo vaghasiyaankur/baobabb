@@ -64,18 +64,48 @@
                 quisquam? Reiciendis nisi tempora, aspernatur harum natus commodi nam molestiae qui! Modi saepe
                 quibusdam suscipit minus dolor?</h5>
         </div>
+        {{---------------------------------Testimonials--------------------------}}
         <div class="seller-add d-flex justify-content-between align-items-center py-4 px-4 bg-white mt-5">
             <div class="">
-                <h4 class="fw-bold m-0">{{ __('messages.seller_ads')}}</h4>
+                <h4 class="fw-bold m-0">{{ __('messages.testimonial')}}</h4>
             </div>
             <div class="">
                 {{-- <input type="email" class="form-control border-0 border-bottom" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search for..."> --}}
             </div>
         </div>
-        {{---------------------------------Testimonials--------------------------}}
+        <div class="row">
+            @foreach($ratings as $rating)
+            <?php $child = App\Models\Rating::where('parent_id',$rating->id)->first(); ?>
+                <div class="col-lg-6 p-5">
+                    <div class="position-relative">
+                        <div class="">
+                            <span class="fa-star fa-regular @if($rating->rate >= 1) checked @endif"></span>
+                            <span class="fa-star fa-regular @if($rating->rate >= 2) checked @endif"></span>
+                            <span class="fa-star fa-regular @if($rating->rate >= 3) checked @endif"></span>
+                            <span class="fa-star fa-regular @if($rating->rate >= 4) checked @endif"></span>
+                            <span class="fa-star fa-regular @if($rating->rate >= 5) checked @endif"></span>
+                        </div>
+                        <div class="feedback-user">
+                            <span class="d-flex justify-content-end text-muted">By {{$rating->from_user->name}}</span>
+                        </div>
+                    </div>
+                    <div class="feed-b-card p-4 bg-white mt-3 rounded-3">
+                        <div class="feed_card_title d-flex align-items-center justify-content-between pb-3">
+                            <h5 class="m-0" >{{$rating->review}}</h5>
+                        </div>
+                        @if($child)
+                            <div class="feed_vard_inner px-4 py-2" style="background-color: whitesmoke;">
+                                <h6 class="text-muted">Aouther's Response :</h6>
+                                <p class="m-0">{{$child->review}}</p>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            @endforeach
+        </div>
         <div class="seller-add d-flex justify-content-between align-items-center py-4 px-4 bg-white mt-5">
             <div class="">
-                <h4 class="fw-bold m-0">{{ __('messages.testimonial')}}</h4>
+                <h4 class="fw-bold m-0">{{ __('messages.seller_ads')}}</h4>
             </div>
             <div class="">
                 {{-- <input type="email" class="form-control border-0 border-bottom" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search for..."> --}}

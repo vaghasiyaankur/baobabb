@@ -12,6 +12,13 @@ use DataTables;
 
 class FieldOptionController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:field-option-list|field-option-create|field-option-update|field-option-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:field-option-create', ['only' => ['create','store']]);
+        $this->middleware('permission:field-option-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:field-option-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

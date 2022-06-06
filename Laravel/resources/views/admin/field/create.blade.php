@@ -67,7 +67,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="fieldlength" class="form-label custom-file-label font-size-17">Field Length</label>
-                     <input class="form-control custom-file-input" name="fieldlength" value="@if(isset($field->fieldlength)){{$field->fieldlength}}@endif" type="number" id="fieldlength" required>
+                     <input class="form-control custom-file-input" name="fieldlength" value="@if(isset($field->fieldlength)){{$field->fieldlength}}@endif" type="number" id="fieldlength">
                      <span>This will be applied for field types: <span class="text-danger">text</span>, <span class="text-danger">number</span> and <span class="text-danger">textarea</span>.</span>
                   </div>
                </div>

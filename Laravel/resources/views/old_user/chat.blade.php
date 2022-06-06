@@ -37,8 +37,12 @@
                         @endforeach
                     </ul>
                 @else
-                    <p>No users found! try to add a new user using another browser by going to <a
-                            href="{{ url('register') }}">Register page</a></p>
+                <section class="d-flex justify-content-center align-items-center details-box">
+                    <div class="text-center">
+                        <a href="{{route('home')}}" style="color:#364b5a;"><i class="fa-solid fa-circle-plus" style="font-size: 55px;"></i></a>
+                        <h3>Currently you don't have any favorite ads, please add some.</h3>
+                    </div>
+                </section>
                 @endif
             </div>
         </div>

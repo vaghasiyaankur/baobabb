@@ -53,10 +53,13 @@
                @enderror
             </div>
 
-             <div class="col-md-6">
-                <div class="mb-3">
-                   <label for="formFile" class="form-label custom-file-label font-size-17">password</label>
-                   <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="@if(isset($u->password)){{$u->password}}@endif" name="password" type="password" id="password" >
+            <div class="col-md-6">
+               <div class="mb-3">
+                  @if(isset($u))
+                  @else
+                     <label for="formFile" class="form-label custom-file-label font-size-17">password</label>
+                     <input class="form-control custom-file-input @error('email') is-invalid @enderror" value="" name="password" type="password" id="password" >
+                  @endif
                 </div>
                 @error('password')
                 <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -147,7 +150,7 @@
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">country</label>
-                  <select class="form-control custom-file-input @error('email') is-invalid @enderror" name="country" value="@if(isset($u->country)){{$u->country}}@endif" id="country" >
+                  <select class="form-control custom-file-input @error('email') is-invalid @enderror" name="country" id="country" required>
                      <option value="">Select country</option>
                      @foreach($countries as $country)
                         <option value="{{$country->id}}" @if(isset($u->country)) @if($country->id == $u->country) selected @endif @endif>{{$country->name}}</option>
@@ -162,14 +165,14 @@
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Preferred Time Zone</label>
-                  <select class="form-control custom-file-input @error('email') is-invalid @enderror" name="country" value="@if(isset($u->country)){{$u->country}}@endif" id="country" >
+                  <select class="form-control custom-file-input @error('email') is-invalid @enderror" name="timezone" id="timezone" >
                      <option value="">Select TimeZone</option>
                      @foreach($timezones as $timezone)
                         <option value="{{$timezone}}" @if(isset($u->timezone)) @if($timezone == $u->timezone) selected @endif @endif>{{$timezone}}</option>
                      @endforeach
                   </select>
                </div>
-               @error('country')
+               @error('timezone')
                <div class="invalid-feedback d-block">{{ $message }}</div>
             @enderror
             </div>
@@ -214,6 +217,28 @@
             @enderror
             </div>
 
+            <div class="col-md-6">
+               <div class="mb-3">
+                  <label for="formFile" class="form-label custom-file-label font-size-17">Select User Role</label>
+                  @if(auth()->user()->role_id == 1)
+                     <div class="row">
+                        @foreach($roles as $role)
+                           <div class="col-md-4">
+                              <div class="m-3 p-3">
+                                 <input type="radio" name="role_id" id="role-{{$role->id}}" value="{{$role->id}}" @if(isset($u))@if($u->role_id == $role->id) checked @endif @endif>
+                                 <label for="role-{{$role->id}}" class="form-label custom-file-label font-size-17">{{$role->name}}</label>
+                              </div>
+                           </div>
+                        @endforeach
+                     </div>
+                  @endif
+               </div>
+               @error('avatar')
+               <div class="invalid-feedback d-block">{{ $message }}</div>
+               @enderror
+            </div>
+
+
             <!-- end col -->
             <div class="col-md-6">
                <label for="formFile" class="form-label custom-file-label font-size-17">Avatar</label>
@@ -226,6 +251,7 @@
             <!-- end row -->
             <div class="mt-3">
                <button type="submit" class="btn btn-primary ms-3">@if(isset($u)) Update @else Save @endif</button>
+               <a href="{{route('admin.user.index')}}" class="btn btn-light ms-3">Back</a>
             </div>
          </form>
          <!-- end form -->

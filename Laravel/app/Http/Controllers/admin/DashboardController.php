@@ -10,6 +10,10 @@ use App\Models\Product;
 
 class DashboardController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:dashboard-list', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('created_at','DESC')->with('countries')->take(10)->get();
+        $users = User::where('is_admin','!=','1')->orderBy('created_at','DESC')->with('countries')->take(10)->get();
         // dd($users);
         $products = Product::orderBy('created_at','DESC')->take(10)->get();
         return view ('admin.dashboard',compact('users','products'));

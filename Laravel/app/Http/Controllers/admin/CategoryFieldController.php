@@ -12,6 +12,13 @@ use DataTables;
 
 class CategoryFieldController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:category-field-list|category-field-create|category-field-update|category-field-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:category-field-create', ['only' => ['create','store']]);
+        $this->middleware('permission:category-field-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:category-field-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

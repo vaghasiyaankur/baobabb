@@ -84,6 +84,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $country = Country::find(auth()->user()->country);
         $days = Setting::where('name','ad_expire_length')->pluck('value')->first();
         $expireDate=Date('Y-m-d H:i:s', strtotime('+'.$days.' days'));
         // dd($request);
@@ -119,7 +120,7 @@ class ProductController extends Controller
         $product->lat = $request->latitude;
         $product->long = $request->longitude;
         $product->description = $request->description;
-        $product->country = auth()->user()->country;
+        $product->country = $country->name;
         $product->state = $request->state;
         $product->city = $request->city;
         // $product->street = $request->street;
@@ -173,6 +174,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $country = Country::find(auth()->user()->country);
         // dd($request);
         $product = Product::find($id);
         $gallery = array();
@@ -206,7 +208,7 @@ class ProductController extends Controller
         $product->meta_title = $request->meta_title;
         $product->meta_description = $request->meta_description;
         $product->description = $request->description;
-        $product->country = auth()->user()->country;;
+        $product->country = $country->name;
         $product->state = $request->state;
         $product->city = $request->city;
         $product->cash = $request->currency;

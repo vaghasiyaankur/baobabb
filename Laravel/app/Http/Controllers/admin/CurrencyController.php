@@ -12,6 +12,13 @@ use DataTables;
 
 class CurrencyController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:currency-list|currency-create|currency-update|currency-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:currency-create', ['only' => ['create','store']]);
+        $this->middleware('permission:currency-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:currency-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

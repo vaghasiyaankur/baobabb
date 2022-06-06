@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('ratings')->onDelete('cascade');
-            $table->unsignedBigInteger('user_to');
+            $table->unsignedBigInteger('user_to')->nullable();
             $table->foreign('user_to')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('user_from');
+            $table->unsignedBigInteger('user_from')->nullable();
             $table->foreign('user_from')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('rate');
+            $table->integer('rate')->nullable();
             $table->text('review');
             $table->softDeletes();
             $table->timestamps();

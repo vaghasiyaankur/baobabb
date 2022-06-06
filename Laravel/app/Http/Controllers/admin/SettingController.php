@@ -11,6 +11,13 @@ use DataTables;
 
 class SettingController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:setting-list|setting-create|setting-update|setting-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:setting-create', ['only' => ['create','store']]);
+        $this->middleware('permission:setting-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:setting-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -88,7 +95,21 @@ class SettingController extends Controller
     public function update(Request $request, $id)
     {
         $setting = Setting::find($id);
-        $setting->value = $request->value;
+        if($setting->name == 'RTL')
+        {
+            if($request->value == 'yes')
+            {
+                $setting->value = 'yes';
+            }
+            else 
+            {
+                $setting->value = 'no';
+            }
+        }
+        else 
+        {
+            $setting->value = $request->value;
+        }
         $setting->save();
         return redirect()->route('admin.setting.index');
     }

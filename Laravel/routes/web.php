@@ -77,6 +77,7 @@ Route::group(['middleware' => ['auth','verified'],'prefix' => 'user', 'as' => 'u
     Route::post('/send', 'App\Http\Controllers\MessageController@postSendMessage');
     Route::get('/fetch-old-messages', 'App\Http\Controllers\MessageController@getOldMessages');
     Route::get('/feedback', [App\Http\Controllers\RatingController::class,'show'])->name('feedback.show');
+    Route::post('/feedback_response', [App\Http\Controllers\RatingController::class,'responseStore'])->name('response.store');
     // Route::post('messages', 'App\Http\Controllers\MessageController@sendMessage');
 });
 
@@ -92,9 +93,12 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('profile' , [App\Http\Controllers\admin\DashboardController::class,'profile'])->name('profile');
     Route::post('profile-update', [App\Http\Controllers\admin\DashboardController::class, 'profile_update'])->name('profile.update');
     Route::resource('category', 'App\Http\Controllers\admin\CategoryController', ['names'=> 'category']);   
+    Route::resource('picture', 'App\Http\Controllers\admin\PictureController', ['names'=> 'picture']);   
     Route::resource('category/{id}/subcategory', 'App\Http\Controllers\admin\SubCategoryController', ['names'=> 'subcategory']);   
     Route::resource('country', 'App\Http\Controllers\admin\CountryController', ['names'=> 'country']);   
     Route::resource('user', 'App\Http\Controllers\admin\UserController', ['names'=> 'user']);   
+    Route::resource('role', 'App\Http\Controllers\admin\RoleController', ['names'=> 'role']);   
+    Route::resource('permission', 'App\Http\Controllers\admin\PermissionController', ['names'=> 'permission']);   
     Route::resource('product/type', 'App\Http\Controllers\admin\ProductTypeController', ['names'=> 'product.type']);   
     Route::resource('product', 'App\Http\Controllers\admin\ProductController', ['names'=> 'product']);   
     Route::resource('custom/field', 'App\Http\Controllers\admin\FieldController', ['names'=> 'custom.field']);   
@@ -104,4 +108,10 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('language', 'App\Http\Controllers\admin\LanguageController', ['names'=> 'language']);    
     Route::resource('pages', 'App\Http\Controllers\admin\PagesController', ['names'=> 'pages']); 
     Route::resource('setting', 'App\Http\Controllers\admin\SettingController', ['only' => ['index','edit','update']], ['names'=> 'setting']);   
+    Route::resource('setting-element/{element}', 'App\Http\Controllers\admin\SettingElementController', ['names'=> 'setting.element']); 
+    Route::post('update-element/put/{elementupdate}', 'App\Http\Controllers\admin\SettingElementController@updateelement')->name('setting.element.put'); 
+
 });
+
+
+// Route::resource('products', TestController::class);

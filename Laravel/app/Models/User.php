@@ -8,10 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\VerifyEmailNotification;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -41,7 +43,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'social_id',
         'social_type',
         'facebook_id',
-        'timezone'
+        'timezone',
+        'role_id',
     ];
 
     /**
@@ -66,6 +69,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function countries()
     {
         return $this->belongsTo(Country::class,'country','id');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Country::class,'role_id','id');
     }
 
     /**

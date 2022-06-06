@@ -11,6 +11,13 @@ use DataTables;
 
 class ProductTypeController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:product-type-list|product-type-create|product-type-update|product-type-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:product-type-create', ['only' => ['create','store']]);
+        $this->middleware('permission:product-type-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:product-type-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
