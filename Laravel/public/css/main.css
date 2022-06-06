@@ -286,7 +286,7 @@ button.model_btn:hover {
 .card-inner {
   padding: 5px 10px;
 }
-.card-box .card-img_height{
+.card-box .card-img_height {
   min-height: 220px;
   object-fit: cover;
 }
@@ -726,8 +726,7 @@ input[type=range]:focus::-ms-fill-upper {
 /* ========price range slider END======== */
 
 /* ========== alert error =========== */
-.lrr .alert-error,
-.lrr .alert-success {
+.lrr .alert-error,.lrr .alert-success {
   /* margin-bottom: 20px; */
 }
 
@@ -848,7 +847,8 @@ input[type=range]:focus::-ms-fill-upper {
 .post-ad-details .l-ad-content {
   background-color: whitesmoke;
   border: 1px solid #e3e3e3;
-  padding: 30px 0px;
+  /* padding: 30px 0px; */
+  padding-bottom: 20px;
   min-height: 440px;
 }
 .post-ad-details .r-ad-content {
@@ -1124,7 +1124,8 @@ input[type=range]:focus::-ms-fill-upper {
 }
 .post-ad-details .price-div .price_div_check-box {
   background-color: #eaecef;
-  padding: 6px 12px;
+  padding: 6px 2px;
+  white-space: nowrap;
 }
 .post-ad-details .form-select:focus{
   box-shadow: none;
