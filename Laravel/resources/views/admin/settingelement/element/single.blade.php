@@ -13,11 +13,14 @@
     <div class="row mt-5">
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Listing Page Display Mode</label>
+                <label for="formFile" class="form-label custom-file-label font-size-17">Form Type</label>
+                @php $FormType = config('single.form_type') @endphp
                 <select name="publication_form_type" style="width: 100%"
                     class="publication_form_type form-select select2_field select2-hidden-accessible" tabindex="-1"
                     aria-hidden="true">
-                    <option value="make-grid" {{ @$elementdata->publication_form_type  == 'make-grid' ? 'selected' : ''}}>Grid</option>
+                    @foreach($FormType as $key=>$ft)
+                    <option value="{{ $key }}" {{ @$elementdata->publication_form_type  == $key ? 'selected' : ''}}>{{ $ft }}</option>
+                    @endforeach
                 </select>
             </div>
             <div>By selecting the "Single Step Form", the picture field can be mandatory or not.</div>
@@ -25,7 +28,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="mb-3">
                 <label for="formFile" class="form-label custom-file-label font-size-17">Title Min Length</label>
                 <input class="form-control custom-file-input" name="title_min_length" type="number" id="title_min_length"
@@ -33,7 +36,7 @@
                     value="@if (isset($elementdata)){{ @$elementdata->title_min_length  }}@endif">
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="mb-3">
                 <label for="formFile" class="form-label custom-file-label font-size-17">Title Max Length</label>
                 <input class="form-control custom-file-input" name="title_max_length" type="number" id="title_max_length"
@@ -41,7 +44,7 @@
                     value="@if (isset($elementdata)){{ @$elementdata->title_max_length  }}@endif">
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="mb-3">
                 <label for="formFile" class="form-label custom-file-label font-size-17">Description Min Length</label>
                 <input class="form-control custom-file-input" name="description_min_length" type="number" id="description_min_length"
@@ -49,7 +52,7 @@
                     value="@if (isset($elementdata)){{ @$elementdata->description_min_length  }}@endif">
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="mb-3">
                 <label for="formFile" class="form-label custom-file-label font-size-17">Description Max Length</label>
                 <input class="form-control custom-file-input" name="description_max_length" type="number" id="description_max_length"
@@ -140,66 +143,244 @@
         </div>
     </div>
 
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Allow Permanent Listings</label>
+                @php $AllowPermanentListening = config('single.allow_permanent_listings') @endphp
+                <select name="permanent_listings_enabled" style="width: 100%"
+                    class="permanent_listings_enabled form-select select2_field select2-hidden-accessible" tabindex="-1"
+                    aria-hidden="true">
+                    @foreach($AllowPermanentListening as $key=>$apl)
+                    <option value="{{ $key }}" {{ @$elementdata->permanent_listings_enabled  == $key ? 'selected' : ''}}>{{ $apl }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div>Permanent listings can not be cleared (removed) automatically by the cron job after global expiration time.</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Pricing Page</label>
+                @php $PricingPage = config('single.pricing_page') @endphp
+                <select name="pricing_page_enabled" style="width: 100%"
+                    class="pricing_page_enabled form-select select2_field select2-hidden-accessible" tabindex="-1"
+                    aria-hidden="true">
+                    @foreach($PricingPage as $key=>$pp)
+                    <option value="{{ $key }}" {{ @$elementdata->pricing_page_enabled  == $key ? 'selected' : ''}}>{{ $pp }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div>Before enabling the Pricing Page you need to have at least one Package and one Payment Method activated.</div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-6">
             <div class="mb-3">
                 <div class="form-check form-switch" style="margin-top: 30px;">
-                    <input type="hidden" name="show_listings_tags" value="0">
-                    <input type="checkbox" value="1" name="show_listings_tags" class="form-check-input" style="cursor: pointer;" {{@$elementdata->show_listings_tags  == 1 ? 'checked' : ''}}>
+                    <input type="hidden" name="allow_emojis" value="0">
+                    <input type="checkbox" value="1" name="allow_emojis" class="form-check-input" style="cursor: pointer;" {{@$elementdata->allow_emojis  == 1 ? 'checked' : ''}}>
                     <label class="form-check-label fw-bolder">
-                        Show listings tags
+                        Allow Emojis
                     </label>
                 </div>
             </div>
-            <div class="form-text">Display the listings tags listed on every search results page.</div>
+            <div class="form-text">Allow Emojis in listings' title and description.</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
                 <div class="form-check form-switch" style="margin-top: 30px;">
-                    <input type="hidden" name="left_sidebar" value="0">
-                    <input type="checkbox" value="1" name="left_sidebar" class="form-check-input" style="cursor: pointer;" {{@$elementdata->left_sidebar  == 1 ? 'checked' : ''}}>
+                    <input type="hidden" name="show_listing_types" value="0">
+                    <input type="checkbox" value="1" name="show_listing_types" class="form-check-input" style="cursor: pointer;" {{@$elementdata->show_listing_types  == 1 ? 'checked' : ''}}>
                     <label class="form-check-label fw-bolder">
-                        Listing Page Left Sidebar
+                        Show Listings Types
                     </label>
                 </div>
             </div>
+            <div class="form-text">Show Listings Types in Listing creation/edition forms and in search results pages.</div>
         </div>
     </div>
 
-     <div class="row">
-        <div class="col-md-4">
+    
+    <div class="row">
+        <div class="col-md-6">
             <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Price Filter (Min. Value)</label>
-                <input class="form-control custom-file-input" name="min_price" type="number" id="min_price"
-                    id="customFileUpload"
-                    value="@if (isset($elementdata)){{ @$elementdata->min_price  }}@endif">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="enable_post_uniqueness" value="0">
+                    <input type="checkbox" value="1" name="enable_post_uniqueness" class="form-check-input" style="cursor: pointer;" {{@$elementdata->enable_post_uniqueness  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Enable Listing Uniqueness By User
+                    </label>
+                </div>
             </div>
-            <div>Users will not be able to filter with a value lower than the one entered here.</div>
+            <div class="form-text">Enable listing uniqueness by logged user. This option prevent listing title duplication by logged user.</div>
         </div>
-        <div class="col-md-4">
-            <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Price Filter (Max. Value)</label>
-                <input class="form-control custom-file-input" name="max_price" type="number" id="max_price"
-                    id="customFileUpload"
-                    value="@if (isset($elementdata)){{ @$elementdata->max_price  }}@endif">
-            </div>
-            <div>Users will not be able to filter with a value greater than the one entered here.</div>
+    </div>
+
+
+    <div class="row title-setting-element">
+        <div class="col-md-6">
+            <h3><div class="mb-3 col-md-6">
+                <h3>Guests Auto Registration</h3>
+            </div></h3>
         </div>
-        <div class="col-md-4">
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
             <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Price Slider Step</label>
-                <input class="form-control custom-file-input" name="price_slider_step" type="number" id="price_slider_step"
-                    id="customFileUpload"
-                    value="@if (isset($elementdata)){{ @$elementdata->price_slider_step  }}@endif">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Auto Registration Options</label>
+                @php $AutoRegistrationOptions = config('single.auto_registration_options') @endphp
+                <select name="auto_registration" style="width: 100%"
+                    class="auto_registration form-select select2_field select2-hidden-accessible" tabindex="-1"
+                    aria-hidden="true">
+                    @foreach($AutoRegistrationOptions as $key=>$aro)
+                    <option value="{{ $key }}" {{ @$elementdata->auto_registration  == $key ? 'selected' : ''}}>{{ $aro }}</option>
+                    @endforeach
+                </select>
             </div>
-            <div>Slider step in order to make the handles jump between intervals.</div>
+            <div>Enable or Disable auto-registration option by submitting the listing form.</div>
         </div>
     </div>
 
     <div class="row title-setting-element">
         <div class="col-md-6">
             <h3><div class="mb-3 col-md-6">
-                <h3>Count Listings (belonging to)</h3>
+                <h3>Edition</h3>
+            </div></h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">WYSIWYG Editor</label>
+                @php $wysiwygEditor = config('single.allow_a_WYSIWYG_editor') @endphp
+                <select name="wysiwyg_editor" style="width: 100%"
+                    class="wysiwyg_editor form-select select2_field select2-hidden-accessible" tabindex="-1"
+                    aria-hidden="true">
+                    @foreach($wysiwygEditor as $key=>$we)
+                    <option value="{{ $key }}" {{ @$elementdata->wysiwyg_editor  == $key ? 'selected' : ''}}>{{ $we }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div>This need to be disabled to activate other WYSIWYG Editor.</div>
+        </div>
+    </div>
+
+    <div class="row title-setting-element">
+        <div class="col-md-6">
+            <h3><div class="mb-3 col-md-6">
+                <h3>Remove Links and URLs</h3>
+            </div></h3>
+        </div>
+        <p>Remove all links and URLs from the description. Note: This will not apply for admin users content.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="remove_url_before" value="0">
+                    <input type="checkbox" value="1" name="remove_url_before" class="form-check-input" style="cursor: pointer;" {{@$elementdata->remove_url_before  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Before the content saving
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Remove the elements during the form sending.</div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="remove_url_after" value="0">
+                    <input type="checkbox" value="1" name="remove_url_after" class="form-check-input" style="cursor: pointer;" {{@$elementdata->remove_url_after  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        During the content rendering
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Remove the elements during the content rendering.</div>
+        </div>
+    </div>
+
+    <div class="row title-setting-element">
+        <div class="col-md-6">
+            <h3><div class="mb-3 col-md-6">
+                <h3>Remove Email Addresses</h3>
+            </div></h3>
+        </div>
+        <p>Remove all email addresses from the description. Note: This will not apply for admin users content.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="remove_email_before" value="0">
+                    <input type="checkbox" value="1" name="remove_email_before" class="form-check-input" style="cursor: pointer;" {{@$elementdata->remove_email_before  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Before the content saving
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Remove the elements during the form sending.</div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="remove_email_after" value="0">
+                    <input type="checkbox" value="1" name="remove_email_after" class="form-check-input" style="cursor: pointer;" {{@$elementdata->remove_email_after  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        During the content rendering
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Remove the elements during the content rendering.</div>
+        </div>
+    </div>
+
+    <div class="row title-setting-element">
+        <div class="col-md-6">
+            <h3><div class="mb-3 col-md-6">
+                <h3>Remove Phone Numbers (Experimental)</h3>
+            </div></h3>
+        </div>
+        <p>Remove all phone numbers from the description. This is an experimental feature, so don't expect a foolproof result. Note: This will not apply for admin users content.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="remove_phone_before" value="0">
+                    <input type="checkbox" value="1" name="remove_phone_before" class="form-check-input" style="cursor: pointer;" {{@$elementdata->remove_phone_before  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Before the content saving
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Remove the elements during the form sending.</div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="remove_phone_after" value="0">
+                    <input type="checkbox" value="1" name="remove_phone_after" class="form-check-input" style="cursor: pointer;" {{@$elementdata->remove_phone_after  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        During the content rendering
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Remove the elements during the content rendering.</div>
+        </div>
+    </div>
+
+    <div class="row title-setting-element">
+        <div class="col-md-6">
+            <h3><div class="mb-3 col-md-6">
+                <h3>Phone Numbers Protection</h3>
             </div></h3>
         </div>
     </div>
@@ -208,42 +389,111 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <div class="form-check form-switch" style="margin-top: 30px;">
-                    <input type="hidden" name="count_categories_listings" value="0">
-                    <input type="checkbox" value="1" name="count_categories_listings" class="form-check-input" style="cursor: pointer;" {{@$elementdata->count_categories_listings  == 1 ? 'checked' : ''}}>
+                    <input type="hidden" name="convert_phone_number_to_img" value="0">
+                    <input type="checkbox" value="1" name="convert_phone_number_to_img" class="form-check-input" style="cursor: pointer;" {{@$elementdata->convert_phone_number_to_img  == 1 ? 'checked' : ''}}>
                     <label class="form-check-label fw-bolder">
-                        Count listings belonging to categories
+                        Display Phone Numbers as Images
                     </label>
                 </div>
             </div>
-            <div>
-                This option will be applied to the categories lists on the homepage and on the search results page.
-                NOTE: This option is highly not recommended. By activating this you will have to deactivate the Enable the cities extended searches option bellow for better accuracy.
-            </div>
+            <div class="form-text">This option will convert the phone numbers to images on live.</div>
         </div>
+
         <div class="col-md-6">
             <div class="mb-3">
-                <div class="form-check form-switch" style="margin-top: 30px;">
-                    <input type="hidden" name="count_cities_listings" value="0">
-                    <input type="checkbox" value="1" name="count_cities_listings" class="form-check-input" style="cursor: pointer;" {{@$elementdata->count_cities_listings  == 1 ? 'checked' : ''}}>
-                    <label class="form-check-label fw-bolder">
-                        Count listings belonging to cities
-                    </label>
-                </div>
+                <label for="formFile" class="form-label custom-file-label font-size-17">Hide the Phone Numbers</label>
+                @php $HideThePhoneNumbers = config('single.hide_the_phone_numbers') @endphp
+                <select name="hide_phone_number" style="width: 100%"
+                    class="hide_phone_number form-select select2_field select2-hidden-accessible" tabindex="-1"
+                    aria-hidden="true">
+                @foreach($HideThePhoneNumbers as $key=>$HTPN)
+                <option value="{{ $key }}" {{ @$elementdata->hide_phone_number  == $key ? 'selected' : ''}}>{{ $HTPN }}</option>
+                @endforeach
+                </select>
             </div>
-            <div>
-                This option will be applied to the cities lists on the homepage and on the search results page.
-                NOTE: This option is highly not recommended. By activating this you will have to deactivate the Enable the cities extended searches option bellow for better accuracy.
+            <div>This option will allow to hide the Phone Numbers on page loading.
+                <ul>
+                <li>Disabled: +123456789012</li>
+                <li>Skip the X last characters: XXXXXXXXX012</li>
+                <li>Skip the X first characters: +12XXXXXXXXX</li>
+                <li>All: XXXXXXXXXXXX</li>
+                </ul>
             </div>
         </div>
     </div>
 
+
+    <div class="row title-setting-element">
+        <div class="col-md-6">
+            <h3><div class="mb-3 col-md-6">
+                <h3>Around Phone Number</h3>
+            </div></h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="show_security_tips" value="0">
+                    <input type="checkbox" value="1" name="show_security_tips" class="form-check-input" style="cursor: pointer;" {{@$elementdata->show_security_tips  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Show Security Tips
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Show security tips by clicking on phone button. NOTE: This cancels the "Phone Number as Image" feature.</div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="enable_whatsapp_btn" value="0">
+                    <input type="checkbox" value="1" name="enable_whatsapp_btn" class="form-check-input" style="cursor: pointer;" {{@$elementdata->enable_whatsapp_btn  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Enable WhatsApp Chat Button
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">WhatsApp's click to chat feature allows users to begin a chat with someone without having their phone number saved in their phone's address book. NOTE:
+                <ul>
+                <li>The button will be not shown if the phone number is hidden above.</li>
+                <li>The button will be not shown for guests if the option "Allow Guests to contact listings Authors" is disabled.</li>
+                </ul></div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="pre_filled_whatsapp_message" value="0">
+                    <input type="checkbox" value="1" name="pre_filled_whatsapp_message" class="form-check-input" style="cursor: pointer;" {{@$elementdata->pre_filled_whatsapp_message  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Pre-filled WhatsApp Message
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">The pre-filled message will automatically appear in the text field of a chat.</div>
+        </div>
+    </div>
+
+
+    
     <div class="row title-setting-element">
         <div class="col-md-6">
             <h3><div class="mb-3 col-md-6">
                 <h3>Dates</h3>
             </div></h3>
         </div>
+        <div class="card-body">
+            <h4 class="mt-0">Dates Translation Notes</h4>
+            <p>Using the <strong>PHP-specific dates format</strong>, the support of a locale for dates is driven by locales installed in your operating system. The installed locales can be checked with the command line: <code>locale -a</code>. If the right locale is not installed, the dates will not appeared or will be appeared in English instead of the selected language.
+            <br>Use the <strong>ISO format</strong> rather than PHP-specific format and use inner translations rather than language packages you need to install on every machine where you deploy your application.</p>
+            </div>
     </div>
+
 
     <div class="row">
         <div class="col-md-6">
@@ -256,12 +506,11 @@
                     </label>
                 </div>
             </div>
-            <div>
-                e.g. 3 seconds ago, 6 minutes ago, 1 hour ago, 5 days ago, 3 months ago, 1 year ago.
-                This will be applied for dates in the past from listing pages only.
-                Note: Dates format can be edited from the Languages management area.
-            </div>
+            <div class="form-text">e.g. 3 seconds ago, 6 minutes ago, 1 hour ago, 5 days ago, 3 months ago, 1 year ago.
+                This will be applied for dates in the past from listings' details page only.
+                Note: Dates format can be edited from the Languages management area.</div>
         </div>
+
         <div class="col-md-6">
             <div class="mb-3">
                 <div class="form-check form-switch" style="margin-top: 30px;">
@@ -272,9 +521,99 @@
                     </label>
                 </div>
             </div>
-            <div>
-                This option will hide dates on the listing page and on the homepage.
+            <div class="form-text">This option will hide dates on the listings' details page.</div>
+        </div>
+    </div>
+
+    <div class="row title-setting-element">
+        <div class="col-md-6">
+            <h3><div class="mb-3 col-md-6">
+                <h3>Others</h3>
+            </div></h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Pictures Slider</label>
+                @php $PicturesSlider = config('single.pictures_slider') @endphp
+                <select name="pictures_slider" style="width: 100%"
+                    class="pictures_slider form-select select2_field select2-hidden-accessible" tabindex="-1"
+                    aria-hidden="true">
+                @foreach($PicturesSlider as $key=>$ps)
+                <option value="{{ $key }}" {{ @$elementdata->pictures_slider  == $key ? 'selected' : ''}}>{{ $ps }}</option>
+                @endforeach
+                </select>
             </div>
+            <div>Select a type of pictures slider for listings' pictures displaying.</div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Similar Listings</label>
+                @php $SimilarListings = config('single.similar_listings') @endphp
+                <select name="similar_listings" style="width: 100%"
+                    class="similar_listings form-select select2_field select2-hidden-accessible" tabindex="-1"
+                    aria-hidden="true">
+                @foreach($SimilarListings as $key=>$sl)
+                <option value="{{ $key }}" {{ @$elementdata->similar_listings  == $key ? 'selected' : ''}}>{{ $sl }}</option>
+                @endforeach
+                </select>
+            </div>
+            <div>This will appear at bottom in the listing page.</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="formFile" class="form-label custom-file-label font-size-17">Similar Posts Limit</label>
+                <input class="form-control custom-file-input" name="similar_listings_limit" type="number" id="similar_listings_limit"
+                    id="customFileUpload"
+                    value="@if (isset($elementdata)){{ @$elementdata->similar_listings_limit  }}@endif">
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="similar_listings_in_carousel" value="0">
+                    <input type="checkbox" value="1" name="similar_listings_in_carousel" class="form-check-input" style="cursor: pointer;" {{@$elementdata->similar_listings_in_carousel  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Similar Posts in Carousel
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Display the similar listings in carousel or use the classic view.</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="guests_can_contact_authors" value="0">
+                    <input type="checkbox" value="1" name="guests_can_contact_authors" class="form-check-input" style="cursor: pointer;" {{@$elementdata->guests_can_contact_authors  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Allow Guests to contact listings Authors
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Allow guests to contact listings authors. If unchecked, only registered users can contact listings authors and can see the listings authors phone number.</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="auth_required_to_report_abuse" value="0">
+                    <input type="checkbox" value="1" name="auth_required_to_report_abuse" class="form-check-input" style="cursor: pointer;" {{@$elementdata->auth_required_to_report_abuse  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Authentication required to report abuses
+                    </label>
+                </div>
+            </div>
+            <div class="form-text">Allow only logged users to report abuses.</div>
         </div>
     </div>
 
@@ -282,115 +621,48 @@
     <div class="row title-setting-element">
         <div class="col-md-6">
             <h3><div class="mb-3 col-md-6">
-                <h3>Distance</h3>
+                <h3>External Services</h3>
             </div></h3>
         </div>
     </div>
 
+
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="mb-3">
                 <div class="form-check form-switch" style="margin-top: 30px;">
-                    <input type="hidden" name="cities_extended_searches" value="0">
-                    <input type="checkbox" value="1" name="cities_extended_searches" class="form-check-input" style="cursor: pointer;" {{@$elementdata->cities_extended_searches  == 1 ? 'checked' : ''}}>
+                    <input type="hidden" name="show_listing_on_googlemap" value="0">
+                    <input type="checkbox" value="1" name="show_listing_on_googlemap" class="form-check-input" style="cursor: pointer;" {{@$elementdata->show_listing_on_googlemap  == 1 ? 'checked' : ''}}>
                     <label class="form-check-label fw-bolder">
-                        Enable the cities extended searches
+                        Show Listings on Google Maps (Single Page Only)
+
                     </label>
                 </div>
             </div>
-            <div>
-                Enable this option to allow the searches related to the cities to include results from nearby cities. Disable this option to only show the results related to selected cities (Independently).
+            <div class="form-text">You have to enter your Google Maps API key at:
+                Admin panel → Settings → General → Others → Google Maps.</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="form-check form-switch" style="margin-top: 30px;">
+                    <input type="hidden" name="activation_facebook_comments" value="0">
+                    <input type="checkbox" value="1" name="activation_facebook_comments" class="form-check-input" style="cursor: pointer;" {{@$elementdata->activation_facebook_comments  == 1 ? 'checked' : ''}}>
+                    <label class="form-check-label fw-bolder">
+                        Allow Facebook Comments (Single Page Only)
+
+                    </label>
+                </div>
             </div>
+            <div class="form-text">You have to configure the Login with Facebook at:
+                Admin panel → Settings → General → Social Login → Facebook.</div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Showing the categories icons</label>
-                <select name="distance_calculation_formula" style="width: 100%"
-                    class="distance_calculation_formula form-select select2_field select2-hidden-accessible" tabindex="-1"
-                    aria-hidden="true">
-                    <option value="haversine" {{ @$elementdata->distance_calculation_formula  == 'haversine' ? 'selected' : ''}}>Haversine</option>
-                    <option value="orthodromy" {{ @$elementdata->distance_calculation_formula  == 'orthodromy' ? 'selected' : ''}}>Orthodromy</option>
-                    <option value="ST_Distance_Sphere" {{ @$elementdata->distance_calculation_formula  == 'ST_Distance_Sphere' ? 'selected' : ''}}>MySQL 5.7 Spherical Calculation</option>
-                </select>
-            </div>
-            <ul>
-                <li>Haversine: The haversine formula is an equation important in navigation, giving great-circle distances between two points on a sphere from their longitudes and latitudes. Requires MySQL 5.5 or greater.</li>
-                <li>Orthodromy: An orthodromic or great-circle route on the Earth's surface is the shortest possible real way between any two points. Requires MySQL 5.5 or greater.</li>
-                <li>MySQL 5.7 Spherical Calculation: Returns the mimimum spherical distance between two points and/or multipoints on a sphere. Requires MySQL 5.7.6 or greater.</li>
-            </ul>    
-        </div>
-
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Showing the categories icons</label>
-                <select name="search_distance_default" style="width: 100%"
-                    class="search_distance_default form-select select2_field select2-hidden-accessible" tabindex="-1"
-                    aria-hidden="true">
-                    <option value="200" {{ @$elementdata->search_distance_default  == 200 ? 'selected' : ''}}>200</option>
-                    <option value="100" {{ @$elementdata->search_distance_default  == 100 ? 'selected' : ''}}>100</option>
-                    <option value="50" {{ @$elementdata->search_distance_default  == 50 ? 'selected' : ''}}>50</option>
-                    <option value="25" {{ @$elementdata->search_distance_default  == 25 ? 'selected' : ''}}>25</option>
-                    <option value="20" {{ @$elementdata->search_distance_default  == 20 ? 'selected' : ''}}>20</option>
-                    <option value="10" {{ @$elementdata->search_distance_default  == 10 ? 'selected' : ''}}>10</option>
-                    <option value="0" {{ @$elementdata->search_distance_default  == 0 ? 'selected' : ''}}>0</option>
-                </select>
-            </div>
-            <div>Default search radius distance (in km or miles)</div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Max Search Distance</label>
-                <select name="search_distance_max" style="width: 100%"
-                    class="search_distance_max form-select select2_field select2-hidden-accessible" tabindex="-1"
-                    aria-hidden="true">
-                    <option value="1000" {{ @$elementdata->search_distance_max  ==  1000 ? 'selected' : ''}}>1000</option>
-                    <option value="900" {{ @$elementdata->search_distance_max  ==  900 ? 'selected' : ''}}>900</option>
-                    <option value="800" {{ @$elementdata->search_distance_max  ==  800 ? 'selected' : ''}}>800</option>
-                    <option value="700" {{ @$elementdata->search_distance_max  ==  700 ? 'selected' : ''}}>700</option>
-                    <option value="600" {{ @$elementdata->search_distance_max  ==  600 ? 'selected' : ''}}>600</option>
-                    <option value="500" {{ @$elementdata->search_distance_max  ==  500 ? 'selected' : ''}}>500</option>
-                    <option value="400" {{ @$elementdata->search_distance_max  ==  400 ? 'selected' : ''}}>400</option>
-                    <option value="300" {{ @$elementdata->search_distance_max  ==  300 ? 'selected' : ''}}>300</option>
-                    <option value="200" {{ @$elementdata->search_distance_max  ==  200 ? 'selected' : ''}}>200</option>
-                    <option value="100" {{ @$elementdata->search_distance_max  ==  100 ? 'selected' : ''}}>100</option>
-                    <option value="50" {{ @$elementdata->search_distance_max  ==  50 ? 'selected' : ''}}>50</option>
-                    <option value="0" {{ @$elementdata->search_distance_max  ==  0 ? 'selected' : ''}}>0</option>
-                </select>
-
-            </div>
-            <div>Default search radius distance (in km or miles)</div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">Distance Interval</label>
-                <select name="search_distance_interval" style="width: 100%"
-                    class="search_distance_interval form-select select2_field select2-hidden-accessible" tabindex="-1"
-                    aria-hidden="true">
-                    <option value="250" {{ @$elementdata->search_distance_interval  ==  250 ? 'selected' : ''}}>250</option>
-                    <option value="200" {{ @$elementdata->search_distance_interval  ==  200 ? 'selected' : ''}}>200</option>
-                    <option value="100" {{ @$elementdata->search_distance_interval  ==  100 ? 'selected' : ''}}>100</option>
-                    <option value="50" {{ @$elementdata->search_distance_interval  ==  50 ? 'selected' : ''}}>50</option>
-                    <option value="25" {{ @$elementdata->search_distance_interval  ==  25 ? 'selected' : ''}}>25</option>
-                    <option value="20" {{ @$elementdata->search_distance_interval  ==  20 ? 'selected' : ''}}>20</option>
-                    <option value="10" {{ @$elementdata->search_distance_interval  ==  10 ? 'selected' : ''}}>10</option>
-                    <option value="5" {{ @$elementdata->search_distance_interval  ==  5 ? 'selected' : ''}}>5</option>
-                </select>
-
-            </div>
-            <div>Default search radius distance (in km or miles)</div>
-        </div>
-    </div>
 
     <div class="row mt-4">
         <div class="col-md-6">
-            <button type="submit" class="btn btn-primary ms-3"> Submit </button>
+            <button type="submit" class="btn btn-primary ms-3"> Submit</button>
         </div>
     </div>
 </form>   

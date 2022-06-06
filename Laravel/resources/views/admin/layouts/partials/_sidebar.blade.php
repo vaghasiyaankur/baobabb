@@ -189,6 +189,18 @@
                             <span class="menu-item" data-key="t-sales">Single (Page & Form)</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'upload']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Upload</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'security']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Security</span>
+                        </a>
+                    </li>
                 </ul>
             @endcan
             {{-- <ul class="metismenu list-unstyled" id="side-menu22">

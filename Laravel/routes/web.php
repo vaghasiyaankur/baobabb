@@ -106,9 +106,9 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('category/{id}/custom_field', 'App\Http\Controllers\admin\CategoryFieldController', ['names'=> 'category.custom_field']);   
     Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
     Route::resource('language', 'App\Http\Controllers\admin\LanguageController', ['names'=> 'language']);    
-    Route::resource('pages', 'App\Http\Controllers\admin\PagesController', ['names'=> 'pages']); 
     Route::resource('setting', 'App\Http\Controllers\admin\SettingController', ['only' => ['index','edit','update']], ['names'=> 'setting']);   
-    Route::resource('setting-element/{element}', 'App\Http\Controllers\admin\SettingElementController', ['names'=> 'setting.element']); 
+    Route::resource('pages', 'App\Http\Controllers\admin\PagesController', ['names'=> 'pages']); 
+    Route::resource('setting-element/{element}/se', 'App\Http\Controllers\admin\SettingElementController', ['names'=> 'setting.element']); 
     Route::post('update-element/put/{elementupdate}', 'App\Http\Controllers\admin\SettingElementController@updateelement')->name('setting.element.put'); 
 
 });
