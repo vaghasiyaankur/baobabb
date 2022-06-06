@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Picture;
 use App\Http\Requests\StoreproductRequest;
 use App\Http\Requests\UpdateproductRequest;
 use App\Http\Controllers\ImageController;
@@ -68,20 +69,13 @@ class ProductController extends Controller
      */
     public function store(StoreproductRequest $request)
     {
-        $gallery = array();
-        $img = new ImageController;
-        $image = $img->move($request->image);
-        foreach($request->gallery as $i)
-        {
-            $g = $img->move($i);
-            array_push($gallery, $g);
-        }
+        
         $product = new Product;
         $product->name = $request->name;
         $product->category_id = $request->category_id;
-        $product->image = $image;
-        $product->gallery = json_encode($gallery);
-        $product->seller_id = $seller_id;
+        // $product->image = $image;
+        // $product->gallery = json_encode($gallery);
+        $product->seller_id = auth()->user()->id;
         $product->slug = $request->slug;
         $product->type_of = $request->type_of;
         $product->condition = $request->condition;
@@ -99,6 +93,19 @@ class ProductController extends Controller
         $product->sale_price = $request->sale_price;
         $product->video = $request->video;  
         $product->save();
+
+        $position = 0;
+        $imgmove = new ImageController;
+        // $image = $img->move($request->image);
+        foreach($request->gallery as $i)
+        {
+            $img = new Picture;
+            $img->filename = $imgmove->move($i);
+            $img->post_id = $product->id;
+            $img->position = $position;
+            $img->save();
+            $position++;
+        }
 
         return redirect()->route('admin.product.index');
         // dd(json_encode($gallery));
@@ -140,21 +147,6 @@ class ProductController extends Controller
     public function update(UpdateproductRequest $request, $id)
     {
         $product = Product::find($id);
-        $gallery = array();
-        $img = new ImageController;
-        if($request->image)
-        {
-            $product->image = $img->move($request->image);
-        }
-        if($request->gallery)
-        {
-            foreach($request->gallery as $i)
-            {
-                $g = $img->move($i);
-                array_push($gallery, $g);
-            }
-            $product->gallery = json_encode($gallery);
-        }
         $product->name = $request->name;
         $product->category_id = $request->category_id;
         $product->description = $request->description;
@@ -170,6 +162,20 @@ class ProductController extends Controller
         $product->click = $request->click;
         $product->video = $request->video;  
         $product->save();
+
+        // $img = new ImageController;
+        // if($request->gallery)
+        // {
+        //     foreach($request->gallery as $i)
+        //     {
+        //         $img = new Picture;
+        //         $img->filename = $img->move($i);
+        //         $img->post_id = $product->id;
+        //         $img->position = $position;
+        //         $img->save();
+        //         $position++;
+        //     }
+        // }
         return redirect()->route('admin.product.index');
     }
 

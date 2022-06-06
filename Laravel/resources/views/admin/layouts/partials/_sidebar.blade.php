@@ -44,7 +44,7 @@
 
                 </ul>
             @endcan
-            @canany(['category-list','product-type-list','product-list','custom-field-list','picture-list'])
+            @canany(['category-list', 'product-type-list', 'product-list', 'custom-field-list', 'picture-list'])
                 <ul class="metismenu list-unstyled" id="side-menu34">
                     <li class="menu-title" data-key="t-dashboards">CATELOG</li>
                     @can('product-list')
@@ -89,7 +89,7 @@
                     @endcan
                 </ul>
             @endcanany
-            @canany(['user-list','user-role-list','permission-list'])
+            @canany(['user-list', 'user-role-list', 'permission-list'])
                 <ul class="metismenu list-unstyled" id="side-menu34">
                     <li class="menu-title" data-key="t-dashboards">USER</li>
                     @can('user-list')
@@ -118,7 +118,7 @@
                     @endcan
                 </ul>
             @endcanany
-            @canany(['country-list','currency-list','languages-list','pages-list'])
+            @canany(['country-list', 'currency-list', 'languages-list', 'pages-list'])
                 <ul class="metismenu list-unstyled" id="side-menu34">
                     <li class="menu-title" data-key="t-dashboards">GEO</li>
                     @can('country-list')
@@ -199,6 +199,35 @@
                         <a href="{{ route('admin.setting.element.index', ['element' => 'security']) }}">
                             <i class="icon nav-icon" data-feather="monitor"></i>
                             <span class="menu-item" data-key="t-sales">Security</span>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'social-login']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Social Login</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'optimization']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Optimization</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'seo']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">SEO</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.advertising.index') }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Advertising</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.report.type.index') }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Report Type</span>
                         </a>
                     </li>
                 </ul>

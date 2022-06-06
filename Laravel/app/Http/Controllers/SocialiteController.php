@@ -12,26 +12,15 @@ use Hash;
 class SocialiteController extends Controller
 {
 
-    // google
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    // -------------------------------------google------------------------------------------//
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
     }
-       
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function handleCallbackGoogle()
     {
         $user = Socialite::driver('google')->user();
-        $finduser = User::where('social_id', $user->id)->first();
+        $finduser = User::where('google_id', $user->id)->first();
         if($finduser){
             Auth::login($finduser);
     
@@ -42,30 +31,17 @@ class SocialiteController extends Controller
                 'name' => $user->name,
                 'email' => $user->email,
                 'google_id'=> $user->id,
-                // 'social_type'=> 'google',
-                // 'password' => Hash::make('my-google')
             ]);
             Auth::login($newUser);
             return redirect('/');
         }
     }
 
-    // Facebook
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    // ---------------------------------------Facebook------------------------------------//
     public function redirectToFacebook()
     {
         return Socialite::driver('facebook')->redirect();
     }
-           
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function handleCallbackFacebook()
     {
         $user = Socialite::driver('facebook')->user();
@@ -82,4 +58,49 @@ class SocialiteController extends Controller
             return redirect('/');
         }
     }
+
+    // ---------------------------------------Linkedin------------------------------------//
+    public function redirectToLinkedin()
+    {
+        return Socialite::driver('linkedin')->redirect();
+    }
+    public function handleCallbackLinkedin()
+    {
+        $user = Socialite::driver('linkedin')->user();
+        $finduser = User::where('linkedin_id', $user->id)->first();
+        if($finduser){
+            Auth::login($finduser);
+            return redirect('/');
+        }else{
+            $newUser = User::updateOrCreate(['email' => $user->email],[
+                    'name' => $user->name,
+                    'linkedin_id'=> $user->id,
+                ]);
+            Auth::login($newUser);
+            return redirect('/');
+        }
+    }
+
+    // ---------------------------------------Twitter------------------------------------//
+    public function redirectToTwitter()
+    {
+        return Socialite::driver('twitter')->redirect();
+    }
+    public function handleCallbackTwitter()
+    {
+        $user = Socialite::driver('twitter')->user();
+        $finduser = User::where('twitter_id', $user->id)->first();
+        if($finduser){
+            Auth::login($finduser);
+            return redirect('/');
+        }else{
+            $newUser = User::updateOrCreate(['email' => $user->email],[
+                    'name' => $user->name,
+                    'twitter_id'=> $user->id,
+                ]);
+            Auth::login($newUser);
+            return redirect('/');
+        }
+    }
+    
 }

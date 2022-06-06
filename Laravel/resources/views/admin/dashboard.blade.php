@@ -257,7 +257,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="me-2">
-                                                        <img src="{{asset($product->image)}}"class="avatar-sm h-auto" alt="Error">
+                                                        <img src="{{asset($product->image)}}" class="avatar-sm h-auto" alt="Error">
                                                     </div>
                                                 </div>
                                             </td>

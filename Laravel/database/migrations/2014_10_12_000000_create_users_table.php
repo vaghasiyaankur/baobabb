@@ -40,6 +40,8 @@ return new class extends Migration
             $table->enum('status',[0,1])->default(0);
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
+            $table->string('linkedin_id')->nullable();
+            $table->string('twitter_id')->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

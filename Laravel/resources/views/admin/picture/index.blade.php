@@ -38,8 +38,8 @@
                   <thead>
                      <tr class="tr_bg">
                         <th>ID</th>
-                        <th>NAME</th>
-                        {{-- <th>IMAGE</th> --}}
+                        {{-- <th>NAME</th> --}}
+                        <th>IMAGE</th>
                         <th>ACTION</th>
                      </tr>
                   </thead>
@@ -77,7 +77,7 @@
             columns: [
                 {data: 'id', name: 'id'},
                //  {data: 'value', name: 'value'},
-               //  {data: 'image', name: 'image'},
+                {data: 'image', name: 'image'},
                 {data: 'action', name: 'action',orderable: true,searchable: true},
             ]
         });

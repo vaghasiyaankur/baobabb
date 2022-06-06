@@ -31,7 +31,13 @@ class PictureController extends Controller
                         $btn .= '</div>';
                         return $btn;
                     })
-                    ->rawColumns(['action'])
+                    ->addColumn('image',function($row){
+                        $img = '<div class="d-flex">';
+                        $img .= '<img src="'.asset($row->filename).'" class="avatar-sm h-auto" >';
+                        $img .= '</div';
+                        return $img;
+                    })
+                    ->rawColumns(['action','image'])
                     ->make(true);
         }
         return view('admin.picture.index');

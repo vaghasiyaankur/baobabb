@@ -98,6 +98,14 @@
             </div>
             <div class="col-md-6">
                <div class="mb-3">
+                  <label class="form-label custom-file-label font-size-17" for="specificSizeInputName">Location*</label>
+                  <input type="text" name="autocomplete" class="form-control custom-file-input" id="autocomplete">
+                  <input type="hidden" name="latitude" id="latitude" class="form-control">
+                  <input type="hidden" name="longitude" id="longitude" class="form-control">
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Country</label>
                   <input class="form-control custom-file-input" name="country" value="@if(isset($product->country)){{$product->country}}@endif" type="text" id="country">
                </div>
@@ -234,6 +242,41 @@
       $(this).val(name.toLowerCase());
       $(this).val(name.replace(/ /g, "-"));
    });  
+</script>
+
+ {{-- FOR AUTOCOMPLATE ADDRESS --}}
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+ integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+ integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+{{-- javascript code --}}
+<script type='text/javascript'
+ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&key=AIzaSyBZhREk9TESs69r99eYGKkIQ725IqOP8Zc&ver=5.9.3'>
+</script>
+<script>
+ google.maps.event.addDomListener(window, 'load', initialize);
+
+ function initialize() {
+     var input = document.getElementById('autocomplete');
+     var options = {
+         types: ['(cities)'],
+         componentRestrictions: {
+             country: "in"
+         }
+     };
+     var autocomplete = new google.maps.places.Autocomplete(input, options);
+     autocomplete.addListener('place_changed', function() {
+         var place = autocomplete.getPlace();
+         console.log(place)
+         $('#latitude').val(place.geometry['location'].lat());
+         $('#longitude').val(place.geometry['location'].lng());
+         // // --------- show lat and long ---------------
+         // $("#lat_area").removeClass("d-none");
+         // $("#long_area").removeClass("d-none");
+     });
+ }
 </script>
 
 @endpush

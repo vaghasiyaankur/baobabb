@@ -1,19 +1,24 @@
  <?php
-    $categories = App\Models\Category::all();
-    $url = \Request::route()->getName();
-    $languages = App\Models\Language::all();
-    $rtl = App\Models\Setting::where('name','RTL')->first();
+ $categories = App\Models\Category::all();
+ $url = \Request::route()->getName();
+ $languages = App\Models\Language::all();
+ $rtl = App\Models\Setting::where('name', 'RTL')->first();
 
+ $setting = App\Models\Setting::where('name','social-login')->first();
+ $social = json_decode($setting->value);
+//  dd($social);
+ 
  ?>
- @if($rtl->value == 'yes')
- <style>
-     body{
-        direction: rtl;
-     }
- </style>
+ @if ($rtl->value == 'yes')
+     <style>
+         body {
+             direction: rtl;
+         }
+
+     </style>
  @endif
  <!----- HEADER SECTION  START----->
- 
+
  <nav class="nav-second-header">
      <div class="navbar navbar-expand-lg py_5 ">
 
@@ -26,15 +31,16 @@
                  <i class="fa-solid fa-bars"></i>
              </button>
              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <div class="search_h_container mx-auto">
-                    <form class="header_serch" action="{{route('category','all')}}" method="GET">
-                        <input class="h_s_input" type="text" placeholder="Search for anything..." name="search">
-                        <button type="" class="h_serch_i"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
+                 <div class="search_h_container mx-auto">
+                     <form class="header_serch" action="{{ route('category', 'all') }}" method="GET">
+                         <input class="h_s_input" type="text" placeholder="Search for anything..." name="search">
+                         <button type="" class="h_serch_i"><i class="fa fa-search"></i></button>
+                     </form>
+                 </div>
                  <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                      <li class="nav-item">
-                         <a class="nav-link active text-white" aria-current="page" href="{{ URL::to('page/anti-scam')}}">Anti-Scam</a>
+                         <a class="nav-link active text-white" aria-current="page"
+                             href="{{ URL::to('page/anti-scam') }}">Anti-Scam</a>
                      </li>
                      {{-- <li class="nav-item dropdown ">
                          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink"
@@ -55,21 +61,23 @@
                          <span><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#loginModel"><i
                                      class="fa-solid fa-notes-medical"></i></a></span>
                      @else
-                         <span><a href="{{ route('user.dashboard') }}"><i
-                                     class="fa-solid fa-user"></i></a></span>
+                         <span><a href="{{ route('user.dashboard') }}"><i class="fa-solid fa-user"></i></a></span>
                          <span><a href="{{ route('user.product.create') }}"><i
                                      class="fa-solid fa-notes-medical"></i></a></span>
                          <span><a href="{{ route('user.message') }}"><i class="fa-solid fa-envelope-open"></i></a></span>
                      @endguest
                      <div class="dropdown11">
-                        <span><a href="javascript:;"><i
-                                    class="fa-solid fa-globe py-3"></i><i class="fa-solid fa-angle-down ms-0"></i></a></span>
-                        <ul>
-                            @foreach($languages as $language)
-                            <li class="languagess" data-value="1" data-id="{{ $language->abbr}}"><a href="#"><i class="flag-icon {{$language->flag}} me-4"></i>{{ $language->name}}</a></li>
-                            @endforeach
-                        </ul>    
-                    </div>
+                         <span><a href="javascript:;"><i class="fa-solid fa-globe py-3"></i><i
+                                     class="fa-solid fa-angle-down ms-0"></i></a></span>
+                         <ul>
+                             @foreach ($languages as $language)
+                                 <li class="languagess" data-value="1" data-id="{{ $language->abbr }}"><a
+                                         href="#"><i
+                                             class="flag-icon {{ $language->flag }} me-4"></i>{{ $language->name }}</a>
+                                 </li>
+                             @endforeach
+                         </ul>
+                     </div>
 
                      <!-------- START MODAL --------->
 
@@ -119,20 +127,35 @@
                                      <div class="h-line-text text-center w-75 mx-auto">
                                          <span class="fw-bold">OR</span>
                                      </div>
-                                     <p class="m-0 text-center mt-3">Sign In With</p>
-                                     <div
-                                         class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
-                                         <a href="{{ url('auth/facebook') }}"
-                                             class="f-conect d-flex flex-wrap align-items-center p-2">
-                                             <i class="fa-brands fa-facebook-f p-1"></i>
-                                             <h6 class="m-0">Connect with Facebook</h6>
-                                         </a>
-                                         <a href="{{ url('auth/google') }}"
-                                             class="g-conect d-flex flex-wrap align-items-center p-2 mt-2 mt-sm-0">
-                                             <i class="fa-brands fa-google pe-2"></i>
-                                             <span class="m-0">Connect with Google</span>
-                                         </a>
-                                     </div>
+                                     @if($social->social_login_activation == 1)
+                                        <p class="m-0 text-center mt-3">Sign In With</p>
+                                        <div class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <a href="{{ url('auth/facebook') }}"
+                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                        <i class="fa-brands fa-facebook-f pe-2"></i>
+                                                        <h6 class="m-0">Facebook</h6>
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-6"><a href="{{ url('auth/google') }}"
+                                                        class="g-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                        <i class="fa-brands fa-google pe-2"></i>
+                                                        <span class="m-0">Google</span>
+                                                    </a></div>
+                                                <div class="col-sm-6"><a href="{{ url('auth/linkedin') }}"
+                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                        <i class="fa-brands fa-linkedin pe-2"></i>
+                                                        <span class="m-0">Linkedin</span>
+                                                    </a></div>
+                                                <div class="col-sm-6"><a href="{{ url('auth/twitter') }}"
+                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                        <i class="fa-brands fa-twitter pe-2"></i>
+                                                        <span class="m-0">Twitter</span>
+                                                    </a></div>
+                                            </div>
+                                        </div>
+                                    @endif
                                      <div class="text-center m-3">
                                          <a href="javascript:;" class="text-muted" id="create_ac">Don't have an
                                              account? Create one here</a>
@@ -223,20 +246,36 @@
                                      <div class="h-line-text text-center w-75 mx-auto">
                                          <span>OR</span>
                                      </div>
-                                     <p class="m-0 text-center mt-3">Sign In With</p>
-                                     <div
-                                         class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
-                                         <a href="javascript:;"
-                                             class="f-conect d-flex flex-wrap align-items-center p-2">
-                                             <i class="fa-brands fa-facebook-f p-1"></i>
-                                             <h6 class="m-0">Connect with Facebook</h6>
-                                         </a>
-                                         <a href="javascript:;"
-                                             class="g-conect d-flex flex-wrap align-items-center p-2 mt-2 mt-sm-0">
-                                             <i class="fa-brands fa-google pe-2"></i>
-                                             <span class="m-0">Connect with Google</span>
-                                         </a>
-                                     </div>
+                                     @if($social->social_login_activation == 1)
+                                        <p class="m-0 text-center mt-3">Sign In With</p>
+                                        <div
+                                            class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <a href="{{ url('auth/facebook') }}"
+                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                        <i class="fa-brands fa-facebook-f pe-2"></i>
+                                                        <h6 class="m-0">Facebook</h6>
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-6"><a href="{{ url('auth/google') }}"
+                                                        class="g-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                        <i class="fa-brands fa-google pe-2"></i>
+                                                        <span class="m-0">Google</span>
+                                                    </a></div>
+                                                <div class="col-sm-6"><a href="{{ url('auth/linkedin') }}"
+                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                        <i class="fa-brands fa-linkedin pe-2"></i>
+                                                        <span class="m-0">Linkedin</span>
+                                                    </a></div>
+                                                <div class="col-sm-6"><a href="{{ url('auth/twitter') }}"
+                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                        <i class="fa-brands fa-twitter pe-2"></i>
+                                                        <span class="m-0">Twitter</span>
+                                                    </a></div>
+                                            </div>
+                                        </div> 
+                                    @endif
                                      <div class="text-center m-3">
                                          <a href="javascript:;" class="text-muted" id="login_ac">Already have an
                                              account?
@@ -252,24 +291,25 @@
          </div>
      </div>
 
-     @if($url != 'home')
-        <div class="bg-light nav-bottom">
-            <div class="swiper-container p-3">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper" style="height: auto">
-                    <!-- Slides -->
-                    @foreach ($categories as $category)
-                    <div class="swiper-slide">
-                        <a href="{{route('category',$category->slug)}}" class="change-category" data-id="{{ $category->slug }}">
-                            <p class="m-0">{{ $category->name }}</p>
-                        </a>
-                    </div>
-                    @endforeach
-                </div>
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-        </div>
-    @endif
+     @if ($url != 'home')
+         <div class="bg-light nav-bottom">
+             <div class="swiper-container p-3">
+                 <!-- Additional required wrapper -->
+                 <div class="swiper-wrapper" style="height: auto">
+                     <!-- Slides -->
+                     @foreach ($categories as $category)
+                         <div class="swiper-slide">
+                             <a href="{{ route('category', $category->slug) }}" class="change-category"
+                                 data-id="{{ $category->slug }}">
+                                 <p class="m-0">{{ $category->name }}</p>
+                             </a>
+                         </div>
+                     @endforeach
+                 </div>
+                 <!-- If we need navigation buttons -->
+                 <div class="swiper-button-prev"></div>
+                 <div class="swiper-button-next"></div>
+             </div>
+         </div>
+     @endif
  </nav>

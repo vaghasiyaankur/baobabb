@@ -33,12 +33,20 @@ Route::post('/forgot-password',[App\Http\Controllers\Auth\ForgotPasswordControll
 Route::get('reset-password/{token}', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
+/*-----------------------------------START Social Login -----------------------------*/
+// Google
 Route::get('auth/google', [App\Http\Controllers\SocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [App\Http\Controllers\SocialiteController::class, 'handleCallbackGoogle']);
-
+// Facebook
 Route::get('auth/facebook', [App\Http\Controllers\SocialiteController::class, 'redirectToFacebook']);
 Route::get('callback/facebook', [App\Http\Controllers\SocialiteController::class, 'handleCallbackFacebook']);
-
+// Linkedin
+Route::get('auth/linkedin', [App\Http\Controllers\SocialiteController::class, 'redirectToLinkedin']);
+Route::get('callback/linkedin', [App\Http\Controllers\SocialiteController::class, 'handleCallbackLinkedin']);
+// Twitter
+Route::get('auth/twitter', [App\Http\Controllers\SocialiteController::class, 'redirectToTwitter']);
+Route::get('callback/twitter', [App\Http\Controllers\SocialiteController::class, 'handleCallbackTwitter']);
+/*-----------------------------------END Social Login -----------------------------*/
 
 // Route::group(['middleware' => 'web'], function () { 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -106,9 +114,11 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('category/{id}/custom_field', 'App\Http\Controllers\admin\CategoryFieldController', ['names'=> 'category.custom_field']);   
     Route::resource('currency', 'App\Http\Controllers\admin\CurrencyController', ['names'=> 'currency']);   
     Route::resource('language', 'App\Http\Controllers\admin\LanguageController', ['names'=> 'language']);    
-    Route::resource('setting', 'App\Http\Controllers\admin\SettingController', ['only' => ['index','edit','update']], ['names'=> 'setting']);   
     Route::resource('pages', 'App\Http\Controllers\admin\PagesController', ['names'=> 'pages']); 
-    Route::resource('setting-element/{element}/se', 'App\Http\Controllers\admin\SettingElementController', ['names'=> 'setting.element']); 
+    Route::resource('advertising', 'App\Http\Controllers\admin\AdvertisingController',['only' => ['index','edit','update']], ['names'=> 'advertising']); 
+    Route::resource('setting', 'App\Http\Controllers\admin\SettingController', ['only' => ['index','edit','update']], ['names'=> 'setting']);   
+    Route::resource('report/type', 'App\Http\Controllers\admin\ReportTypeController', ['names'=> 'report.type']); 
+    Route::resource('setting-element/{element}', 'App\Http\Controllers\admin\SettingElementController', ['names'=> 'setting.element']); 
     Route::post('update-element/put/{elementupdate}', 'App\Http\Controllers\admin\SettingElementController@updateelement')->name('setting.element.put'); 
 
 });

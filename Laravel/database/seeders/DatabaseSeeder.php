@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             ContinentSeeder::class,
             LanguageSeeder::class,
             PageSeeder::class,
-            SettingSeeder::class
+            SettingSeeder::class,
+            AdvertisingSeeder::class
         ]);
     }
 }

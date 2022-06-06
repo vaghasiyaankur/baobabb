@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\Currency;
 use App\Models\Country;
 use App\Models\Setting;
+use App\Models\Picture;
 use App\Http\Controllers\ImageController;
 use Carbon\Carbon;
 
@@ -91,27 +92,11 @@ class ProductController extends Controller
         $string = str_replace(' ', '-', $request->name);
         $slug = preg_replace('/[^A-Za-z0-9\-]/', '-', $string);
         // dd($request);
-        $gallery = array();
-        $img = new ImageController;
-        $image = $img->move($request->image[0]);
-        if($request->image)
-        {
-            for($i = 1; $i < count($request->image); $i++)
-            {
-                $g = $img->move($request->image[$i]);
-                array_push($gallery, $g);
-            }
-            // foreach($request->image as $i)
-            // {
-            //     $g = $img->move($i);
-            //     array_push($gallery, $g);
-            // }
-        }
         $product = new Product;
         $product->name = $request->name;
         $product->category_id = $request->category_id;
-        $product->image = $image;
-        $product->gallery = json_encode($gallery);
+        // $product->image = $image;
+        // $product->gallery = json_encode($gallery);
         $product->seller_id = auth()->user()->id;
         $product->slug = $slug;
         $product->type_of = $request->type_of;
@@ -129,6 +114,19 @@ class ProductController extends Controller
         $product->video = $request->video; 
         $product->expire = $expireDate;
         $product->save();
+
+        $position = 0;
+        $imgmove = new ImageController;
+        // $image = $img->move($request->image);
+        foreach($request->image as $i)
+        {
+            $img = new Picture;
+            $img->filename = $imgmove->move($i);
+            $img->post_id = $product->id;
+            $img->position = $position;
+            $img->save();
+            $position++;
+        }
 
         return redirect()->route('user.product.index');
     }
