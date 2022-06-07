@@ -199,6 +199,7 @@
                         <a href="{{ route('admin.setting.element.index', ['element' => 'security']) }}">
                             <i class="icon nav-icon" data-feather="monitor"></i>
                             <span class="menu-item" data-key="t-sales">Security</span>
+                        </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.setting.element.index', ['element' => 'social-login']) }}">
@@ -216,6 +217,30 @@
                         <a href="{{ route('admin.setting.element.index', ['element' => 'seo']) }}">
                             <i class="icon nav-icon" data-feather="monitor"></i>
                             <span class="menu-item" data-key="t-sales">SEO</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'other']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Others</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'backup']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Backup</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'review']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Reviews</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.setting.element.index', ['element' => 'watermark']) }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">Watermark</span>
                         </a>
                     </li>
                     <li>

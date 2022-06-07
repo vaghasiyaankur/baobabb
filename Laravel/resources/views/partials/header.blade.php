@@ -20,11 +20,11 @@
  <!----- HEADER SECTION  START----->
 
  <nav class="nav-second-header">
-     <div class="navbar navbar-expand-lg py_5 ">
+     <div class="navbar navbar-expand-lg py_5 header">
 
          <div class="container-fluid py-4">
              <a class="navbar-brand" href="{{ route('home') }}">
-                 <img src="{{ asset('assets/img/Baobab-Logo.png') }}" alt="">
+                 <img id="logo" src="{{ asset('assets/img/Baobab-Logo.png') }}" alt="">
              </a>
              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                  aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,34 +127,36 @@
                                      <div class="h-line-text text-center w-75 mx-auto">
                                          <span class="fw-bold">OR</span>
                                      </div>
-                                     @if($social->social_login_activation == 1)
-                                        <p class="m-0 text-center mt-3">Sign In With</p>
-                                        <div class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <a href="{{ url('auth/facebook') }}"
-                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
-                                                        <i class="fa-brands fa-facebook-f pe-2"></i>
-                                                        <h6 class="m-0">Facebook</h6>
-                                                    </a>
+                                     @if(isset($social))
+                                        @if($social->social_login_activation == 1)
+                                            <p class="m-0 text-center mt-3">Sign In With</p>
+                                            <div class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <a href="{{ url('auth/facebook') }}"
+                                                            class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                            <i class="fa-brands fa-facebook-f pe-2"></i>
+                                                            <h6 class="m-0">Facebook</h6>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-6"><a href="{{ url('auth/google') }}"
+                                                            class="g-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                            <i class="fa-brands fa-google pe-2"></i>
+                                                            <span class="m-0">Google</span>
+                                                        </a></div>
+                                                    <div class="col-sm-6"><a href="{{ url('auth/linkedin') }}"
+                                                            class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                            <i class="fa-brands fa-linkedin pe-2"></i>
+                                                            <span class="m-0">Linkedin</span>
+                                                        </a></div>
+                                                    <div class="col-sm-6"><a href="{{ url('auth/twitter') }}"
+                                                            class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                            <i class="fa-brands fa-twitter pe-2"></i>
+                                                            <span class="m-0">Twitter</span>
+                                                        </a></div>
                                                 </div>
-                                                <div class="col-sm-6"><a href="{{ url('auth/google') }}"
-                                                        class="g-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
-                                                        <i class="fa-brands fa-google pe-2"></i>
-                                                        <span class="m-0">Google</span>
-                                                    </a></div>
-                                                <div class="col-sm-6"><a href="{{ url('auth/linkedin') }}"
-                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
-                                                        <i class="fa-brands fa-linkedin pe-2"></i>
-                                                        <span class="m-0">Linkedin</span>
-                                                    </a></div>
-                                                <div class="col-sm-6"><a href="{{ url('auth/twitter') }}"
-                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
-                                                        <i class="fa-brands fa-twitter pe-2"></i>
-                                                        <span class="m-0">Twitter</span>
-                                                    </a></div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endif
                                      <div class="text-center m-3">
                                          <a href="javascript:;" class="text-muted" id="create_ac">Don't have an
@@ -246,35 +248,37 @@
                                      <div class="h-line-text text-center w-75 mx-auto">
                                          <span>OR</span>
                                      </div>
-                                     @if($social->social_login_activation == 1)
-                                        <p class="m-0 text-center mt-3">Sign In With</p>
-                                        <div
-                                            class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <a href="{{ url('auth/facebook') }}"
-                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
-                                                        <i class="fa-brands fa-facebook-f pe-2"></i>
-                                                        <h6 class="m-0">Facebook</h6>
-                                                    </a>
+                                     @if(isset($social))
+                                        @if($social->social_login_activation == 1)
+                                            <p class="m-0 text-center mt-3">Sign In With</p>
+                                            <div
+                                                class="singin-text d-flex flex-wrap align-items-center justify-content-evenly pt-2">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <a href="{{ url('auth/facebook') }}"
+                                                            class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                            <i class="fa-brands fa-facebook-f pe-2"></i>
+                                                            <h6 class="m-0">Facebook</h6>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-6"><a href="{{ url('auth/google') }}"
+                                                            class="g-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                            <i class="fa-brands fa-google pe-2"></i>
+                                                            <span class="m-0">Google</span>
+                                                        </a></div>
+                                                    <div class="col-sm-6"><a href="{{ url('auth/linkedin') }}"
+                                                            class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                            <i class="fa-brands fa-linkedin pe-2"></i>
+                                                            <span class="m-0">Linkedin</span>
+                                                        </a></div>
+                                                    <div class="col-sm-6"><a href="{{ url('auth/twitter') }}"
+                                                            class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
+                                                            <i class="fa-brands fa-twitter pe-2"></i>
+                                                            <span class="m-0">Twitter</span>
+                                                        </a></div>
                                                 </div>
-                                                <div class="col-sm-6"><a href="{{ url('auth/google') }}"
-                                                        class="g-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
-                                                        <i class="fa-brands fa-google pe-2"></i>
-                                                        <span class="m-0">Google</span>
-                                                    </a></div>
-                                                <div class="col-sm-6"><a href="{{ url('auth/linkedin') }}"
-                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
-                                                        <i class="fa-brands fa-linkedin pe-2"></i>
-                                                        <span class="m-0">Linkedin</span>
-                                                    </a></div>
-                                                <div class="col-sm-6"><a href="{{ url('auth/twitter') }}"
-                                                        class="f-conect d-flex flex-wrap align-items-center p-2 m-2 mt-sm-0 w-80">
-                                                        <i class="fa-brands fa-twitter pe-2"></i>
-                                                        <span class="m-0">Twitter</span>
-                                                    </a></div>
-                                            </div>
-                                        </div> 
+                                            </div> 
+                                        @endif
                                     @endif
                                      <div class="text-center m-3">
                                          <a href="javascript:;" class="text-muted" id="login_ac">Already have an

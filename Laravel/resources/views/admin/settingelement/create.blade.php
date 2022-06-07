@@ -19,7 +19,7 @@
         <!-- end card header -->
         <div class="card-body">
             <div>
-                <form action="@if (isset($setting)) {{ route('admin.setting.update', [$setting->id]) }} @endif"
+                <form action="@if (isset($setting)) {{ route('admin.setting.update', [$setting->id]) }}@endif"
                     method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -38,11 +38,11 @@
                             <div class="m-3">
                                 @if($setting->name == 'RTL')
                                     <label for="formFile" class="form-label custom-file-label font-size-17">Yes / No</label>
-                                    <input class="m-3" name="value" value="yes" type="checkbox" id="value" @if($setting->value == 'yes') checked @endif>
+                                    <input class="m-3" name="value" value="yes" type="checkbox" id="value" @if($setting->value == 'yes') checked@endif>
                                 @elseif($setting->name == 'ad_expire_length')
                                     <label for="formFile" class="form-label custom-file-label font-size-17">Input Days</label>
                                     <input class="form-control custom-file-input" name="value" value="@if(isset($setting->value)){{ $setting->value }}@endif" type="number" id='value' required>
-                                @endif
+                               @endif
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                 Update
                             @else
                                 Save
-                            @endif
+                           @endif
                         </button>
                     </div>
                 </form>

@@ -1,6 +1,6 @@
 <form action="@if(isset($elementdata)){{ route('admin.setting.element.put',['elementupdate' => $element]) }}@else{{ route('admin.setting.element.store',['element' => $element]) }}@endif" method="post" enctype="multipart/form-data">
     @csrf
-    {{-- @if(isset($elementdata)) @method('PUT') @endif --}}
+    {{-- @if(isset($elementdata)) @method('PUT')@endif --}}
     <input type="hidden" name="name" value="{{ $element }}">
     <div class="row title-setting-element">
         <div class="col-md-6">
@@ -97,7 +97,7 @@
             <div class="mb-3">
                 <label for="recaptcha_skip_ips"
                     class="form-label custom-file-label font-size-17">reCAPTCHA Skip IPs</label>
-                <textarea name="recaptcha_skip_ips" id="recaptcha_skip_ips"  cols="50" rows="5" > @if (isset($elementdata)) {{ @$elementdata->recaptcha_skip_ips }} @endif</textarea>
+                <textarea class="form-control" name="recaptcha_skip_ips" id="recaptcha_skip_ips"  cols="50" rows="5" >@if (isset($elementdata)){{ @$elementdata->recaptcha_skip_ips }}@endif</textarea>
             </div>  
         </div>
         <div class="form-text">The reCAPTCHA challenge will be not taken account for these IPs address.

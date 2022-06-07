@@ -37,4 +37,74 @@
     <link rel="stylesheet" href="{{ asset('css/responsiv.css') }}">
 </head>
 
+{{-- @dd(getAllStyle()) --}}
+<style>
+    .all-body{
+        background-color: {{ getBodyBGSkin() }} !important ;
+        color: {{getBodyTextSkin()}} !important ;
+        background-image: url('{{getBodyBGImg()}}') !important ;
+        background-attachment: {{getBodyImgFixed()}} !important ;
+    }
+    .title{
+        color: {{getTitleSkin()}} !important ;
+    }
+    a{
+        color: {{getLinkcolor()}} !important ;
+    }
+    a:hover{
+        color: {{getLinkHovercolor()}} !important ;
+    }
+/* ------------------------- HEADER -------------------------------- */
+    .header{
+        height: {{headerHeight()}} !important ;
+        background-color: {{headerBGColor()}} !important ;
+        border-bottom: {{headerBorderBottom()}} !important ;
+        border-color: {{headerBorderBottomColor()}} !important ;
+    }
+
+    .header a{
+        color: {{headerLinkColor()}} !important ;
+    }
+    .header a:hover{
+        color: {{headerLinkHoverColor()}} !important;
+    }
+/* -------------------------- LOGO ----------------------------------- */
+    #logo{
+        width: {{getHeaderWidth()}} !important;
+        height: {{getHeaderHeight()}} !important;
+    }
+/* ------------------------- FOOTER ---------------------------------- */
+    footer{
+        background-color: {{footerBGcolor()}} !important;
+        color: {{footerTextColor()}} !important;
+    }
+    footer .title{
+        color: {{footerTitleColor()}} !important;
+    }
+    footer a{
+        color: {{footerLinkColor()}} !important;
+    }
+    footer a:hover{
+        color: {{footerLinkHoverColor()}} !important;
+    }
+    footer .payment-icon{
+        border-top: {{paymentTopBorderWidth()}} {{paymentTopBorderColor()}} !important;
+        border-bottom: {{paymentBottomBorderWidth()}} {{paymentBottomBorderColor()}} !important;
+    }
+/* -------------------------- BUTTON ---------------------------------- */
+    .btn{
+        background-image: linear-gradient(to bottom, {{btnBGTop()}} 0,{{btnBGBottom()}} 100%) !important;
+        border-color: {{btnBorderColor()}} !important;
+        color: {{btnTextColor()}} !important;
+    }
+    .btn:hover{
+        background-image: linear-gradient(to bottom, {{btnBGTophover()}} 0,{{btnBGBottomhover()}} 100%) !important;
+        border-color: {{btnBorderColorhover()}} !important;
+        color: {{btnTextColorhover()}} !important;
+    }
+
+    {{customCSS()}}
+    
+</style>
+
 <body>

@@ -25,6 +25,11 @@ class SettingSeeder extends Seeder
                 'id' => 2,
                 'name' => 'RTL',
                 'value' => 'no'
+            ],
+            [
+                'id' => 3,
+                'name' => 'social-login',
+                'value' => ''
             ]
         ]);
     }

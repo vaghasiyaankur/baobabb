@@ -38,8 +38,8 @@
                     <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
                         <h6>{{ __('messages.download_our_app')}}</h6>
                         <div class="f_app_links d-flex flex-wrap justify-content-lg-end justify-content-start align-items-center mb-3">
-                            <a href="" class="text-white">
-                                <div class="a-store d-flex align-items-center me-2">
+                            {{-- <a href="" class="text-white"> --}}
+                                <div class="a-store d-flex align-items-center me-2 payment-icon">
                                     <div class="a_btn_img mx-1">
                                         <i class="fa-brands fa-apple fs-5"></i>
                                     </div>
@@ -48,9 +48,9 @@
                                         <p class="mb-0">{{ __('messages.app_store')}}</p>
                                     </div>
                                 </div>
-                            </a>
-                            <a href=""class="text-white">
-                                <div class="g-store d-flex align-items-center text-start">
+                            {{-- </a> --}}
+                            {{-- <a href=""class="text-white"> --}}
+                                <div class="g-store d-flex align-items-center text-start payment-icon">
                                     <div class="g_btn_img mx-1">
                                         <img src="{{asset('assets/img/google-play.png')}}" alt="">
                                     </div>
@@ -59,7 +59,7 @@
                                         <p class="mb-0">{{ __('messages.google_play')}}</p>
                                     </div>
                                 </div>
-                            </a>
+                            {{-- </a> --}}
                         </div>
                         <h6 class="mb-1 mt-3 mt-lg-0">{{ __('messages.follow_us_online')}}</h6>
                         <div class="f_online_icon">

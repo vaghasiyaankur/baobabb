@@ -70,6 +70,7 @@ button {
 .navbar .navbar-brand img {
   max-width: 150px;
   width: 100%;
+  max-height: 35px;
 }
 
 .navbar .navbar-toggler i {

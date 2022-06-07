@@ -1,8 +1,8 @@
 <form
-    action="@if (isset($elementdata)) {{ route('admin.setting.element.put', ['elementupdate' => $element]) }}@else{{ route('admin.setting.element.store', ['element' => $element]) }} @endif"
+    action="@if (isset($elementdata)){{ route('admin.setting.element.put', ['elementupdate' => $element]) }}@else{{ route('admin.setting.element.store', ['element' => $element]) }}@endif"
     method="post" enctype="multipart/form-data">
     @csrf
-    {{-- @if (isset($elementdata)) @method('PUT') @endif --}}
+    {{-- @if (isset($elementdata))@method('PUT')@endif --}}
     <input type="hidden" name="name" value="{{ $element }}">
     <div class="row title-setting-element">
         <div class="col-md-6">

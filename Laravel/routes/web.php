@@ -120,6 +120,7 @@ Route::group(['middleware' => ['admin'],'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('report/type', 'App\Http\Controllers\admin\ReportTypeController', ['names'=> 'report.type']); 
     Route::resource('setting-element/{element}', 'App\Http\Controllers\admin\SettingElementController', ['names'=> 'setting.element']); 
     Route::post('update-element/put/{elementupdate}', 'App\Http\Controllers\admin\SettingElementController@updateelement')->name('setting.element.put'); 
+    // Route::get('backup','App\Http\Controller\admin\BackupController@index')->name('backup');
 
 });
 

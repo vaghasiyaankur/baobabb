@@ -1,8 +1,8 @@
 <form
-    action="@if (isset($elementdata)) {{ route('admin.setting.element.put', ['elementupdate' => $element]) }}@else{{ route('admin.setting.element.store', ['element' => $element]) }} @endif"
+    action="@if (isset($elementdata)){{ route('admin.setting.element.put', ['elementupdate' => $element]) }}@else{{ route('admin.setting.element.store', ['element' => $element]) }}@endif"
     method="post" enctype="multipart/form-data">
     @csrf
-    {{-- @if (isset($elementdata)) @method('PUT') @endif --}}
+    {{-- @if (isset($elementdata))@method('PUT')@endif --}}
     <input type="hidden" name="name" value="{{ $element }}">
     <div class="row title-setting-element">
         <div class="col-md-6">
@@ -47,7 +47,7 @@
                     verification content</label>
                 <input class="form-control custom-file-input" name="google_site_verification" type="text"
                     id="google_site_verification" id="customFileUpload"
-                    value="@if (isset($elementdata)) {{ @$elementdata->google_site_verification }} @endif">
+                    value="@if (isset($elementdata)){{ @$elementdata->google_site_verification }}@endif">
                 <div class="form-text">NOTE: This site verification is related to meta tag verification. So, enter
                     the meta content value.</div>
             </div>
@@ -58,7 +58,7 @@
                     content</label>
                 <input class="form-control custom-file-input" name="alexa_verify_id" type="text" id="alexa_verify_id"
                     id="customFileUpload"
-                    value="@if (isset($elementdata)) {{ @$elementdata->alexa_verify_id }} @endif">
+                    value="@if (isset($elementdata)){{ @$elementdata->alexa_verify_id }}@endif">
                 <div class="form-text">NOTE: This site verification is related to meta tag verification. So, enter
                     the meta content value.</div>
             </div>
@@ -69,7 +69,7 @@
                     content</label>
                 <input class="form-control custom-file-input" name="msvalidate" type="text" id="msvalidate"
                     id="customFileUpload"
-                    value="@if (isset($elementdata)) {{ @$elementdata->msvalidate }} @endif">
+                    value="@if (isset($elementdata)){{ @$elementdata->msvalidate }}@endif">
                 <div class="form-text">NOTE: This site verification is related to meta tag verification. So, enter
                     the meta content value.</div>
             </div>
@@ -80,7 +80,7 @@
                     verification content</label>
                 <input class="form-control custom-file-input" name="yandex_verification" type="text"
                     id="yandex_verification" id="customFileUpload"
-                    value="@if (isset($elementdata)) {{ @$elementdata->yandex_verification }} @endif">
+                    value="@if (isset($elementdata)){{ @$elementdata->yandex_verification }}@endif">
                 <div class="form-text">NOTE: This site verification is related to meta tag verification. So, enter
                     the meta content value.</div>
             </div>
@@ -90,7 +90,7 @@
                 <label for="twitter_username" class="form-label custom-file-label font-size-17">Twitter Username</label>
                 <input class="form-control custom-file-input" name="twitter_username" type="text" id="twitter_username"
                     id="customFileUpload"
-                    value="@if (isset($elementdata)) {{ @$elementdata->twitter_username }} @endif">
+                    value="@if (isset($elementdata)){{ @$elementdata->twitter_username }}@endif">
             </div>
         </div>
     </div>
