@@ -98,7 +98,7 @@ class ProductController extends Controller
         // $product->image = $image;
         // $product->gallery = json_encode($gallery);
         $product->seller_id = auth()->user()->id;
-        $product->slug = $slug;
+        $product->slug = $slug . random_int(100000, 999999);
         $product->type_of = $request->type_of;
         $product->condition = $request->condition;
         $product->cash = $request->currency;

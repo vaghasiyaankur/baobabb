@@ -3,8 +3,10 @@
         @foreach ($products as $product)
             <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 card_w_4">
                 <div class="card-box ">
-                    <img src="{{ asset($product->image) }}" class="img-fluid w-100 card-img_height" alt="card-img"
+                    @if(count($product->pictures) != 0)
+                    <img src="{{ asset($product->pictures[0]->filename) }}" class="img-fluid w-100 card-img_height" alt="card-img"
                         style="height: 220px;">
+                        @endif
                     <div class="card-inner bg-white">
                         <a href="{{ route('product', $product->slug) }}">
                             <div class="d-flex justify-content-between pt-3 pb-2">

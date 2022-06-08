@@ -13,26 +13,7 @@
             </h3>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="mb-3">
-                <div class="form-check form-switch" style="margin-top: 30px;">
-                    <input type="hidden" name="social_login_activation" value="0">
-                    <input type="checkbox" value="1" name="social_login_activation" class="form-check-input"
-                        style="cursor: pointer;" {{ @$elementdata->social_login_activation == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label fw-bolder">
-                        Enable Social Login
-                    </label>
-                </div>
-            </div>
-            <div class="form-text">Allow users to connect via social networks. NOTE: Let empty the fields of a
-                social network to disable it (him alone).</div>
-        </div>
-    </div>
 
-
-
-    {{-- Facebook --}}
     <div class="row title-setting-element">
         <div class="col-md-6">
             <div class="mb-1 col-md-6 mt-5">

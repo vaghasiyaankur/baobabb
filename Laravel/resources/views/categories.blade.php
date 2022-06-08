@@ -17,6 +17,7 @@
                             <a href="{{ route('category', $category->slug) }}">
                                 <div class="categorie-text align-self-center">
                                     <h5 class="fw-bold">{{ $category->name }}</h5>
+                                    @if(countListing() == '1')
                                     <?php
                                     if (auth()->user()) {
                                         $country = App\Models\Country::find(auth()->user()->country);
@@ -30,6 +31,7 @@
                                     }
                                     $count = App\Models\Product::where('country',$countryName)->where('category_id', $category->id)->count(); ?>
                                     <p>{{ $count }} {{ __('messages.announce_publee')}}</p>
+                                    @endif
                                 </div>
                             </a>
                         </div>

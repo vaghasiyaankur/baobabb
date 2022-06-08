@@ -44,9 +44,9 @@
                 <select name="grid_view_cols" style="width: 100%"
                     class="grid_view_cols form-select select2_field select2-hidden-accessible" tabindex="-1"
                     aria-hidden="true">
-                    <option value="4" {{ @$elementdata->grid_view_cols  == '4' ? 'selected' : ''}}>4</option>
-                    <option value="3" {{ @$elementdata->grid_view_cols  == '3' ? 'selected' : ''}}>3</option>
-                    <option value="2" {{ @$elementdata->grid_view_cols  == '2' ? 'selected' : ''}}>2</option>
+                    <option value="3" {{ @$elementdata->grid_view_cols  == '3' ? 'selected' : ''}}>4</option>
+                    <option value="4" {{ @$elementdata->grid_view_cols  == '4' ? 'selected' : ''}}>3</option>
+                    <option value="6" {{ @$elementdata->grid_view_cols  == '6' ? 'selected' : ''}}>2</option>
                 </select>
             </div>
         </div>

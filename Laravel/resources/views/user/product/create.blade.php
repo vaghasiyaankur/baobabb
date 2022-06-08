@@ -203,7 +203,7 @@
                                 </div>
                                 <div class="mb-3 d-flex ">
                                     <label for="description" class="">Description*</label>
-                                    <textarea class="form-control" id="description" name="description" rows="3" style="height:273px;width: 92%;">@if(isset($product->description)){{$product->description }}@endif  </textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="3" style="height:273px;width: 92%;">@if(isset($product->description)){{$product->description }}@endif</textarea>
                                     <span class="error text-danger d-flex justify-content-start description"></span>
                                 </div>
                                 <div class="d-flex align-items-center mt-4 mb-1">

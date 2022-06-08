@@ -11,8 +11,8 @@
                     <div class="col-lg-3 mx-auto">
                         <div class="f-links ">
                             <h6 class="mb-2">{{ __('messages.shope')}}</h6>
-                            <p class="mb-1 "><a href="" class="f_c_links_ "> {{ __('messages.categories')}}</a></p>
-                            <p class="mb-1 "><a href="" class="f_c_links_ "> {{ __('messages.our_sellers')}}</a></p>
+                            <p class="mb-1 "><a href="{{route('allcategory')}}" class="f_c_links_ "> {{ __('messages.categories')}}</a></p>
+                            <p class="mb-1 "><a href="{{route('seller')}}" class="f_c_links_ "> {{ __('messages.our_sellers')}}</a></p>
                         </div>
                     </div>
                     <div class="col-lg-3 mx-auto">

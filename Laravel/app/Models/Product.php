@@ -31,6 +31,13 @@ class Product extends Model
         'long',
     ];
 
+    
+    public function pictures()
+    {
+        return $this->hasMany(Picture::class,'post_id','id');
+    }
+
+
     public function category()
     {
         return $this->belongsTo(Category::class,'category_id','id');

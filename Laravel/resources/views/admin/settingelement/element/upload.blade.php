@@ -17,9 +17,7 @@
                 <input class="form-control custom-file-input" name="file_types" type="text" id="file_types"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->file_types  }}@endif">
-            </div>
-            <div>
-                File types (ex: pdf,doc,docx,odt,...)
+                    <div>File types (ex: pdf,doc,docx,odt,...)</div>
             </div>
         </div>
         <div class="col-md-3">
@@ -56,9 +54,7 @@
                 <input class="form-control custom-file-input" name="image_types" type="text" id="image_types"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->image_types  }}@endif">
-            </div>
-            <div>
-                Image types (ex: jpg,jpeg,gif,png,...)
+                    <div>Image types (ex: jpg,jpeg,gif,png,...)</div>
             </div>
         </div>
         <div class="col-md-6">
@@ -72,8 +68,8 @@
                 <option value="{{ $key }}" {{ @$elementdata->image_quality  == $key ? 'selected' : ''}}>{{ $iq }}</option>
                 @endforeach
                 </select>
+                <div>Image quality for JPEG format</div>
             </div>
-            <div>Image quality for JPEG format</div>
         </div>
     </div>
 
@@ -93,9 +89,9 @@
                 <input class="form-control custom-file-input" name="max_image_size" type="number" id="max_image_size"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->max_image_size  }}@endif">
+                    <div>Max Image Size (in KB)</div>
             </div>
         </div>
-        <div>Max Image Size (in KB)</div>
     </div>
 
     <div class="row title-setting-element">
@@ -114,8 +110,8 @@
                 <input class="form-control custom-file-input" name="img_resize_width" type="number" id="img_resize_width"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->img_resize_width  }}@endif">
+                    <div>Width (in pixel)</div>
             </div>
-            <div>Width (in pixel)</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -123,9 +119,9 @@
                 <input class="form-control custom-file-input" name="img_resize_height" type="number" id="img_resize_height"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->img_resize_height  }}@endif">
+                    <div>Height (in pixel)</div>
             </div>
         </div>
-        <div>Height (in pixel)</div>
     </div>
 
     <div class="row">
@@ -137,9 +133,9 @@
                     <label class="form-check-label fw-bolder">
                         Aspect Ratio
                     </label>
+                    <div class="form-text">Constraint the current aspect-ratio of the image.</div>
                 </div>
             </div>
-            <div class="form-text">Constraint the current aspect-ratio of the image.</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -149,9 +145,9 @@
                     <label class="form-check-label fw-bolder">
                         UpSize
                     </label>
+                    <div class="form-text">Constraint the current aspect-ratio of the image.</div>
                 </div>
             </div>
-            <div class="form-text">Constraint the current aspect-ratio of the image.</div>
         </div>
     </div>
 
@@ -171,8 +167,8 @@
                 <input class="form-control custom-file-input" name="img_resize_logo_width" type="number" id="img_resize_logo_width"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->img_resize_logo_width  }}@endif">
+                    <div>Width (in pixel)</div>
             </div>
-            <div>Width (in pixel)</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -180,9 +176,9 @@
                 <input class="form-control custom-file-input" name="img_resize_logo_height" type="number" id="img_resize_logo_height"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->img_resize_logo_height  }}@endif">
+                    <div>Height (in pixel)</div>
             </div>
         </div>
-        <div>Height (in pixel)</div>
     </div>
 
     <div class="row">
@@ -194,9 +190,9 @@
                     <label class="form-check-label fw-bolder">
                         Aspect Ratio
                     </label>
+                    <div class="form-text">Constraint the current aspect-ratio of the image.</div>
                 </div>
             </div>
-            <div class="form-text">Constraint the current aspect-ratio of the image.</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -206,9 +202,9 @@
                     <label class="form-check-label fw-bolder">
                         UpSize
                     </label>
+                    <div class="form-text">Constraint the current aspect-ratio of the image.</div>
                 </div>
             </div>
-            <div class="form-text">Constraint the current aspect-ratio of the image.</div>
         </div>
     </div>
 
@@ -227,8 +223,8 @@
                 <input class="form-control custom-file-input" name="img_resize_cat_width" type="number" id="img_resize_cat_width"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->img_resize_cat_width  }}@endif">
+                    <div>Width (in pixel)</div>
             </div>
-            <div>Width (in pixel)</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -236,9 +232,9 @@
                 <input class="form-control custom-file-input" name="img_resize_cat_height" type="number" id="img_resize_cat_height"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->img_resize_cat_height  }}@endif">
+                    <div>Height (in pixel)</div>
             </div>
         </div>
-        <div>Height (in pixel)</div>
     </div>
 
     <div class="row">
@@ -250,9 +246,9 @@
                     <label class="form-check-label fw-bolder">
                         Aspect Ratio
                     </label>
+                    <div class="form-text">Constraint the current aspect-ratio of the image.</div>
                 </div>
             </div>
-            <div class="form-text">Constraint the current aspect-ratio of the image.</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -262,9 +258,9 @@
                     <label class="form-check-label fw-bolder">
                         UpSize
                     </label>
+                    <div class="form-text">Constraint the current aspect-ratio of the image.</div>
                 </div>
             </div>
-            <div class="form-text">Constraint the current aspect-ratio of the image.</div>
         </div>
     </div>
 
@@ -311,8 +307,8 @@
                 <input class="form-control custom-file-input" name="img_resize_small_width" type="number" id="img_resize_small_width"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->img_resize_small_width  }}@endif">
+                    <div>Width (in pixel)</div>
             </div>
-            <div>Width (in pixel)</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -320,9 +316,9 @@
                 <input class="form-control custom-file-input" name="img_resize_small_height" type="number" id="img_resize_small_height"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->img_resize_small_height  }}@endif">
+                    <div>Height (in pixel)</div>
             </div>
         </div>
-        <div>Height (in pixel)</div>
     </div>
 
     <div class="row">
@@ -334,10 +330,10 @@
                     <label class="form-check-label fw-bolder">
                         Aspect Ratio
                     </label>
+                    <div class="form-text">Constraint the current aspect-ratio of the image.
+                        NOTE: Only applied for the resize types: Resize and Fit.</div>
                 </div>
             </div>
-            <div class="form-text">Constraint the current aspect-ratio of the image.
-                NOTE: Only applied for the resize types: Resize and Fit.</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -347,10 +343,10 @@
                     <label class="form-check-label fw-bolder">
                         UpSize
                     </label>
+                    <div class="form-text">Keep image from being upsized.
+                        NOTE: Only applied for the resize types: Resize and Fit.</div>
                 </div>
             </div>
-            <div class="form-text">Keep image from being upsized.
-                NOTE: Only applied for the resize types: Resize and Fit.</div>
         </div>
     </div>
 
@@ -366,9 +362,9 @@
                     <option value="{{ $key }}" {{ @$elementdata->img_resize_small_position  == $key ? 'selected' : ''}}>{{ $p }}</option>
                     @endforeach
                 </select>
+                <div>Set a position where cutout will be positioned. Or set a point from where the image resizing is going to happen.
+                    NOTE: Only applied for the resize types: Fit and ResizeCanvas.</div>
             </div>
-            <div>Set a position where cutout will be positioned. Or set a point from where the image resizing is going to happen.
-                NOTE: Only applied for the resize types: Fit and ResizeCanvas.</div>
         </div>
 
         <div class="col-md-4">
@@ -379,14 +375,14 @@
                     <label class="form-check-label fw-bolder">
                         Relative
                     </label>
+                    <div class="form-text">Determine that the resizing is going to happen in relative mode. Meaning that the values of width or height will be added or substracted from the current height of the image. NOTE: Only applied for the resize type: ResizeCanvas.</div>
                 </div>
             </div>
-            <div class="form-text">Determine that the resizing is going to happen in relative mode. Meaning that the values of width or height will be added or substracted from the current height of the image. NOTE: Only applied for the resize type: ResizeCanvas.</div>
         </div>
 
         <div class="col-md-4">
+            <label for="formFile" class="form-label custom-file-label font-size-17 pt-3 ps-5">BG Color</label>
             <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">BG Color</label>
                 {{-- <input type="text" name="" class="color-select-input"> --}}
                 <input type="text" class="font-color-picker" name="img_resize_small_bg_color" value="{{ @$elementdata->img_resize_small_bg_color  }}" readonly>
                 <span class="color-picker">
@@ -433,8 +429,8 @@
                 <input class="form-control custom-file-input" name="img_resize_medium_width" type="number" id="img_resize_medium_width"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->img_resize_medium_width  }}@endif">
+                    <div>Width (in pixel)</div>
             </div>
-            <div>Width (in pixel)</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -442,9 +438,9 @@
                 <input class="form-control custom-file-input" name="img_resize_medium_height" type="number" id="img_resize_medium_height"
                     id="customFileUpload"
                     value="@if (isset($elementdata)){{ @$elementdata->img_resize_medium_height  }}@endif">
+                    <div>Height (in pixel)</div>
             </div>
         </div>
-        <div>Height (in pixel)</div>
     </div>
 
     <div class="row">
@@ -456,10 +452,10 @@
                     <label class="form-check-label fw-bolder">
                         Aspect Ratio
                     </label>
+                    <div class="form-text">Constraint the current aspect-ratio of the image.
+                        NOTE: Only applied for the resize types: Resize and Fit.</div>
                 </div>
             </div>
-            <div class="form-text">Constraint the current aspect-ratio of the image.
-                NOTE: Only applied for the resize types: Resize and Fit.</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -469,10 +465,10 @@
                     <label class="form-check-label fw-bolder">
                         UpSize
                     </label>
+                    <div class="form-text">Keep image from being upsized.
+                        NOTE: Only applied for the resize types: Resize and Fit.</div>
                 </div>
             </div>
-            <div class="form-text">Keep image from being upsized.
-                NOTE: Only applied for the resize types: Resize and Fit.</div>
         </div>
     </div>
 
@@ -488,9 +484,9 @@
                     <option value="{{ $key }}" {{ @$elementdata->img_resize_medium_position  == $key ? 'selected' : ''}}>{{ $p }}</option>
                     @endforeach
                 </select>
+                <div>Set a position where cutout will be positioned. Or set a point from where the image resizing is going to happen.
+                    NOTE: Only applied for the resize types: Fit and ResizeCanvas.</div>
             </div>
-            <div>Set a position where cutout will be positioned. Or set a point from where the image resizing is going to happen.
-                NOTE: Only applied for the resize types: Fit and ResizeCanvas.</div>
         </div>
 
         <div class="col-md-4">
@@ -501,14 +497,14 @@
                     <label class="form-check-label fw-bolder">
                         Relative
                     </label>
+                    <div class="form-text">Determine that the resizing is going to happen in relative mode. Meaning that the values of width or height will be added or substracted from the current height of the image. NOTE: Only applied for the resize type: ResizeCanvas.</div>
                 </div>
             </div>
-            <div class="form-text">Determine that the resizing is going to happen in relative mode. Meaning that the values of width or height will be added or substracted from the current height of the image. NOTE: Only applied for the resize type: ResizeCanvas.</div>
         </div>
 
         <div class="col-md-4">
+            <label for="formFile" class="form-label custom-file-label font-size-17 pt-3 ps-5">BG Color</label>
             <div class="mb-3">
-                <label for="formFile" class="form-label custom-file-label font-size-17">BG Color</label>
                 {{-- <input type="text" name="" class="color-select-input"> --}}
                 <input type="text" class="font-color-picker" name="img_resize_medium_bg_color" value="{{ @$elementdata->img_resize_medium_bg_color  }}" readonly>
                 <span class="color-picker">
@@ -555,8 +551,8 @@
                  <input class="form-control custom-file-input" name="img_resize_big_width" type="number" id="img_resize_big_width"
                      id="customFileUpload"
                      value="@if (isset($elementdata)){{ @$elementdata->img_resize_big_width  }}@endif">
+                     <div>Width (in pixel)</div>
              </div>
-             <div>Width (in pixel)</div>
          </div>
          <div class="col-md-6">
              <div class="mb-3">
@@ -564,9 +560,9 @@
                  <input class="form-control custom-file-input" name="img_resize_big_height" type="number" id="img_resize_big_height"
                      id="customFileUpload"
                      value="@if (isset($elementdata)){{ @$elementdata->img_resize_big_height  }}@endif">
+                     <div>Height (in pixel)</div>
              </div>
          </div>
-         <div>Height (in pixel)</div>
      </div>
  
      <div class="row">
@@ -578,10 +574,10 @@
                      <label class="form-check-label fw-bolder">
                          Aspect Ratio
                      </label>
+                     <div class="form-text">Constraint the current aspect-ratio of the image.
+                         NOTE: Only applied for the resize types: Resize and Fit.</div>
                  </div>
              </div>
-             <div class="form-text">Constraint the current aspect-ratio of the image.
-                 NOTE: Only applied for the resize types: Resize and Fit.</div>
          </div>
          <div class="col-md-6">
              <div class="mb-3">
@@ -591,10 +587,10 @@
                      <label class="form-check-label fw-bolder">
                          UpSize
                      </label>
+                     <div class="form-text">Keep image from being upsized.
+                         NOTE: Only applied for the resize types: Resize and Fit.</div>
                  </div>
              </div>
-             <div class="form-text">Keep image from being upsized.
-                 NOTE: Only applied for the resize types: Resize and Fit.</div>
          </div>
      </div>
  
@@ -610,9 +606,9 @@
                      <option value="{{ $key }}" {{ @$elementdata->img_resize_big_position  == $key ? 'selected' : ''}}>{{ $p }}</option>
                      @endforeach
                  </select>
+                 <div>Set a position where cutout will be positioned. Or set a point from where the image resizing is going to happen.
+                     NOTE: Only applied for the resize types: Fit and ResizeCanvas.</div>
              </div>
-             <div>Set a position where cutout will be positioned. Or set a point from where the image resizing is going to happen.
-                 NOTE: Only applied for the resize types: Fit and ResizeCanvas.</div>
          </div>
  
          <div class="col-md-4">
@@ -623,14 +619,14 @@
                      <label class="form-check-label fw-bolder">
                          Relative
                      </label>
+                     <div class="form-text">Determine that the resizing is going to happen in relative mode. Meaning that the values of width or height will be added or substracted from the current height of the image. NOTE: Only applied for the resize type: ResizeCanvas.</div>
                  </div>
              </div>
-             <div class="form-text">Determine that the resizing is going to happen in relative mode. Meaning that the values of width or height will be added or substracted from the current height of the image. NOTE: Only applied for the resize type: ResizeCanvas.</div>
          </div>
  
          <div class="col-md-4">
+             <label for="img_resize_big_bg_color" class="form-label custom-file-label font-size-17 pt-3 ps-5">BG Color</label>
              <div class="mb-3">
-                 <label for="img_resize_big_bg_color" class="form-label custom-file-label font-size-17">BG Color</label>
                  {{-- <input type="text" name="" class="color-select-input"> --}}
                  <input type="text" class="font-color-picker" name="img_resize_big_bg_color" value="{{ @$elementdata->img_resize_big_bg_color  }}" readonly>
                  <span class="color-picker">

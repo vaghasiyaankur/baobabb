@@ -19,21 +19,21 @@
             <!-- <img src="https://sl.baobabb.co/wp-content/uploads/2021/12/Electric-1-500x350.jpeg" class="img-fluid listing-img" alt=""> -->
             <div class="main overflow-hidden">
                 <div class="slider slider-for">
-                    <div><img src="{{ asset($product->image) }}" class="img-fluid listing-img" alt="">
-                    </div>
-                    @foreach ($gallery as $img)
-                    <div><img src="{{ asset($img) }}"
+                    {{-- <div><img src="{{ asset($product->image) }}" class="img-fluid listing-img" alt="">
+                    </div> --}}
+                    @foreach ($product->pictures as $img)
+                    <div><img src="{{ asset($img->filename) }}"
                             class="img-fluid listing-img" alt="">
                     </div>
                     @endforeach
                     
                 </div>
                 <div class="slider slider-nav">
-                    <div><img src="{{ asset($product->image) }}"
+                    {{-- <div><img src="{{ asset($product->image) }}"
                             class="img-fluid listing-img" alt="">
-                    </div>
-                    @foreach ($gallery as $img)
-                    <div><img src="{{ asset($img) }}"
+                    </div> --}}
+                    @foreach ($product->pictures as $img)
+                    <div><img src="{{ asset($img->filename) }}"
                             class="img-fluid listing-img" alt="">
                     </div>
                     @endforeach

@@ -47,9 +47,9 @@
                         <h5 class="pb-2">{{ __('messages.price')}}</h5>
                         <div class="range-slider">
                             <input id="min-price" value="{{ $min_price }}" min="{{ $priceMin }}"
-                                max="{{ $priceMax }}" step="1" type="range">
+                                max="{{ $priceMax }}" step="{{fileterSliderStep()}}" type="range">
                             <input id="max-price" value="{{ $max_price }}" min="{{ $priceMin }}"
-                                max="{{ $priceMax }}" step="1" type="range">
+                                max="{{ $priceMax }}" step="{{fileterSliderStep()}}" type="range">
                             <span class="rangeValues p-3 d-flex justify-content-start"></span>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                     <div id="product-data">
                         <div class="row">
                             @foreach ($products as $product)
-                                <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-{{addListCol()}}">
                                     @include('product-block')
                                 </div>
                             @endforeach

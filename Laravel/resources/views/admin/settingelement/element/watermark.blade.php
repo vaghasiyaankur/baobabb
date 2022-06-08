@@ -8,7 +8,7 @@
         <div class="col-md-6">
             <h3>
                 <div class="mb-3 col-md-6">
-                    <h3><b>Reviews</b></h3>
+                    <h3><b>Watermark</b></h3>
                 </div>
             </h3>
         </div>

@@ -1,6 +1,7 @@
 <?php
 use App\Models\Setting;
 
+//------------------------------------------------------------ STYLE ----------------------------------------------------------------//
 function getAllStyle()
 {
     return json_decode(Setting::where('name','style')->pluck('value')->first());
@@ -294,5 +295,111 @@ function customCSS()
     if(getAllStyle())
     {
         return getAllStyle()->custom_css;
+    }
+}
+
+//------------------------------------------------------------ LIST & SEARCH ----------------------------------------------------------------//
+
+function getAllList()
+{
+    return json_decode(Setting::where('name','list')->pluck('value')->first());
+}
+
+function addListCol()
+{
+    if(getAllList())
+    {
+        if(getAllList()->grid_view_cols == null || getAllList()->grid_view_cols == '')
+        {
+            return 3;
+        }
+        else
+        {
+            return getAllList()->grid_view_cols;
+        }
+    }
+    else
+    {
+        return 3;
+    }
+}
+
+function ItemPerPage()
+{
+    if(getAllList())
+    {
+        if(getAllList()->items_per_page == null || getAllList()->items_per_page == '' || getAllList()->items_per_page == '0')
+        {
+            return 10;
+        }
+        else
+        {
+            return getAllList()->items_per_page;
+        }
+    }
+    else
+    {
+        return 10;
+    }
+}
+function filterMinPrice()
+{
+    if(getAllList())
+    {
+        // if(getAllList()->min_price == '0')
+        // {
+        //     return null;
+        // }
+        return getAllList()->min_price;
+    }
+}
+function filterMaxPrice()
+{
+    if(getAllList())
+    {
+        if(getAllList()->max_price == '0')
+        {
+            return null;
+        }
+        return getAllList()->max_price;
+    }
+}
+function fileterSliderStep()
+{
+    if(getAllList())
+    {
+        if(getAllList()->price_slider_step == '0')
+        {
+            return null;
+        }
+        return getAllList()->price_slider_step;
+    }
+}
+function countListing()
+{
+    if(getAllList())
+    {
+        return getAllList()->count_categories_listings;
+    }
+}
+
+//------------------------------------------------------------ OTHER ----------------------------------------------------------------//
+
+function getAllOther()
+{
+    return json_decode(Setting::where('name','other')->pluck('value')->first());
+}
+function cookiesTime()
+{
+    if(getAllOther())
+    {
+        return getAllOther()->cookie_expiration;
+    }
+}
+function jsCode()
+{
+    if(getAllOther())
+    {
+        return getAllOther()->js_code;
     }
 }

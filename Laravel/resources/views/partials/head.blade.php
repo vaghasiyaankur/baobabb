@@ -35,6 +35,9 @@
 
     <!-- RESPONSIV CSS -->
     <link rel="stylesheet" href="{{ asset('css/responsiv.css') }}">
+
+    {{-- JAVASCTIPT CODE FROM DATABASE --}}
+    {{jsCode()}}
 </head>
 
 {{-- @dd(getAllStyle()) --}}

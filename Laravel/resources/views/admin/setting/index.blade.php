@@ -36,7 +36,7 @@
                      <tr class="tr_bg">
                         <th>ID</th>
                         <th>NAME</th>
-                        <th>VALUE</th>
+                        {{-- <th>VALUE</th> --}}
                         <th>ACTION</th>
                      </tr>
                   </thead>
@@ -73,7 +73,7 @@
             columns: [
                 {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
-                {data: 'value', name: 'value'},
+               //  {data: 'value', name: 'value'},
                 {data: 'action', name: 'action',orderable: true,searchable: true},
             ]
         });

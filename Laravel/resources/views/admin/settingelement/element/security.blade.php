@@ -19,9 +19,9 @@
                     <label class="form-check-label fw-bolder">
                         Enable CSRF Protection
                     </label>
+                    <div class="form-text">Preventing CSRF Requests. More information <a href="https://laravel.com/docs/master/csrf" target="_blank">here</a>.</div>
                 </div>
             </div>
-            <div class="form-text">Preventing CSRF Requests. More information <a href="https://laravel.com/docs/master/csrf" target="_blank">here</a>.</div>
         </div>
     </div>
 
@@ -46,9 +46,9 @@
                     <option value="{{ $key }}" {{ @$elementdata->captcha  == $key ? 'selected' : ''}}>{{ $co }}</option>
                     @endforeach
                 </select>
-            </div>
-            <div class="mb-3 col-md-12 recaptcha" style="display: block;">
-                Get reCAPTCHA site keys <a href="https://www.google.com/recaptcha/" target="_blank">here</a>.
+                <div class="mb-3 col-md-12 recaptcha" style="display: block;">
+                    Get reCAPTCHA site keys <a href="https://www.google.com/recaptcha/" target="_blank">here</a>.
+                </div>
             </div>
         </div>
 
@@ -66,9 +66,9 @@
                     <option value="{{ $key }}" {{ @$elementdata->recaptcha_version  == $key ? 'selected' : ''}}>{{ $rv }}</option>
                     @endforeach
                 </select>
+                <div class="form-text">Supported: "v2 (Checkbox)", "v3". Get more info <a href="https://developers.google.com/recaptcha/docs/versions" target="_blank">here</a>.
+                    <br><strong>Warning:</strong> By selecting the v3, you have to check browser compatibility... The "fetch()" function has compatibility issues with some browser like IE.</div>
             </div>
-            <div class="form-text">Supported: "v2 (Checkbox)", "v3". Get more info <a href="https://developers.google.com/recaptcha/docs/versions" target="_blank">here</a>.
-                <br><strong>Warning:</strong> By selecting the v3, you have to check browser compatibility... The "fetch()" function has compatibility issues with some browser like IE.</div>
         </div>
 
     </div>
@@ -98,10 +98,10 @@
                 <label for="recaptcha_skip_ips"
                     class="form-label custom-file-label font-size-17">reCAPTCHA Skip IPs</label>
                 <textarea class="form-control" name="recaptcha_skip_ips" id="recaptcha_skip_ips"  cols="50" rows="5" >@if (isset($elementdata)){{ @$elementdata->recaptcha_skip_ips }}@endif</textarea>
+                <div class="form-text">The reCAPTCHA challenge will be not taken account for these IPs address.
+                    Enter one IP address per line or separate them by comma, semicolon or space.</div>
             </div>  
         </div>
-        <div class="form-text">The reCAPTCHA challenge will be not taken account for these IPs address.
-            Enter one IP address per line or separate them by comma, semicolon or space.</div>
     </div>
 
     <div class="row title-setting-element">
@@ -121,9 +121,9 @@
                 <label class="form-check-label fw-bolder">
                     Open In Modal
                 </label>
+                <div class="form-text">Open the top login link into Modal</div>
             </div>
         </div>
-        <div class="form-text">Open the top login link into Modal</div>
     </div>
    </div>
 
@@ -139,8 +139,8 @@
                     <option value="{{ $key }}" {{ @$elementdata->login_max_attempts  == $key ? 'selected' : ''}}>{{ $ma }}</option>
                     @endforeach
                 </select>
+                <div class="form-text">The maximum number of attempts to allow</div>
             </div>
-            <div class="form-text">The maximum number of attempts to allow</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -153,8 +153,8 @@
                     <option value="{{ $key }}" {{ @$elementdata->login_decay_minutes  == $key ? 'selected' : ''}}>{{ $dm }}</option>
                     @endforeach
                 </select>
+                <div class="form-text">The number of minutes to throttle for</div>
             </div>
-            <div class="form-text">The number of minutes to throttle for</div>
         </div>
     </div>  
 
@@ -173,8 +173,8 @@
                 <input class="form-control custom-file-input" name="password_min_length" type="number" id="password_min_length"
                     id="customFileUpload"   min="0" step="1" max="100"
                     value="@if (isset($elementdata)){{ @$elementdata->password_min_length  }}@else 6 @endif">
+                    <div>Minimum characters required. Default is 6.</div>
             </div>
-            <div>Minimum characters required. Default is 6.</div>
         </div>
 
         <div class="col-md-6">
@@ -183,8 +183,8 @@
                 <input class="form-control custom-file-input" name="password_max_length" type="number" id="password_max_length"
                     id="customFileUpload" min="0" step="1" max="100"
                     value="@if (isset($elementdata)){{ @$elementdata->password_max_length  }}@else 60 @endif">
+                    <div>Maximum characters required. Default is 60.</div>
             </div>
-            <div>Maximum characters required. Default is 60.</div>
         </div>
     </div>
 
@@ -197,9 +197,9 @@
                     <label class="form-check-label fw-bolder">
                         Letters
                     </label>
+                    <div class="form-text">Require at least one letter...</div>
                 </div>
             </div>
-            <div class="form-text">Require at least one letter...</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -209,9 +209,9 @@
                     <label class="form-check-label fw-bolder">
                         Mixed Case
                     </label>
+                    <div class="form-text">Require at least one uppercase and one lowercase letter...</div>
                 </div>
             </div>
-            <div class="form-text">Require at least one uppercase and one lowercase letter...</div>
         </div>
     </div>
 
@@ -224,9 +224,9 @@
                     <label class="form-check-label fw-bolder">
                         Numbers
                     </label>
+                    <div class="form-text">Require at least one letter...</div>
                 </div>
             </div>
-            <div class="form-text">Require at least one letter...</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -236,9 +236,9 @@
                     <label class="form-check-label fw-bolder">
                         Symbols
                     </label>
+                    <div class="form-text">Require at least one symbol...</div>
                 </div>
             </div>
-            <div class="form-text">Require at least one symbol...</div>
         </div>
     </div>
     
@@ -251,9 +251,9 @@
                     <label class="form-check-label fw-bolder">
                         Uncompromised
                     </label>
+                    <div class="form-text">Internally, the Password rule object uses the <a href="https://en.wikipedia.org/wiki/K-anonymity" target="_blank">k-Anonymity</a> model to determine if a password has been leaked via the <a href="https://haveibeenpwned.com/" target="_blank">haveibeenpwned.com</a> service without sacrificing the user's privacy or security. By default, if a password appears at least once in a data leak, it will be considered compromised. You can customize this threshold in the <code>Uncompromised Threshold</code> field.</div>
                 </div>
             </div>
-            <div class="form-text">Internally, the Password rule object uses the <a href="https://en.wikipedia.org/wiki/K-anonymity" target="_blank">k-Anonymity</a> model to determine if a password has been leaked via the <a href="https://haveibeenpwned.com/" target="_blank">haveibeenpwned.com</a> service without sacrificing the user's privacy or security. By default, if a password appears at least once in a data leak, it will be considered compromised. You can customize this threshold in the <code>Uncompromised Threshold</code> field.</div>
         </div>
 
         <div class="col-md-6">
@@ -262,15 +262,15 @@
                 <input class="form-control custom-file-input" name="password_uncompromised_threshold" type="number" id="password_uncompromised_threshold"
                     id="customFileUpload"  min="0" step="1" max="10"
                     value="@if (isset($elementdata)){{ @$elementdata->password_uncompromised_threshold  }}@else 0 @endif">
+                    <div>Number of time less than which the password can be appeared in the same data leak.</div>
             </div>
-            <div>Number of time less than which the password can be appeared in the same data leak.</div>
         </div>
     </div>
 
     <div class="row title-setting-element">
         <div class="col-md-6">
             <h3><div class="mb-3 col-md-6">
-                <h3>Password (Validator)</h3>
+                <h3>Email Addresses (Validator)</h3>
             </div></h3>
         </div>
     </div>
@@ -284,9 +284,9 @@
                     <label class="form-check-label fw-bolder">
                         RFC
                     </label>
+                    <div class="form-text">Uses standard RFC-like email validation.</div>
                 </div>
             </div>
-            <div class="form-text">Uses standard RFC-like email validation.</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -296,9 +296,9 @@
                     <label class="form-check-label fw-bolder">
                         Strict
                     </label>
+                    <div class="form-text">Uses RFC-like validation that will fail when warnings* are found.</div>
                 </div>
             </div>
-            <div class="form-text">Uses RFC-like validation that will fail when warnings* are found.</div>
         </div>
     </div>
 
@@ -312,9 +312,9 @@
                     <label class="form-check-label fw-bolder">
                         DNS
                     </label>
+                    <div class="form-text">Will check if there are DNS records that signal that the server accepts emails. This does not entail that the email exists. NOTE: Requires the PHP <code>intl</code> extension.</div>
                 </div>
             </div>
-            <div class="form-text">Will check if there are DNS records that signal that the server accepts emails. This does not entail that the email exists. NOTE: Requires the PHP <code>intl</code> extension.</div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
@@ -324,9 +324,9 @@
                     <label class="form-check-label fw-bolder">
                         Spoof
                     </label>
+                    <div class="form-text">Will check for multi-utf-8 chars that can signal an erroneous email name. NOTE: Requires the PHP <code>intl</code> extension.</div>
                 </div>
             </div>
-            <div class="form-text">Will check for multi-utf-8 chars that can signal an erroneous email name. NOTE: Requires the PHP <code>intl</code> extension.</div>
         </div>
     </div>
 
@@ -339,9 +339,9 @@
                     <label class="form-check-label fw-bolder">
                         Filter
                     </label>
+                    <div class="form-text">Uses PHP's <code>filter_var()</code> function.</div>
                 </div>
             </div>
-            <div class="form-text">Uses PHP's <code>filter_var()</code> function.</div>
         </div>
     </div>
     <div class="row mt-4">

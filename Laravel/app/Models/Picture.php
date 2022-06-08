@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Picture extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id',
+        'post_id',
+        'filename',
+        'position',
+        'active',
+    ];
+
 }

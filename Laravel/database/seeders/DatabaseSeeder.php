@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
             LanguageSeeder::class,
             PageSeeder::class,
             SettingSeeder::class,
-            AdvertisingSeeder::class
+            AdvertisingSeeder::class,
+            PictureSeeder::class
         ]);
     }
 }
