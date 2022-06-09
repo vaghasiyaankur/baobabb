@@ -169,6 +169,27 @@
                 </ul>
             @endcanany
             @can('setting-element-list')
+            <ul class="metismenu list-unstyled" id="side-menu34">
+                <li class="menu-title" data-key="t-dashboards">Ads</li>
+                <li>
+                    <a href="{{ route('admin.setting.element.index', ['element' => 'ads']) }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Ads</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.setting.element.index', ['element' => 'location']) }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Location</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.setting.element.index', ['element' => 'phoneVerification']) }}">
+                        <i class="icon nav-icon" data-feather="monitor"></i>
+                        <span class="menu-item" data-key="t-sales">Phone Verification</span>
+                    </a>
+                </li>
+            </ul>
                 <ul class="metismenu list-unstyled" id="side-menu34">
                     <li class="menu-title" data-key="t-dashboards">General</li>
                     <li>
@@ -247,6 +268,12 @@
                         <a href="{{ route('admin.advertising.index') }}">
                             <i class="icon nav-icon" data-feather="monitor"></i>
                             <span class="menu-item" data-key="t-sales">Advertising</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.blacklist.index') }}">
+                            <i class="icon nav-icon" data-feather="monitor"></i>
+                            <span class="menu-item" data-key="t-sales">BlackList</span>
                         </a>
                     </li>
                     <li>

@@ -11,6 +11,7 @@ class Product extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
+        'seller_id',
         'belongs_to',
         'name',
         'type',
@@ -43,9 +44,9 @@ class Product extends Model
         return $this->belongsTo(Category::class,'category_id','id');
     }
 
-    public function user()
+    public function seller()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class,'seller_id','id');
     }
 
     public function currency()
