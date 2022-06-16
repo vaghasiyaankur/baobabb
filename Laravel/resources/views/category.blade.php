@@ -120,9 +120,9 @@
                         <label class="form-check-label" for="new">New</label>
                     </div>
                     <div class="form-check pb-1">
-                        <input class="form-check-input rounded-pill fs-6 filter-data" id="refurbshed" name="condition"
-                            type="radio" value="refurbshed" @if ($condition == 'refurbshed') checked @endif>
-                        <label class="form-check-label" for="refurbshed">Refurbshed</label>
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="refurbished" name="condition"
+                            type="radio" value="refurbished" @if ($condition == 'refurbished') checked @endif>
+                        <label class="form-check-label" for="refurbished">Refurbished</label>
                     </div>
                     <div class="form-check pb-1">
                         <input class="form-check-input rounded-pill fs-6 filter-data" id="opportunity" name="condition"

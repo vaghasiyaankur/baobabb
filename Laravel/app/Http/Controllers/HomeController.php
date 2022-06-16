@@ -135,7 +135,7 @@ class HomeController extends Controller
         if($request->has('condition'))
         {
             $condition = $request->condition;
-            $products = $products->where('conditon',$condition);
+            $products = $products->where('condition',$condition);
         }
         $products = $this->paginate($products);
         // $products->paginate(10);
@@ -179,11 +179,12 @@ class HomeController extends Controller
     public function singleSeller($id)
     {
         $seller = User::where('id',$id)->with('countries')->first();
+
         // dd($seller);
         if($seller)
         {
             $products = Product::where('seller_id',$seller->id)->whereDate('expire','>=', Carbon::today())->with('pictures')->with('category')->with('currency')->get();
-            $ratings = Rating::where('user_to',auth()->user()->id)->where('parent_id',null)->with('to_user')->with('from_user')->get();
+            $ratings = Rating::where('user_to',$seller->id)->where('parent_id',null)->with('to_user')->with('from_user')->get();
             return view('single_seller',compact('seller','products','ratings'));
         }
         else
@@ -200,6 +201,7 @@ class HomeController extends Controller
 
 
         $categories = Category::all();
+        return redirect()->route('category',$category->slug);
         return view('category',compact('products','category','categories'));
     }
 

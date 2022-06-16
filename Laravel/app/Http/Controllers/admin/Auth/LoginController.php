@@ -55,7 +55,7 @@ class LoginController extends Controller
             }
         }
   
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        return back()->with('error','Oppes! You have entered invalid credentials');
 	}
 	
 	public function sendResetLinkEmail(Request $request)

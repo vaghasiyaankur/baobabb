@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('street')->nullable();
             $table->string('timezone')->nullable();
             $table->string('role_id')->nullable();
-            $table->enum('status',[0,1])->default(0);
+            $table->enum('status',[0,1])->default(1);
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
             $table->string('linkedin_id')->nullable();

@@ -79,7 +79,7 @@
                     @endif
                 <div class="avtar-tel py-3 px-3 mt-2">
                     <span class="text-white">
-                        <span>+232 00 000XXX</span>
+                        <span>{{$seller->phone}}</span>
                         <p class="m-0">{{ __('messages.click_reveal_phone_number')}}</p>
                     </span>
                 </div>
@@ -157,8 +157,8 @@
                     </h6>
                 </div>
                 <div class="avtar_r_btns d-flex align-items-center py-3">
-                    <div class="user_r_btn_ me-5">
-                        <a href="javascript:;">User Ads (13)</a>
+                    <div class="user_r_btn_ me-5 text-center">
+                        <a href="javascript:;" >User Ads (<?php echo App\Models\Product::where('seller_id',$seller->id)->count(); ?>)</a>
                     </div>
                     <div class="user_r_btn_ text-center">
                         <a href="javascript:;">Follow</a>
@@ -288,10 +288,10 @@
             <h4 class="fw-bold">{{ __('messages.more_ads')}}</h4>
         </div>
         <div class="row">
-            @foreach ($user_products as $pr)
-                @if ($pr->id != $product->id)
+            @foreach ($user_products as $product)
                     <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 card_w_4 ">
-                        <div class="card-box">
+                        @include('product-block')
+                        {{-- <div class="card-box">
                             <img src="{{ asset($pr->image) }}" class="img-fluid card-img_height" alt="card-img">
                             <div class="card-inner bg-white">
                                 <div class="flex-wrap d-flex justify-content-between pt-3 pb-2 text-muted">
@@ -307,16 +307,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
-                @endif
             @endforeach
 
             <h4 class="fw-bold">{{ __('messages.similar_ads')}}</h4>
-            @foreach ($s_products as $pr)
-                @if ($pr->id != $product->id)
+            @foreach ($s_products as $product)
                     <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 ">
-                        <div class="card-box">
+                       @include('product-block')
+                        {{-- <div class="card-box">
                             <img src="{{ asset($pr->image) }}" class="img-fluid" alt="card-img">
                             <div class="card-inner bg-white">
                                 <div class="flex-wrap d-flex justify-content-between pt-3 pb-2 text-muted">
@@ -332,9 +331,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
-                @endif
             @endforeach
         </div>
     </div>

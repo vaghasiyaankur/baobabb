@@ -1,6 +1,7 @@
 @extends('user.layouts.app')
 @section('content')
 
+
 <div class="card card-h-100">
    <div class="card-header justify-content-between d-flex align-items-center">
       <h4 class="card-title">User Edit</h4>
@@ -29,8 +30,9 @@
 
              <div class="col-md-6">
                <div class="mb-3">
-                  <label for="formFile" class="form-label custom-file-label font-size-17">phone</label>
-                  <input class="form-control custom-file-input" value="@if($user->phone){{$user->phone}}@endif" name="phone" type="number" id="phone" required>
+                  <label for="phone" class="form-label custom-file-label font-size-17">phone</label>
+                  {{-- <input id="phone" type="tel"> --}}
+                  <input class="form-control custom-file-input" value="@if($user->phone){{$user->phone}}@endif" name="phone" type="tel" id="phone" required>
                </div>
             </div>
 
@@ -44,48 +46,48 @@
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Facebook</label>
-                  <input class="form-control custom-file-input" value="@if($user->facebook){{$user->facebook}}@endif" name="facebook" type="text" id="facebook" required>
+                  <input class="form-control custom-file-input" value="@if($user->facebook){{$user->facebook}}@endif" name="facebook" type="text" id="facebook">
                </div>
             </div>
 
             <div class="col-md-6">
                 <div class="mb-3">
                    <label for="formFile" class="form-label custom-file-label font-size-17">Twitter</label>
-                   <input class="form-control custom-file-input" name="twitter" value="@if($user->twitter){{$user->twitter}}@endif" type="text" id="twitter" required>
+                   <input class="form-control custom-file-input" name="twitter" value="@if($user->twitter){{$user->twitter}}@endif" type="text" id="twitter">
                 </div>
              </div>
              <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Youtube</label>
-                  <input class="form-control custom-file-input" value="@if($user->youtube){{$user->youtube}}@endif" name="youtube" type="text" id="youtube" required>
+                  <input class="form-control custom-file-input" value="@if($user->youtube){{$user->youtube}}@endif" name="youtube" type="text" id="youtube">
                </div>
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Linkedin</label>
-                  <input class="form-control custom-file-input" value="@if($user->linkedin){{$user->linkedin}}@endif" name="linkedin" type="text" id="linkedin" required>
+                  <input class="form-control custom-file-input" value="@if($user->linkedin){{$user->linkedin}}@endif" name="linkedin" type="text" id="linkedin">
                </div>
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Instagram</label>
-                  <input class="form-control custom-file-input" value="@if($user->instagram){{$user->instagram}}@endif" name="instagram" type="text" id="instagram" required>
+                  <input class="form-control custom-file-input" value="@if($user->instagram){{$user->instagram}}@endif" name="instagram" type="text" id="instagram">
                </div>
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Website</label>
-                  <input class="form-control custom-file-input" value="@if($user->website){{$user->website}}@endif" name="website" type="text" id="website" required>
+                  <input class="form-control custom-file-input" value="@if($user->website){{$user->website}}@endif" name="website" type="text" id="website">
                </div>
             </div>
 
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Description</label>
-                  <input class="form-control custom-file-input" value="@if($user->description){{$user->description}}@endif" name="description" type="text" id="description" required>
+                  <input class="form-control custom-file-input" value="@if($user->description){{$user->description}}@endif" name="description" type="text" id="description">
                </div>
             </div>
 
@@ -211,5 +213,70 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
     }
 </script>
 
+<script>
+   
+var telInput = $("#phone"),
+  errorMsg = $("#error-msg"),
+  validMsg = $("#valid-msg");
 
+// initialise plugin
+telInput.intlTelInput({
+
+  allowExtensions: true,
+  formatOnDisplay: true,
+  autoFormat: true,
+  autoHideDialCode: true,
+  autoPlaceholder: true,
+  defaultCountry: "auto",
+  ipinfoToken: "yolo",
+
+  nationalMode: false,
+  numberType: "MOBILE",
+  //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+  preferredCountries: ['sa', 'ae', 'qa','om','bh','kw','ma'],
+  preventInvalidNumbers: true,
+  separateDialCode: true,
+  initialCountry: "auto",
+  geoIpLookup: function(callback) {
+  $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+    var countryCode = (resp && resp.country) ? resp.country : "";
+    callback(countryCode);
+  });
+},
+   utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"
+});
+
+var reset = function() {
+  telInput.removeClass("error");
+  errorMsg.addClass("hide");
+  validMsg.addClass("hide");
+};
+
+// on blur: validate
+telInput.blur(function() {
+  reset();
+  if ($.trim(telInput.val())) {
+    if (telInput.intlTelInput("isValidNumber")) {
+      validMsg.removeClass("hide");
+    } else {
+      telInput.addClass("error");
+      errorMsg.removeClass("hide");
+    }
+  }
+});
+
+// on keyup / change flag: reset
+telInput.on("keyup change", reset);
+
+
+
+</script>
+@endpush
+
+@push('head')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/css/intlTelInput.css" rel="stylesheet" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"></script>
 @endpush

@@ -113,27 +113,9 @@
         </div>
         
         <div class="row mt-4 ">
-            @foreach ($products as $pr)
+            @foreach ($products as $product)
                 <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 ">
-                    <div class="card-box shadow ">
-                        <img src="{{ asset($pr->image) }}" class="img-fluid" alt="card-img">
-                        <div class="card-inner bg-white">
-                            <div class="d-flex justify-content-between pt-3 pb-2 text-muted">
-                                <span><i class="fa-solid fa-bullseye pe-2"></i>Appareils elec..</span>
-                                <span><i class="fa-solid fa-location-dot pe-2"></i>{{ $pr->city }}</span>
-                            </div>
-                            <a href="{{ route('product', $pr->slug) }}">
-                                <p class="m-0 fw-bold pb-2">{{ $pr->name }}</p>
-                            </a>
-                            <div class="d-flex flex-wrap justify-content-between pb-2">
-                                <p class="m-0 text-danger fw-bold">{{ $pr->price }}</p>
-                                <div class="icon">
-                                    <a class="wishlist-btn" href="javascript:;" data-id="{{ $pr->id }}"><i
-                                            class="fa-regular fa-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('product-block')
                 </div>
             @endforeach
         </div>

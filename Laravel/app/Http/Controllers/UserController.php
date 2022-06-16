@@ -24,7 +24,7 @@ class UserController extends Controller
         // dd($id); 
         $products = Product::where('seller_id',auth()->user()->id)->whereDate('expire','>=', Carbon::today())->count();
         $wishlist = Wishlist::where('user_id',auth()->user()->id)->count();
-        $rating = round(Rating::where('parent_id',null)->avg('rate'),2);
+        $rating = round(Rating::where('user_to',auth()->user()->id)->where('parent_id',null)->avg('rate'),2);
         return view('user.dashboard',compact('products','wishlist','rating'));
     }
 

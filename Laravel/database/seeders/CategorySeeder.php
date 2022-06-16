@@ -20,43 +20,43 @@ class CategorySeeder extends Seeder
                 "id" => 1,
                 "name" => "Electronic appliances",
                 "slug" => "electronic-appliances",
-                "icon" => "elec.png",
-                "image" => "elec.png"
+                "icon" => "assets/image/elec.png",
+                "image" => "assets/image/elec.png"
             ],
             [
                 "id" => 2,
                 "name" => "Appliances",
                 "slug" => "appliances",
-                "icon" => "elec.png",
-                "image" => "elec.png"
+                "icon" => "assets/image/appl.png",
+                "image" => "assets/image/appl.png"
             ],
             [
                 "id" => 3,
                 "name" => "Housing for sell",
                 "slug" => "housing-for-sell",
-                "icon" => "elec.png",
-                "image" => "elec.png"
+                "icon" => "assets/image/house.png",
+                "image" => "assets/image/house.png"
             ],
             [
                 "id" => 4,
                 "name" => "Televisions",
                 "slug" => "televisions",
-                "icon" => "elec.png",
-                "image" => "elec.png"
+                "icon" => "assets/image/tv.png",
+                "image" => "assets/image/tv.png"
             ],
             [
                 "id" => 5,
                 "name" => "Clothes",
                 "slug" => "clothes",
-                "icon" => "elec.png",
-                "image" => "elec.png"
+                "icon" => "assets/image/cloth.png",
+                "image" => "assets/image/cloth.png"
             ],
             [
                 "id" => 6,
                 "name" => "Cellphones & Tablets",
                 "slug" => "cellphones-tablets",
-                "icon" => "elec.png",
-                "image" => "elec.png"
+                "icon" => "assets/image/phone.png",
+                "image" => "assets/image/phone.png"
             ]
         ]);
     }

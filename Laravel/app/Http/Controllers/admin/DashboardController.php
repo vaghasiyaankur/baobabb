@@ -23,7 +23,7 @@ class DashboardController extends Controller
     {
         $users = User::where('is_admin','!=','1')->orderBy('created_at','DESC')->with('countries')->take(10)->get();
         // dd($users);
-        $products = Product::orderBy('created_at','DESC')->take(10)->get();
+        $products = Product::orderBy('created_at','DESC')->take(10)->with('pictures')->get();
         return view ('admin.dashboard',compact('users','products'));
     }
 

@@ -176,29 +176,21 @@ class ProductController extends Controller
         // dd($request);
         $product = Product::find($id);
         $gallery = array();
-        $img = new ImageController;
-        if($request->image[0])
-        {
-            $product->image = $img->move($request->image[0]);
-        }
+        $position = 0;
+        $imgmove = new ImageController;
+        // $image = $img->move($request->image);
         if($request->image)
         {
-            for($i = 1; $i < count($request->image); $i++)
-            {
-                $g = $img->move($request->image[$i]);
-                array_push($gallery, $g);
-            }
+            Picture::where('post_id',$product->id)->delete();
         }
-        if($request->gallery)
+        foreach($request->image as $i)
         {
-            foreach($request->gallery as $i)
-            {
-                $g = $img->move($i);
-                // print_r($i);
-                array_push($gallery, $g);
-            }
-            // dd($gallery);
-            $product->gallery = json_encode($gallery);
+            $img = new Picture;
+            $img->filename = $imgmove->move($i);
+            $img->post_id = $product->id;
+            $img->position = $position;
+            $img->save();
+            $position++;
         }
         $product->name = $request->name;
         $product->category_id = $request->category_id;
@@ -209,6 +201,7 @@ class ProductController extends Controller
         $product->country = $country->name;
         $product->state = $request->state;
         $product->city = $request->city;
+        $product->condition = $request->condition;
         $product->cash = $request->currency;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;

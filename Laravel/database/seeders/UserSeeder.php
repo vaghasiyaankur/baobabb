@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
             'country' => 1,
             'status' => '1',
             'role_id' => '1',
+            'phone' => '+911234567895',
             'avatar' => 'assets/image/avatar20-05-2022-04-17.png',
             'email_verified_at' => '2022-05-01 14:45:23'
         ]);

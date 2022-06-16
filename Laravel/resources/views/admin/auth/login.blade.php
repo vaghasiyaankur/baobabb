@@ -12,16 +12,13 @@
     <link rel="icon" type="image/png" sizes="16x16"
         href="https://demo.laraclassifier.com/storage/app/default/ico/favicon.png?v=1">
 
-    <title>Login :: LaraClassifier Admin</title>
+    <title>Login :: Baobabb Admin</title>
 
 
     <meta name="csrf-token" content="NUUNsNpZMcwrl2NmVpOrMKHokIs26uSkffq8ct2F" />
 
 
     <base target="_top" />
-
-    <link rel="canonical" href="https://demo.laraclassifier.com/admin/login" />
-
 
     <link href="https://demo.laraclassifier.com/css/admin.css?id=23251a1b537c4ce15d7b" rel="stylesheet">
 
@@ -74,7 +71,11 @@
                     <hr class="border-0 bg-secondary">
                 </div>
 
-
+                @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
 
 
                 <div id="loginform">

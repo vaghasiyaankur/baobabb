@@ -222,6 +222,10 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
             isValid = false;
         }
         if (isValid == true) {
+            $("#login_alert_error").html("")
+            $("#login_alert_success").html("")
+            $('#login_btn').prop('disabled', true);
+            $('#login_btn').html('<i class="fa fa-spinner fa-spin"></i>');
             $.ajax({
                 url: "{{ url('/login') }}",
                 type: "POST",
@@ -232,7 +236,8 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                 },
                 error: function($err) {
                     $("#login_alert_error").html("The credentials are invalid.")
-                    console.log($err)
+                    $('#login_btn').prop('disabled', false);
+                    $('#login_btn').html('LOGIN');
                     // Swal.fire({
                     //     icon: 'error',
                     //     title: 'credentials not match',
@@ -285,6 +290,11 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
             isValid = false;
         }
         if (isValid == true) {
+            $("#register_alert_success").html("")
+            $("#register_alert_error").html("")
+            $('#register_btn').prop('disabled', true);
+            $('#register_btn').addClass('buttonload');
+            $('#register_btn').html('<i class="fa fa-spinner fa-spin"></i>');
             $.ajax({
                 url: "{{ route('register') }}",
                 type: "POST",
@@ -297,6 +307,8 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                 },
                 error: function($err) {
                     $("#register_alert_error").html("Failed.")
+                    $('#register_btn').prop('disabled', false);
+                    $('#register_btn').html('REGISTER');
                     // Swal.fire({
                     //     icon: 'error',
                     //     title: 'failed',
@@ -351,6 +363,9 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
         } else if (!emailReg.test(mail)) {
             $("#forget_email").siblings(".error").html("Please Enter Valid Email")
         } else {
+            $("#forgor_sent").html("")
+            $('#forget-email-submit').prop('disabled', true);
+            $('#forget-email-submit').html('<i class="fa fa-spinner fa-spin"></i>');
             $.ajax({
                 url: "{{ route('user.forgot.password') }}",
                 type: "POST",
@@ -359,6 +374,8 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                     _token: '{{ csrf_token() }}'
                 },
                 error: function($err) {
+                    $('#forget-email-submit').prop('disabled', false);
+                    $('#forget-email-submit').html('RECOVER');
                     var error = $err['responseJSON']['errors']
                     console.log($err)
                     if (error['email']) {
@@ -366,6 +383,9 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                     }
                 },
                 success: function(result) {
+                    $('#forget-email-submit').prop('disabled', false);
+                    $('#forget-email-submit').html('Submit');
+                    $("#forget_email").siblings(".error").html("")
                     $("#forgor_sent").html("Please Check your mail.")
                     // console.log(result)
                 }
@@ -378,11 +398,10 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
 {{-- add product in wishlist --}}
 <script>
     $(document).ready(function() {
+        // alert();
         $('.wishlist-btn').on('click', function() {
-            // alert($(this).attr())
             var id = $(this).attr("data-id");
-            console.log($(this).attr("data-id"));
-
+            var attr = $(this).children('i')
             $.ajax({
                 url: "{{ route('user.wishlist.store') }}",
                 type: "POST",
@@ -394,12 +413,25 @@ src='https://maps.googleapis.com/maps/api/js?libraries=places&v=3&language=En&ke
                     console.log(error)
                 },
                 success: function(result) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Product Added to Wishlist',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+                    console.log(result)
+                    if(result == 0)
+                    {
+                        // console.log(attr)
+                        attr.removeClass('fa-solid text-danger fa-heart')
+                        attr.addClass("fa-regular fa-heart")
+                    }
+                    else if(result == 1)
+                    {
+                        // console.log(1)
+                        attr.removeClass('fa-regular fa-heart')
+                        attr.addClass("fa-solid text-danger fa-heart")
+                    }
+                    // Swal.fire({
+                    //     icon: 'success',
+                    //     title: 'Product Added to Wishlist',
+                    //     showConfirmButton: false,
+                    //     timer: 1500
+                    // })
                 }
             });
 

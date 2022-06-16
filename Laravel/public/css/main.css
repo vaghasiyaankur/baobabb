@@ -1221,3 +1221,8 @@ input[type=range]:focus::-ms-fill-upper {
 .checked{
   font-weight: 600 !important;
 }
+
+/* For telephone code */
+.intl-tel-input{
+  display: block !important;
+}

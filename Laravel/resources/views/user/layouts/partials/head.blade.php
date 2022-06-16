@@ -38,4 +38,6 @@
         var base_url = '{{ url("/") }}';
     </script>
 
+    @stack('head')
+
 </head>
