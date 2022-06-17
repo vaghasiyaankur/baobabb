@@ -27,41 +27,47 @@
                     </div>
                     <div class="col-lg-3 mb-3 mb-lg-0">
                         <div class="details-panel">
-                            <div class="details-box d-flex justify-content-between align-items-center">
-                                <div class="details-text fw-bold">
-                                    <h2 class="fw-bold mb-0">{{$products}}</h2>
-                                    <span>{{ __('messages.add_on_platform')}}</span>
+                            <a class="user-box" href="{{route('user.product.index')}}">
+                                <div class="details-box d-flex justify-content-between align-items-center">
+                                    <div class="details-text fw-bold">
+                                        <h2 class="fw-bold mb-0">{{$products}}</h2>
+                                        <span>{{ __('messages.add_on_platform')}}</span>
+                                    </div>
+                                    <div class="details-img">
+                                        <i class="fa-solid fa-square-plus fs-1"></i>
+                                    </div>
                                 </div>
-                                <div class="details-img">
-                                    <i class="fa-solid fa-square-plus fs-1"></i>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3 mb-lg-0">
                         <div class="details-panel">
-                            <div class="details-box d-flex justify-content-between align-items-center">
-                                <div class="details-text fw-bold">
-                                    <h2 class="fw-bold mb-0">{{$rating}} / 5</h2>
-                                    <span>{{ __('messages.your_rating')}}</span>
+                            <a class="user-box" href="{{route('user.feedback.show')}}">
+                                <div class="details-box d-flex justify-content-between align-items-center">
+                                    <div class="details-text fw-bold">
+                                        <h2 class="fw-bold mb-0">{{$rating}} / 5</h2>
+                                        <span>{{ __('messages.your_rating')}}</span>
+                                    </div>
+                                    <div class="details-img">
+                                        <i class="fa-solid fa-star fs-1"></i>
+                                    </div>
                                 </div>
-                                <div class="details-img">
-                                    <i class="fa-solid fa-star fs-1"></i>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3 mb-lg-0">
                         <div class="details-panel">
-                            <div class="details-box d-flex justify-content-between align-items-center">
-                                <div class="details-text fw-bold">
-                                    <h2 class="fw-bold mb-0">{{$wishlist}}</h2>
-                                    <span>{{ __('messages.favourite_ads')}}</span>
+                            <a class="user-box" href="{{route('user.wishlist.index')}}">
+                                <div class="details-box d-flex justify-content-between align-items-center">
+                                    <div class="details-text fw-bold">
+                                        <h2 class="fw-bold mb-0">{{$wishlist}}</h2>
+                                        <span>{{ __('messages.favourite_ads')}}</span>
+                                    </div>
+                                    <div class="details-img">
+                                        <i class="fa-solid fa-bookmark fs-1"></i>
+                                    </div>
                                 </div>
-                                <div class="details-img">
-                                    <i class="fa-solid fa-bookmark fs-1"></i>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>

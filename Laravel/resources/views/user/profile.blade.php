@@ -31,6 +31,7 @@
              <div class="col-md-6">
                <div class="mb-3">
                   <label for="phone" class="form-label custom-file-label font-size-17">phone</label>
+                  {{-- <input type="text" id="mobile_code" class="form-control" placeholder="Phone Number" name="phone" value="@if($user->phone){{$user->phone}}@endif"> --}}
                   {{-- <input id="phone" type="tel"> --}}
                   <input class="form-control custom-file-input" value="@if($user->phone){{$user->phone}}@endif" name="phone" type="tel" id="phone" required>
                </div>
@@ -94,7 +95,7 @@
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Location</label>
-                  <input type="text" name="autocomplete" id="autocomplete" class="form-control" placeholder="Select Location">
+                  <input type="text" name="autocomplete" id="autocomplete" class="form-control" placeholder="Select Location" value="@if(isset($user->location)){{$user->location}}@endif">
                   <input type="hidden" name="latitude" id="latitude" class="form-control">
                   <input type="hidden" name="longitude" id="longitude" class="form-control">
                </div>
@@ -269,8 +270,38 @@ telInput.blur(function() {
 telInput.on("keyup change", reset);
 
 
+$('.selected-dial-code').change(function(){
+   alert()
+})
+
 
 </script>
+
+<script>
+   $("#avatar").change(function() {
+        readURL(this);
+        });
+
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+            $('#viewer').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            alert('select a file to see preview');
+            $('#viewer').attr('src', '');
+        }
+        }
+</script>
+
+{{-- <script>
+   // -----Country Code Selection
+   $("#mobile_code").intlTelInput({
+  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/js/utils.js"
+});
+</script> --}}
 @endpush
 
 @push('head')

@@ -29,7 +29,7 @@
       <div class="col-lg-12">
          <div class="card">
             <div class="card-header justify-content-between d-flex align-items-right">
-               <a href="{{route('admin.permission.create')}}" class="btn btn-success">Add New Permission <i class="mdi mdi-arrow-right align-middle"></i></a>
+               <a href="{{route('admin.permission.create')}}" class="btn btn-success">Add New Permission </a>
             </div>
             <!-- end card header -->
             <div class="card-body">

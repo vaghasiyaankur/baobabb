@@ -17,4 +17,10 @@ class Picture extends Model
         'active',
     ];
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class,'post_id','id');
+    }
+
+
 }

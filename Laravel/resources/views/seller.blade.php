@@ -27,8 +27,14 @@
                     <a href="{{route('singleSeller',$seller->id)}}">
                         <div class="avtar-text p-left">
                             <h5>{{$seller->name}}</h5>
-                            <i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i
-                            class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-light"></i>
+                            <?php $rating = round(App\Models\Rating::where('user_to',$seller->id)->where('parent_id',null)->avg('rate'),1); ?>
+                            <div class="ratting">
+                                <span class="fa-star fa-regular @if($rating >= 1) checked @endif"></span>
+                                <span class="fa-star fa-regular @if($rating >= 2) checked @endif"></span>
+                                <span class="fa-star fa-regular @if($rating >= 3) checked @endif"></span>
+                                <span class="fa-star fa-regular @if($rating >= 4) checked @endif"></span>
+                                <span class="fa-star fa-regular @if($rating >= 5) checked @endif"></span>
+                            </div>
                             <h6 class="text-secondary pt-2"><i class="fa-solid fa-circle text-light fs-6"></i> HORSLIGNE
                             </h6>
                         </div>

@@ -32,8 +32,8 @@ class FieldController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                         $btn = '<div class="d-flex">';
-                        $btn .= '<a href="/admin/custom/field/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
-                        $btn .= '<form method="POST" action="/admin/custom/field/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
+                        $btn .= '<a href="/admin/custom/field/'.$row->id.'/edit" class="edit btn btn-light btn-sm m-1">Edit</a>';
+                        $btn .= '<form method="POST" action="/admin/custom/field/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-light btn-sm m-1">Delete</button></form>';
                         if($row->type == 'checkbox' || $row->type == 'checkbox(multiple)' || $row->type == 'selectbox' || $row->type == 'radio')
                         {
                             $btn .= '<a href="/admin/custom/field/'.$row->id.'/option" class="edit btn btn-danger btn-sm m-1">Option</a>';

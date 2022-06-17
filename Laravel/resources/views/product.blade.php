@@ -5,11 +5,9 @@
    <section class="search-listing py_5 all-categoriess_">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb  mb-4 pt-4">
-            <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-muted">Accueil</a></li>
-            <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-muted">Prestations de
-                    services</a></li>
-            <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-muted">Artisant / Metieers
-                    specialises </a></li>
+            <li class="breadcrumb-item"><a href="{{route('home')}}" class="text-decoration-none text-muted">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('category',$product->category->slug)}}" class="text-decoration-none text-muted">{{$product->category->name}}</a></li>
+            <li class="breadcrumb-item">{{$product->name}}</li>
         </ol>
     </nav>
 
@@ -149,8 +147,14 @@
                     </div>
                     <div class="avtar-text">
                         <a href="{{route('singleSeller',$seller->id)}}"><h5>{{$seller->name}}</h5></a>
-                        <i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i
-                            class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star"></i>
+                        <?php $rating = round(App\Models\Rating::where('user_to',$seller->id)->where('parent_id',null)->avg('rate'),1); ?>
+                        <div class="ratting">
+                            <span class="fa-star fa-regular @if($rating >= 1) checked @endif"></span>
+                            <span class="fa-star fa-regular @if($rating >= 2) checked @endif"></span>
+                            <span class="fa-star fa-regular @if($rating >= 3) checked @endif"></span>
+                            <span class="fa-star fa-regular @if($rating >= 4) checked @endif"></span>
+                            <span class="fa-star fa-regular @if($rating >= 5) checked @endif"></span>
+                        </div>
                     </div>
                     <h6 class="text-muted ms-3" style="align-self: end;
                     margin-bottom: 18px;"><i class="fa-solid fa-circle"></i> OFFLINE

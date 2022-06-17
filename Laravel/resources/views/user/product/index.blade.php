@@ -15,7 +15,7 @@
       <div class="col-lg-12">
          <div class="card">
             <div class="card-header justify-content-between d-flex align-items-right">
-               <a href="{{route('user.product.create')}}" class="btn btn-success">{{ __('messages.create_new_ad')}} <i class="mdi mdi-arrow-right align-middle"></i></a>
+               <a href="{{route('user.product.create')}}" class="btn btn-success">{{ __('messages.create_new_ad')}}</a>
             </div>
             <!-- end card header -->
             <div class="card-body">

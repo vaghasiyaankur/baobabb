@@ -36,9 +36,11 @@ class ProductSeeder extends Seeder
                 "sale_price" => 4500,
                 "type_of" => "sell",
                 "cash" => "1",
-                "condition" => "Second hand",
+                "condition" => "second_hand",
                 "created_at" => "2022-05-01 14:34:20",
-                "expire" => '2022-07-21 17:30:02'
+                "expire" => '2022-07-21 17:30:02',
+                'location' => 'Dehradun, Uttarakhand, India',
+                'tags' => 'camera'
             ],
             [
                 "category_id" => 6,
@@ -59,9 +61,11 @@ class ProductSeeder extends Seeder
                 "sale_price" => 4500,
                 "type_of" => "sell",
                 "cash" => "1",
-                "condition" => "Second hand",
+                "condition" => "second_hand",
                 "created_at" => "2022-05-01 14:34:20",
-                "expire" => '2022-07-21 17:30:02'
+                "expire" => '2022-07-21 17:30:02',
+                'location' => 'Dehradun, Uttarakhand, India',
+                'tags' => 'camera'
             ],
             [
                 "category_id" => 1,
@@ -81,9 +85,11 @@ class ProductSeeder extends Seeder
                 "sale_price" => 4500,
                 "type_of" => "sell",
                 "cash" => "1",
-                "condition" => "Second hand",
+                "condition" => "second_hand",
                 "created_at" => "2022-05-01 14:34:20",
-                "expire" => '2022-07-21 17:30:02'
+                "expire" => '2022-07-21 17:30:02',
+                'location' => 'Dehradun, Uttarakhand, India',
+                'tags' => 'camera'
             ],
             [
                 "category_id" => 1,
@@ -99,13 +105,15 @@ class ProductSeeder extends Seeder
                 "long" => 72.83106070000001,
                 "city" => "surat",
                 "phone" => 123456789,
-                "price" => 65000,
+                "price" => 78794,
                 "sale_price" => 4500,
                 "type_of" => "sell",
                 "cash" => "1",
-                "condition" => "Second hand",
+                "condition" => "new",
                 "created_at" => "2022-05-01 14:34:20",
-                "expire" => '2022-07-21 17:30:02'
+                "expire" => '2022-07-21 17:30:02',
+                'location' => 'Dehradun, Uttarakhand, India',
+                'tags' => 'camera'
             ],
             [
                 "category_id" => 1,
@@ -121,13 +129,15 @@ class ProductSeeder extends Seeder
                 "long" => 72.83106070000001,
                 "city" => "surat",
                 "phone" => 123456789,
-                "price" => 65000,
+                "price" => 3333,
                 "sale_price" => 4500,
                 "type_of" => "sell",
                 "cash" => "1",
-                "condition" => "Second hand",
+                "condition" => "refurbished",
                 "created_at" => "2022-05-01 14:34:20",
-                "expire" => '2022-07-21 17:30:02'
+                "expire" => '2022-07-21 17:30:02',
+                'location' => 'Dehradun, Uttarakhand, India',
+                'tags' => 'camera'
             ],
             [
                 "category_id" => 1,
@@ -143,13 +153,15 @@ class ProductSeeder extends Seeder
                 "long" => 72.83106070000001,
                 "city" => "surat",
                 "phone" => 123456789,
-                "price" => 65000,
+                "price" => 8977,
                 "sale_price" => 4500,
                 "type_of" => "sell",
                 "cash" => "1",
-                "condition" => "Second hand",
+                "condition" => "opportunity",
                 "created_at" => "2022-05-01 14:34:20",
-                "expire" => '2022-07-21 17:30:02'
+                "expire" => '2022-07-21 17:30:02',
+                'location' => 'Dehradun, Uttarakhand, India',
+                'tags' => 'camera'
             ],
             [
                 "category_id" => 1,
@@ -165,13 +177,15 @@ class ProductSeeder extends Seeder
                 "long" => 72.83106070000001,
                 "city" => "surat",
                 "phone" => 123456789,
-                "price" => 65000,
+                "price" => 78455,
                 "sale_price" => 4500,
                 "type_of" => "sell",
                 "cash" => "1",
-                "condition" => "Second hand",
+                "condition" => "part",
                 "created_at" => "2022-05-01 14:34:20",
-                "expire" => '2022-07-21 17:30:02'
+                "expire" => '2022-07-21 17:30:02',
+                'location' => 'Dehradun, Uttarakhand, India',
+                'tags' => 'camera'
             ],
             [
                 "category_id" => 1,
@@ -187,13 +201,15 @@ class ProductSeeder extends Seeder
                 "long" => 72.83106070000001,
                 "city" => "surat",
                 "phone" => 123456789,
-                "price" => 65000,
-                "sale_price" => 4500,
+                "price" => 6500,
+                "sale_price" => 4550,
                 "type_of" => "sell",
                 "cash" => "1",
-                "condition" => "Second hand",
+                "condition" => "second_hand",
                 "created_at" => "2022-05-01 14:34:20",
-                "expire" => '2022-07-21 17:30:02'
+                "expire" => '2022-07-21 17:30:02',
+                'location' => 'Dehradun, Uttarakhand, India',
+                'tags' => 'camera'
             ],
             // [
             //     "category_id" => 6,
@@ -214,7 +230,7 @@ class ProductSeeder extends Seeder
             //     "sale_price" => 4500,
             //     "type_of" => "sell",
             //     "cash" => "USD ($)",
-            //     "condition" => "Second hand"
+            //     "condition" => "second_hand"
             // ],
             // [
             //     "category_id" => 3,
@@ -234,7 +250,7 @@ class ProductSeeder extends Seeder
             //     "sale_price" => 4500,
             //     "type_of" => "sell",
             //     "cash" => "USD ($)",
-            //     "condition" => "Second hand"
+            //     "condition" => "second_hand"
             // ]
         ]);
     }

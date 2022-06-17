@@ -246,11 +246,13 @@
                                     @foreach($products as $product)
                                         <tr>
                                             <td class="fw-medium">{{$product->id}}</td>
-                                            <td>{{$product->name}}</td>
+                                            <td><a href="{{route('product',$product->slug)}}">{{$product->name}}</a></td>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="me-2">
+                                                        @if(isset($product->pictures[0]))
                                                         <img src="{{asset($product->pictures[0]->filename)}}" class="avatar-sm h-auto" alt="Error">
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>

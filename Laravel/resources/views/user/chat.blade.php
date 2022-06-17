@@ -6,7 +6,7 @@
                 <h3>Pick a user to chat with</h3>
                 <ul id="users">
                     @foreach ($users as $user)
-                        <li class="card rounded-3 p-3 py-4"><a href="javascript:void(0);" class="chat-toggle"
+                        <li class="card rounded-3 p-3 py-4"><a href="javascript:;" class="chat-toggle"
                                 data-id="{{ $user->id }}" data-user="{{ $user->name }}"><span><img
                                         src="{{ asset($user->avatar) }}" alt="" width="40"></span><span
                                     class="ms-4 chat_a_text">{{ $user->name }}</span></a></li>
@@ -112,7 +112,7 @@
     <input type="hidden" id="pusher_app_key" value="{{ env('PUSHER_APP_KEY') }}" />
     <input type="hidden" id="pusher_cluster" value="{{ env('PUSHER_APP_CLUSTER') }}" />
 @stop
-@section('script')
+@push('script')
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <script src="{{ asset('js/chat.js') }}"></script>
     <script>
@@ -137,4 +137,4 @@
         });
     </script>
 
-@stop
+@endpush

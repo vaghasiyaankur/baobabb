@@ -30,8 +30,8 @@
          <div class="card">
             <input type="hidden" id="field_id" value="{{$field->id}}">
             <div class="card-header  d-flex align-items-right">
-               <a href="{{route('admin.custom.field.index')}}" class="btn btn-success m-2">Go To Custom Fields<i class="mdi mdi-arrow-right align-middle"></i></a>
-               <a href="{{route('admin.custom.field.option.create',$field->id)}}" class="btn btn-success m-2">Create New Option -> {{$field->name}}<i class="mdi mdi-arrow-right align-middle"></i></a>
+               <a href="{{route('admin.custom.field.index')}}" class="btn btn-success m-2">Go To Custom Fields</a>
+               <a href="{{route('admin.custom.field.option.create',$field->id)}}" class="btn btn-success m-2">Create New Option -> {{$field->name}}</a>
             </div>
             <!-- end card header -->
             {{-- {{$field_id}} --}}
@@ -70,7 +70,7 @@
 <script>
      $(function () {
         var field = $('#field_id').val();
-        var page = 5;
+        var page = 10;
         var table = $('#brand_list').DataTable({
             processing: true,
             serverSide: true,

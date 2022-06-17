@@ -29,7 +29,7 @@
       <div class="col-lg-12">
          <div class="card">
             <div class="card-header  d-flex align-items-right">
-               <a href="{{route('admin.picture.create')}}" class="btn btn-success m-2">Insert Picture<i class="mdi mdi-arrow-right align-middle"></i></a>
+               <a href="{{route('admin.picture.create')}}" class="btn btn-success m-2">Insert Picture</a>
             </div>
             <!-- end card header -->
             {{-- {{$field_id}} --}}
@@ -38,7 +38,7 @@
                   <thead>
                      <tr class="tr_bg">
                         <th>ID</th>
-                        {{-- <th>NAME</th> --}}
+                        <th>NAME</th>
                         <th>IMAGE</th>
                         <th>ACTION</th>
                      </tr>
@@ -68,7 +68,7 @@
 <script>
      $(function () {
         var field = $('#field_id').val();
-        var page = 5;
+        var page = 10;
         var table = $('#brand_list').DataTable({
             processing: true,
             serverSide: true,
@@ -76,8 +76,8 @@
             ajax: "{{route('admin.picture.index')}}",
             columns: [
                 {data: 'id', name: 'id'},
-               //  {data: 'value', name: 'value'},
                 {data: 'image', name: 'image'},
+                {data: 'product.name', name: 'product.name'},
                 {data: 'action', name: 'action',orderable: true,searchable: true},
             ]
         });

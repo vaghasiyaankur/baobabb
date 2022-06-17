@@ -30,7 +30,7 @@
          <div class="card">
             {{-- @can('product-create') --}}
                <div class="card-header justify-content-between d-flex align-items-right">
-                  <a href="{{route('admin.blacklist.create')}}" class="btn btn-success">Add New BlackList <i class="mdi mdi-arrow-right align-middle"></i></a>
+                  <a href="{{route('admin.blacklist.create')}}" class="btn btn-success">Add New BlackList </a>
                </div>
             {{-- @endcan --}}
             <!-- end card header -->
@@ -69,7 +69,7 @@
 <script>
      $(function () {
         var field = $('#field_id').val();
-        var page = 5;
+        var page = 10;
         var table = $('#brand_list').DataTable({
             processing: true,
             serverSide: true,

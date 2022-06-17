@@ -31,7 +31,7 @@ class SettingController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                         $btn = '<div class="d-flex">';
-                        $btn .= '<a href="/admin/setting/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
+                        $btn .= '<a href="/admin/setting/'.$row->id.'/edit" class="edit btn btn-light btn-sm m-1">Edit</a>';
                         $btn .= '</div>';
                         return $btn;
                     })

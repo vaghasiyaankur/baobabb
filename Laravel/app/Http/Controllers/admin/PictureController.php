@@ -13,6 +13,13 @@ use DataTables;
 
 class PictureController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:picture-list|picture-create|picture-update|picture-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:picture-create', ['only' => ['create','store']]);
+        $this->middleware('permission:picture-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:picture-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,13 +28,13 @@ class PictureController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Picture::select('*');
+            $data = Picture::select('*')->with('product');
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                         $btn = '<div class="d-flex">';
-                        $btn .= '<a href="/admin/picture/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
-                        $btn .= '<form method="POST" action="/admin/picture/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
+                        $btn .= '<a href="/admin/picture/'.$row->id.'/edit" class="edit btn btn-light btn-sm m-1">Edit</a>';
+                        $btn .= '<form method="POST" action="/admin/picture/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-light btn-sm m-1">Delete</button></form>';
                         $btn .= '</div>';
                         return $btn;
                     })
@@ -99,9 +106,17 @@ class PictureController extends Controller
      * @param  \App\Models\Picture  $picture
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePictureRequest $request, Picture $picture)
+    public function update(Request $request, $id)
     {
-        //
+        $picture = Picture::findOrFail($id);
+        if($request->image)
+        {
+            $img = new ImageController;
+            $image = $img->move($request->image);
+            $picture->filename = $image;
+        }
+        $picture->save();
+        return redirect()->route('admin.picture.index');
     }
 
     /**
@@ -110,8 +125,9 @@ class PictureController extends Controller
      * @param  \App\Models\Picture  $picture
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Picture $picture)
+    public function destroy($id)
     {
-        //
+        Picture::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

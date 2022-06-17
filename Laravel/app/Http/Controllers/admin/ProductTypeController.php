@@ -31,8 +31,8 @@ class ProductTypeController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                         $btn = '<div class="d-flex">';
-                        $btn .= '<a href="/admin/product/type/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
-                        // $btn .= '<form method="POST" action="/admin/product/type/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-primary btn-sm m-1">Delete</button></form>';
+                        $btn .= '<a href="/admin/product/type/'.$row->id.'/edit" class="edit btn btn-light btn-sm m-1">Edit</a>';
+                        // $btn .= '<form method="POST" action="/admin/product/type/'.$row->id.'"><input type="hidden" name="_token" value="'.csrf_token().'"><input type="hidden" name="_method" value="DELETE"><button type="submit"class="edit btn btn-light btn-sm m-1">Delete</button></form>';
                         $btn .= '</div>';
                         return $btn;
                     })

@@ -39,6 +39,9 @@ return new class extends Migration
             $table->string('state');
             $table->string('city');
             $table->string('price');
+            $table->string('tags')->nullable();
+            $table->string('location')->nullable();
+            $table->string('negotiable')->nullable();
             $table->string('sale_price')->nullable();
             $table->integer('impression')->default(0);
             $table->integer('click')->default(0);

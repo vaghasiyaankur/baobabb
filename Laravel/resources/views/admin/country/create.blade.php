@@ -24,7 +24,7 @@
                     Add New Country
                 @endif
             </h4>
-            <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a> -->
+            <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs </a> -->
         </div>
         <!-- end card header -->
         <div class="card-body">
@@ -233,6 +233,7 @@
                                 Save
                             @endif
                         </button>
+                        <a href="{{route('admin.country.index')}}" class="btn btn-light ms-3">Back</a>
                     </div>
                 </form>
 

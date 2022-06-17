@@ -14,7 +14,7 @@
     <div class="card card-h-100">
         <div class="card-header justify-content-between d-flex align-items-center">
             <h4 class="card-title">Edit Setting </h4>
-            <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a> -->
+            <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs </a> -->
         </div>
         <!-- end card header -->
         <div class="card-body">

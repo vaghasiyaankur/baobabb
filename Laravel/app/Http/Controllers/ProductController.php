@@ -109,10 +109,18 @@ class ProductController extends Controller
         $product->state = $request->state;
         $product->city = $request->city;
         // $product->street = $request->street;
+        $product->location = $request->autocomplete;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
         $product->video = $request->video; 
+        $product->tags = $request->tags;  
         $product->expire = $expireDate;
+        if($request->negotiable == '1'){
+            $product->negotiable = '1';
+        }
+        else{
+            $product->negotiable == '0';
+        }
         $product->save();
 
         $position = 0;
@@ -179,18 +187,22 @@ class ProductController extends Controller
         $position = 0;
         $imgmove = new ImageController;
         // $image = $img->move($request->image);
-        if($request->image)
+        
+        if($request->file())
         {
-            Picture::where('post_id',$product->id)->delete();
-        }
-        foreach($request->image as $i)
-        {
-            $img = new Picture;
-            $img->filename = $imgmove->move($i);
-            $img->post_id = $product->id;
-            $img->position = $position;
-            $img->save();
-            $position++;
+            if($request->image)
+            {
+                Picture::where('post_id',$product->id)->delete();
+            }
+            foreach($request->image as $i)
+            {
+                $img = new Picture;
+                $img->filename = $imgmove->move($i);
+                $img->post_id = $product->id;
+                $img->position = $position;
+                $img->save();
+                $position++;
+            }
         }
         $product->name = $request->name;
         $product->category_id = $request->category_id;
@@ -205,7 +217,15 @@ class ProductController extends Controller
         $product->cash = $request->currency;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
+        $product->location = $request->autocomplete;
         $product->video = $request->video;  
+        $product->tags = $request->tags; 
+        if($request->negotiable == '1'){
+            $product->negotiable = '1';
+        }
+        else{
+            $product->negotiable == '0';
+        } 
         $product->save();
         return redirect()->route('user.product.index');
     }

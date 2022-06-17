@@ -13,7 +13,7 @@
 <div class="card card-h-100">
    <div class="card-header justify-content-between d-flex align-items-center">
       <h4 class="card-title">@if(isset($product)) Product Edit @else Add New Product @endif</h4>
-      <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a> -->
+      <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs </a> -->
    </div>
    <!-- end card header -->
    <div class="card-body">
@@ -165,6 +165,12 @@
                   <input class="form-control custom-file-input" name="click" value="@if(isset($product->click)){{$product->click}}@endif" type="number" id="click">
                </div>
             </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                 <label for="formFile" class="form-label custom-file-label font-size-17">Video Link</label>
+                 <input class="form-control custom-file-input" name="video" type="text" id="video" value="@if(isset($product->video)){{$product->video}}@endif">
+              </div>
+           </div>
 
              <div class="col-md-6">
                 <div class="mb-3">
@@ -180,12 +186,6 @@
                 </div>
              </div>
 
-             <div class="col-md-6">
-               <div class="mb-3">
-                  <label for="formFile" class="form-label custom-file-label font-size-17">Video Link</label>
-                  <input class="form-control custom-file-input" name="video" type="text" id="video" value="@if(isset($product->video)){{$product->video}}@endif">
-               </div>
-            </div>
 
                <!-- end col -->
                {{-- <div class="col-md-6">
@@ -209,6 +209,7 @@
             <!-- end row -->
             <div class="mt-3">
                <button type="submit" class="btn btn-primary ms-3">@if(isset($product)) Update @else Save @endif</button>
+               <a href="{{route('admin.product.index')}}" class="btn btn-light ms-3">Back</a>
             </div>
          </form>
          <!-- end form -->

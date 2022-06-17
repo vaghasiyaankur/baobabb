@@ -13,7 +13,7 @@
 <div class="card card-h-100">
    <div class="card-header justify-content-between d-flex align-items-center">
       <h4 class="card-title">@if(isset($picture)) Picture Edit @else Add New Picture @endif</h4>
-      <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a> -->
+      <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs </a> -->
    </div>
    <!-- end card header -->
    <div class="card-body">
@@ -25,7 +25,7 @@
                <div class="col-md-12">
                   <div class="mb-3">
                      <label for="formFile" class="form-label custom-file-label font-size-17">Value</label>
-                     <input class="form-control custom-file-input" name="image" value="@if(isset($picture->value)){{$picture->value}}@endif" type="file" id="image">
+                     <input class="form-control custom-file-input" name="image" value="@if(isset($picture->value)){{$picture->value}}@endif" type="file" id="image" required>
                   </div>
                </div>
             </div>

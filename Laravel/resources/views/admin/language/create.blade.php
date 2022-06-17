@@ -58,7 +58,7 @@
 <div class="card card-h-100">
    <div class="card-header justify-content-between d-flex align-items-center">
       <h4 class="card-title">@if(isset($languagedata)) Edit Language @else Add New Language @endif</h4>
-      <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a> -->
+      <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs </a> -->
    </div>
    <!-- end card header -->
    <div class="card-body">
@@ -186,6 +186,7 @@
      </div>
             <div class="mt-3">
                <button type="submit" class="btn btn-primary ms-3">@if(isset($languagedata)) Update @else Save @endif</button>
+               <a href="{{route('admin.language.index')}}" class="btn btn-light ms-3">Back</a>
             </div>
          </form>
          <!-- end form -->

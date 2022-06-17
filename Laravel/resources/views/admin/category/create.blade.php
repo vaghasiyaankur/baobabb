@@ -13,7 +13,7 @@
 <div class="card card-h-100">
    <div class="card-header justify-content-between d-flex align-items-center">
       <h4 class="card-title">@if(isset($cat)) Category Edit @else Add New Category @endif</h4>
-      <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a> -->
+      <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs </a> -->
    </div>
    <!-- end card header -->
    <div class="card-body">
@@ -55,7 +55,7 @@
                <div class="col-md-6">
                   <label for="formFile" class="form-label custom-file-label font-size-17">Icon</label>
                   <div class="form_right_img text-center mb-4">
-                     <img src="@if(isset($cat->icon)){{asset($cat->icon)}}@else{{ asset('assets/images/brand_add_new1.jpg') }}@endif" style="border-radius: 10px; max-height:200px;" id="viewer" class="form_img" alt="brand image">
+                     <img src="@if(isset($cat->icon)){{asset($cat->icon)}}@else{{ asset('assets/images/brand_add_new1.jpg') }}@endif" style="border-radius: 10px; max-height:200px;" id="icon_viewer" class="form_img" alt="brand image">
                   </div>
                </div>
                <!-- end col -->
@@ -73,6 +73,7 @@
             <!-- end row -->
             <div class="mt-3">
                <button type="submit" class="btn btn-primary ms-3">@if(isset($cat)) Update @else Save @endif</button>
+               <a href="{{route('admin.category.index')}}" class="btn btn-light ms-3">Back</a>
             </div>
          </form>
          <!-- end form -->
@@ -106,6 +107,44 @@
       $(this).val(slug.toLowerCase());
       $(this).val(slug.replace(/ /g, "-"));
    });  
+</script>
+
+<script>
+   $("#icon").change(function() {
+      iconreadURL(this);
+        });
+
+        function iconreadURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+            $('#icon_viewer').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            alert('select a file to see preview');
+            $('#icon_viewer').attr('src', '');
+        }
+        }
+</script>
+
+<script>
+   $("#image").change(function() {
+        readURL(this);
+        });
+
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+            $('#viewer').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            alert('select a file to see preview');
+            $('#viewer').attr('src', '');
+        }
+        }
 </script>
 
 @endpush

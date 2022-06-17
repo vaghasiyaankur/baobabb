@@ -13,7 +13,7 @@
 <div class="card card-h-100">
    <div class="card-header justify-content-between d-flex align-items-center">
       <h4 class="card-title">@if(isset($type)) Product Type Edit @else Add New Product Type @endif</h4>
-      <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a> -->
+      <!-- <a href="https://getbootstrap.com/docs/5.1/forms/layout/#utilities" target="_blank" class="btn btn-sm btn-soft-secondary">Docs </a> -->
    </div>
    <!-- end card header -->
    <div class="card-body">
@@ -32,6 +32,7 @@
             <!-- end row -->
             <div class="mt-3">
                <button type="submit" class="btn btn-primary ms-3">@if(isset($type)) Update @else Save @endif</button>
+               <a href="{{roue('admin.product.type.index')}}" class="btn btn-light ms-3">Back</a>
             </div>
          </form>
          <!-- end form -->

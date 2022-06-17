@@ -24,7 +24,7 @@ class AdvertisingController extends Controller
                     ->addColumn('action', function($row){
                         if($row->name != 'super-admin'){
                             $btn = '<div class="d-flex">';
-                            $btn .= '<a href="/admin/advertising/'.$row->id.'/edit" class="edit btn btn-primary btn-sm m-1">Edit</a>';
+                            $btn .= '<a href="/admin/advertising/'.$row->id.'/edit" class="edit btn btn-light btn-sm m-1">Edit</a>';
                             $btn .= '</div>';
                             return $btn;
                         }

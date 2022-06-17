@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->bigInteger('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->enum('is_admin',[0,1])->default(0);
             $table->string('avatar')->nullable();
             $table->string('facebook')->nullable();
@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('lat')->nullable();
             $table->string('long')->nullable();
+            $table->string('location')->nullable();
             $table->string('country')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();

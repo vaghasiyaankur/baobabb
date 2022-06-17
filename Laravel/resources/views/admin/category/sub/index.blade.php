@@ -69,7 +69,7 @@
 <script>
      $(function () {
         var parent_id = $('#parent_id').val()
-        var page = 5;
+        var page = 10;
         var table = $('#brand_list').DataTable({
             processing: true,
             serverSide: true,

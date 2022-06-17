@@ -126,7 +126,7 @@ class UserController extends Controller
         $user->country = $request->country;
         $user->state = $request->state;
         $user->city = $request->city;
-        // $user->location = $request->location;
+        $user->location = $request->autocomplete;
         $user->street = $request->street;
         $user->status = '1';
         $user->save();

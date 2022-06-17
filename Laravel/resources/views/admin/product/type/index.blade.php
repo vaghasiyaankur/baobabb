@@ -29,7 +29,7 @@
       <div class="col-lg-12">
          <div class="card">
             {{-- <div class="card-header justify-content-between d-flex align-items-right">
-               <a href="{{route('admin.product.type.create')}}" class="btn btn-success">Add New Product <i class="mdi mdi-arrow-right align-middle"></i></a>
+               <a href="{{route('admin.product.type.create')}}" class="btn btn-success">Add New Product </a>
             </div> --}}
             <!-- end card header -->
             <div class="card-body">
@@ -66,7 +66,7 @@
 
 <script>
      $(function () {
-        var page = 5;
+        var page = 10;
         var table = $('#brand_list').DataTable({
             processing: true,
             serverSide: true,

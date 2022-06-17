@@ -2,14 +2,14 @@
 @section('content')
     <!-- ALL-CATEGORY SECTION START -->
     <section class="all-categories py_5 all-categoriess_">
-        <h3 class="fw-bold pt-4 ps-lg-5">
+        <h3 class="fw-bold">
             Consulter les announces </h3>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb ps-lg-5">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}"
-                        class="text-decoration-none text-muted">Accueil</a>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('allcategory') }}"
+                        class="text-decoration-none text-muted">Categories</a>
                 </li>
-                <li class="breadcrumb-item">Consulter les annonces</li>
+                <li class="breadcrumb-item">@if($category == 'all')All @else{{$category->name}}@endif</li>
             </ol>
         </nav>
         <div class="row">
@@ -123,6 +123,11 @@
                         <input class="form-check-input rounded-pill fs-6 filter-data" id="refurbished" name="condition"
                             type="radio" value="refurbished" @if ($condition == 'refurbished') checked @endif>
                         <label class="form-check-label" for="refurbished">Refurbished</label>
+                    </div>
+                    <div class="form-check pb-1">
+                        <input class="form-check-input rounded-pill fs-6 filter-data" id="second_hand" name="condition"
+                            type="radio" value="second_hand" @if ($condition == 'second_hand') checked @endif>
+                        <label class="form-check-label" for="second_hand">Second Hand</label>
                     </div>
                     <div class="form-check pb-1">
                         <input class="form-check-input rounded-pill fs-6 filter-data" id="opportunity" name="condition"

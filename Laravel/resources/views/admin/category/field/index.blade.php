@@ -32,7 +32,7 @@
             <div class="card-header d-flex align-items-right">
                <a href="{{route('admin.category.index')}}" class="btn btn-success m-2">Go to Parent Category</a>
                @can('field-create')
-                  <a href="{{route('admin.category.custom_field.create',$category->id)}}" class="btn btn-success m-2">Add New Custom Field → {{$category->name}} <i class="mdi mdi-arrow-right align-middle"></i></a>
+                  <a href="{{route('admin.category.custom_field.create',$category->id)}}" class="btn btn-success m-2">Add New Custom Field → {{$category->name}} </a>
                @endcan
             </div>
             <!-- end card header -->
@@ -72,7 +72,7 @@
      $(function () {
         var category_id = $('#category_id').val()
         console.log(category_id)
-        var page = 5;
+        var page = 10;
         var table = $('#brand_list').DataTable({
             processing: true,
             serverSide: true,
